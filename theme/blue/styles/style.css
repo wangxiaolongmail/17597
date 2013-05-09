@@ -1,0 +1,1047 @@
+
+html {
+}
+.gNetfolder-pic .item, .gSys-inner-netfolder .folders, .fn-qmbox {
+    -moz-box-sizing: border-box;
+}
+.g-file .info, .fn-clear {
+}
+.g-file .info:before, .g-file .info:after, .fn-clear:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+.g-file {
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    cursor: default;
+    padding: 10px 20px 10px 35px;
+    position: relative;
+}
+.g-file .ico-att, .g-file .ico-loading {
+    left: 11px;
+    position: absolute;
+    top: 11px;
+}
+.g-file .btn-close {
+    position: absolute;
+    right: 6px;
+    top: 11px;
+}
+.g-file .progress {
+    overflow: hidden;
+}
+.g-file .g-probar {
+    margin-top: 5px;
+    width: 250px;
+}
+.g-file .g-probar, .g-file .num, .g-file .oprt {
+    float: left;
+    margin-right: 10px;
+}
+.g-file .num {
+    margin-right: 15px;
+}
+.g-file .info span {
+    float: left;
+    margin-right: 8px;
+}
+.g-file .info .upld {
+    width: 120px;
+}
+.g-file .info .spd {
+    width: 120px;
+}
+.g-file .info .time {
+    white-space: nowrap;
+}
+.g-file .lnk {
+    margin-right: 5px;
+}
+.g-file .flname {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+.g-file-pause .g-probar span {
+    background: none repeat scroll 0 0 #C6C6C6;
+}
+.g-tree {
+    white-space: nowrap;
+}
+.g-tree a, .g-tree .node, .g-tree .ico-node {
+    cursor: pointer;
+}
+.g-tree a, .g-tree .node {
+    color: #000000;
+    margin-left: 16px;
+    text-decoration: none;
+}
+.g-tree ul {
+    margin-left: 20px;
+}
+.g-tree li {
+    margin-top: 2px;
+    position: relative;
+}
+.g-tree .unfold ul {
+    display: block;
+}
+.g-tree .fold ul {
+    display: none;
+}
+.g-tree .ico-node {
+    height: 14px;
+    left: 0;
+    line-height: 999em;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 3px;
+    width: 16px;
+}
+.g-tree .unfold .ico-node {
+    background-position: -160px -30px;
+}
+.g-tree .fold .ico-node {
+    background-position: -160px 2px;
+}
+.g-tree .slcted {
+    background: none repeat scroll 0 0 #EAE6D4;
+    padding: 2px 0;
+}
+.g-tree .ipt-t-rename {
+    border: 1px solid #000000;
+    width: 50px;
+}
+.g-menu li a.ext {
+    position: absolute;
+    right: 1px;
+    top: 0;
+    width: auto;
+}
+.g-menu li a.ext:hover {
+    background: none repeat scroll 0 0 transparent;
+    color: #000000 !important;
+}
+.gNetfolder .path, .btn-close, .btn-advsrch, .ico-bAssistant, .ico-assistant, .ico-drag, .ico-alert, .ico-page, .ico-att, .ico-node, .ico-back, .ico-slct, .ico-mode, .ico-list-up, .ico-list-down {
+    background-image: url("../img/bg.gif");
+    background-repeat: no-repeat;
+}
+.btn-advsrch {
+    background-position: 0 -32px;
+    height: 20px;
+    width: 19px;
+}
+.btn-close {
+    background-position: -252px -28px;
+    height: 16px;
+    overflow: hidden;
+    text-indent: -999em;
+    width: 16px;
+}
+.ico-page {
+    height: 14px;
+}
+.ico-page-first {
+    background-position: -288px -29px;
+    width: 8px;
+}
+.btn-dft-gl-disabd .ico-page-first {
+    background-position: -288px -61px;
+}
+.ico-page-prev {
+    background-position: -320px -28px;
+    width: 5px;
+}
+.btn-dft-gc-disabd .ico-page-prev {
+    background-position: -320px -60px;
+    width: 5px;
+}
+.ico-page-next {
+    background-position: -352px -28px;
+    width: 5px;
+}
+.btn-dft-gc-disabd .ico-page-next {
+    background-position: -352px -60px;
+    width: 5px;
+}
+.ico-page-last {
+    background-position: -384px -29px;
+    width: 8px;
+}
+.btn-dft-gr-disabd .ico-page-last {
+    background-position: -384px -61px;
+    width: 8px;
+}
+.ico-ntfdrup {
+    background-position: -192px 0;
+    height: 50px;
+    width: 50px;
+}
+.ico-back {
+    background-position: -32px -32px;
+    height: 16px;
+    width: 16px;
+}
+.ico-slct {
+    height: 16px;
+    width: 16px;
+}
+.ico-slct-radio {
+    background-position: -122px 4px;
+}
+.g-menu a:hover .ico-slct-radio, .g-menu .hover .ico-slct-radio {
+    background-position: -122px -28px;
+}
+.ico-mode {
+    height: 19px;
+    width: 19px;
+}
+.ico-mode-list {
+    background-position: -64px 0;
+}
+.ico-mode-list-on {
+    background-position: -64px -32px;
+}
+.ico-mode-pic {
+    background-position: -96px 0;
+}
+.ico-mode-pic-on {
+    background-position: -96px -32px;
+}
+.ico-list-up, .ico-list-down {
+    height: 16px;
+    width: 16px;
+}
+.ico-list-up {
+    background-position: -32px 0;
+}
+.ico-list-down {
+    background-position: 0 0;
+}
+.ico-drag {
+    background-position: -416px -64px;
+    cursor: move;
+    height: 15px;
+    width: 7px;
+}
+.ico-file {
+    background-image: url("../../../style_comm/img/file_ico.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+}
+.ico-file-undefined, .ico-file-1 {
+    background-position: 0 0;
+}
+.ico-file-xls, .ico-file-xlsx, .ico-file-2 {
+    background-position: -32px 0;
+}
+.ico-file-doc, .ico-file-docx, .ico-file-3 {
+    background-position: -64px 0;
+}
+.ico-file-ppt, .ico-file-pptx, .ico-file-4 {
+    background-position: -96px 0;
+}
+.ico-file-5 {
+    background-position: -128px 0;
+}
+.ico-file-rar, .ico-file-6 {
+    background-position: -160px 0;
+}
+.ico-file-zip, .ico-file-7 {
+    background-position: -192px 0;
+}
+.ico-file-8 {
+    background-position: -224px 0;
+}
+.ico-file-9 {
+    background-position: -256px 0;
+}
+.ico-file-html, .ico-file-10 {
+    background-position: -288px 0;
+}
+.ico-file-js, .ico-file-11 {
+    background-position: -320px 0;
+}
+.ico-file-xml, .ico-file-css, .ico-file-12 {
+    background-position: -352px 0;
+}
+.ico-file-13 {
+    background-position: -384px 0;
+}
+.ico-file-14 {
+    background-position: -416px 0;
+}
+.ico-file-15 {
+    background-position: -448px 0;
+}
+.ico-file-16 {
+    background-position: -480px 0;
+}
+.ico-file-pdf, .ico-file-17 {
+    background-position: -512px 0;
+}
+.ico-file-18 {
+    background-position: -544px 0;
+}
+.ico-file-19 {
+    background-position: -576px 0;
+}
+.ico-file-20 {
+    background-position: -608px 0;
+}
+.ico-file-21 {
+    background-position: -640px 0;
+}
+.ico-file-txt, .ico-file-22 {
+    background-position: -672px 0;
+}
+.ico-file-23 {
+    background-position: -704px 0;
+}
+.ico-file-24 {
+    background-position: -736px 0;
+}
+.ico-file-25 {
+    background-position: -768px 0;
+}
+.ico-file-26 {
+    background-position: -800px 0;
+}
+.ico-file-27 {
+    background-position: -832px 0;
+}
+.ico-file-28 {
+    background-position: -864px 0;
+}
+.ico-file-29 {
+    background-position: -896px 0;
+}
+.ico-file-30 {
+}
+.ico-file-jpg, .ico-file-31 {
+    background-position: 0 -32px;
+}
+.ico-file-gif, .ico-file-32 {
+    background-position: -32px -32px;
+}
+.ico-file-png, .ico-file-33 {
+    background-position: -64px -32px;
+}
+.ico-file-bmp, .ico-file-34 {
+    background-position: -96px -32px;
+}
+.ico-file-35 {
+    background-position: -128px -32px;
+}
+.ico-file-36 {
+    background-position: -160px -32px;
+}
+.ico-file-37 {
+    background-position: -192px -32px;
+}
+.ico-file-38 {
+    background-position: -224px -32px;
+}
+.ico-file-39 {
+    background-position: -256px -32px;
+}
+.ico-file-40 {
+    background-position: -288px -32px;
+}
+.ico-file-41 {
+    background-position: -320px -32px;
+}
+.ico-file-42 {
+    background-position: -352px -32px;
+}
+.ico-file-dir {
+    background-position: -384px -32px;
+}
+.ico-bfile {
+    background-image: url("../../../style_comm/img/file_ico.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 32px;
+}
+.ico-bfile-undefined, .ico-bfile-1 {
+    background-position: 0 -64px;
+}
+.ico-bfile-xls, .ico-bfile-xlsx, .ico-bfile-2 {
+    background-position: -32px -64px;
+}
+.ico-bfile-doc, .ico-bfile-docx, .ico-bfile-3 {
+    background-position: -64px -64px;
+}
+.ico-bfile-ppt, .ico-bfile-pptx, .ico-bfile-4 {
+    background-position: -96px -64px;
+}
+.ico-bfile-5 {
+    background-position: -128px -64px;
+}
+.ico-bfile-rar, .ico-bfile-6 {
+    background-position: -160px -64px;
+}
+.ico-bfile-zip, .ico-bfile-7 {
+    background-position: -192px -64px;
+}
+.ico-bfile-8 {
+    background-position: -224px -64px;
+}
+.ico-bfile-9 {
+    background-position: -256px -64px;
+}
+.ico-bfile-html, .ico-bfile-10 {
+    background-position: -288px -64px;
+}
+.ico-bfile-js, .ico-bfile-11 {
+    background-position: -320px -64px;
+}
+.ico-bfile-xml, .ico-bfile-css, .ico-bfile-12 {
+    background-position: -352px -64px;
+}
+.ico-bfile-13 {
+    background-position: -384px -64px;
+}
+.ico-bfile-14 {
+    background-position: -416px -64px;
+}
+.ico-bfile-15 {
+    background-position: -448px -64px;
+}
+.ico-bfile-16 {
+    background-position: -480px -64px;
+}
+.ico-bfile-pdf, .ico-bfile-17 {
+    background-position: -512px -64px;
+}
+.ico-bfile-18 {
+    background-position: -544px -64px;
+}
+.ico-bfile-19 {
+    background-position: -576px -64px;
+}
+.ico-bfile-20 {
+    background-position: -608px -64px;
+}
+.ico-bfile-21 {
+    background-position: -640px -64px;
+}
+.ico-bfile-txt, .ico-bfile-22 {
+    background-position: -672px -64px;
+}
+.ico-bfile-23 {
+    background-position: -704px -64px;
+}
+.ico-bfile-24 {
+    background-position: -736px -64px;
+}
+.ico-bfile-25 {
+    background-position: -768px -64px;
+}
+.ico-bfile-26 {
+    background-position: -800px -64px;
+}
+.ico-bfile-27 {
+    background-position: -832px -64px;
+}
+.ico-bfile-28 {
+    background-position: -864px -64px;
+}
+.ico-bfile-29 {
+    background-position: -896px -64px;
+}
+.ico-bfile-30 {
+}
+.ico-bfile-jpg, .ico-bfile-31 {
+    background-position: 0 -96px;
+}
+.ico-bfile-gif, .ico-bfile-32 {
+    background-position: -32px -96px;
+}
+.ico-bfile-png, .ico-bfile-33 {
+    background-position: -64px -96px;
+}
+.ico-bfile-bmp, .ico-bfile-34 {
+    background-position: -96px -96px;
+}
+.ico-bfile-35 {
+    background-position: -128px -96px;
+}
+.ico-bfile-36 {
+    background-position: -160px -96px;
+}
+.ico-bfile-37 {
+    background-position: -192px -96px;
+}
+.ico-bfile-38 {
+    background-position: -224px -96px;
+}
+.ico-bfile-39 {
+    background-position: -256px -96px;
+}
+.ico-bfile-40 {
+    background-position: -288px -96px;
+}
+.ico-bfile-41 {
+    background-position: -320px -96px;
+}
+.ico-bfile-42 {
+    background-position: -352px -96px;
+}
+.ico-bfile-dir {
+    background-position: -384px -96px;
+}
+.ico-att {
+    height: 18px;
+    width: 18px;
+}
+.ico-att-nml {
+    background-position: -257px 0;
+}
+.ico-att-succ {
+    background-position: -320px 0;
+}
+.ico-att-del {
+    background-position: -288px 0;
+}
+.ico-att-upld {
+    background: url("../img/upload.gif") no-repeat scroll 0 1px transparent !important;
+}
+.ico-att-wait {
+    background-position: -352px 0;
+}
+.ico-att-err {
+    background-position: -384px 0;
+}
+.ico-alert {
+    background-position: -416px -32px;
+    height: 11px;
+    width: 11px;
+}
+.ico-assistant {
+    background-position: 1px -95px;
+    height: 16px;
+    width: 16px;
+}
+.ico-bAssistant {
+    background-position: -32px -93px;
+    height: 32px;
+    width: 32px;
+}
+.gNetfolder {
+    padding: 10px;
+}
+.gNetfolder .g-title-1 {
+    height: auto;
+    margin-bottom: 8px;
+    position: relative;
+}
+.gNetfolder .g-title-1 h2 span {
+    font-size: 12px;
+}
+.gNetfolder .g-title-1 .maxsize {
+    color: #16960E;
+    font-size: 9px;
+    margin-left: 3px;
+    vertical-align: middle;
+}
+.gNetfolder .g-title-1 .lock {
+    margin-right: 3px;
+}
+.gNetfolder .g-title-1 .ext {
+    color: #7D7D7D;
+    position: absolute;
+    right: 0;
+    text-indent: 0;
+    top: 2px;
+}
+.gNetfolder .g-title-1 .srch {
+    margin-left: 20px;
+}
+.gNetfolder .g-title-1 .srchinfo {
+    margin-top: 5px;
+    text-indent: 0;
+}
+.gNetfolder .g-title-1 .btn-sml {
+    margin: -1px;
+    width: 20px;
+}
+.gNetfolder .g-title-1 .btn-sml .arr {
+    background-position: -180px 4px;
+    height: 100%;
+    width: 100%;
+}
+.gNetfolder .advsrch {
+    border-style: solid;
+    border-width: 1px;
+    margin: 8px 0 0;
+    text-indent: 0;
+}
+.gNetfolder .advsrch .tab {
+    border-style: solid;
+    border-width: 1px 1px 0;
+    float: right;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    margin: -31px -1px 0 0;
+    position: relative;
+    text-align: center;
+    width: 180px;
+}
+.gNetfolder .advsrch .tab .btn-close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+.gNetfolder .advsrch .panel {
+    padding: 15px 10px;
+}
+.gNetfolder .advsrch select, .gNetfolder .advsrch .ipt-t {
+    margin-right: 10px;
+    width: 180px;
+}
+.gNetfolder .advsrch select.s {
+    width: auto;
+}
+.gNetfolder .advsrch th {
+    font-weight: normal;
+    height: 35px;
+    text-align: right;
+    width: 80px;
+}
+.gNetfolder .advsrch .button {
+    height: 50px;
+}
+.gNetfolder .advsrch .btn-dft-impt {
+    margin-right: 10px;
+}
+.gNetfolder .btngrp a.btn {
+    margin: 5px -1px 0 0;
+}
+.gNetfolder .btngrp-ext .btn-dft span {
+    padding: 5px 8px;
+}
+.gNetfolder .btngrp-ext .btn-dft-gr span {
+    padding-right: 5px;
+}
+.gNetfolder .btngrp-ext .btn-dft-gl-disabd {
+    background: none repeat scroll 0 0 transparent;
+}
+.gNetfolder .tipsbar {
+    background: none repeat scroll 0 0 #FFFFE1;
+    border: 1px solid #C6C6A8;
+    font-family: simsun,serif;
+    margin-bottom: 5px;
+    padding: 5px 10px 5px 22px;
+    position: relative;
+}
+.gNetfolder .tipsbar .btn-close {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+}
+.gNetfolder .tipsbar .ico-alert {
+    left: 5px;
+    position: absolute;
+    top: 5px;
+}
+.gNetfolder .tipsbar, .gNetfolder .tipsbar a {
+    color: #7E7E7D;
+}
+.gNetfolder .tipsbar a em {
+    text-decoration: underline;
+}
+.gNetfolder .path {
+    background-position: 0 -128px;
+    background-repeat: repeat-x;
+    height: 25px;
+    line-height: 25px;
+    margin: 5px 0 0;
+    padding: 0 10px;
+}
+.gNetfolder .path .txt-info {
+    font-family: simsun,serif;
+}
+.dragtips {
+    border-style: solid;
+    border-width: 1px;
+    left: 0;
+    padding: 2px 5px 2px 20px;
+    position: absolute;
+    top: 0;
+}
+.dragtips .ico {
+    height: 16px;
+    left: 2px;
+    position: absolute;
+    top: 2px;
+    width: 16px;
+}
+.gNetfolder-list {
+}
+.gNetfolder-list .back .ico-back {
+    margin-right: 6px;
+}
+.gNetfolder-list th {
+    border-top: 0 none !important;
+    cursor: pointer;
+}
+.gNetfolder-list a {
+}
+.gNetfolder-list .wd0 {
+    border-left: 0 none;
+    padding: 0;
+    width: 15px;
+}
+.gNetfolder-list .ckb {
+    text-align: left;
+    width: 25px;
+}
+.gNetfolder-list .wd3, .gNetfolder-list .wd4 {
+    width: 100px;
+}
+.gNetfolder-list .wd5 {
+    width: 200px;
+}
+.gNetfolder-list td.wd5, .gNetfolder-list td.wd3, .gNetfolder-list td.wd4 {
+    color: #7D7D7D;
+}
+.gNetfolder-list .ico-assistant, .gNetfolder-list .ico-file {
+    margin-right: 6px;
+}
+.gNetfolder-list .oprt {
+    margin-left: 8px;
+    position: absolute;
+    white-space: nowrap;
+}
+.gNetfolder-list td .name {
+    color: #000000;
+    text-decoration: none;
+}
+.gNetfolder-list .nofile {
+    height: 60px;
+    text-align: center;
+}
+.gNetfolder-list .share td {
+    padding-top: 5px;
+    vertical-align: top;
+}
+.gNetfolder-list .share .wd0 {
+    padding-top: 6px;
+}
+.gNetfolder-list .share .wd1 {
+    padding-top: 7px;
+}
+.gNetfolder-list .share .share-info {
+    margin-top: 5px;
+}
+.gNetfolder-list .share .share-info .col {
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.gNetfolder-list .share .share-info .col1 {
+    margin-left: 23px;
+    width: 95px;
+}
+.gNetfolder-list .share .share-info .col2 {
+    margin-right: 10px;
+    width: 270px;
+}
+.gNetfolder-list .share .share-info .col3 {
+    width: 120px;
+}
+.gNetfolder-list-result td.ckb input {
+    margin-top: 10px;
+}
+.gNetfolder-list-result td {
+    height: 58px;
+    vertical-align: top;
+}
+.gNetfolder-list-result .oprt {
+    display: block;
+    margin: 3px 0 0 20px;
+    position: static;
+}
+.gNetfolder-list-result .nofile {
+    vertical-align: middle;
+}
+.gNetfolder-pic {
+}
+.gNetfolder-pic th {
+    border-top: 0 none !important;
+}
+.gNetfolder-pic .wd0 {
+    border-left: 0 none;
+    padding: 0;
+    width: 15px;
+}
+.gNetfolder-pic .ckb {
+    text-align: left;
+    width: 25px;
+}
+.gNetfolder-pic table {
+    table-layout: fixed;
+    width: 100%;
+}
+.gNetfolder-pic .back .ico-back {
+    margin-right: 6px;
+}
+.gNetfolder-pic .piclist {
+    overflow: hidden;
+}
+.gNetfolder-pic .item {
+    display: inline;
+    float: left;
+    height: 220px;
+    overflow: hidden;
+    padding: 12px 7px;
+    width: 260px;
+    word-wrap: break-word;
+}
+.gNetfolder-pic .over {
+    background-color: #FFFFE1;
+}
+.gNetfolder-pic .chked {
+    background-color: #FFFFCA;
+}
+.gNetfolder-pic .name {
+    color: #000000;
+    text-decoration: none;
+}
+.gNetfolder-pic .checkbox {
+    float: left;
+    margin-right: 5px;
+    text-align: center;
+}
+.gNetfolder-pic .checkbox .ipt-c {
+    margin: 0;
+}
+.gNetfolder-pic .cont {
+    overflow: hidden;
+    position: relative;
+}
+.gNetfolder-pic .pic {
+    display: block;
+    height: 100px;
+    left: 0;
+    line-height: 100px;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    top: 0;
+    white-space: nowrap;
+    width: 100px;
+}
+.gNetfolder-pic .pic:after {
+    content: ".";
+    display: inline;
+    margin-left: -4px;
+    visibility: hidden;
+}
+.gNetfolder-pic .pic-icon {
+    background: none repeat scroll 0 0 #F4F4F4;
+    border: 1px solid #D6D6D6;
+}
+.gNetfolder-pic .pic-icon .ico {
+    cursor: pointer;
+}
+.gNetfolder-pic .info {
+    line-height: 16px;
+    margin-top: 105px;
+}
+.gNetfolder-pic .nofile {
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.gNetfolder-pic .ico-drag {
+    float: left;
+    margin-right: 5px;
+}
+.gNetfolder-upload {
+    width: 400px;
+}
+.gNetfolder-upload th {
+    font-weight: normal;
+    height: 30px;
+    padding-right: 5px;
+    text-align: right;
+    width: 80px;
+}
+.gNetfolder-upload .file th {
+    height: 35px;
+}
+.gNetfolder-upload .tips th {
+    height: 20px;
+}
+.gNetfolder-upload .pos th {
+    height: 60px;
+}
+.gNetfolder-upload .submit th {
+    height: 60px;
+}
+.gNetfolder-upload .ipt-f {
+    height: 22px;
+    width: 300px;
+}
+.gSys-msg-win .ft .opt-ext {
+    float: left;
+}
+.gSys-inner-netfolder .ext {
+    float: right;
+}
+.gSys-inner-netfolder .basemode {
+    margin-top: 8px;
+}
+.gSys-inner-netfolder .pos {
+    padding: 10px 15px;
+}
+.gSys-inner-netfolder .buttons {
+    padding: 15px 10px;
+}
+.gSys-inner-netfolder .buttons .btn {
+    margin-right: 8px;
+}
+.gSys-inner-netfolder .buttons .ext {
+    margin-top: 3px;
+}
+.gSys-inner-netfolder .intro {
+    padding: 15px;
+}
+.gSys-inner-netfolder .intro li {
+    margin: 8px 0;
+    padding-left: 15px;
+    position: relative;
+}
+.gSys-inner-netfolder .intro .dot {
+    font-family: simsun,serif;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+.gSys-inner-netfolder td {
+    cursor: default;
+    white-space: nowrap;
+}
+.gSys-inner-netfolder .nobdr {
+    border-left: 0 none;
+}
+.gSys-inner-netfolder .wd1, .gSys-inner-netfolder .wd2 {
+    width: 24px;
+}
+.gSys-inner-netfolder th.wd4 {
+    text-align: right;
+    width: 85px;
+}
+.gSys-inner-netfolder td.wd4 {
+    text-align: right;
+    width: 75px;
+}
+.gSys-inner-netfolder th.wd5 {
+    width: 260px;
+}
+.gSys-inner-netfolder td.wd5 {
+    width: 250px;
+}
+.gSys-inner-netfolder .upload .g-file {
+    border-color: #CCCCCC;
+}
+.gSys-inner-netfolder .upload .g-file .g-probar {
+    width: 300px;
+}
+.gSys-inner-netfolder .upload .gSys-tips {
+}
+.gSys-inner-netfolder .upload .gSys-tips .g-probar {
+    margin-top: -1px;
+    width: 80px;
+}
+.gSys-inner-netfolder .loading {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 45px 0;
+    text-align: center;
+}
+.gSys-inner-netfolder .loading .ico-loading {
+    margin-right: 8px;
+}
+.gSys-inner-netfolder .process .ipt-t {
+    width: 120px;
+}
+.gSys-inner-netfolder .process .ico-file {
+    margin-top: 2px;
+}
+.gSys-inner-netfolder .process td {
+    vertical-align: top;
+}
+.gSys-inner-netfolder .process td li {
+    color: #565656;
+    margin-bottom: 5px;
+}
+.gSys-inner-netfolder .edit th {
+    width: 85px;
+}
+.gSys-inner-netfolder .edit td {
+    color: #666666;
+}
+.gSys-inner-netfolder .edit textarea {
+    overflow: auto;
+}
+.gSys-inner-netfolder .folders {
+    border: 1px solid #6C92AD;
+    height: 190px;
+    margin: -15px 75px 20px;
+    padding: 0 0 0 20px;
+    position: relative;
+}
+.gSys-msg {
+    line-height: 166.6%;
+}
+.gSys-header {
+    position: relative;
+}
+.gSys-header .ct {
+    font-size: 14px;
+    padding: 25px 15px 25px 75px;
+}
+.gSys-header .ico {
+    left: 25px;
+    position: absolute;
+    top: 20px;
+}
+.gSys-scroll {
+    height: 220px;
+    overflow: auto;
+}
+.gSys-tips {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #CCCCCC;
+    border-style: solid;
+    border-width: 1px 0 0;
+    padding: 3px 5px 3px 25px;
+    position: relative;
+}
+.gSys-tips .ico {
+    left: 5px;
+    position: absolute;
+    top: 5px;
+}
+.gSys-tips .ext {
+    float: right;
+}

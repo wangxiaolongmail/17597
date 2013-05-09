@@ -1,0 +1,151 @@
+input params list:
+0: /opt/node-v0.10.0-linux-x64/bin/node
+1: /opt/cluster/80/_start.js
+2: -port
+3: 80
+4: -EXEC_PATH
+5: /opt/cluster/
+6: -DOMAIN_IP
+7: 42.121.96.101
+8: -DOMAIN_NAME
+9: 17597.net
+/opt/node-v0.10.0-linux-x64/bin
+require underscore
+require underscore:1.4.4
+require nodemailer
+require socket.io
+require cheerio
+require iconv-lite
+require mongodb
+require canvas
+require less
+========================================================================================
+=  Please ensure that you set the default write concern for the database by setting    =
+=   one of the options                                                                 =
+=                                                                                      =
+=     w: (value of > -1 or the string 'majority'), where < 1 means                     =
+=        no write acknowlegement                                                       =
+=     journal: true/false, wait for flush to journal before acknowlegement             =
+=     fsync: true/false, wait for flush to file system before acknowlegement           =
+=                                                                                      =
+=  For backward compatibility safe is still supported and                              =
+=   allows values of [true | false | {j:true} | {w:n, wtimeout:n} | {fsync:true}]      =
+=   the default value is false which means the driver receives does not                =
+=   return the information of the success/error of the insert/update/remove            =
+=                                                                                      =
+=   ex: new Db(new Server('localhost', 27017), {safe:false})                           =
+=                                                                                      =
+=   http://www.mongodb.org/display/DOCS/getLastError+Command                           =
+=                                                                                      =
+=  The default of no acknowlegement will change in the very near future                =
+=                                                                                      =
+=  This message will disappear when the default safe is set on the driver Db           =
+========================================================================================
+require request
+require connect
+require formidable
+require async
+require express
+import:mime
+import:conf
+import:com.easysoft.zoo.Elephant
+import:com.easysoft.Widget
+import:com.easysoft.constant.Constant
+import:com.easysoft.zoo.Spider
+import:com.easysoft.zoo.Dog
+import:com.easysoft.schedule.Schedule
+This platform is linux
+Version: v0.10.0
+Port: 80
+__filename: /opt/cluster/80/_start.js
+import:route
+import:com.easysoft.cmd.ipconfig
+AY1212050941431d46085
+[]
+--conn db success--
+req.headers:1366596142425:{  'host':'www.17597.net',  'connection':'close',  'user-agent':'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',  'accept-encoding':'gzip',  'accept-language':'zh-cn,zh-tw',  'accept':'*/*'}
+req.connection.remoteAddress:1366596142425:123.125.71.23
+req.method:1366596142425:GET
+request|Mon Apr 22 2013 10:02:22 GMT+0800 (CST)|GET|123.125.71.23|Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)|undefined
+import:com.easysoft.service.Go
+import:com.easysoft.service.Redirect
+import:com.easysoft.service.Service
+req.headers:1366596278778:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://17597.net/go/5/13',  'host':'17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596278778:183.60.215.57
+req.method:1366596278778:GET
+request|Mon Apr 22 2013 10:04:38 GMT+0800 (CST)|GET|183.60.215.57|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://17597.net/go/5/13
+req.headers:1366596278790:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://www.17597.net/',  'host':'www.17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596278790:183.60.213.112
+req.method:1366596278790:GET
+request|Mon Apr 22 2013 10:04:38 GMT+0800 (CST)|GET|183.60.213.112|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://www.17597.net/
+req.headers:1366596278792:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://17597.net/go/1/9',  'host':'17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596278792:183.60.214.26
+req.method:1366596278792:GET
+request|Mon Apr 22 2013 10:04:38 GMT+0800 (CST)|GET|183.60.214.26|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://17597.net/go/1/9
+req.headers:1366596290059:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://17597.net/',  'host':'17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596290059:183.60.215.57
+req.method:1366596290059:GET
+request|Mon Apr 22 2013 10:04:50 GMT+0800 (CST)|GET|183.60.215.57|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://17597.net/
+req.headers:1366596290066:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://17597.net/go/28/25',  'host':'17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596290066:183.60.213.112
+req.method:1366596290066:GET
+request|Mon Apr 22 2013 10:04:50 GMT+0800 (CST)|GET|183.60.213.112|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://17597.net/go/28/25
+req.headers:1366596290068:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://www.17597.net/wz/20',  'host':'www.17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596290068:183.60.214.26
+req.method:1366596290068:GET
+request|Mon Apr 22 2013 10:04:50 GMT+0800 (CST)|GET|183.60.214.26|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://www.17597.net/wz/20
+import:com.easysoft.service.Error
+importTemplate:com.easysoft.service.templates.Blank
+req.headers:1366596302076:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://17597.net/go/19/30',  'host':'17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596302076:183.60.215.57
+req.method:1366596302076:GET
+request|Mon Apr 22 2013 10:05:02 GMT+0800 (CST)|GET|183.60.215.57|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://17597.net/go/19/30
+req.headers:1366596302078:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://17597.net/go/0/27',  'host':'17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596302078:183.60.214.26
+req.method:1366596302078:GET
+request|Mon Apr 22 2013 10:05:02 GMT+0800 (CST)|GET|183.60.214.26|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://17597.net/go/0/27
+req.headers:1366596302078:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://17597.net/',  'host':'17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596302078:183.60.213.112
+req.method:1366596302078:GET
+request|Mon Apr 22 2013 10:05:02 GMT+0800 (CST)|GET|183.60.213.112|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://17597.net/
+req.headers:1366596314057:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://17597.net/',  'host':'17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596314057:183.60.215.57
+req.method:1366596314057:GET
+request|Mon Apr 22 2013 10:05:14 GMT+0800 (CST)|GET|183.60.215.57|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://17597.net/
+req.headers:1366596314064:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://www.17597.net/go/0/26',  'host':'www.17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596314064:183.60.214.26
+req.method:1366596314064:GET
+request|Mon Apr 22 2013 10:05:14 GMT+0800 (CST)|GET|183.60.214.26|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://www.17597.net/go/0/26
+req.headers:1366596314068:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://17597.net/go/10/6',  'host':'17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596314068:183.60.213.112
+req.method:1366596314068:GET
+request|Mon Apr 22 2013 10:05:14 GMT+0800 (CST)|GET|183.60.213.112|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://17597.net/go/10/6
+req.headers:1366596326220:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://www.17597.net/go/9/6',  'host':'www.17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596326220:183.60.215.57
+req.method:1366596326220:GET
+request|Mon Apr 22 2013 10:05:26 GMT+0800 (CST)|GET|183.60.215.57|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://www.17597.net/go/9/6
+req.headers:1366596338200:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://www.17597.net/',  'host':'www.17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596338200:183.60.215.57
+req.method:1366596338200:GET
+request|Mon Apr 22 2013 10:05:38 GMT+0800 (CST)|GET|183.60.215.57|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://www.17597.net/
+req.headers:1366596350243:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://www.17597.net/',  'host':'www.17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596350243:183.60.215.57
+req.method:1366596350243:GET
+request|Mon Apr 22 2013 10:05:50 GMT+0800 (CST)|GET|183.60.215.57|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://www.17597.net/
+req.headers:1366596362149:{  'user-agent':'Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)',  'accept-encoding':'gzip, deflate',  'accept':'text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1',  'accept-language':'zh;q=0.9,en;q=0.8',  'refer':'http://17597.net/ljf/index.html',  'host':'17597.net',  'connection':'close'}
+req.connection.remoteAddress:1366596362149:183.60.215.57
+req.method:1366596362149:GET
+request|Mon Apr 22 2013 10:06:02 GMT+0800 (CST)|GET|183.60.215.57|Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)|http://17597.net/ljf/index.html
+import:com.easysoft.util.webFolder.readWebFolder
+req.headers:1366596615353:{  'user-agent':'Mozilla/5.0 (compatible; AhrefsBot/4.0; +http://ahrefs.com/robot/)',  'accept':'*/*',  'accept-encoding':'deflate, gzip',  'host':'17597.net'}
+req.connection.remoteAddress:1366596615353:173.199.116.179
+req.method:1366596615353:GET
+request|Mon Apr 22 2013 10:10:15 GMT+0800 (CST)|GET|173.199.116.179|Mozilla/5.0 (compatible; AhrefsBot/4.0; +http://ahrefs.com/robot/)|undefined
+req.headers:1366597141765:{  'user-agent':'Mozilla/5.0 (compatible; AhrefsBot/4.0; +http://ahrefs.com/robot/)',  'accept':'*/*',  'accept-encoding':'deflate, gzip',  'host':'17597.net'}
+req.connection.remoteAddress:1366597141765:173.199.116.179
+req.method:1366597141765:GET
+request|Mon Apr 22 2013 10:19:01 GMT+0800 (CST)|GET|173.199.116.179|Mozilla/5.0 (compatible; AhrefsBot/4.0; +http://ahrefs.com/robot/)|undefined
+req.headers:1366597561597:{  'host':'www.17597.net',  'user-agent':'Mozilla/5.0 (compatible; JikeSpider; +http://shoulu.jike.com/spider.html)',  'accept':'text/html;q=0.8, */*;q=0.5',  'accept-charset':'utf-8, gbk, gb2312, *;q=0.5',  'accept-language':'zh-cn;q=0.8, *;q=0.5',  'accept-encoding':'gzip',  'connection':'close'}
+req.connection.remoteAddress:1366597561597:1.202.219.136
+req.method:1366597561597:GET
+request|Mon Apr 22 2013 10:26:01 GMT+0800 (CST)|GET|1.202.219.136|Mozilla/5.0 (compatible; JikeSpider; +http://shoulu.jike.com/spider.html)|undefined

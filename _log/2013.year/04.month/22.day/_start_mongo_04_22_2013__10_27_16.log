@@ -1,0 +1,30 @@
+/opt/mongodb-linux-x86_64-2.4.0/bin/mongod --help for help and startup options
+Mon Apr 22 10:27:16.439 [initandlisten] MongoDB starting : pid=14404 port=27017 dbpath=/data/db/ 64-bit host=AY1212050941431d46085
+Mon Apr 22 10:27:16.439 [initandlisten] db version v2.4.0
+Mon Apr 22 10:27:16.439 [initandlisten] git version: ce2d666c04b4a80af58e8bbb3388b0680e8cfeb6
+Mon Apr 22 10:27:16.439 [initandlisten] build info: Linux ip-10-2-29-40 2.6.21.7-2.ec2.v1.2.fc8xen #1 SMP Fri Nov 20 17:48:28 EST 2009 x86_64 BOOST_LIB_VERSION=1_49
+Mon Apr 22 10:27:16.439 [initandlisten] allocator: tcmalloc
+Mon Apr 22 10:27:16.439 [initandlisten] options: {}
+Mon Apr 22 10:27:17.308 [initandlisten] journal dir=/data/db/journal
+Mon Apr 22 10:27:17.308 [initandlisten] recover : no journal files present, no recovery needed
+Mon Apr 22 10:27:17.755 [initandlisten] waiting for connections on port 27017
+Mon Apr 22 10:27:17.755 [websvr] admin web console waiting for connections on port 28017
+Mon Apr 22 13:47:46.573 [initandlisten] connection accepted from 127.0.0.1:56658 #1 (1 connection now open)
+Mon Apr 22 13:47:46.575 [conn1] terminating, shutdown command received
+Mon Apr 22 13:47:46.575 dbexit: shutdown called
+Mon Apr 22 13:47:46.575 [conn1] shutdown: going to close listening sockets...
+Mon Apr 22 13:47:46.575 [conn1] closing listening socket: 9
+Mon Apr 22 13:47:46.575 [conn1] closing listening socket: 10
+Mon Apr 22 13:47:46.575 [conn1] closing listening socket: 11
+Mon Apr 22 13:47:46.575 [conn1] removing socket file: /tmp/mongodb-27017.sock
+Mon Apr 22 13:47:46.575 [conn1] shutdown: going to flush diaglog...
+Mon Apr 22 13:47:46.575 [conn1] shutdown: going to close sockets...
+Mon Apr 22 13:47:46.575 [conn1] shutdown: waiting for fs preallocator...
+Mon Apr 22 13:47:46.575 [conn1] shutdown: lock for final commit...
+Mon Apr 22 13:47:46.575 [conn1] shutdown: final commit...
+Mon Apr 22 13:47:46.575 [conn1] shutdown: closing all files...
+Mon Apr 22 13:47:46.575 [conn1] closeAllFiles() finished
+Mon Apr 22 13:47:46.575 [conn1] journalCleanup...
+Mon Apr 22 13:47:46.575 [conn1] removeJournalFiles
+Mon Apr 22 13:47:46.669 [conn1] shutdown: removing fs lock...
+Mon Apr 22 13:47:46.669 dbexit: really exiting now

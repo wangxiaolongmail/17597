@@ -1,0 +1,6 @@
+-----------------------
+[04_01_2013 10:38:24] not exist all_list.log dir
+[04_01_2013 10:38:24] num:1
+[04_01_2013 10:38:24] run ./_track.sh
+./_log/2013.year/03.month/31.day ./_log/2013.year/03.month/31.day/cron.log
+[04_01_2013 10:38:24] ----------_statistics.sh-------------

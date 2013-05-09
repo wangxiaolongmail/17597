@@ -1,0 +1,84 @@
+/opt/mongodb-linux-x86_64-2.4.0/bin/mongod --help for help and startup options
+Thu Apr 11 00:00:07.123 [initandlisten] MongoDB starting : pid=1694 port=27017 dbpath=/data/db/ 64-bit host=AY1212050941431d46085
+Thu Apr 11 00:00:07.123 [initandlisten] db version v2.4.0
+Thu Apr 11 00:00:07.123 [initandlisten] git version: ce2d666c04b4a80af58e8bbb3388b0680e8cfeb6
+Thu Apr 11 00:00:07.123 [initandlisten] build info: Linux ip-10-2-29-40 2.6.21.7-2.ec2.v1.2.fc8xen #1 SMP Fri Nov 20 17:48:28 EST 2009 x86_64 BOOST_LIB_VERSION=1_49
+Thu Apr 11 00:00:07.123 [initandlisten] allocator: tcmalloc
+Thu Apr 11 00:00:07.123 [initandlisten] options: {}
+Thu Apr 11 00:00:07.293 [initandlisten] journal dir=/data/db/journal
+Thu Apr 11 00:00:07.293 [initandlisten] recover : no journal files present, no recovery needed
+Thu Apr 11 00:00:07.443 [initandlisten] waiting for connections on port 27017
+Thu Apr 11 00:00:07.445 [websvr] admin web console waiting for connections on port 28017
+Thu Apr 11 00:00:07.813 [initandlisten] connection accepted from 127.0.0.1:46482 #1 (1 connection now open)
+Thu Apr 11 00:00:07.817 [initandlisten] connection accepted from 127.0.0.1:46483 #2 (2 connections now open)
+Thu Apr 11 00:00:07.818 [initandlisten] connection accepted from 127.0.0.1:46484 #3 (3 connections now open)
+Thu Apr 11 00:00:07.818 [initandlisten] connection accepted from 127.0.0.1:46485 #4 (4 connections now open)
+Thu Apr 11 00:00:07.818 [initandlisten] connection accepted from 127.0.0.1:46486 #5 (5 connections now open)
+Thu Apr 11 15:30:41.026 [initandlisten] connection accepted from 127.0.0.1:59452 #6 (6 connections now open)
+Thu Apr 11 15:41:35.724 [initandlisten] connection accepted from 127.0.0.1:59453 #7 (7 connections now open)
+Thu Apr 11 15:41:36.102 [conn7] query test.user query: { query: {}, $snapshot: true } ntoreturn:0 ntoskip:0 nscanned:1 keyUpdates:0 locks(micros) r:340663 nreturned:1 reslen:103 340ms
+Thu Apr 11 15:41:36.105 [conn7] end connection 127.0.0.1:59453 (6 connections now open)
+Thu Apr 11 15:42:52.695 [initandlisten] connection accepted from 127.0.0.1:59454 #8 (7 connections now open)
+Thu Apr 11 15:42:52.698 [conn8] end connection 127.0.0.1:59454 (6 connections now open)
+Thu Apr 11 16:02:47.593 [initandlisten] connection accepted from 127.0.0.1:59455 #9 (7 connections now open)
+Thu Apr 11 16:16:59.312 [initandlisten] connection accepted from 127.0.0.1:59456 #10 (8 connections now open)
+Thu Apr 11 16:20:41.764 [initandlisten] connection accepted from 127.0.0.1:33830 #11 (9 connections now open)
+Thu Apr 11 16:22:46.448 [initandlisten] connection accepted from 127.0.0.1:33831 #12 (10 connections now open)
+Thu Apr 11 16:22:46.451 [conn12] end connection 127.0.0.1:33831 (9 connections now open)
+Thu Apr 11 16:24:47.603 [initandlisten] connection accepted from 127.0.0.1:33832 #13 (10 connections now open)
+Thu Apr 11 16:25:37.856 [initandlisten] connection accepted from 127.0.0.1:33833 #14 (11 connections now open)
+Thu Apr 11 16:27:16.288 [initandlisten] connection accepted from 127.0.0.1:33834 #15 (12 connections now open)
+Thu Apr 11 16:27:16.348 [conn15] build index test.fav { _id: 1 }
+Thu Apr 11 16:27:16.349 [conn15] build index done.  scanned 0 total records. 0 secs
+Thu Apr 11 16:27:16.353 [conn15] end connection 127.0.0.1:33834 (11 connections now open)
+Thu Apr 11 16:28:34.990 [initandlisten] connection accepted from 127.0.0.1:33835 #16 (12 connections now open)
+Thu Apr 11 16:28:35.031 [conn16] end connection 127.0.0.1:33835 (11 connections now open)
+Thu Apr 11 16:29:37.740 [initandlisten] connection accepted from 127.0.0.1:33836 #17 (12 connections now open)
+Thu Apr 11 16:29:37.748 [conn17] end connection 127.0.0.1:33836 (11 connections now open)
+Thu Apr 11 16:30:58.127 [initandlisten] connection accepted from 127.0.0.1:33837 #18 (12 connections now open)
+Thu Apr 11 16:30:58.131 [conn18] end connection 127.0.0.1:33837 (11 connections now open)
+Thu Apr 11 16:31:22.833 [initandlisten] connection accepted from 127.0.0.1:33838 #19 (12 connections now open)
+Thu Apr 11 16:31:22.837 [conn19] end connection 127.0.0.1:33838 (11 connections now open)
+Thu Apr 11 16:33:53.533 [initandlisten] connection accepted from 127.0.0.1:33839 #20 (12 connections now open)
+Thu Apr 11 16:33:53.539 [conn20] end connection 127.0.0.1:33839 (11 connections now open)
+Thu Apr 11 16:59:16.299 [initandlisten] connection accepted from 202.108.130.138:46007 #21 (12 connections now open)
+Thu Apr 11 17:01:15.620 [initandlisten] connection accepted from 202.108.130.138:64065 #22 (13 connections now open)
+Thu Apr 11 17:21:00.486 [initandlisten] connection accepted from 127.0.0.1:36526 #23 (14 connections now open)
+Thu Apr 11 17:21:00.488 [conn23] build index test.favorite { _id: 1 }
+Thu Apr 11 17:21:00.489 [conn23] build index done.  scanned 0 total records. 0 secs
+Thu Apr 11 17:21:00.504 [conn23] end connection 127.0.0.1:36526 (13 connections now open)
+Thu Apr 11 17:21:31.015 [conn21] CMD: drop test.fav
+Thu Apr 11 17:59:15.714 [conn21] end connection 202.108.130.138:46007 (12 connections now open)
+Thu Apr 11 18:01:15.718 [conn22] end connection 202.108.130.138:64065 (11 connections now open)
+Thu Apr 11 18:01:16.107 [initandlisten] connection accepted from 202.108.130.138:56891 #24 (12 connections now open)
+Thu Apr 11 18:03:00.576 [conn24] end connection 202.108.130.138:56891 (11 connections now open)
+Thu Apr 11 18:10:31.292 [conn6] end connection 127.0.0.1:59452 (10 connections now open)
+Thu Apr 11 18:10:31.293 [conn9] end connection 127.0.0.1:59455 (9 connections now open)
+Thu Apr 11 18:10:31.295 [conn13] end connection 127.0.0.1:33832 (8 connections now open)
+Thu Apr 11 18:10:31.298 [conn10] end connection 127.0.0.1:59456 (7 connections now open)
+Thu Apr 11 18:10:31.298 [conn11] end connection 127.0.0.1:33830 (6 connections now open)
+Thu Apr 11 18:10:31.298 [conn14] end connection 127.0.0.1:33833 (5 connections now open)
+Fri Apr 12 00:00:01.095 [conn1] end connection 127.0.0.1:46482 (4 connections now open)
+Fri Apr 12 00:00:01.096 [conn3] end connection 127.0.0.1:46484 (3 connections now open)
+Fri Apr 12 00:00:01.096 [conn2] end connection 127.0.0.1:46483 (2 connections now open)
+Fri Apr 12 00:00:01.096 [conn4] end connection 127.0.0.1:46485 (1 connection now open)
+Fri Apr 12 00:00:01.096 [conn5] end connection 127.0.0.1:46486 (0 connections now open)
+Fri Apr 12 00:00:01.140 [initandlisten] connection accepted from 127.0.0.1:57569 #25 (1 connection now open)
+Fri Apr 12 00:00:01.141 [conn25] terminating, shutdown command received
+Fri Apr 12 00:00:01.141 dbexit: shutdown called
+Fri Apr 12 00:00:01.141 [conn25] shutdown: going to close listening sockets...
+Fri Apr 12 00:00:01.141 [conn25] closing listening socket: 9
+Fri Apr 12 00:00:01.141 [conn25] closing listening socket: 10
+Fri Apr 12 00:00:01.141 [conn25] closing listening socket: 11
+Fri Apr 12 00:00:01.141 [conn25] removing socket file: /tmp/mongodb-27017.sock
+Fri Apr 12 00:00:01.141 [conn25] shutdown: going to flush diaglog...
+Fri Apr 12 00:00:01.141 [conn25] shutdown: going to close sockets...
+Fri Apr 12 00:00:01.141 [conn25] shutdown: waiting for fs preallocator...
+Fri Apr 12 00:00:01.141 [conn25] shutdown: lock for final commit...
+Fri Apr 12 00:00:01.141 [conn25] shutdown: final commit...
+Fri Apr 12 00:00:01.141 [conn25] shutdown: closing all files...
+Fri Apr 12 00:00:01.141 [conn25] closeAllFiles() finished
+Fri Apr 12 00:00:01.141 [conn25] journalCleanup...
+Fri Apr 12 00:00:01.141 [conn25] removeJournalFiles
+Fri Apr 12 00:00:02.351 [conn25] shutdown: removing fs lock...
+Fri Apr 12 00:00:02.351 dbexit: really exiting now

@@ -1,0 +1,313 @@
+
+.processPortal *{
+	font-family:Helvetica, Arial, sans-serif;
+	font-weight:normal;
+	font-size:12px;
+	color:#000000;
+}
+	
+.processPortal a{
+	color: #003f6b;
+	text-decoration:none;
+}
+	
+.processPortal a:hover{
+	color: #1b75bc;
+	text-decoration:none;
+}
+
+.processPortal .login_background_image{
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:-1;
+	background-image: url(./img/login_background.png);
+}
+
+.processPortal .login_content {
+	width:510px;
+	height:400px;
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin:-295px 0 0 -255px;
+}
+
+.dj_ie8 .processPortal .login_content,
+.dj_ie9 .processPortal .login_content{
+	position: static;
+	left: auto;
+	right: auto;
+	margin: 0px auto;
+}
+
+.dj_iequirks .processPortal .login_content {
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin:-295px 0 0 -255px;
+}	
+	
+.processPortal .login_header{
+	height:105px;
+	width:510px;
+}
+	
+.processPortal .login_ibm_logo{
+	margin-left:-30px;
+	float:left;
+	position: relative;
+	bottom: -4px;
+}
+	
+.processPortal.mumrtl .login_ibm_logo{
+	float:right;
+}	
+	
+.processPortal .popup_window{
+	float: left;
+	background-color:#FFFFFF;
+	border:1px solid #323537;
+	border-radius:8px;
+	margin-bottom: 10px;
+	
+	-moz-box-shadow: 0 0 40px 1px rgba(0,0,0,0.6);
+	-webkit-box-shadow: 0 0 40px 1px rgba(0,0,0,0.6);
+	box-shadow: 0 0 40px 1px rgba(0,0,0,0.6);
+}
+
+.dj_ie7 .processPortal.mumrtl .popup_window{
+        height: 250px;
+}
+.processPortal .login_window_content{
+	margin: 40px;
+	float: left;
+}
+		
+.processPortal .loginText{
+	float: left;
+	color:#2D2D2D;
+	font-size:18px;
+	padding-bottom: 7px;
+}
+	
+.processPortal.mumrtl .loginText {
+	float: right;
+}
+
+.processPortal.mumrtl .login-field {
+	direction: rtl;
+}
+	
+.processPortal .login_username_field {
+	float: left;
+}
+
+.processPortal .login_username_field .login-field {
+	margin-bottom: 25px;
+}
+.processPortal .login_password_field {
+	float: left;
+}
+
+.processPortal .login-field,
+.processPortal .lotusFormErrorField{
+	width:428px;
+	height: 30px;
+	font-size: 18px;
+}
+	
+.processPortal .legal_text{
+	text-align:center;
+	font-size:11px;
+	color:#999;
+}
+	
+.processPortal .BPM_process_portal_text{
+	/*this amount of padding-top may have to change if the font size grows. The base line of the text must align with the baseline of IBM in the logo to the left.*/
+	padding-top:56px;
+	color:#FFFFFF;
+	font-size:24px;
+	float:left;
+}
+	
+.processPortal .btn{
+	margin:25px 0 0 -7px;
+	float:right;
+	width:126px;
+}
+
+.dj_ie7 .processPortal .btn{
+        margin-bottom: 30px;
+        margin-right: -50px;
+}
+
+.processPortal.mumrtl .btn{
+	float:left;
+}
+
+.dj_ie7 .processPortal.mumrtl .btn{
+        margin-left: -40px;
+}
+
+.processPortal #loginFailedMessage{
+	float: left;
+	padding:10px 8px 10px 8px;
+	margin-bottom: 25px;
+	background-color:#fbdbd3;
+	color:#93270c;
+	border:1px solid #cd462f;
+	font-size: 12px !important;
+}
+
+.processPortal .bspace-button-disabled {
+    color:#a0a0a0;
+	background-color:#113f66;             
+}
+.processPortal .bspace-button-down {
+	color:#ccc !important;
+	
+	border-bottom-color:#4178aa !important;
+	border-right-color:#4178aa !important;
+	border-top-color:#21486c !important;
+	border-left-color:#21486c !important;
+	
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#124B80', endColorstr='#1B76BC') !important;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#124B80', endColorstr='#1B76BC')" !important;
+	
+	background-image: linear-gradient(bottom, #1B76BC 0%, #124B80 100%) !important;
+	background-image: -o-linear-gradient(bottom, #1B76BC 0%, #124B80 100%) !important;
+	background-image: -moz-linear-gradient(bottom, #1B76BC 0%, #124B80 100%) !important;
+	background-image: -webkit-linear-gradient(bottom, #1B76BC 0%, #124B80 100%) !important;
+	background-image: -ms-linear-gradient(bottom, #1B76BC 0%, #124B80 100%) !important;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #1B76BC),
+		color-stop(1, #124B80)
+	) !important;
+	
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
+.processPortal .bspace-button-over,
+.processPortal .bspace-button:hover {
+	color:#fff;
+	
+	border-top-color:#4178aa;
+	border-left-color:#4178aa;
+	border-bottom-color:#21486c;
+	border-right-color:#21486c;
+	
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#429CE2', endColorstr='#124B80');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#429CE2', endColorstr='#124B80')";
+	
+	background-image: linear-gradient(bottom, #124B80 0%, #429CE2 100%);
+	background-image: -o-linear-gradient(bottom, #124B80 0%, #429CE2 100%);
+	background-image: -moz-linear-gradient(bottom, #124B80 0%, #429CE2 100%);
+	background-image: -webkit-linear-gradient(bottom, #124B80 0%, #429CE2 100%);
+	background-image: -ms-linear-gradient(bottom, #124B80 0%, #429CE2 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #124B80),
+		color-stop(1, #429CE2)
+	);
+	
+	-moz-box-shadow: 0 2px 3px rgba(0,0,0,.5);
+	-webkit-box-shadow: 0 2px 3px rgba(0,0,0,.5);
+	box-shadow: 0 2px 3px rgba(0,0,0,.5);
+}
+.processPortal .bspace-button {
+	height:30px;
+	
+	color:#f2f2f2;
+	background-color: #1b75bc;
+	
+	border-radius: 4px;
+	text-align:center;      
+ 	font-size:14px;
+	font-weight:bold;
+	
+	border:1px solid #21486c;
+	border-top-color:#4178aa;
+	border-left-color:#4178aa;
+	border-bottom-color:#21486c;
+	border-right-color:#21486c;
+	
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1B76BC', endColorstr='#124B80');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#1B76BC', endColorstr='#124B80')";
+	
+	background-position: 0px 0px;
+	background-image: linear-gradient(bottom, #124B80 0%, #1B76BC 100%);
+	background-image: -o-linear-gradient(bottom, #124B80 0%, #1B76BC 100%);
+	background-image: -moz-linear-gradient(bottom, #124B80 0%, #1B76BC 100%);
+	background-image: -webkit-linear-gradient(bottom, #124B80 0%, #1B76BC 100%);
+	background-image: -ms-linear-gradient(bottom, #124B80 0%, #1B76BC 100%);
+	
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #124B80),
+		color-stop(1, #1B76BC)
+	);
+}
+.processPortal .bspace-button:focus {
+        border-bottom-color:#4178aa;
+	border-right-color:#4178aa;
+	border-top-color:#21486c;
+	border-left-color:#21486c;
+	background-image: linear-gradient(bottom, #1B76BC 0%, #124B80 100%);
+	background-image: -o-linear-gradient(bottom, #1B76BC 0%, #124B80 100%);
+	background-image: -moz-linear-gradient(bottom, #1B76BC 0%, #124B80 100%);
+	background-image: -webkit-linear-gradient(bottom, #1B76BC 0%, #124B80 100%);
+	background-image: -ms-linear-gradient(bottom, #1B76BC 0%, #124B80 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #1B76BC),
+		color-stop(1, #124B80)
+	);
+}
+.processPortal .bspace-text-field,
+.processPortal .bspace-text-field-incorrect,
+.processPortal .tundra .bspace-text-field-incorrect,
+.processPortal .bspace-text-field-active,
+.processPortal .tundra .bspace-text-field-active {
+	background-image: linear-gradient(bottom, rgb(255,255,255) 50%, rgb(239,239,239) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(255,255,255) 50%, rgb(239,239,239) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(255,255,255) 50%, rgb(239,239,239) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(255,255,255) 50%, rgb(239,239,239) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(255,255,255) 50%, rgb(239,239,239) 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(.5, rgb(255,255,255)),
+		color-stop(1, rgb(239,239,239))
+	); 
+	border: 1px solid #BBB;
+	color: #000;
+}
+
+
+.processPortal .bspace-text-field:hover{
+	border-color:#999;
+}
+.processPortal .bspace-text-field:focus {
+	border:1px solid #1b75bc;
+	-moz-box-shadow: 0 0 2px 1px rgba(27,118,188,.9);
+	-webkit-box-shadow: 0 0 2px 1px rgba(27,118,188,.9);
+	box-shadow: 0 0 2px 1px rgba(27,118,188,.9);
+}
+.processPortal .bspace-text-field-disabled {
+	background-color:#efefef;
+	border:1px solid #bbb;
+}

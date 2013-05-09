@@ -1,0 +1,114 @@
+input params list:
+0: /opt/node-v0.10.0-linux-x64/bin/node
+1: /opt/cluster/80/_start.js
+2: -port
+3: 80
+4: -EXEC_PATH
+5: /opt/cluster/
+6: -DOMAIN_IP
+7: 42.121.96.101
+8: -DOMAIN_NAME
+9: 17597.net
+/opt/node-v0.10.0-linux-x64/bin
+require underscore
+require underscore:1.4.4
+require nodemailer
+require socket.io
+require mongodb
+require request
+require connect
+require formidable
+require async
+import:mime
+import:conf
+import:com.easysoft.zoo.Elephant
+import:com.easysoft.Widget
+import:com.easysoft.constant.Constant
+import:com.easysoft.zoo.Spider
+import:com.easysoft.zoo.Dog
+import:com.easysoft.schedule.Schedule
+This platform is linux
+Version: v0.10.0
+Port: 80
+__filename: /opt/cluster/80/_start.js
+import:route
+import:com.easysoft.cmd.ipconfig
+AY1212050941431d46085
+[]
+req.headers:1364353222538:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'connection':'keep-alive',  'if-modified-since':'1364353149182',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353222538:202.108.130.138
+req.method:1364353222538:GET
+request|Wed Mar 27 2013 11:00:22 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|undefined
+import:com.easysoft.util.webFolder.readWebFolder
+req.headers:1364353223300:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'text/css,*/*;q=0.1',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/index.html',  'connection':'keep-alive',  'if-modified-since':'1364353149914',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353223300:202.108.130.138
+req.method:1364353223300:GET
+request|Wed Mar 27 2013 11:00:23 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/index.html
+req.headers:1364353223323:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/index.html',  'connection':'keep-alive',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353223323:202.108.130.138
+req.method:1364353223323:GET
+request|Wed Mar 27 2013 11:00:23 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/index.html
+req.headers:1364353223350:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/index.html',  'connection':'keep-alive',  'if-modified-since':'1364353149968',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353223350:202.108.130.138
+req.method:1364353223350:GET
+request|Wed Mar 27 2013 11:00:23 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/index.html
+req.headers:1364353223392:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/index.html',  'connection':'keep-alive',  'if-modified-since':'1364353149996',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353223392:202.108.130.138
+req.method:1364353223392:GET
+request|Wed Mar 27 2013 11:00:23 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/index.html
+req.headers:1364353223397:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/index.html',  'connection':'keep-alive',  'if-modified-since':'1364353150195',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353223397:202.108.130.138
+req.method:1364353223397:GET
+request|Wed Mar 27 2013 11:00:23 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/index.html
+req.headers:1364353223649:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/index.html',  'connection':'keep-alive',  'if-modified-since':'1364353150814',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353223649:202.108.130.138
+req.method:1364353223649:GET
+request|Wed Mar 27 2013 11:00:23 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/index.html
+req.headers:1364353224307:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/index.html',  'connection':'keep-alive',  'if-modified-since':'1364353151006',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353224307:202.108.130.138
+req.method:1364353224307:GET
+request|Wed Mar 27 2013 11:00:24 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/index.html
+req.headers:1364353224547:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/index.html',  'connection':'keep-alive',  'if-modified-since':'1364353151035',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353224547:202.108.130.138
+req.method:1364353224547:GET
+request|Wed Mar 27 2013 11:00:24 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/index.html
+req.headers:1364353224653:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/index.html',  'connection':'keep-alive',  'if-modified-since':'1364353151125',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353224653:202.108.130.138
+req.method:1364353224653:GET
+request|Wed Mar 27 2013 11:00:24 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/index.html
+req.headers:1364353224657:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/index.html',  'connection':'keep-alive',  'if-modified-since':'1364353151314',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353224657:202.108.130.138
+req.method:1364353224657:GET
+request|Wed Mar 27 2013 11:00:24 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/index.html
+req.headers:1364353224881:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/index.html',  'connection':'keep-alive',  'if-modified-since':'1364353151811',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353224881:202.108.130.138
+req.method:1364353224881:GET
+request|Wed Mar 27 2013 11:00:24 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/index.html
+req.headers:1364353225614:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/index.html',  'connection':'keep-alive',  'if-modified-since':'1364353151961',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353225614:202.108.130.138
+req.method:1364353225614:GET
+request|Wed Mar 27 2013 11:00:25 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/index.html
+req.headers:1364353225796:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/index.html',  'connection':'keep-alive',  'if-modified-since':'1364353152020',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353225796:202.108.130.138
+req.method:1364353225796:GET
+request|Wed Mar 27 2013 11:00:25 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/index.html
+req.headers:1364353226030:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/index.html',  'connection':'keep-alive',  'if-modified-since':'1364353152237',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353226030:202.108.130.138
+req.method:1364353226030:GET
+request|Wed Mar 27 2013 11:00:26 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/index.html
+req.headers:1364353226040:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/style.css',  'connection':'keep-alive',  'if-modified-since':'1364353152468',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353226040:202.108.130.138
+req.method:1364353226040:GET
+request|Wed Mar 27 2013 11:00:26 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/style.css
+req.headers:1364353226353:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/style.css',  'connection':'keep-alive',  'if-modified-since':'1364353152826',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353226353:202.108.130.138
+req.method:1364353226353:GET
+request|Wed Mar 27 2013 11:00:26 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/style.css
+req.headers:1364353227045:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/style.css',  'connection':'keep-alive',  'if-modified-since':'1364353152987',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353227045:202.108.130.138
+req.method:1364353227045:GET
+request|Wed Mar 27 2013 11:00:27 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/style.css
+req.headers:1364353227217:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/ljf/style.css',  'connection':'keep-alive',  'if-modified-since':'1364353153138',  'cache-control':'max-age=0'}
+req.connection.remoteAddress:1364353227217:202.108.130.138
+req.method:1364353227217:GET
+request|Wed Mar 27 2013 11:00:27 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/ljf/style.css

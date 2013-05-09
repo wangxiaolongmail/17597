@@ -1,0 +1,16 @@
+/opt/mongodb-linux-x86_64-2.4.0/bin/mongod --help for help and startup options
+Thu May  9 00:00:08.643 [initandlisten] MongoDB starting : pid=14859 port=27017 dbpath=/data/db/ 64-bit host=AY1212050941431d46085
+Thu May  9 00:00:08.643 [initandlisten] db version v2.4.0
+Thu May  9 00:00:08.643 [initandlisten] git version: ce2d666c04b4a80af58e8bbb3388b0680e8cfeb6
+Thu May  9 00:00:08.643 [initandlisten] build info: Linux ip-10-2-29-40 2.6.21.7-2.ec2.v1.2.fc8xen #1 SMP Fri Nov 20 17:48:28 EST 2009 x86_64 BOOST_LIB_VERSION=1_49
+Thu May  9 00:00:08.643 [initandlisten] allocator: tcmalloc
+Thu May  9 00:00:08.643 [initandlisten] options: {}
+Thu May  9 00:00:08.792 [initandlisten] journal dir=/data/db/journal
+Thu May  9 00:00:08.792 [initandlisten] recover : no journal files present, no recovery needed
+Thu May  9 00:00:09.557 [initandlisten] waiting for connections on port 27017
+Thu May  9 00:00:09.557 [websvr] admin web console waiting for connections on port 28017
+Thu May  9 00:00:15.414 [initandlisten] connection accepted from 127.0.0.1:57072 #1 (1 connection now open)
+Thu May  9 00:00:15.418 [initandlisten] connection accepted from 127.0.0.1:57073 #2 (2 connections now open)
+Thu May  9 00:00:15.419 [initandlisten] connection accepted from 127.0.0.1:57074 #3 (3 connections now open)
+Thu May  9 00:00:15.419 [initandlisten] connection accepted from 127.0.0.1:57075 #4 (4 connections now open)
+Thu May  9 00:00:15.420 [initandlisten] connection accepted from 127.0.0.1:57076 #5 (5 connections now open)

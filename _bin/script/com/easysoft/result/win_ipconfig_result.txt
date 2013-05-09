@@ -1,0 +1,11 @@
+
+Ethernet adapter Local Area Connection 3:
+
+        Media State . . . . . . . . . . . : Media disconnected
+
+Ethernet adapter Local Area Connection:
+
+        Connection-specific DNS Suffix  . : cn.ibm.com
+        IP Address. . . . . . . . . . . . : 9.186.113.200
+        Subnet Mask . . . . . . . . . . . : 255.255.255.0
+        Default Gateway . . . . . . . . . : 9.186.113.1

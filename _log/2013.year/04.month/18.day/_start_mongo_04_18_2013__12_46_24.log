@@ -1,0 +1,268 @@
+/opt/mongodb-linux-x86_64-2.4.0/bin/mongod --help for help and startup options
+Thu Apr 18 12:46:24.873 [initandlisten] MongoDB starting : pid=32177 port=27017 dbpath=/data/db/ 64-bit host=AY1212050941431d46085
+Thu Apr 18 12:46:24.873 [initandlisten] db version v2.4.0
+Thu Apr 18 12:46:24.873 [initandlisten] git version: ce2d666c04b4a80af58e8bbb3388b0680e8cfeb6
+Thu Apr 18 12:46:24.873 [initandlisten] build info: Linux ip-10-2-29-40 2.6.21.7-2.ec2.v1.2.fc8xen #1 SMP Fri Nov 20 17:48:28 EST 2009 x86_64 BOOST_LIB_VERSION=1_49
+Thu Apr 18 12:46:24.873 [initandlisten] allocator: tcmalloc
+Thu Apr 18 12:46:24.873 [initandlisten] options: {}
+Thu Apr 18 12:46:25.083 [initandlisten] journal dir=/data/db/journal
+Thu Apr 18 12:46:25.083 [initandlisten] recover : no journal files present, no recovery needed
+Thu Apr 18 12:46:25.227 [initandlisten] waiting for connections on port 27017
+Thu Apr 18 12:46:25.230 [websvr] admin web console waiting for connections on port 28017
+Thu Apr 18 12:46:25.552 [initandlisten] connection accepted from 127.0.0.1:56141 #1 (1 connection now open)
+Thu Apr 18 12:46:25.556 [initandlisten] connection accepted from 127.0.0.1:56142 #2 (2 connections now open)
+Thu Apr 18 12:46:25.557 [initandlisten] connection accepted from 127.0.0.1:56143 #3 (3 connections now open)
+Thu Apr 18 12:46:25.558 [initandlisten] connection accepted from 127.0.0.1:56144 #4 (4 connections now open)
+Thu Apr 18 12:46:25.558 [initandlisten] connection accepted from 127.0.0.1:56145 #5 (5 connections now open)
+Thu Apr 18 14:03:51.902 [initandlisten] connection accepted from 202.108.130.138:49057 #6 (6 connections now open)
+Thu Apr 18 14:03:57.439 [conn6] command test.$cmd command: { collstats: "favorite" } ntoreturn:1 keyUpdates:0 locks(micros) r:203552 reslen:269 203ms
+Thu Apr 18 14:03:57.848 [conn6] command test.$cmd command: { collstats: "favorite_type" } ntoreturn:1 keyUpdates:0 locks(micros) r:176700 reslen:274 176ms
+Thu Apr 18 14:04:08.786 [conn6] command admin.$cmd command: { serverStatus: 1 } ntoreturn:1 keyUpdates:0 locks(micros) r:23 reslen:2819 141ms
+Thu Apr 18 14:04:11.036 [initandlisten] connection accepted from 202.108.130.138:24524 #7 (7 connections now open)
+Thu Apr 18 14:19:09.233 [conn6] build index test.favorite2 { _id: 1 }
+Thu Apr 18 14:19:09.598 [conn6] build index done.  scanned 0 total records. 0.365 secs
+Thu Apr 18 14:19:09.598 [conn6] insert test.favorite2 ninserted:1 keyUpdates:0  922ms
+Thu Apr 18 14:19:09.824 [conn6] insert test.favorite2 ninserted:1 keyUpdates:0  219ms
+Thu Apr 18 14:19:09.831 [conn6] warning: ClientCursor::yield can't unlock b/c of recursive lock ns: test.favorite top: { opid: 427, active: true, secs_running: 1, op: "query", ns: "test", query: { $eval: formatData() }, client: "202.108.130.138:49057", desc: "conn6", threadId: "0x7f8fef433700", connectionId: 6, locks: { ^: "W" }, waitingForLock: false, numYields: 0, lockStats: { timeLockedMicros: {}, timeAcquiringMicros: { R: 0, W: 1 } } }
+Thu Apr 18 14:19:09.925 [conn6] dbeval slow, time: 1250ms test
+Thu Apr 18 14:19:09.925 [conn6] formatData()
+Thu Apr 18 14:19:09.926 [conn6] command test.$cmd command: { $eval: formatData() } ntoreturn:1 keyUpdates:0 locks(micros) W:1251128 reslen:45 1251ms
+Thu Apr 18 14:20:24.325 [conn6] CMD: drop test.favorite2
+Thu Apr 18 14:20:24.529 [conn6] command test.$cmd command: { drop: "favorite2" } ntoreturn:1 keyUpdates:0 locks(micros) w:204718 reslen:121 204ms
+Thu Apr 18 14:21:03.918 [conn6] JavaScript execution failed: SyntaxError: Unexpected string
+Thu Apr 18 14:21:03.973 [conn6] unable to load stored JavaScript function formatData(): JavaScript execution failed: SyntaxError: Unexpected string
+Thu Apr 18 14:21:03.974 [conn6] JavaScript execution failed: ReferenceError: formatData is not defined
+Thu Apr 18 14:21:03.975 [conn6] command test.$cmd command: { $eval: formatData() } ntoreturn:1 keyUpdates:0 locks(micros) W:140419 reslen:141 140ms
+Thu Apr 18 14:21:33.049 [conn6] build index test.favorite2 { _id: 1 }
+Thu Apr 18 14:21:33.049 [conn6] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 14:21:33.340 [conn6] warning: ClientCursor::yield can't unlock b/c of recursive lock ns: test.favorite top: { opid: 899, active: true, secs_running: 0, op: "query", ns: "test", query: { $eval: formatData() }, client: "202.108.130.138:49057", desc: "conn6", threadId: "0x7f8fef433700", connectionId: 6, locks: { ^: "W" }, waitingForLock: false, numYields: 0, lockStats: { timeLockedMicros: {}, timeAcquiringMicros: { R: 0, W: 2 } } }
+Thu Apr 18 14:21:33.355 [conn6] dbeval slow, time: 308ms test
+Thu Apr 18 14:21:33.356 [conn6] command test.$cmd command: { $eval: formatData() } ntoreturn:1 keyUpdates:0 locks(micros) W:335986 reslen:45 336ms
+Thu Apr 18 14:24:42.698 [conn7] CMD: drop test.favorite
+Thu Apr 18 14:25:24.598 [initandlisten] connection accepted from 202.108.130.138:26928 #8 (8 connections now open)
+Thu Apr 18 14:25:26.495 [initandlisten] connection accepted from 202.108.130.138:11889 #9 (9 connections now open)
+Thu Apr 18 14:25:27.772 [conn8] build index test.favorite { _id: 1 }
+Thu Apr 18 14:25:27.772 [conn8] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 14:25:53.278 [conn7] CMD: drop test.favorite2
+Thu Apr 18 14:31:28.210 [conn7] build index test.favorite_type2 { _id: 1 }
+Thu Apr 18 14:31:28.211 [conn7] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 14:31:28.211 [conn7] insert test.favorite_type2 ninserted:1 keyUpdates:0  231ms
+Thu Apr 18 14:31:28.216 [conn7] dbeval slow, time: 237ms test
+Thu Apr 18 14:31:28.216 [conn7] command test.$cmd command: { $eval: formatData() } ntoreturn:1 keyUpdates:0 locks(micros) W:267447 reslen:45 267ms
+Thu Apr 18 14:31:58.791 [conn6] CMD: drop test.favorite_type
+Thu Apr 18 14:32:10.514 [conn8] command test.$cmd command: { count: "favorite_type" } ntoreturn:1 keyUpdates:0 locks(micros) r:182488 reslen:58 182ms
+Thu Apr 18 14:32:11.150 [conn8] build index test.favorite_type { _id: 1 }
+Thu Apr 18 14:32:11.233 [conn8] build index done.  scanned 0 total records. 0.083 secs
+Thu Apr 18 14:32:23.766 [conn6] CMD: drop test.favorite_type2
+Thu Apr 18 14:32:24.187 [conn6] command test.$cmd command: { drop: "favorite_type2" } ntoreturn:1 keyUpdates:0 locks(micros) w:421064 reslen:126 421ms
+Thu Apr 18 14:33:24.180 [conn7] update test.favorite_type query: { _id: ObjectId('51679a6a9a11a05a9534cf8e') } update: { $set: { category: "cydh" } } nscanned:1 nupdated:1 keyUpdates:0 locks(micros) w:579380 579ms
+Thu Apr 18 14:50:27.505 [conn7] CMD: drop test.tmp.mr.favorite_type_0
+Thu Apr 18 14:50:27.505 [conn7] CMD: drop test.tmp.mr.favorite_type_0_inc
+Thu Apr 18 14:50:27.505 [conn7] build index test.tmp.mr.favorite_type_0_inc { 0: 1 }
+Thu Apr 18 14:50:27.548 [conn7] build index done.  scanned 0 total records. 0.042 secs
+Thu Apr 18 14:50:27.548 [conn7] build index test.tmp.mr.favorite_type_0 { _id: 1 }
+Thu Apr 18 14:50:27.555 [conn7] build index done.  scanned 0 total records. 0.007 secs
+Thu Apr 18 14:50:27.576 [conn7] JavaScript execution failed: ReferenceError: vals is not defined near '(var i in vals) { 			sum += vals[i];'  (line 3)
+Thu Apr 18 14:50:27.654 [conn7] CMD: drop test.tmp.mr.favorite_type_0
+Thu Apr 18 14:50:27.688 [conn7] CMD: drop test.tmp.mr.favorite_type_0_inc
+Thu Apr 18 14:50:27.689 [conn7] mr failed, removing collection :: caused by :: 16722 JavaScript execution failed: ReferenceError: vals is not defined near '(var i in vals) { 			sum += vals[i];'  (line 3)
+Thu Apr 18 14:50:27.689 [conn7] CMD: drop test.tmp.mr.favorite_type_0
+Thu Apr 18 14:50:27.689 [conn7] CMD: drop test.tmp.mr.favorite_type_0_inc
+Thu Apr 18 14:50:27.690 [conn7] command test.$cmd command: { mapreduce: "favorite_type", map: function (){
+		emit( this.category , 1 );
+	}, reduce: function (){
+		var sum = 0;
+		for(var i in vals) {
+			sum += vals[i..., out: "tmp" } ntoreturn:1 keyUpdates:0  reslen:190 1047ms
+Thu Apr 18 14:50:27.774 [conn7] JavaScript execution failed: map reduce failed:{
+	"errmsg" : "exception: JavaScript execution failed: ReferenceError: vals is not defined near '(var i in vals) {\r \t\t\tsum += vals[i];'  (line 3)",
+	"code" : 16722,
+	"ok" : 0
+} at src/mongo/shell/collection.js:L970
+Thu Apr 18 14:50:27.775 [conn7] command test.$cmd command: { $eval: statistics() } ntoreturn:1 keyUpdates:0 locks(micros) W:1133345 reslen:336 1133ms
+Thu Apr 18 14:50:45.436 [conn7] CMD: drop test.tmp.mr.favorite_type_1
+Thu Apr 18 14:50:45.437 [conn7] CMD: drop test.tmp.mr.favorite_type_1_inc
+Thu Apr 18 14:50:45.437 [conn7] build index test.tmp.mr.favorite_type_1_inc { 0: 1 }
+Thu Apr 18 14:50:45.437 [conn7] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 14:50:45.437 [conn7] build index test.tmp.mr.favorite_type_1 { _id: 1 }
+Thu Apr 18 14:50:45.438 [conn7] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 14:50:45.441 [conn7] JavaScript execution failed: ReferenceError: vals is not defined near '(var i in vals) { 			sum += vals[i];'  (line 3)
+Thu Apr 18 14:50:45.441 [conn7] CMD: drop test.tmp.mr.favorite_type_1
+Thu Apr 18 14:50:45.484 [conn7] CMD: drop test.tmp.mr.favorite_type_1_inc
+Thu Apr 18 14:50:45.485 [conn7] mr failed, removing collection :: caused by :: 16722 JavaScript execution failed: ReferenceError: vals is not defined near '(var i in vals) { 			sum += vals[i];'  (line 3)
+Thu Apr 18 14:50:45.485 [conn7] CMD: drop test.tmp.mr.favorite_type_1
+Thu Apr 18 14:50:45.485 [conn7] CMD: drop test.tmp.mr.favorite_type_1_inc
+Thu Apr 18 14:50:45.488 [conn7] JavaScript execution failed: map reduce failed:{
+	"errmsg" : "exception: JavaScript execution failed: ReferenceError: vals is not defined near '(var i in vals) {\r \t\t\tsum += vals[i];'  (line 3)",
+	"code" : 16722,
+	"ok" : 0
+} at src/mongo/shell/collection.js:L970
+Thu Apr 18 14:50:45.488 [conn7] command test.$cmd command: { $eval: statistics(); } ntoreturn:1 keyUpdates:0 locks(micros) W:100750 reslen:336 101ms
+Thu Apr 18 14:51:57.468 [conn7] CMD: drop test.tmp.mr.favorite_type_2
+Thu Apr 18 14:51:57.468 [conn7] CMD: drop test.tmp.mr.favorite_type_2_inc
+Thu Apr 18 14:51:57.468 [conn7] build index test.tmp.mr.favorite_type_2_inc { 0: 1 }
+Thu Apr 18 14:51:57.469 [conn7] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 14:51:57.469 [conn7] build index test.tmp.mr.favorite_type_2 { _id: 1 }
+Thu Apr 18 14:51:57.469 [conn7] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 14:51:57.472 [conn7] JavaScript execution failed: ReferenceError: vals is not defined near '(var i in vals) { 			sum += vals[i];'  (line 3)
+Thu Apr 18 14:51:57.472 [conn7] CMD: drop test.tmp.mr.favorite_type_2
+Thu Apr 18 14:51:57.473 [conn7] CMD: drop test.tmp.mr.favorite_type_2_inc
+Thu Apr 18 14:51:57.473 [conn7] mr failed, removing collection :: caused by :: 16722 JavaScript execution failed: ReferenceError: vals is not defined near '(var i in vals) { 			sum += vals[i];'  (line 3)
+Thu Apr 18 14:51:57.473 [conn7] CMD: drop test.tmp.mr.favorite_type_2
+Thu Apr 18 14:51:57.473 [conn7] CMD: drop test.tmp.mr.favorite_type_2_inc
+Thu Apr 18 14:51:57.476 [conn7] JavaScript execution failed: map reduce failed:{
+	"errmsg" : "exception: JavaScript execution failed: ReferenceError: vals is not defined near '(var i in vals) {\r \t\t\tsum += vals[i];'  (line 3)",
+	"code" : 16722,
+	"ok" : 0
+} at src/mongo/shell/collection.js:L970
+Thu Apr 18 14:52:45.628 [conn7] CMD: drop test.tmp.mr.favorite_type_3
+Thu Apr 18 14:52:45.628 [conn7] CMD: drop test.tmp.mr.favorite_type_3_inc
+Thu Apr 18 14:52:45.628 [conn7] build index test.tmp.mr.favorite_type_3_inc { 0: 1 }
+Thu Apr 18 14:52:45.629 [conn7] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 14:52:45.629 [conn7] build index test.tmp.mr.favorite_type_3 { _id: 1 }
+Thu Apr 18 14:52:45.629 [conn7] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 14:52:45.834 [conn7] warning: map/reduce can't temp release
+Thu Apr 18 14:52:45.834 [conn7] CMD: drop test.tmp
+Thu Apr 18 14:52:45.936 [conn7] command admin.$cmd command: { renameCollection: "test.tmp.mr.favorite_type_3", to: "test.tmp", stayTemp: false } ntoreturn:1 keyUpdates:0  reslen:37 101ms
+Thu Apr 18 14:52:45.936 [conn7] CMD: drop test.tmp.mr.favorite_type_3
+Thu Apr 18 14:52:45.936 [conn7] CMD: drop test.tmp.mr.favorite_type_3
+Thu Apr 18 14:52:45.936 [conn7] CMD: drop test.tmp.mr.favorite_type_3_inc
+Thu Apr 18 14:52:45.936 [conn7] CMD: drop test.tmp.mr.favorite_type_3
+Thu Apr 18 14:52:45.937 [conn7] CMD: drop test.tmp.mr.favorite_type_3_inc
+Thu Apr 18 14:52:45.937 [conn7] command test.$cmd command: { mapreduce: "favorite_type", map: function (){
+		emit( this.category , 1 );
+	}, reduce: function (key,vals){
+		var sum = 0;
+		for(var i in vals) {
+			sum +..., out: "tmp" } ntoreturn:1 keyUpdates:0  reslen:127 329ms
+Thu Apr 18 14:52:45.937 [conn7] dbeval slow, time: 331ms test
+Thu Apr 18 14:52:45.938 [conn7] command test.$cmd command: { $eval: statistics(); } ntoreturn:1 keyUpdates:0 locks(micros) W:359844 reslen:45 359ms
+Thu Apr 18 14:55:03.115 [conn6] CMD: drop test.tmp.mr.favorite_type_4
+Thu Apr 18 14:55:03.116 [conn6] CMD: drop test.tmp.mr.favorite_type_4_inc
+Thu Apr 18 14:55:03.116 [conn6] build index test.tmp.mr.favorite_type_4_inc { 0: 1 }
+Thu Apr 18 14:55:03.116 [conn6] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 14:55:03.116 [conn6] build index test.tmp.mr.favorite_type_4 { _id: 1 }
+Thu Apr 18 14:55:03.117 [conn6] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 14:55:03.119 [conn6] warning: map/reduce can't temp release
+Thu Apr 18 14:55:03.119 [conn6] CMD: drop test.tmp
+Thu Apr 18 14:55:03.120 [conn6] CMD: drop test.tmp.mr.favorite_type_4
+Thu Apr 18 14:55:03.120 [conn6] CMD: drop test.tmp.mr.favorite_type_4
+Thu Apr 18 14:55:03.120 [conn6] CMD: drop test.tmp.mr.favorite_type_4_inc
+Thu Apr 18 14:55:03.121 [conn6] CMD: drop test.tmp.mr.favorite_type_4
+Thu Apr 18 14:55:03.121 [conn6] CMD: drop test.tmp.mr.favorite_type_4_inc
+Thu Apr 18 15:00:04.028 [conn6] CMD: drop test.tmp.mr.favorite_type_5
+Thu Apr 18 15:00:04.283 [conn6] command test.$cmd command: { drop: "tmp.mr.favorite_type_5" } ntoreturn:1 keyUpdates:0  reslen:62 255ms
+Thu Apr 18 15:00:04.284 [conn6] CMD: drop test.tmp.mr.favorite_type_5_inc
+Thu Apr 18 15:00:04.284 [conn6] build index test.tmp.mr.favorite_type_5_inc { 0: 1 }
+Thu Apr 18 15:00:04.284 [conn6] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 15:00:04.284 [conn6] build index test.tmp.mr.favorite_type_5 { _id: 1 }
+Thu Apr 18 15:00:04.285 [conn6] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 15:00:04.287 [conn6] warning: map/reduce can't temp release
+Thu Apr 18 15:00:04.287 [conn6] CMD: drop test.tmp
+Thu Apr 18 15:00:04.289 [conn6] CMD: drop test.tmp.mr.favorite_type_5
+Thu Apr 18 15:00:04.289 [conn6] CMD: drop test.tmp.mr.favorite_type_5
+Thu Apr 18 15:00:04.289 [conn6] CMD: drop test.tmp.mr.favorite_type_5_inc
+Thu Apr 18 15:00:04.289 [conn6] CMD: drop test.tmp.mr.favorite_type_5
+Thu Apr 18 15:00:04.289 [conn6] CMD: drop test.tmp.mr.favorite_type_5_inc
+Thu Apr 18 15:00:04.289 [conn6] command test.$cmd command: { mapreduce: "favorite_type", map: function (){
+		emit( this.category , 1 );
+	}, reduce: function (key,vals){
+		var sum = 0;
+		for(var i in vals) {
+			sum +..., out: "tmp" } ntoreturn:1 keyUpdates:0  reslen:127 261ms
+Thu Apr 18 15:00:04.290 [conn6] dbeval slow, time: 262ms test
+Thu Apr 18 15:00:04.307 [conn6] command test.$cmd command: { $eval: statistics(); } ntoreturn:1 keyUpdates:0 locks(micros) W:279689 reslen:569 280ms
+Thu Apr 18 15:03:52.989 [conn6] end connection 202.108.130.138:49057 (8 connections now open)
+Thu Apr 18 15:04:11.710 [conn7] end connection 202.108.130.138:24524 (7 connections now open)
+Thu Apr 18 15:04:11.768 [initandlisten] connection accepted from 202.108.130.138:32712 #10 (8 connections now open)
+Thu Apr 18 15:04:51.176 [initandlisten] connection accepted from 202.108.130.138:27345 #11 (9 connections now open)
+Thu Apr 18 15:16:37.729 [initandlisten] connection accepted from 127.0.0.1:57622 #12 (10 connections now open)
+Thu Apr 18 15:16:37.781 [conn12] end connection 127.0.0.1:57622 (9 connections now open)
+Thu Apr 18 15:28:33.688 [conn10] CMD: drop test.tmp.mr.favorite_type_6
+Thu Apr 18 15:28:33.688 [conn10] CMD: drop test.tmp.mr.favorite_type_6_inc
+Thu Apr 18 15:28:33.689 [conn10] build index test.tmp.mr.favorite_type_6_inc { 0: 1 }
+Thu Apr 18 15:28:33.689 [conn10] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 15:28:33.689 [conn10] build index test.tmp.mr.favorite_type_6 { _id: 1 }
+Thu Apr 18 15:28:33.690 [conn10] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 15:28:33.692 [conn10] warning: map/reduce can't temp release
+Thu Apr 18 15:28:33.692 [conn10] CMD: drop test.tmp
+Thu Apr 18 15:28:33.693 [conn10] CMD: drop test.tmp.mr.favorite_type_6
+Thu Apr 18 15:28:33.693 [conn10] CMD: drop test.tmp.mr.favorite_type_6
+Thu Apr 18 15:28:33.693 [conn10] CMD: drop test.tmp.mr.favorite_type_6_inc
+Thu Apr 18 15:28:33.694 [conn10] CMD: drop test.tmp.mr.favorite_type_6
+Thu Apr 18 15:28:33.694 [conn10] CMD: drop test.tmp.mr.favorite_type_6_inc
+Thu Apr 18 15:53:12.928 [initandlisten] connection accepted from 127.0.0.1:57623 #13 (10 connections now open)
+Thu Apr 18 15:53:12.932 [conn13] end connection 127.0.0.1:57623 (9 connections now open)
+Thu Apr 18 15:53:53.906 [initandlisten] connection accepted from 127.0.0.1:57624 #14 (10 connections now open)
+Thu Apr 18 15:53:53.907 [conn14] build index test.favorite2 { _id: 1 }
+Thu Apr 18 15:53:53.908 [conn14] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 15:53:53.919 [conn14] end connection 127.0.0.1:57624 (9 connections now open)
+Thu Apr 18 15:56:07.676 [conn11] CMD: drop test.favorite
+Thu Apr 18 15:56:23.029 [conn8] build index test.favorite { _id: 1 }
+Thu Apr 18 15:56:23.030 [conn8] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 15:56:29.088 [conn11] CMD: drop test.favorite2
+Thu Apr 18 16:04:11.905 [conn10] end connection 202.108.130.138:32712 (8 connections now open)
+Thu Apr 18 16:04:51.788 [conn11] end connection 202.108.130.138:27345 (7 connections now open)
+Thu Apr 18 16:04:51.844 [initandlisten] connection accepted from 202.108.130.138:53596 #15 (8 connections now open)
+Thu Apr 18 16:59:14.889 [conn15] JavaScript execution failed: SyntaxError: Unexpected identifier
+Thu Apr 18 16:59:14.889 [conn15] unable to load stored JavaScript function make_favorite(): JavaScript execution failed: SyntaxError: Unexpected identifier
+Thu Apr 18 16:59:14.898 [conn15] JavaScript execution failed: ReferenceError: make_favorite is not defined
+Thu Apr 18 16:59:33.410 [conn15] JavaScript execution failed: SyntaxError: Unexpected identifier
+Thu Apr 18 16:59:33.410 [conn15] unable to load stored JavaScript function make_favorite(): JavaScript execution failed: SyntaxError: Unexpected identifier
+Thu Apr 18 16:59:33.419 [conn15] JavaScript execution failed: ReferenceError: make_favorite is not defined
+Thu Apr 18 17:01:20.527 [conn15] build index test.view_favorite { _id: 1 }
+Thu Apr 18 17:01:20.527 [conn15] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 17:01:29.581 [initandlisten] connection accepted from 202.108.130.138:53809 #16 (9 connections now open)
+Thu Apr 18 17:01:31.358 [initandlisten] connection accepted from 202.108.130.138:46688 #17 (10 connections now open)
+Thu Apr 18 17:03:22.833 [conn15] CMD: drop test.view_favorite
+Thu Apr 18 17:03:45.680 [conn15] build index test.view_favorite_type { _id: 1 }
+Thu Apr 18 17:03:45.680 [conn15] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 17:04:51.971 [conn15] end connection 202.108.130.138:53596 (9 connections now open)
+Thu Apr 18 17:05:40.356 [conn16] CMD: drop test.view_favorite_type
+Thu Apr 18 17:05:40.358 [conn16] build index test.view_favorite_type { _id: 1 }
+Thu Apr 18 17:05:40.359 [conn16] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 17:06:28.372 [conn17] CMD: drop test.view_favorite_type
+Thu Apr 18 17:06:28.374 [conn17] build index test.view_favorite_type { _id: 1 }
+Thu Apr 18 17:06:28.374 [conn17] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 17:16:33.979 [conn17] CMD: drop test.view_favorite_type
+Thu Apr 18 17:16:33.983 [conn17] build index test.view_favorite_type { _id: 1 }
+Thu Apr 18 17:16:33.983 [conn17] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 17:20:05.378 [conn17] CMD: drop test.view_favorite_type
+Thu Apr 18 17:20:05.423 [conn17] JavaScript execution failed: RangeError: Maximum call stack size exceeded at src/mongo/shell/collection.js:L141
+Thu Apr 18 17:20:47.654 [conn17] CMD: drop test.view_favorite_type
+Thu Apr 18 17:20:47.702 [conn17] JavaScript execution failed: RangeError: Maximum call stack size exceeded at src/mongo/shell/collection.js:L141
+Thu Apr 18 17:21:08.175 [conn17] CMD: drop test.view_favorite_type
+Thu Apr 18 17:21:08.207 [conn17] build index test.view { _id: 1 }
+Thu Apr 18 17:21:08.207 [conn17] build index done.  scanned 0 total records. 0 secs
+Thu Apr 18 17:22:42.578 [conn17] CMD: drop test.view_favorite_type
+Thu Apr 18 17:39:41.261 [conn17] CMD: drop test.view_favorite_type
+Thu Apr 18 18:01:31.530 [conn17] end connection 202.108.130.138:46688 (8 connections now open)
+Thu Apr 18 18:01:41.549 [conn16] end connection 202.108.130.138:53809 (7 connections now open)
+Thu Apr 18 18:01:41.600 [initandlisten] connection accepted from 202.108.130.138:56933 #18 (8 connections now open)
+Thu Apr 18 18:02:40.534 [conn18] end connection 202.108.130.138:56933 (7 connections now open)
+Thu Apr 18 18:02:40.564 [conn8] end connection 202.108.130.138:26928 (7 connections now open)
+Thu Apr 18 18:02:40.565 [conn9] end connection 202.108.130.138:11889 (7 connections now open)
+Fri Apr 19 00:00:02.338 [conn1] end connection 127.0.0.1:56141 (4 connections now open)
+Fri Apr 19 00:00:02.339 [conn3] end connection 127.0.0.1:56143 (3 connections now open)
+Fri Apr 19 00:00:02.339 [conn2] end connection 127.0.0.1:56142 (2 connections now open)
+Fri Apr 19 00:00:02.340 [conn4] end connection 127.0.0.1:56144 (1 connection now open)
+Fri Apr 19 00:00:02.340 [conn5] end connection 127.0.0.1:56145 (0 connections now open)
+Fri Apr 19 00:00:02.385 [initandlisten] connection accepted from 127.0.0.1:45682 #19 (1 connection now open)
+Fri Apr 19 00:00:02.386 [conn19] terminating, shutdown command received
+Fri Apr 19 00:00:02.386 dbexit: shutdown called
+Fri Apr 19 00:00:02.386 [conn19] shutdown: going to close listening sockets...
+Fri Apr 19 00:00:02.386 [conn19] closing listening socket: 9
+Fri Apr 19 00:00:02.386 [conn19] closing listening socket: 10
+Fri Apr 19 00:00:02.387 [conn19] closing listening socket: 11
+Fri Apr 19 00:00:02.387 [conn19] removing socket file: /tmp/mongodb-27017.sock
+Fri Apr 19 00:00:02.387 [conn19] shutdown: going to flush diaglog...
+Fri Apr 19 00:00:02.387 [conn19] shutdown: going to close sockets...
+Fri Apr 19 00:00:02.387 [conn19] shutdown: waiting for fs preallocator...
+Fri Apr 19 00:00:02.387 [conn19] shutdown: lock for final commit...
+Fri Apr 19 00:00:02.387 [conn19] shutdown: final commit...
+Fri Apr 19 00:00:02.387 [conn19] shutdown: closing all files...
+Fri Apr 19 00:00:02.387 [conn19] closeAllFiles() finished
+Fri Apr 19 00:00:02.387 [conn19] journalCleanup...
+Fri Apr 19 00:00:02.387 [conn19] removeJournalFiles
+Fri Apr 19 00:00:02.833 [conn19] shutdown: removing fs lock...
+Fri Apr 19 00:00:02.833 dbexit: really exiting now

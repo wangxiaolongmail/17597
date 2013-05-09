@@ -1,0 +1,4 @@
+#start MongoDB
+port = 27017
+dbpath = /data/db/
+logpath = /data/log/

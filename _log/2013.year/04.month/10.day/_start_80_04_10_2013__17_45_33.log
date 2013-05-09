@@ -1,0 +1,179 @@
+input params list:
+0: /opt/node-v0.10.0-linux-x64/bin/node
+1: /opt/cluster/80/_start.js
+2: -port
+3: 80
+4: -EXEC_PATH
+5: /opt/cluster/
+6: -DOMAIN_IP
+7: 42.121.96.101
+8: -DOMAIN_NAME
+9: 17597.net
+/opt/node-v0.10.0-linux-x64/bin
+require underscore
+require underscore:1.4.4
+require nodemailer
+require socket.io
+require cheerio
+require iconv-lite
+require mongodb
+========================================================================================
+=  Please ensure that you set the default write concern for the database by setting    =
+=   one of the options                                                                 =
+=                                                                                      =
+=     w: (value of > -1 or the string 'majority'), where < 1 means                     =
+=        no write acknowlegement                                                       =
+=     journal: true/false, wait for flush to journal before acknowlegement             =
+=     fsync: true/false, wait for flush to file system before acknowlegement           =
+=                                                                                      =
+=  For backward compatibility safe is still supported and                              =
+=   allows values of [true | false | {j:true} | {w:n, wtimeout:n} | {fsync:true}]      =
+=   the default value is false which means the driver receives does not                =
+=   return the information of the success/error of the insert/update/remove            =
+=                                                                                      =
+=   ex: new Db(new Server('localhost', 27017), {safe:false})                           =
+=                                                                                      =
+=   http://www.mongodb.org/display/DOCS/getLastError+Command                           =
+=                                                                                      =
+=  The default of no acknowlegement will change in the very near future                =
+=                                                                                      =
+=  This message will disappear when the default safe is set on the driver Db           =
+========================================================================================
+require request
+require connect
+require formidable
+require async
+require express
+import:mime
+import:conf
+import:com.easysoft.zoo.Elephant
+import:com.easysoft.Widget
+import:com.easysoft.constant.Constant
+import:com.easysoft.zoo.Spider
+import:com.easysoft.zoo.Dog
+import:com.easysoft.schedule.Schedule
+This platform is linux
+Version: v0.10.0
+Port: 80
+__filename: /opt/cluster/80/_start.js
+import:route
+import:com.easysoft.cmd.ipconfig
+AY1212050941431d46085
+[]
+--conn db success--
+req.headers:1365587142070:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'connection':'keep-alive',  'if-modified-since':'1365585694580'}
+req.connection.remoteAddress:1365587142070:202.108.130.138
+req.method:1365587142070:GET
+request|Wed Apr 10 2013 17:45:42 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|undefined
+import:com.easysoft.service.Index
+import:com.easysoft.service.Service
+import:com.easysoft.util.MutiReqData
+importTemplate:theme.com.easysoft.service.Index.res
+import:com.easysoft.service.admin.article.getList
+import:com.easysoft.service.admin.Index
+import:com.easysoft.util.webFolder.getWebFolderList
+import:com.easysoft.util.webFolder.readWebFolder
+req.headers:1365587143353:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/',  'connection':'keep-alive',  'if-modified-since':'1365585695659'}
+req.connection.remoteAddress:1365587143353:202.108.130.138
+req.method:1365587143353:GET
+request|Wed Apr 10 2013 17:45:43 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/
+req.headers:1365587143355:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/',  'connection':'keep-alive',  'if-modified-since':'1365585695660'}
+req.connection.remoteAddress:1365587143355:202.108.130.138
+req.method:1365587143355:GET
+request|Wed Apr 10 2013 17:45:43 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/
+req.headers:1365587143358:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/',  'connection':'keep-alive',  'if-modified-since':'1365585695662'}
+req.connection.remoteAddress:1365587143358:202.108.130.138
+req.method:1365587143358:GET
+request|Wed Apr 10 2013 17:45:43 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/
+req.headers:1365587147176:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'connection':'keep-alive',  'if-modified-since':'1365586927312'}
+req.connection.remoteAddress:1365587147176:202.108.130.138
+req.method:1365587147176:GET
+request|Wed Apr 10 2013 17:45:47 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|undefined
+import:com.easysoft.service.Login
+importTemplate:com.easysoft.service.templates.Login
+req.headers:1365587147929:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'*/*',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/e/login',  'connection':'keep-alive',  'if-modified-since':'1365586928131'}
+req.connection.remoteAddress:1365587147929:202.108.130.138
+req.method:1365587147929:GET
+request|Wed Apr 10 2013 17:45:47 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/e/login
+import:com.easysoft.service.dojo_min
+import:com.easysoft.service.PackService
+req.headers:1365587147930:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'text/css,*/*;q=0.1',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/e/login',  'connection':'keep-alive',  'if-modified-since':'1365586928120'}
+req.connection.remoteAddress:1365587147930:202.108.130.138
+req.method:1365587147930:GET
+request|Wed Apr 10 2013 17:45:47 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/e/login
+import:com.easysoft.service.css_min
+req.headers:1365587147941:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'*/*',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/e/login',  'connection':'keep-alive',  'if-modified-since':'1365586928122'}
+req.connection.remoteAddress:1365587147941:202.108.130.138
+req.method:1365587147941:GET
+request|Wed Apr 10 2013 17:45:47 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/e/login
+import:com.easysoft.service.admin.widget_min
+req.headers:1365587151460:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/e/login',  'connection':'keep-alive',  'if-modified-since':'1365586932088'}
+req.connection.remoteAddress:1365587151460:202.108.130.138
+req.method:1365587151460:GET
+request|Wed Apr 10 2013 17:45:51 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/e/login
+req.headers:1365587153093:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/e/login',  'connection':'keep-alive'}
+req.connection.remoteAddress:1365587153093:202.108.130.138
+req.method:1365587153093:GET
+request|Wed Apr 10 2013 17:45:53 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/e/login
+import:com.easysoft.service.CheckImg
+req.headers:1365587154007:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/e/login',  'connection':'keep-alive',  'content-type':'application/x-www-form-urlencoded',  'content-length':'48'}
+req.connection.remoteAddress:1365587154007:202.108.130.138
+req.method:1365587154007:POST
+request|Wed Apr 10 2013 17:45:54 GMT+0800 (CST)|POST|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/e/login
+import:com.easysoft.service.Logining
+import:com.easysoft.service.Redirect
+---test---start
+Logining--create--
+null
+{ _id: 5158f8dca1bc99b8d0edf751,
+  password: 'abc46a3f98cf2915d8b7e0dfcf3642de',
+  user: 'wxl' }
+----doLogin----
+err:
+null
+o:
+{ _id: 5158f8dca1bc99b8d0edf751,
+  password: 'abc46a3f98cf2915d8b7e0dfcf3642de',
+  user: 'wxl' }
+-----------
+session
+[ { user: 'wxl',
+    loginTime: 1365587154019,
+    updateTime: 1365587154019,
+    _id: 516534d27782feee6f000001 } ]
+516534d27782feee6f000001
+importTemplate:com.easysoft.service.templates.Service
+------------
+send mail...
+Message sent: 250 Mail OK queued as smtp14,EsCowEAZfmLRNGVRDsmdAA--.1514S3 1365587154
+req.headers:1365587154812:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/e/login',  'connection':'keep-alive'}
+req.connection.remoteAddress:1365587154812:202.108.130.138
+req.method:1365587154812:GET
+request|Wed Apr 10 2013 17:45:54 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/e/login
+attachSessionDb
+{ user: 'wxl',
+  loginTime: 1365587154019,
+  updateTime: 1365587154019,
+  _id: 516534d27782feee6f000001 }
+attachSessionDb
+{ user: 'wxl',
+  loginTime: 1365587154019,
+  updateTime: 1365587154019,
+  _id: 516534d27782feee6f000001 }
+importTemplate:com.easysoft.service.admin.templates.Index
+req.headers:1365587155575:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'text/css,*/*;q=0.1',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/easysoft/admin/start?sid=516534d27782feee6f000001',  'connection':'keep-alive',  'if-modified-since':'1365587147932'}
+req.connection.remoteAddress:1365587155575:202.108.130.138
+req.method:1365587155575:GET
+request|Wed Apr 10 2013 17:45:55 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/easysoft/admin/start?sid=516534d27782feee6f000001
+req.headers:1365587155576:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'*/*',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/easysoft/admin/start?sid=516534d27782feee6f000001',  'connection':'keep-alive',  'if-modified-since':'1365587147934'}
+req.connection.remoteAddress:1365587155576:202.108.130.138
+req.method:1365587155576:GET
+request|Wed Apr 10 2013 17:45:55 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/easysoft/admin/start?sid=516534d27782feee6f000001
+req.headers:1365587155626:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'*/*',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/easysoft/admin/start?sid=516534d27782feee6f000001',  'connection':'keep-alive',  'if-modified-since':'1365587147942'}
+req.connection.remoteAddress:1365587155626:202.108.130.138
+req.method:1365587155626:GET
+request|Wed Apr 10 2013 17:45:55 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/easysoft/admin/start?sid=516534d27782feee6f000001
+req.headers:1365587156483:{  'host':'17597.net',  'user-agent':'Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0',  'accept':'image/png,image/*;q=0.8,*/*;q=0.5',  'accept-language':'en-us,zh-cn;q=0.8,zh;q=0.5,en;q=0.3',  'accept-encoding':'gzip, deflate',  'referer':'http://17597.net/theme/blue/styles/css-min.css',  'connection':'keep-alive',  'if-modified-since':'1365586937031'}
+req.connection.remoteAddress:1365587156483:202.108.130.138
+req.method:1365587156483:GET
+request|Wed Apr 10 2013 17:45:56 GMT+0800 (CST)|GET|202.108.130.138|Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0|http://17597.net/theme/blue/styles/css-min.css

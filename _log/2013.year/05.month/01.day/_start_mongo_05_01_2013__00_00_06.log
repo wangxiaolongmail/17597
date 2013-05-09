@@ -1,0 +1,40 @@
+/opt/mongodb-linux-x86_64-2.4.0/bin/mongod --help for help and startup options
+Wed May  1 00:00:06.637 [initandlisten] MongoDB starting : pid=26196 port=27017 dbpath=/data/db/ 64-bit host=AY1212050941431d46085
+Wed May  1 00:00:06.637 [initandlisten] db version v2.4.0
+Wed May  1 00:00:06.637 [initandlisten] git version: ce2d666c04b4a80af58e8bbb3388b0680e8cfeb6
+Wed May  1 00:00:06.637 [initandlisten] build info: Linux ip-10-2-29-40 2.6.21.7-2.ec2.v1.2.fc8xen #1 SMP Fri Nov 20 17:48:28 EST 2009 x86_64 BOOST_LIB_VERSION=1_49
+Wed May  1 00:00:06.637 [initandlisten] allocator: tcmalloc
+Wed May  1 00:00:06.637 [initandlisten] options: {}
+Wed May  1 00:00:06.814 [initandlisten] journal dir=/data/db/journal
+Wed May  1 00:00:06.814 [initandlisten] recover : no journal files present, no recovery needed
+Wed May  1 00:00:06.864 [initandlisten] waiting for connections on port 27017
+Wed May  1 00:00:06.867 [websvr] admin web console waiting for connections on port 28017
+Wed May  1 00:00:07.410 [initandlisten] connection accepted from 127.0.0.1:56856 #1 (1 connection now open)
+Wed May  1 00:00:07.413 [initandlisten] connection accepted from 127.0.0.1:56857 #2 (2 connections now open)
+Wed May  1 00:00:07.414 [initandlisten] connection accepted from 127.0.0.1:56858 #3 (3 connections now open)
+Wed May  1 00:00:07.415 [initandlisten] connection accepted from 127.0.0.1:56859 #4 (4 connections now open)
+Wed May  1 00:00:07.415 [initandlisten] connection accepted from 127.0.0.1:56860 #5 (5 connections now open)
+Thu May  2 00:00:01.509 [conn1] end connection 127.0.0.1:56856 (4 connections now open)
+Thu May  2 00:00:01.509 [conn3] end connection 127.0.0.1:56858 (3 connections now open)
+Thu May  2 00:00:01.510 [conn2] end connection 127.0.0.1:56857 (2 connections now open)
+Thu May  2 00:00:01.511 [conn4] end connection 127.0.0.1:56859 (1 connection now open)
+Thu May  2 00:00:01.511 [conn5] end connection 127.0.0.1:56860 (0 connections now open)
+Thu May  2 00:00:01.553 [initandlisten] connection accepted from 127.0.0.1:56861 #6 (1 connection now open)
+Thu May  2 00:00:01.554 [conn6] terminating, shutdown command received
+Thu May  2 00:00:01.554 dbexit: shutdown called
+Thu May  2 00:00:01.554 [conn6] shutdown: going to close listening sockets...
+Thu May  2 00:00:01.554 [conn6] closing listening socket: 9
+Thu May  2 00:00:01.554 [conn6] closing listening socket: 10
+Thu May  2 00:00:01.554 [conn6] closing listening socket: 11
+Thu May  2 00:00:01.554 [conn6] removing socket file: /tmp/mongodb-27017.sock
+Thu May  2 00:00:01.554 [conn6] shutdown: going to flush diaglog...
+Thu May  2 00:00:01.554 [conn6] shutdown: going to close sockets...
+Thu May  2 00:00:01.554 [conn6] shutdown: waiting for fs preallocator...
+Thu May  2 00:00:01.554 [conn6] shutdown: lock for final commit...
+Thu May  2 00:00:01.554 [conn6] shutdown: final commit...
+Thu May  2 00:00:01.554 [conn6] shutdown: closing all files...
+Thu May  2 00:00:01.554 [conn6] closeAllFiles() finished
+Thu May  2 00:00:01.554 [conn6] journalCleanup...
+Thu May  2 00:00:01.554 [conn6] removeJournalFiles
+Thu May  2 00:00:01.918 [conn6] shutdown: removing fs lock...
+Thu May  2 00:00:01.918 dbexit: really exiting now

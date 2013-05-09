@@ -1,0 +1,3 @@
+all output going to: /data/log
+logpath [/data/log] should be a filename, not a directory
+Bad logpath value: "/data/log"; terminating.
