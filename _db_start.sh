@@ -25,7 +25,7 @@ log="${log_dir}/_start_mongo_${timestamp}.log"
 
 echoThis "nohup ${DIR_MONGOD_DATEBASE_BIN}/mongod > $log 2>&1 & "
 
-nohup ${DIR_MONGOD_DATEBASE_BIN}/mongod > $log 2>&1 & 
+nohup ${DIR_MONGOD_DATEBASE_BIN}/mongod --dbpath=/usr/local/mongodb/data --logpath=/usr/local/mongodb/logs --logappend  --port=27017 --fork > $log 2>&1 & 
 
 
 echoThis "start mongo database"
