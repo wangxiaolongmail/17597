@@ -52,7 +52,8 @@ dojo.os = require('os');
 var runPathDir=dojo.path.dirname(runPath);
 console.log(runPathDir);
 console.log("require underscore");
-dojo.underscore = require(runPathDir+'/node_modules/underscore');
+//dojo.underscore = require(runPathDir+'/node_modules/underscore');
+dojo.underscore = require('underscore');
 console.log("require underscore:"+dojo.underscore.VERSION);
 
 dojo.JSON=JSON;
@@ -63,26 +64,26 @@ dojo.process=process;
 
 //dojo.mail = require("nodemailer");
 console.log("require nodemailer");
-dojo.mail = require(runPathDir+'/node_modules/nodemailer');
+dojo.mail = require('nodemailer');
 
 console.log("require socket.io");
-dojo.socketio = require(runPathDir+'/node_modules/socket.io');
+dojo.socketio = require('socket.io');
 
 
 console.log("require cheerio");
-dojo.cheerio = require(runPathDir+'/node_modules/cheerio');
+dojo.cheerio = require('cheerio');
 
 console.log("require iconv-lite");
-dojo.iconv = require(runPathDir+'/node_modules/iconv-lite');
+dojo.iconv = require('iconv-lite');
 
 console.log("require mongodb");
-dojo.mongodb = require(runPathDir+'/node_modules/mongodb');
+dojo.mongodb = require('mongodb');
 
 console.log("require canvas");
-dojo.canvas = require(runPathDir+'/node_modules/canvas');
+dojo.canvas = require('canvas');
 
 console.log("require less");
-dojo.less = require(runPathDir+'/node_modules/less');
+dojo.less = require('less');
 
 
 
@@ -102,20 +103,20 @@ function fn_conn_db(){
 fn_conn_db();
 
 console.log("require request");
-dojo.request = require(runPathDir+'/node_modules/request');
+dojo.request = require('request');
 
 console.log("require connect");
-dojo.connect = require(runPathDir+'/node_modules/connect');
+dojo.connect = require('connect');
 
 console.log("require formidable");
-dojo.formidable = require(runPathDir+'/node_modules/formidable');
+dojo.formidable = require('formidable');
 
 
 console.log("require async");
-dojo.async = require(runPathDir+'/node_modules/async');
+dojo.async = require('async');
 
 console.log("require express");
-dojo.express = require(runPathDir+'/node_modules/express');
+dojo.express = require('express');
 
 
 

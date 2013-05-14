@@ -46,6 +46,7 @@ dojo.declare("com.easysoft.zoo.Elephant","com.easysoft.Widget",{
 	init:function(){
 		dojo.import("route");
 		var widgetNameSpider="com.easysoft.zoo.Spider";
+		return;
 		dojo.createObject("com.easysoft.cmd.ipconfig",{fn:function(listIp){
 			dojo.localListIp=listIp;
 			console.log(listIp);
