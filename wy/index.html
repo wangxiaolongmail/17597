@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Javascript · Twitter Bootstrap中文档/中文翻译</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/wy/docs.css">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <!-- link href="assets/ico/favicon.ico" rel="shortcut icon">
+    <link href="assets/ico/apple-touch-icon-114-precomposed.png" sizes="114x114" rel="apple-touch-icon-precomposed">
+    <link href="assets/ico/apple-touch-icon-72-precomposed.png" sizes="72x72" rel="apple-touch-icon-precomposed">
+    <link href="assets/ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon-precomposed" -->
+  </head>
+
+  <body data-offset="50" data-target=".subnav" data-spy="scroll">
+
+
+  <!-- Navbar
+    ================================================== -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a href="./index.html" class="brand">Guidware ClaimCenter</a>
+          <div class="nav-collapse">
+	      <ul class="nav">
+              <li class="active">
+                <a href="#">Desktop</a>
+              </li>
+              <li class="">
+                <a href="#">Search</a>
+              </li>
+              <li class="">
+                <a href="#">Address Book</a>
+              </li>
+              <li class="">
+                <a href="#">Claim</a>
+              </li>
+              <li class="disabled">
+                <a href="#">Vacation</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    
+      <div class="row">
+        <div class="span3 columns">
+              	<ul class="nav nav-pills nav-stacked">
+                    <li class="active">
+                    <a href="#">Activities</a>
+                    </li>
+                    <li>
+                    <a href="#">Claims</a></li>
+                    <li>
+                    <a href="#">Activities</a></li>
+                </ul>
+        </div>
+        <div class="span9 columns">
+          <h4>静态的例子</h4>
+          <select id="select01">
+            <option>请选择</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <div class="btn-group">
+              <button class="btn disabled">Assign</button>
+              <button class="btn disabled">Skip</button>
+              <button class="btn disabled">Complete</button>
+              <button class="btn disabled">Aprove</button>
+              <button class="btn disabled">Reject</button>
+              <button class="btn">Print/Export</button>
+          </div>
+          <table id="list1" class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 100px;">ID</th>
+               <th style="width: 100px;">Due</th>
+               <th style="width: 100px;">Priority</th>
+               <th style="width: 100px;">Subject</th>
+               <th style="width: 100px;">Claim</th>
+               <th>Insured</th>
+             </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+
+
+
+
+     <!-- Footer
+      ================================================== -->
+      <footer class="footer">
+        
+      </footer>
+
+    </div><!-- /container -->
+
+
+
+    <script src="/jquery/jquery-2.0.0.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+	 $.get("/wy/data.json", {}, function (data, textStatus){
+		var s="";
+		for(var i=0;i<data.length;i++){
+			var o=data[i];
+			s+="<tr><td>"+o.ID+"</td>";
+			s+="<td>"+o.Due+"</td>";
+			s+="<td>"+o.Priority+"</td>";
+			s+="<td>"+o.Subject+"</td>";
+			s+="<td>"+o.Claim+"</td></tr>";
+		}
+	    $("#list1 > tbody").html(s);
+	});
+    </script>
+
+
+  
+
+</body></html>
