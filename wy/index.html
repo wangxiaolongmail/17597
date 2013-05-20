@@ -28,7 +28,7 @@
 
   <!-- Navbar
     ================================================== -->
-    <div class="navbar">
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
@@ -64,47 +64,253 @@
     
       <div class="row">
         <div class="span3 columns">
-              	<ul class="nav nav-pills nav-stacked">
-                    <li class="active">
-                    <a href="#">Activities</a>
-                    </li>
-                    <li>
-                    <a href="#">Claims</a></li>
-                    <li>
-                    <a href="#">Activities</a></li>
-                </ul>
+        	<div style="padding-top:53px;">
+                <div class="well" style="padding: 8px 0;">
+                    <ul class="nav nav-list">
+                    	<li class="nav-header">
+                        	Actions
+                        </li>
+                        <li class="active">
+                        <a href="#"><i class="icon-list-alt"></i>Activities<span class="badge badge-inverse pull-right">38</span></a>
+                        </li>
+                        <li>
+                        <a href="#"><i class="icon-list-alt"></i>Claims<span class="badge pull-right">21</span></a></li>
+                        <li>
+                        <a href="#"><i class="icon-list-alt"></i>Exposures<span class="badge pull-right">22</span></a></li>
+                        <li>
+                        <a href="#"><i class="icon-list-alt"></i>Queues<span class="badge pull-right">0</span></a></li>
+                        <li>
+                        <a href="#"><i class="icon-calendar"></i>Clendar</a></li>
+                        <li>
+                        <a href="#"><i class="icon-list-alt"></i>Bulk Invoices</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="span9 columns">
-          <h4>静态的例子</h4>
-          <select id="select01">
-            <option>请选择</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-          <div class="btn-group">
-              <button class="btn disabled">Assign</button>
-              <button class="btn disabled">Skip</button>
-              <button class="btn disabled">Complete</button>
-              <button class="btn disabled">Aprove</button>
-              <button class="btn disabled">Reject</button>
-              <button class="btn">Print/Export</button>
-          </div>
-          <table id="list1" class="table table-bordered table-striped">
-            <thead>
-             <tr>
-               <th style="width: 100px;">ID</th>
-               <th style="width: 100px;">Due</th>
-               <th style="width: 100px;">Priority</th>
-               <th style="width: 100px;">Subject</th>
-               <th style="width: 100px;">Claim</th>
-               <th>Insured</th>
-             </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
+        	<div style="padding-top:40px;">
+              <h4>Activities</h4>
+              <div style="float:left;">
+                  <select id="select01">
+                    <option>请选择</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+              </div>
+              <div style="float:left;padding-bottom:10px;padding-left:10px">
+                  <div class="btn-group">
+                      <button class="btn disabled">Assign</button>
+                      <button class="btn disabled">Skip</button>
+                      <button class="btn disabled">Complete</button>
+                      <button class="btn disabled">Aprove</button>
+                      <button class="btn disabled">Reject</button>
+                      <button class="btn Print-Export">Print/Export</button>
+                  </div>
+              </div>
+              <table id="list1" class="table table-bordered table-striped">
+                <thead>
+                 <tr>
+                   <th style="width: 10px;">
+                       <label class="checkbox">
+                        <input type="checkbox" value="optionAll">
+                       </label>
+                   </th>
+                   <th style="width: 10px;"><i class="icon-star-empty"></i></th>
+                   <th style="width: 100px;">ID</th>
+                   <th style="width: 100px;">Due</th>
+                   <th style="width: 100px;">Priority</th>
+                   <th style="width: 100px;">Subject</th>
+                   <th style="width: 100px;">Claim</th>
+                   <th>Insured</th>
+                 </tr>
+                </thead>
+                <tbody>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option1">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>1</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td align="center">
+                       <label class="checkbox">
+                        <input type="checkbox" value="option2">
+                       </label>
+                   </td>
+                   <td>&nbsp;</td>
+                   <td>1</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                </tbody>
+                <tbody>
+                </tbody>
+              </table>
+              <div class="pagination pagination-centered">
+                    <ul>
+                        <li class="disabled"><a href="#">«</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="?page=2">2</a></li>
+                        <li><a href="?page=3">3</a></li>
+                        <li><a href="?page=4">4</a></li>
+                        <li><a href="?page=5">5</a></li>
+                        <li><a href="#">»</a></li>
+                    </ul>
+                </div>
+            </div>
 
         </div>
       </div>
@@ -125,8 +331,10 @@
 
     <script src="/jquery/jquery-2.0.0.min.js"></script>
     <script src="/bootstrap/js/bootstrap.js"></script>
+    <script src="/wy/config.js"></script>
     <script type="text/javascript">
-	 $.get("/wy/data.json", {}, function (data, textStatus){
+	
+	$.get(g_url, {}, function (data, textStatus){
 		var s="";
 		for(var i=0;i<data.length;i++){
 			var o=data[i];
@@ -136,8 +344,17 @@
 			s+="<td>"+o.Subject+"</td>";
 			s+="<td>"+o.Claim+"</td></tr>";
 		}
-	    $("#list1 > tbody").html(s);
+		//$("#list1 > tbody").html(s);
 	});
+		
+	$(".Print-Export").click(function(){
+		alert("Print-Export");
+		$("#list1 input[type='checkbox']:checked").each(function(){
+			alert($(this).val());
+			//alert($(this).attr("checked"));
+		});
+	});
+	
     </script>
 
 

@@ -68,6 +68,10 @@
 			{ pathname:$c.c_url_001_012,servletClass:"com.easysoft.service.admin.clearPageBuffer"}
 		],
 		staticServletMapping:[
+		],
+		noBufferList:[
+			"/wy/index.html"
 		]
 	};
+	
 })();

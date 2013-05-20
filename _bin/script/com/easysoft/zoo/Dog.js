@@ -217,7 +217,19 @@ dojo.declare( "com.easysoft.zoo.Dog" , "com.easysoft.Widget" , {
 							this.findNotFile();
 						}else{
 							var o = dojo.atm([$c.c_extname,dojo.path.extname(this.m_name),$c.c_cache,o[$c.c_cache],$c.c_Last_Modified,dojo.getTimestamp()]);
+							
 							dojo.setObject(this.m_name,o,d.mBuffer,"/");
+							var a=dojo.route.noBufferList;
+							for(var i=0;i<a.length;i++){
+								var s = a[i];
+								var re = new RegExp(s,"gi");
+								var str = this.m_name;
+								if(re.test(str)){
+									dojo.setObject(str,null,d.mBuffer,"/");
+									break;
+								}
+							}
+							console.log(this.m_name);
 							this.echoLast(o);
 						}
 					})
