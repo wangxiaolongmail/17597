@@ -1,5 +1,7 @@
 #!/bin/bash
-
+#git clone git://github.com/twitter/bootstrap.git
+#npm install -g less uglify-js jshint recess
+#npm install uglify-js@1 -g
 npm install underscore
 
 npm install nodemailer

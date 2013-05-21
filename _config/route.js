@@ -70,7 +70,7 @@
 		staticServletMapping:[
 		],
 		noBufferList:[
-			"/wy/index.html"
+			"/wy/\.\+.\.\+"
 		]
 	};
 	
