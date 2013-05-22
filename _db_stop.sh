@@ -9,8 +9,9 @@ currentPath=`pwd`
 
 #echo "stop mongod database server"
 
-cd ${DIR_MONGOD_DATEBASE_BIN}
-./mongo admin --eval "db.shutdownServer()"
+echo 'mongo admin --eval "db.shutdownServer()"'
+mongo admin --eval "db.shutdownServer()"
+
 if [ "$?" == "0" ];then
 	echo  " ---`date +%y-%m-%d-%H-%M-%S` ----mongd stop ok" 
 else

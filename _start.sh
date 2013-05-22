@@ -23,8 +23,6 @@ mkdir -p $log_dir
 
 log="${log_dir}/_start_${port}_${timestamp}.log"
 
-#nohup $RUN_TIME_PATH ${currentPath}${port}/_start.js -port ${port} -EXEC_PATH ${currentPath} -DOMAIN_IP ${DOMAIN_IP} -DOMAIN_NAME ${DOMAIN_NAME} > $log 2>&1 & 
-
 echoThis "nohup supervisor node ${currentPath}${port}/_start.js > $log 2>&1 &" 
 
 nohup supervisor node ${currentPath}${port}/_start.js > $log 2>&1 & 

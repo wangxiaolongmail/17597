@@ -29,7 +29,6 @@ getYesterdayLogHome()
 }
 
 
-RUN_TIME_PATH=node
 
 DOMAIN_IP=42.121.96.101
 
@@ -45,5 +44,4 @@ GENERIC_STATISTICS_NAME="generic_list.log"
 
 SPIDER_STATISTICS_SED_NAME="spider_stati.log"
 
-DIR_MONGOD_DATEBASE_BIN="/usr/local/mongodb/bin"
 

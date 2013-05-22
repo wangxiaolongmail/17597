@@ -52,17 +52,14 @@ dojo.os = require('os');
 var runPathDir=dojo.path.dirname(runPath);
 console.log(runPathDir);
 console.log("require underscore");
-//dojo.underscore = require(runPathDir+'/node_modules/underscore');
 dojo.underscore = require('underscore');
 console.log("require underscore:"+dojo.underscore.VERSION);
 
 dojo.JSON=JSON;
 
-///dojo.process = require("process");
 dojo.querystring = require("querystring");
 dojo.process=process;
 
-//dojo.mail = require("nodemailer");
 console.log("require nodemailer");
 dojo.mail = require('nodemailer');
 
