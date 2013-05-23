@@ -1,7 +1,7 @@
 nohup.out
 _log/
 bootstrap/
-bootstrap/css/
+bootstrap/css/*.css
 bootstrap/img/
 bootstrap/js/
 jquery/
