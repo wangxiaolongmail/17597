@@ -80,14 +80,14 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			var sid = this.queryString.sid;
 			a.push("<ul>");
 			if(page==0){
-            	a.push("<li class='disabled'><a href='#'>«</a></li>");
+				a.push("<li class='disabled'><a href='#'>«</a></li>");
 			}else{
-            	a.push("<li><a href='?sid="+sid+"&page="+0+"'>«</a></li>");
+				a.push("<li><a href='?sid="+sid+"&page="+0+"'>«</a></li>");
 			}
 			for(var i=0;i<len;i++){
 				if(page==i){
 					a.push("<li class='active'>");
-					a.push("<a href='?sid="+sid+"&page="+i+"'>"+(i+1)+"</a>");
+					a.push("<a href='#'>"+(i+1)+"</a>");
 					a.push("</li>");
 				}else{
 					a.push("<li>");
@@ -96,9 +96,9 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 				}
 			}
 			if(page==pageCount){
-            	a.push("<li class='disabled'><a href='#'>»</a></li>");
+				a.push("<li class='disabled'><a href='#'>»</a></li>");
 			}else{
-            	a.push("<li><a href='?sid="+sid+"&page="+page+"'>»</a></li>");
+				a.push("<li><a href='?sid="+sid+"&page="+page+"'>»</a></li>");
 			}
 			a.push("</ul>");
 			$("#pager").html(a.join(""));
