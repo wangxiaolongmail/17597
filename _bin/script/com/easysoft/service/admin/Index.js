@@ -36,31 +36,41 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			var a=[];
 			var list=obj.list;
 			var len = list.length;
-            a.push("<thead>");
+			var metadata=obj.metadata;
+			a.push("<thead>");
 			a.push("<tr>");
-				a.push("<th>");
-					a.push("&nbsp;");
-				a.push("</th>");
-				a.push("<th>&nbsp;</th>");
-				a.push("<th>类型</th>");
-				a.push("<th>名称</th>");
-				a.push("<th>&nbsp;</th>");
+
+
+                                        a.push("<td>");
+                                        a.push("&nbsp;");
+                                        a.push("</td>");
+                                        for(var ii=0;ii<metadata.length;ii++){
+                                                if(!metadata[ii].ishidden){
+                                                        a.push("<td>");
+                                                        a.push(metadata[ii].lable);
+                                                        a.push("</td>");
+                                                }
+                                        }
+
 			a.push("</tr>");
-            a.push("</thead>");
-            a.push("<tbody>");
+			a.push("</thead>");
+			a.push("<tbody>");
 			for(var i=0;i<len;i++){
 				var o=list[i];
 				a.push("<tr>");
 					a.push("<td>");
-						a.push("<input type='checkbox' value='"+o._id+"'>");
+					a.push("<input type='checkbox' value='"+o._id+"'/>");
 					a.push("</td>");
-					a.push("<td>"+(i+1)+"</td>");
-					a.push("<td>"+o.category+"</td>");
-					a.push("<td>"+o.article_title+"</td>");
-					a.push("<td>"+o.article_url+"</td>");
+					for(var ii=0;ii<metadata.length;ii++){
+						if(!metadata[ii].ishidden){
+							a.push("<td>");
+							a.push(o[metadata[ii].field]);
+							a.push("</td>");
+						}
+					}
 				a.push("</tr>");
 			}
-            a.push("</tbody>");
+			a.push("</tbody>");
 			$("#list1").html(a.join(""));
 			
 			var a=[];
