@@ -106,11 +106,7 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			for(var i=1;i<=len;i++){
 				if(page==i){
 					a.push("<li class='active'>");
-<<<<<<< HEAD
-					a.push("<a href='#'>"+(i+1)+"</a>");
-=======
 					a.push("<a href='?sid="+sid+"&page="+i+"'>"+i+"</a>");
->>>>>>> wxl
 					a.push("</li>");
 				}else{
 					a.push("<li>");
