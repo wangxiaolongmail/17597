@@ -9,9 +9,14 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 		tablename_type="favorite_type",
 		page=params.page||1,
 		pageSize=params.pageSize||pub.pageSize,
-		recordCount=db[tablename].count();
+		category=params.category||"all";	
 		var build=function(){
-			var cursor =db[tablename].find().limit(pageSize).skip(pageSize*(page-1));
+			if(category=="all"){
+				var option={};
+			}else{
+				var option={category:category};
+			}
+			var cursor =db[tablename].find(option).limit(pageSize).skip(pageSize*(page-1));
 			var list=[];
 			var metadata=pub.metadata[tablename];
 			var id=0;
@@ -29,9 +34,13 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 				}
 				list.push(obj);
 			}
+			var recordCount=id;
 			var pageCount=parseInt(recordCount/pageSize);
-			var category =db[tablename_type].find({},{article_title:true,category:true}).toArray();
-			var result={ok:true,tablename:tablename,metadata:metadata,page:page,recordCount:recordCount,pageSize:pageSize,pageCount:pageCount,list:list,category:category};
+			var catlist =db[tablename_type].find({},{article_title:true,category:true}).toArray();
+			var result={
+				ok:true,tablename:tablename,metadata:metadata,page:page,recordCount:recordCount,
+				pageSize:pageSize,pageCount:pageCount,list:list,catlist:catlist,category:category
+			};
 			return result;
 		}
 		if(pub.isCache){

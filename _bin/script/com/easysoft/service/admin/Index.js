@@ -17,7 +17,8 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
         create:function(){
 			var page=this.queryString.page||1;
 			this.sid=this.queryString.sid;
-			var cmd = "stored_manager({stored_method:'admin_get_favorite',sid:'"+this.sid+"',page:"+page+"})";
+			var category=this.queryString.category||"all";
+			var cmd = "main({stored_method:'admin_get_favorite',sid:'"+this.sid+"',category:'"+category+"',page:"+page+"})";
 			console.log(cmd);
 			dojo.db.eval(cmd, dojo.hitch(this,this.drawPage));
         },
@@ -92,13 +93,14 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			a.push("</tbody>");
 			$("#list1").html(a.join(""));
 			
-			var a=[];
-			var pageCount=obj.pageCount;
-			var page=obj.page;
-			var len = pageCount;
-			var sid = this.sid;
+			var a=[],
+			pageCount=obj.pageCount,
+			page=obj.page,
+			category=obj.category,
+			len = pageCount,
+			sid = this.sid;
 			a.push("<ul>");
-			if(page==0){
+			if(page==1){
 				a.push("<li class='disabled'><a href='#'>«</a></li>");
 			}else{
 				a.push("<li><a href='?sid="+sid+"&page="+0+"'>«</a></li>");
@@ -106,11 +108,11 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			for(var i=1;i<=len;i++){
 				if(page==i){
 					a.push("<li class='active'>");
-					a.push("<a href='?sid="+sid+"&page="+i+"'>"+i+"</a>");
+					a.push("<a href='#'>"+i+"</a>");
 					a.push("</li>");
 				}else{
 					a.push("<li>");
-					a.push("<a href='?sid="+sid+"&page="+i+"'>"+i+"</a>");
+					a.push("<a href='?sid="+sid+"&category="+category+"&page="+i+"'>"+i+"</a>");
 					a.push("</li>");
 				}
 			}
@@ -124,11 +126,16 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			
 			
 			var a=[];
-			var category=obj.category;
-			var len = category.length;
+			var catlist=obj.catlist;
+			var len = catlist.length;
 			for(var i=0;i<len;i++){
-				a.push("<option value='"+category[i].category+"'>");
-				a.push(category[i].article_title);
+				var o=catlist[i];
+				if(o.category==category){
+					a.push("<option selected value='"+o.category+"'>");
+				}else{
+					a.push("<option value='"+o.category+"'>");
+				}
+				a.push(o.article_title);
 				a.push("</option>");
 			}
 			$("#select01").addClass("span1").html(a.join(""));
@@ -138,9 +145,11 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			var a=[];
 			a.push('$("#select01").change(function()');
 			a.push('{');
-				  a.push('alert("Hello");');
+				  //a.push('alert($(this).val());');
+				  a.push('location.href="http://17597.net/easysoft/admin/start?sid='+sid+'&category="+$(this).val();');
 			a.push('});');
 			s=s.replace("/*script_body_replace*/",a.join("\n"));
+			//s=s.replace("/*script_body_replace*/","window.debug="+dojo.toString(obj));
 			var o = dojo.atm([$c.c_cache,s,$c.c_Last_Modified,dojo.getTimestamp()]);
 			this.dog.echoLast(o);
 		}
