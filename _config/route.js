@@ -70,8 +70,7 @@
 		staticServletMapping:[
 		],
 		noBufferList:[
-			"/wy/\.\+.\.\+",
-			"/bootstrap/css/\.\+.\.css"
+			"/wy/\.\+.\.\+"	
 		]
 	};
 	
