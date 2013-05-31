@@ -22,7 +22,7 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 			recordCount=db[tablename].find(option).count();
 			var cursor =db[tablename].find(option).limit(pageSize).skip(pageSize*(page-1));
 			var list=[];
-			var metadata=pub.metadata[tablename];
+			var metadata=pub.metadata(tablename);
 			var id=0;
 			while (cursor.hasNext()) {
 				id++; 
@@ -48,22 +48,7 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 			};
 			return result;
 		}
-		if(pub.isCache){
-			var seek={tablename:tablename,page:page,pageSize:pageSize,recordCount:recordCount};
-			var rs=db.cache.findOne(seek);
-			if(rs){
-				var result=rs.result;
-				result.cacheid=rs._id;
-				return result;
-			}else{
-				var result=build();
-				seek.result=result;
-				db.cache.save(seek);
-				return result;
-			}
-		}else{
-			return build();
-		}
+		return build();
 	}else{
 		return {ok:false,err:"session out"};
 	}

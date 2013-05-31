@@ -142,7 +142,7 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			$("h4").html(obj.tablename);
 			var a=[];
 			a.push("<a class='btn btnDelete' href='#'>");
-			a.push("Delete");
+			a.push(dojo.i18n[dojo.cst.DELETE]);
 			a.push("</a>");
 			$(".btn-group").html(a.join(""));
 			

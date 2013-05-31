@@ -1,7 +1,12 @@
 db.system.js.save({_id:"constant",value:function () {
         return {
+                ADD:"ADD",
                 ALL:"ALL",
-                DELETE:"DELETE"
+                CATEGORY:"CATEGORY",
+                DELETE:"DELETE",
+		EDIT:"EDIT",
+		ID:"ID",
+                TITLE:"TITLE"
         };
 }})
 
