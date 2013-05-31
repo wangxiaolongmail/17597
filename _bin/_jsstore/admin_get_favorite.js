@@ -1,5 +1,6 @@
 db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 	var pub=public();
+	var cst=constant();
 	var params=params||{};
 	var sid=params.sid||"0";
 	var session=checking_session(sid);
@@ -11,9 +12,9 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 		pageSize=params.pageSize||pub.pageSize,
 		recordCount=0,
 		pageRecordCount=0,
-		category=params.category||"all";	
+		category=params.category||cst.ALL;	
 		var build=function(){
-			if(category=="all"){
+			if(category==cst.ALL){
 				var option={};
 			}else{
 				var option={category:category};
@@ -40,6 +41,7 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 			pageRecordCount=id;
 			var pageCount=Math.ceil(recordCount/pageSize);
 			var catlist =db[tablename_type].find({},{article_title:true,category:true}).toArray();
+			catlist.push({article_title:pub.i18n(cst.ALL),category:cst.ALL});
 			var result={
 				ok:true,tablename:tablename,metadata:metadata,page:page,recordCount:recordCount,
 				pageSize:pageSize,pageCount:pageCount,pageRecordCount:pageRecordCount,list:list,catlist:catlist,category:category

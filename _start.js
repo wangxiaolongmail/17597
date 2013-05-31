@@ -40,6 +40,7 @@ for(var i=0;i<a.length;i++,i++){
 }
 require("./_bin/script/dojo").dojo; 
 var dojo = global.dojo;
+var cst={};
 dojo.fs = require("fs");
 dojo.http = require("http");
 dojo.https = require("https");
@@ -91,6 +92,16 @@ function fn_conn_db(){
 		if(!err){
 			console.log("--conn db success--");
 			dojo.db=db;
+			var cmd="truck()";
+			dojo.db.eval(cmd, function(err,obj){
+					dojo.cst=obj.cst;
+					var a=obj.i18n;
+					dojo.i18n={};
+					for(var i=0;i<a.length;i++){
+						var o=a[i];
+						dojo.i18n[o._id]=o.cn;
+					}	
+				});
 		}else{
 			console.log("--conn db err--");
 		}

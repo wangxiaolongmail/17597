@@ -17,7 +17,7 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
         create:function(){
 			var page=this.queryString.page||1;
 			this.sid=this.queryString.sid;
-			var category=this.queryString.category||"all";
+			var category=this.queryString.category||'';
 			var cmd = "main({stored_method:'admin_get_favorite',sid:'"+this.sid+"',category:'"+category+"',page:"+page+"})";
 			console.log(cmd);
 			dojo.db.eval(cmd, dojo.hitch(this,this.drawPage));
@@ -67,7 +67,7 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			for(var ii=0;ii<metadata.length;ii++){
 					if(!metadata[ii].ishidden){
 							a.push("<td>");
-							a.push(metadata[ii].lable);
+							a.push(dojo.i18n[metadata[ii].lable]);
 							a.push("</td>");
 					}
 			}
