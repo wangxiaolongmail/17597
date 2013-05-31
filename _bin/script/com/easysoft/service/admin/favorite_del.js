@@ -12,8 +12,8 @@
  * 
  * @author wxlwang
  */
-dojo.provide("com.easysoft.service.admin.Index");
-dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service" , {
+dojo.provide("com.easysoft.service.admin.favorite_del");
+dojo.declare( "com.easysoft.service.admin.favorite_del" , "com.easysoft.service.Service" , {
         create:function(){
 			var page=this.queryString.page||1;
 			this.sid=this.queryString.sid;
@@ -159,9 +159,6 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 				a.push('$("#list1 input[type=\'checkbox\']:checked").each(function(){');
 					//a.push('alert($(this).val());');
 				a.push('});');
-				a.push('if(confirm("is delete record?")){');
-					a.push('location.href="/easysoft/admin/favorite_del?sid='+sid+'";');
-				a.push('}');
 			a.push('});');
 			s=s.replace("/*script_body_replace*/",a.join("\n"));
 			s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(obj));

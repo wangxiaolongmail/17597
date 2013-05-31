@@ -9,6 +9,8 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 		tablename_type="favorite_type",
 		page=params.page||1,
 		pageSize=params.pageSize||pub.pageSize,
+		recordCount=0,
+		pageRecordCount=0,
 		category=params.category||"all";	
 		var build=function(){
 			if(category=="all"){
@@ -16,6 +18,7 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 			}else{
 				var option={category:category};
 			}
+			recordCount=db[tablename].find(option).count();
 			var cursor =db[tablename].find(option).limit(pageSize).skip(pageSize*(page-1));
 			var list=[];
 			var metadata=pub.metadata[tablename];
@@ -34,12 +37,12 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 				}
 				list.push(obj);
 			}
-			var recordCount=id;
-			var pageCount=parseInt(recordCount/pageSize);
+			pageRecordCount=id;
+			var pageCount=Math.ceil(recordCount/pageSize);
 			var catlist =db[tablename_type].find({},{article_title:true,category:true}).toArray();
 			var result={
 				ok:true,tablename:tablename,metadata:metadata,page:page,recordCount:recordCount,
-				pageSize:pageSize,pageCount:pageCount,list:list,catlist:catlist,category:category
+				pageSize:pageSize,pageCount:pageCount,pageRecordCount:pageRecordCount,list:list,catlist:catlist,category:category
 			};
 			return result;
 		}
