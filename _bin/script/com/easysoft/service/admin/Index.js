@@ -156,11 +156,13 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			a.push('});');
 			a.push('$(".btnDelete").on("click",function()');
 			a.push('{');
+				a.push('var a=[];');
 				a.push('$("#list1 input[type=\'checkbox\']:checked").each(function(){');
-					//a.push('alert($(this).val());');
+					a.push('a.push($(this).val());');
 				a.push('});');
 				a.push('if(confirm("is delete record?")){');
-					a.push('location.href="/easysoft/admin/favorite_del?sid='+sid+'";');
+					a.push('alert("/easysoft/admin/favorite_del?sid='+sid+'&category='+category+'&page='+page+'&del_list="+a.join(","));');
+					//a.push('location.href="/easysoft/admin/favorite_del?sid='+sid+'";');
 				a.push('}');
 			a.push('});');
 			s=s.replace("/*script_body_replace*/",a.join("\n"));
