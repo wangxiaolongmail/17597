@@ -50,6 +50,8 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 		},
 		draw:function(){
 			var obj=this.m_obj;
+			var cst=dojo.cst;
+			var i18n=dojo.i18n;
 			var $ = dojo.cheerio.load(dojo.wy_index_html);
 			$("#left_bar").remove();
 			$("#right_bar").removeClass("span9").addClass("span12");
@@ -141,9 +143,22 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			$("#select01").addClass("span2").html(a.join(""));
 			$("h4").html(obj.tablename);
 			var a=[];
-			a.push("<a class='btn btnDelete' href='#'>");
-			a.push(dojo.i18n[dojo.cst.DELETE]);
+		
+			var name=cst.ADD;
+			a.push("<a class='btn "+name+"' href='#'>");
+			a.push(i18n[name]);
 			a.push("</a>");
+		
+			var name=cst.EDIT;
+			a.push("<a class='btn "+name+"' href='#'>");
+			a.push(i18n[name]);
+			a.push("</a>");
+		
+			var name=cst.DELETE;
+			a.push("<a class='btn "+name+"' href='#'>");
+			a.push(i18n[name]);
+			a.push("</a>");
+
 			$(".btn-group").html(a.join(""));
 			
 			
@@ -154,7 +169,7 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 				  //a.push('alert($(this).val());');
 				  a.push('location.href="/easysoft/admin/start?sid='+sid+'&category="+$(this).val();');
 			a.push('});');
-			a.push('$(".btnDelete").on("click",function()');
+			a.push('$("a.'+cst.DELETE+'").on("click",function()');
 			a.push('{');
 				a.push('var a=[];');
 				a.push('$("#list1 input[type=\'checkbox\']:checked").each(function(){');
