@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="/wy/docs.css">
   </head>
 
-  <body data-offset="50" data-target=".subnav" data-spy="scroll">
+  <body>
 
 
   <!-- Navbar
     ================================================== -->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar  navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
@@ -47,7 +47,8 @@
           </form-->
           <ul class="nav pull-right">
             <li><a href="#">Link</a></li>
-            <!--li class="divider-vertical"></li-->
+            <li class="divider-vertical"></li>
+            <li><a href="#">Link</a></li>
             <!--li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -92,19 +93,11 @@
             </div>
         </div>
         <div id="right_bar" class="span9 columns">
-        	<div style="padding-top:40px;">
+        	<div>
               <h4>Activities</h4>
-              <div style="float:left;">
-                  <select id="select01">
-                    <option>请选择</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-              </div>
-              <div style="float:left;padding-bottom:10px;padding-left:10px">
-                  <div class="btn-group">
+<div class="clearfix">
+             <div style="float:left;padding-bottom:10px;padding-right:7px">
+                  <div id="tool_button" class="btn-group">
                       <button class="btn disabled">Assign</button>
                       <button class="btn disabled">Skip</button>
                       <button class="btn disabled">Complete</button>
@@ -113,6 +106,25 @@
                       <button class="btn Print-Export">Print/Export</button>
                   </div>
               </div>
+              <div style="float:left;padding-right:7px">
+                  <select id="select01">
+                    <option>请选择</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+              </div>
+	      <div style="float:left;">
+    <div class="input-append">
+    <input class="span2" id="appendedInputButton" type="text">
+    <button class="btn" type="button">Go!</button>
+   		 </div>
+              </div>
+</div>
+
+   
+
               <table id="list1" class="table table-bordered table-striped">
                 <thead>
                  <tr>

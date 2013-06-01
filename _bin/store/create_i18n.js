@@ -7,5 +7,9 @@ db.system.js.save({_id:"create_i18n",value:function () {
 	db.i18n.insert({_id:cst.CATEGORY,cn:"类别"});
 	db.i18n.insert({_id:cst.DELETE,cn:"删除"});
 	db.i18n.insert({_id:cst.EDIT,cn:"编辑"});
+	db.i18n.insert({_id:cst.USER_NAME,cn:"用户名"});
+	db.i18n.insert({_id:cst.PASSWORD,cn:"密码"});
+	db.i18n.insert({_id:cst.LOGIN,cn:"登录"});
+	db.i18n.insert({_id:cst.OK,cn:"确定"});
 }})
 

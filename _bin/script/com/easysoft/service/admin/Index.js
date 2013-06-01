@@ -44,7 +44,8 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			if( err ){
 				this.echo404();
 			}else{
-				dojo.wy_index_html=template;
+				//dojo.wy_index_html=template;
+				this.wy_index_html=template;
 			}
 			this.draw();
 		},
@@ -52,7 +53,7 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			var obj=this.m_obj;
 			var cst=dojo.cst;
 			var i18n=dojo.i18n;
-			var $ = dojo.cheerio.load(dojo.wy_index_html);
+			var $ = dojo.cheerio.load(this.wy_index_html);
 			$("#left_bar").remove();
 			$("#right_bar").removeClass("span9").addClass("span12");
 			var a=[];
@@ -159,7 +160,8 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			a.push(i18n[name]);
 			a.push("</a>");
 
-			$(".btn-group").html(a.join(""));
+			$("#tool_button").html(a.join(""));
+			$(".brand").html("17597.net");
 			
 			
 			var s=$.html();

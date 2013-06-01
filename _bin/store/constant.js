@@ -6,6 +6,10 @@ db.system.js.save({_id:"constant",value:function () {
                 DELETE:"DELETE",
 		EDIT:"EDIT",
 		ID:"ID",
+		LOGIN:"LOGIN",
+		PASSWORD:"PASSWORD",
+		USER_NAME:"USER_NAME",
+		OK:"OK",
                 TITLE:"TITLE"
         };
 }})
