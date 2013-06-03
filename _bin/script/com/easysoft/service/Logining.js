@@ -23,10 +23,14 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Redirect" 
 		
 		console.log("---test---start");
 
+		var a=[],
+		I18N=dojo.i18n,
+		C=dojo.cst;	
 		var self=this;
-		var user_name = self.queryForm[$c.c_user_name];
-		var newPassword=dojo.md5(self.queryForm[$c.c_user_password]);
-		
+		var user_name = self.queryForm[C.USER_NAME];
+		var newPassword=dojo.md5(self.queryForm[C.PASSWORD]);
+		console.log(user_name);
+		console.log(newPassword);
 		dojo.db.eval("checkLogining('"+user_name+"','"+newPassword+"')", dojo.hitch(this,this.doLogin));
 
 	},

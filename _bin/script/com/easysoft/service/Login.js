@@ -22,10 +22,20 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Service" , {
 			if( err ){
 				this.echo404();
 			}else{
+				var cst=dojo.cst;
+				var I18N=dojo.i18n,
+				a=[],
+				C=dojo.cst;	
 				var $ = dojo.cheerio.load(data);
-			  	$("input[name='username']").val("admin");
-			  	$("input[name='password']").val("password");
-			  	$("form").attr("action",$c.c_url_001_702);
+				
+					a.push('<h3>'+I18N[C.SITE_NAME]+'</h3>');
+					a.push('<label>'+I18N[C.USER_NAME]+':</label>');
+					a.push('<input style="height:30px" class="span3" name="'+C.USER_NAME+'" type="text">');
+					a.push('<label>'+I18N[C.PASSWORD]+':</label>');
+					a.push('<input style="height:30px" class="span3" name="'+C.PASSWORD+'" type="password">');
+					a.push('<button type="submit" class="btn btn-primary">'+I18N[C.OK]+'</button>');
+					$("form").attr("action",$c.c_url_001_702).html(a.join("\n"));
+				
 				var s=$.html();
 				var o = dojo.atm([$c.c_cache,s,$c.c_Last_Modified,dojo.getTimestamp()]);
 				this.dog.echoLast(o);

@@ -10,6 +10,7 @@ db.system.js.save({_id:"constant",value:function () {
 		PASSWORD:"PASSWORD",
 		USER_NAME:"USER_NAME",
 		OK:"OK",
+		SITE_NAME:"SITE_NAME",
                 TITLE:"TITLE"
         };
 }})

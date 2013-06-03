@@ -161,7 +161,7 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			a.push("</a>");
 
 			$("#tool_button").html(a.join(""));
-			$(".brand").html("17597.net");
+			$(".brand").html(i18n[cst.SITE_NAME]).attr("href","/");
 			
 			
 			var s=$.html();
