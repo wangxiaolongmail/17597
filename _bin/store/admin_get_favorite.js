@@ -3,8 +3,8 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 	var cst=constant();
 	var params=params||{};
 	var sid=params.sid||"0";
-	var session=checking_session(sid);
-	if(session){
+	var result=checking_session(sid);
+	if(result.ok){
 		var 
 		tablename="favorite",
 		tablename_type="favorite_type",
@@ -50,6 +50,6 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 		}
 		return build();
 	}else{
-		return {ok:false,err:"session out"};
+		return result;
 	}
 }})

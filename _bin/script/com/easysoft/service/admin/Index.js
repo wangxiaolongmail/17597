@@ -15,11 +15,15 @@
 dojo.provide("com.easysoft.service.admin.Index");
 dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service" , {
         create:function(){
-			var page=this.queryString.page||1;
+			console.log("com.easysoft.service.admin.Index::create");
+			var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
 			this.sid=this.queryString.sid;
-			var category=this.queryString.category||'';
-			var cmd = "main({stored_method:'admin_get_favorite',sid:'"+this.sid+"',category:'"+category+"',page:"+page+"})";
-			console.log(cmd);
+			o["sid"] =this.sid;
+			o["page"] =this.queryString.page||1;
+			o["category"] =this.queryString.category||C.ALL;
+			o[C.STORED_METHOD] ='admin_get_favorite';
+			var cmd = "main("+dojo.toString(o)+")";
+			console.log('dojo.db.eval("'+cmd+'");');
 			dojo.db.eval(cmd, dojo.hitch(this,this.drawPage));
         },
 		drawPage:function(err,obj){
@@ -44,16 +48,13 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			if( err ){
 				this.echo404();
 			}else{
-				//dojo.wy_index_html=template;
-				this.wy_index_html=template;
+				dojo.wy_index_html=template;
 			}
 			this.draw();
 		},
 		draw:function(){
 			var obj=this.m_obj;
-			var cst=dojo.cst;
-			var i18n=dojo.i18n;
-			var $ = dojo.cheerio.load(this.wy_index_html);
+			var $ = dojo.cheerio.load(dojo.wy_index_html);
 			$("#left_bar").remove();
 			$("#right_bar").removeClass("span9").addClass("span12");
 			var a=[];
@@ -70,7 +71,7 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			for(var ii=0;ii<metadata.length;ii++){
 					if(!metadata[ii].ishidden){
 							a.push("<td>");
-							a.push(dojo.i18n[metadata[ii].lable]);
+							a.push(metadata[ii].lable);
 							a.push("</td>");
 					}
 			}
@@ -144,24 +145,10 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			$("#select01").addClass("span2").html(a.join(""));
 			$("h4").html(obj.tablename);
 			var a=[];
-		
-			var name=cst.ADD;
-			a.push("<a class='btn "+name+"' href='#'>");
-			a.push(i18n[name]);
+			a.push("<a class='btn btnDelete' href='#'>");
+			a.push("Delete");
 			a.push("</a>");
-		
-			var name=cst.EDIT;
-			a.push("<a class='btn "+name+"' href='#'>");
-			a.push(i18n[name]);
-			a.push("</a>");
-		
-			var name=cst.DELETE;
-			a.push("<a class='btn "+name+"' href='#'>");
-			a.push(i18n[name]);
-			a.push("</a>");
-
-			$("#tool_button").html(a.join(""));
-			$(".brand").html(i18n[cst.SITE_NAME]).attr("href","/");
+			$(".btn-group").html(a.join(""));
 			
 			
 			var s=$.html();
@@ -171,19 +158,17 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 				  //a.push('alert($(this).val());');
 				  a.push('location.href="/easysoft/admin/start?sid='+sid+'&category="+$(this).val();');
 			a.push('});');
-			a.push('$("a.'+cst.DELETE+'").on("click",function()');
+			a.push('$(".btnDelete").on("click",function()');
 			a.push('{');
-				a.push('var a=[];');
 				a.push('$("#list1 input[type=\'checkbox\']:checked").each(function(){');
-					a.push('a.push($(this).val());');
+					//a.push('alert($(this).val());');
 				a.push('});');
-				a.push('if(confirm("is delete record?")){');
-					a.push('alert("/easysoft/admin/favorite_del?sid='+sid+'&category='+category+'&page='+page+'&del_list="+a.join(","));');
-					//a.push('location.href="/easysoft/admin/favorite_del?sid='+sid+'";');
+				a.push('if(confirm("Is it delete record?")){');
+					a.push('location.href="/easysoft/admin/favorite_del?sid='+sid+'";');
 				a.push('}');
 			a.push('});');
 			s=s.replace("/*script_body_replace*/",a.join("\n"));
-			s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(obj));
+			s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(obj,true));
 			var o = dojo.atm([$c.c_cache,s,$c.c_Last_Modified,dojo.getTimestamp()]);
 			this.dog.echoLast(o);
 		}

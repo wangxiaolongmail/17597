@@ -2,16 +2,21 @@
 db.system.js.save({_id:"checking_session",value:function (sid) {
 	var pub=public();
 	var sid=sid||"0";
-	var rs=db.session.findOne({_id:ObjectId(sid)});
-	if(rs){
-		var newUpdateDate=(new Date()).getTime();
-		if((newUpdateDate-rs.updateTime)>pub.interval){
-			return false;
+	if(sid.length===24){
+		var rs=db.session.findOne({_id:ObjectId(sid)});
+		if(rs){
+			var newUpdateDate=(new Date()).getTime();
+			if((newUpdateDate-rs.updateTime)>pub.interval){
+				return false;
+			}else{
+				db.session.update({_id:ObjectId(sid)},{'$set':{'updateTime':newUpdateDate}});
+				return {ok:true};
+			}
 		}else{
-			db.session.update({_id:ObjectId(sid)},{'$set':{'updateTime':newUpdateDate}});
-			return rs;
+			return {ok:false,err:"session out"};
 		}
 	}else{
-		return false;
+		return {ok:false,err:"sid error"};
 	}
 }})
+

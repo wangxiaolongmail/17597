@@ -1,10 +1,17 @@
 db.system.js.save({_id:"main",value:function (params) {
-	switch(params.stored_method) 
+	var C=constant();
+	var result;
+	switch(params[C.STORED_METHOD]) 
 	{   
 		 case "admin_get_favorite":   
-				 return admin_get_favorite(params);   
+				result=admin_get_favorite(params);   
+				break;
+		 case "checkLogining":   
+				result=checkLogining(params);   
 				break;
 		 default:  
-				 return {ok:false,err:"stored_method error"};    
-	}  
+				result={ok:false,err:C.STORED_METHOD+" is undefined"};    
+	}
+	return result;
 }})
+

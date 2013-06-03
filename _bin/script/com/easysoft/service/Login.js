@@ -22,9 +22,8 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Service" , {
 			if( err ){
 				this.echo404();
 			}else{
-				var cst=dojo.cst;
-				var I18N=dojo.i18n,
-				a=[],
+				var a=[],
+				I18N=dojo.i18n,
 				C=dojo.cst;	
 				var $ = dojo.cheerio.load(data);
 				

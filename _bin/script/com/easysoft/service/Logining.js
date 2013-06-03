@@ -19,36 +19,35 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Redirect" 
 	error_redirect_url:$c.c_url_001_707,
 	db_path:"/_d/maodan/table/user",
 	create:function(){
-		//test
-		
-		console.log("---test---start");
-
+		console.log("com.easysoft.service.Logining::create");
 		var a=[],
 		I18N=dojo.i18n,
 		C=dojo.cst;	
-		var self=this;
-		var user_name = self.queryForm[C.USER_NAME];
-		var newPassword=dojo.md5(self.queryForm[C.PASSWORD]);
-		console.log(user_name);
-		console.log(newPassword);
-		dojo.db.eval("checkLogining('"+user_name+"','"+newPassword+"')", dojo.hitch(this,this.doLogin));
+		var o={};
+		o[C.USER_NAME] = this.queryForm[C.USER_NAME];
+		o[C.PASSWORD] =dojo.md5(this.queryForm[C.PASSWORD]);
+		o[C.STORED_METHOD] ='checkLogining';
+		var cmd = "main("+dojo.toString(o)+")";
+		console.log('dojo.db.eval("'+cmd+'");');
+		dojo.db.eval(cmd, dojo.hitch(this,this.doLogin));
 
 	},
 	doLogin:function(err,o){
 		console.log("----doLogin----");
-		var self=this;
+		var a=[],
+		I18N=dojo.i18n,
+		C=dojo.cst;	
 		if(err){
-			console.log("unknow err");
-			this.set_redirect_url(this.error_redirect_url);
-			this.lastPrint();
+				var o = dojo.atm([$c.c_cache,""+err,$c.c_Last_Modified,dojo.getTimestamp()]);
+				this.dog.echoLast(o);
 		}else{
 			if(o.ok){
-				self.set_redirect_url(self.success_redirect_url+"?sid="+o.id);
-				self.lastPrint();
-				dojo.sendMail({title:o.user+" loging system successful"});
-			}else{
-				this.set_redirect_url(this.error_redirect_url);
+				this.set_redirect_url(this.success_redirect_url+"?sid="+o.id);
 				this.lastPrint();
+				dojo.sendMail({title:o[C.USER_NAME]+" loging system successful"});
+			}else{
+				var o = dojo.atm([$c.c_cache,o.err,$c.c_Last_Modified,dojo.getTimestamp()]);
+				this.dog.echoLast(o);
 			}
 		}
 	},
