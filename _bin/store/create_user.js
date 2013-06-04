@@ -1,4 +1,4 @@
-db.system.js.save({_id:"admin_create_user",value:function (params) {
+db.system.js.save({_id:"create_user",value:function (params) {
 	var C=constant();
 	db.user.remove();
 	var obj={};
