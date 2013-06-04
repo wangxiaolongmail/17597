@@ -131,7 +131,7 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			
 			
 			var a=[];
-			var catlist=obj.catlist;
+			var catlist=dojo.favorite_catlist;
 			var len = catlist.length;
 			for(var i=0;i<len;i++){
 				var o=catlist[i];

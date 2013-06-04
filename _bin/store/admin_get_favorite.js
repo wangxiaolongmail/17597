@@ -40,11 +40,9 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 			}
 			pageRecordCount=id;
 			var pageCount=Math.ceil(recordCount/pageSize);
-			var catlist =db[tablename_type].find({},{article_title:true,category:true}).toArray();
-			catlist.unshift({article_title:pub.i18n(cst.ALL),category:cst.ALL});
 			var result={
 				ok:true,tablename:tablename,metadata:metadata,page:page,recordCount:recordCount,
-				pageSize:pageSize,pageCount:pageCount,pageRecordCount:pageRecordCount,list:list,catlist:catlist,category:category
+				pageSize:pageSize,pageCount:pageCount,pageRecordCount:pageRecordCount,list:list,category:category
 			};
 			return result;
 		}

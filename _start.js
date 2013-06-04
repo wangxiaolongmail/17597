@@ -94,6 +94,7 @@ function fn_conn_db(){
 			dojo.db=db;
 			var cmd="truck()";
 			dojo.db.eval(cmd, function(err,obj){
+					dojo.favorite_catlist=obj.favorite_catlist;
 					dojo.cst=obj.cst;
 					var a=obj.i18n;
 					dojo.i18n={};
