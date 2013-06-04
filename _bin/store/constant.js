@@ -6,6 +6,7 @@ db.system.js.save({_id:"constant",value:function () {
                 CACHE:"CACHE",
                 DELETE:"DELETE",
 				EDIT:"EDIT",
+				GROUP_NAME:"GROUP_NAME",
 				ID:"ID",
 				LOGIN:"LOGIN",
 				PASSWORD:"PASSWORD",
