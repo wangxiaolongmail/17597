@@ -28,7 +28,7 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Redirect" 
 		o[C.PASSWORD] =dojo.md5(this.queryForm[C.PASSWORD]);
 		o[C.STORED_METHOD] ='checkLogining';
 		var cmd = "main("+dojo.toString(o)+")";
-		console.log('dojo.db.eval("'+cmd+'");');
+		console.log('db.eval("'+cmd+'");');
 		dojo.db.eval(cmd, dojo.hitch(this,this.doLogin));
 
 	},
@@ -42,7 +42,8 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Redirect" 
 				this.dog.echoLast(o);
 		}else{
 			if(o.ok){
-				this.set_redirect_url(this.success_redirect_url+"?sid="+o.id);
+				var url=(o[C.MODULE_LIST])[0][C.MODULE_URL];
+				this.set_redirect_url(url+"?sid="+o.id);
 				this.lastPrint();
 				dojo.sendMail({title:o[C.USER_NAME]+" loging system successful"});
 			}else{

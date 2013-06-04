@@ -2,8 +2,7 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 	var pub=public();
 	var cst=constant();
 	var params=params||{};
-	var sid=params.sid||"0";
-	var result=checking_session(sid);
+	var result=checking_session(params);
 	if(result.ok){
 		var 
 		tablename="favorite",

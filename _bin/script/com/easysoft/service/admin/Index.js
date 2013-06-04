@@ -21,6 +21,7 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			o["sid"] =this.sid;
 			o["page"] =this.queryString.page||1;
 			o["category"] =this.queryString.category||C.ALL;
+			o[C.CURRENT_URL]=this.dog.m_urlObject.pathname;
 			o[C.STORED_METHOD] ='admin_get_favorite';
 			var cmd = "main("+dojo.toString(o)+")";
 			console.log('dojo.db.eval("'+cmd+'");');

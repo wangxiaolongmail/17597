@@ -12,5 +12,6 @@ db.system.js.save({_id:"create_i18n",value:function () {
 	db.i18n.insert({_id:C.LOGIN,cn:"登录"});
 	db.i18n.insert({_id:C.SITE_NAME,cn:"17597.net"});
 	db.i18n.insert({_id:C.OK,cn:"确定"});
+	return db.i18n.find().toArray();
 }})
 

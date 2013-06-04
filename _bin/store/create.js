@@ -4,6 +4,7 @@ db.system.js.save({_id:"create",value:function () {
 		create_usergroup();
 		create_user();
 		create_module();
+		create_authority();
 }})
 
 
