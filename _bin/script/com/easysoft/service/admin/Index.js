@@ -158,6 +158,25 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			a.push("</a>"); 
 			$(".btn-group").html(a.join(""));
 			
+			var a=[];
+			var list=obj[C.MODULE_LIST];
+			var len = list.length;
+			for(var i=0;i<len;i++){
+				var o=list[i];
+				a.push("<ul class='nav'>");
+					if(obj[C.CURRENT_MODULE]==o[C.MODULE_NAME]){
+					  a.push("<li class='active'>");
+					  a.push("<a href='#'>"+I18N[o[C.MODULE_NAME]]+"</a>");
+					  a.push("</li>");
+					}else{
+					  a.push("<li>");
+					  a.push("<a href='"+o[C.MODULE_URL]+"'>"+o[C.MODULE_NAME]+"</a>");
+					  a.push("</li>");
+					}
+				a.push("</ul>");
+			}
+			$(".nav-collapse").html(a.join(""));
+			
 			
 			var s=$.html();
 			var a=[];

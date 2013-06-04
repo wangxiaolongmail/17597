@@ -1,9 +1,10 @@
 db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 	var pub=public();
 	var cst=constant();
+	var C=constant();
 	var params=params||{};
-	var result=checking_session(params);
-	if(result.ok){
+	var sess=checking_session(params);
+	if(sess.ok){
 		var 
 		tablename="favorite",
 		tablename_type="favorite_type",
@@ -43,10 +44,12 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 				ok:true,tablename:tablename,metadata:metadata,page:page,recordCount:recordCount,
 				pageSize:pageSize,pageCount:pageCount,pageRecordCount:pageRecordCount,list:list,category:category
 			};
+			result[C.MODULE_LIST]=sess[C.MODULE_LIST];
+			result[C.CURRENT_MODULE]=sess[C.CURRENT_MODULE];
 			return result;
 		}
 		return build();
 	}else{
-		return result;
+		return sess;
 	}
 }})

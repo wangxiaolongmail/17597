@@ -6,21 +6,26 @@ db.system.js.save({_id:"checking_session",value:function (params) {
 	if(sid.length===24){
 		var rs=db.session.findOne({_id:ObjectId(sid)});
 		if(rs){
-			if( params[C.CURRENT_URL] in rs[C.MODULE_URL_LIST] ){
-				var newUpdateDate=(new Date()).getTime();
-				if((newUpdateDate-rs.updateTime)>pub.interval){
-					return false;
-				}else{
-					db.session.update({_id:ObjectId(sid)},{'$set':{'updateTime':newUpdateDate}});
-					return {ok:true};
+			var a=rs[C.MODULE_LIST];
+			for(var i=0;i<a.length;i++){
+				var o = a[i];
+				if(params[C.CURRENT_URL]==o[C.MODULE_URL]){
+					var newUpdateDate=(new Date()).getTime();
+					if((newUpdateDate-rs.updateTime)<pub.interval){
+						db.session.update({_id:ObjectId(sid)},{'$set':{'updateTime':newUpdateDate}});
+						rs.ok=true;
+						rs[C.CURRENT_MODULE]=o[C.MODULE_NAME];
+						return rs;
+					}else{
+						return {ok:false,err:"session out"};
+					}
 				}
-			}else{
-				return {ok:false,err:"authority error"};
 			}
 		}else{
-			return {ok:false,err:"session out"};
+			return {ok:false,err:"session closed"};
 		}
 	}else{
 		return {ok:false,err:"sid error"};
 	}
+	return {ok:false,err:"authority error"};
 }})
