@@ -1,6 +1,5 @@
 db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 	var pub=public();
-	var cst=constant();
 	var C=constant();
 	var params=params||{};
 	var sess=checking_session(params);
@@ -12,9 +11,9 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 		pageSize=params.pageSize||pub.pageSize,
 		recordCount=0,
 		pageRecordCount=0,
-		category=params.category||cst.ALL;	
+		category=params.category||C.ALL;	
 		var build=function(){
-			if(category==cst.ALL){
+			if(category==C.ALL){
 				var option={};
 			}else{
 				var option={category:category};
@@ -26,17 +25,19 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 			var id=0;
 			while (cursor.hasNext()) {
 				id++; 
-				var o=cursor.next();
-				var oo=db[tablename_type].findOne( { category : o.category } );
-				o.category=oo.article_title;
-				o.id=id;
-				var obj={};
+				var item=cursor.next();
+				var o=db[tablename_type].findOne( { category : item.category } );
+				item.category=o.article_title;
+				item.id=id;
+				var new_item={};
 				var a=metadata;
-				for(var i=0;i<a.length;i++){
-					var field=a[i].field;
-					obj[field]=o[field];
+				var len=a.length;
+				for(var i=0;i<len;i++){
+					var o=a[i];
+					var field=o.field;
+					new_item[field]=item[field];
 				}
-				list.push(obj);
+				list.push(new_item);
 			}
 			pageRecordCount=id;
 			var pageCount=Math.ceil(recordCount/pageSize);

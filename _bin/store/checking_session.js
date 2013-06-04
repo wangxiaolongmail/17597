@@ -7,7 +7,8 @@ db.system.js.save({_id:"checking_session",value:function (params) {
 		var rs=db.session.findOne({_id:ObjectId(sid)});
 		if(rs){
 			var a=rs[C.MODULE_LIST];
-			for(var i=0;i<a.length;i++){
+			var len=a.length;
+			for(var i=0;i<len;i++){
 				var o = a[i];
 				if(params[C.CURRENT_URL]==o[C.MODULE_URL]){
 					var newUpdateDate=(new Date()).getTime();
