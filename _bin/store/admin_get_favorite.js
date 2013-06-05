@@ -35,7 +35,11 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 				for(var i=0;i<len;i++){
 					var o=a[i];
 					var field=o.field;
-					new_item[field]=item[field];
+					var val=item[field];
+					if(field=="_id"){
+						val=val.valueOf();
+					}
+					new_item[field]=val;
 				}
 				list.push(new_item);
 			}

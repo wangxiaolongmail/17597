@@ -18,6 +18,7 @@ db.system.js.save({_id:"checkLogining",value:function (params) {
 			var op={};
 			op[C.MODULE_NAME]=item[C.MODULE_NAME];
 			item[C.MODULE_URL]=db.module.findOne( op )[C.MODULE_URL];
+			delete item._id;
 			a.push(item);
 			aa[item[C.MODULE_URL]]=1;
 		}
