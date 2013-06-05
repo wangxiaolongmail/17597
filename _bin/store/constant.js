@@ -23,6 +23,7 @@ db.system.js.save({_id:"constant",value:function () {
 				MODULE_LIST:"MODULE_LIST",
 				MODULE_URL_LIST:"MODULE_URL_LIST",
 				OK:"OK",
+				ROLE_NAME:"ROLE_NAME",
 				SITE_NAME:"SITE_NAME",
 				STORED_METHOD:"stored_method",
                 TITLE:"TITLE"
