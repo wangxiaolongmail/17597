@@ -3,7 +3,7 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 	db.authority.remove();
 	var obj={};
 	obj[C.MODULE_NAME]=C.FAVORITE;
-	obj[C.GROUP_NAME]="gwxl";
+	obj[C.ROLE_NAME]="r_wxl";
 	db.authority.insert(obj);
 }})
 

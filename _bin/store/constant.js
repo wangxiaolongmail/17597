@@ -9,7 +9,6 @@ db.system.js.save({_id:"constant",value:function () {
                 DELETE:"DELETE",
 				EDIT:"EDIT",
 				FAVORITE:"FAVORITE",
-				GROUP_NAME:"GROUP_NAME",
 				ID:"ID",
 				IS_NEW:"IS_NEW",
 				IS_EDIT:"IS_EDIT",

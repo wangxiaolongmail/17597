@@ -9,7 +9,7 @@ db.system.js.save({_id:"checkLogining",value:function (params) {
 		var o={_id:id,loginTime:loginTime,updateTime:loginTime};
 		o[C.USER_NAME]=obj[C.USER_NAME];
 		var op={};
-		op[C.GROUP_NAME]=result[C.GROUP_NAME];
+		op[C.ROLE_NAME]=result[C.ROLE_NAME];
 		var cursor=db.authority.find(op);
 		var a=[];
 		var aa={};
