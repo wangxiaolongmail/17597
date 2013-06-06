@@ -15,6 +15,7 @@ db.system.js.save({_id:"constant",value:function () {
 				IS_DELETE:"IS_DELETE",
 				IS_CATEGORY:"IS_CATEGORY",
 				LOGIN:"LOGIN",
+				LOGIN_TIME:"LOGIN_TIME",
 				PASSWORD:"PASSWORD",
 				USER_NAME:"USER_NAME",
 				MODULE_NAME:"MODULE_NAME",
@@ -23,9 +24,11 @@ db.system.js.save({_id:"constant",value:function () {
 				MODULE_URL_LIST:"MODULE_URL_LIST",
 				OK:"OK",
 				ROLE_NAME:"ROLE_NAME",
+				REMOTE_ADDRESS:"REMOTE_ADDRESS",
 				SITE_NAME:"SITE_NAME",
 				STORED_METHOD:"stored_method",
-                TITLE:"TITLE"
+                TITLE:"TITLE",
+                UPDATE_TIME:"UPDATE_TIME"
         };
 }})
 

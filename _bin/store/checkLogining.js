@@ -1,18 +1,14 @@
 db.system.js.save({_id:"checkLogining",value:function (params) {
 	var C=constant();
-	delete params[C.STORED_METHOD];
-	obj=params;
-	var result =db.user.findOne(obj);
-	if (result) {
-		var loginTime=(new Date()).getTime();
-		var id=ObjectId();
-		var o={_id:id,loginTime:loginTime,updateTime:loginTime};
-		o[C.USER_NAME]=obj[C.USER_NAME];
+	var op={};
+	op[C.USER_NAME]=params[C.USER_NAME];
+	op[C.PASSWORD]=params[C.PASSWORD];
+	var rs =db.user.findOne(op);
+	if (rs) {
 		var op={};
-		op[C.ROLE_NAME]=result[C.ROLE_NAME];
+		op[C.ROLE_NAME]=rs[C.ROLE_NAME];
 		var cursor=db.authority.find(op);
 		var a=[];
-		var aa={};
 		while (cursor.hasNext()) {
 			var item=cursor.next();
 			var op={};
@@ -20,16 +16,19 @@ db.system.js.save({_id:"checkLogining",value:function (params) {
 			item[C.MODULE_URL]=db.module.findOne( op )[C.MODULE_URL];
 			delete item._id;
 			a.push(item);
-			aa[item[C.MODULE_URL]]=1;
 		}
 		if(a.length>0){
+			var o={};
+			var _id=ObjectId();
+			o["_id"]=_id;
+			o["sid"]=_id.valueOf();
+			o[C.USER_NAME]=params[C.USER_NAME];
+			o[C.LOGIN_TIME]=(new Date()).getTime();
+			o[C.UPDATE_TIME]=o[C.LOGIN_TIME];
+			o[C.REMOTE_ADDRESS]=params[C.REMOTE_ADDRESS];
 			o[C.MODULE_LIST]=a;
-			o[C.MODULE_URL_LIST]=aa;
 			db.session.insert(o);
-			var o={ok:true,id:id.valueOf()};
-			o[C.USER_NAME]=obj[C.USER_NAME];
-			o[C.MODULE_LIST]=a;
-			o[C.MODULE_URL_LIST]=aa;
+			o.ok=true;
 			return o;
 		}else{
 			return {ok:false,err:"system module error"};
