@@ -23,6 +23,8 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			o["category"] =this.queryString.category||C.ALL;
 			o[C.CURRENT_URL]=this.dog.m_urlObject.pathname;
 			o[C.REMOTE_ADDRESS]=this.dog.req.connection.remoteAddress;
+			o[C.TABLE_NAME] ='favorite';
+			o[C.CAT_TABLE_NAME] ='favorite_type';
 			o[C.STORED_METHOD] ='admin_get_favorite';
 			var cmd = "main("+dojo.toString(o)+")";
 			console.log('dojo.db.eval("'+cmd+'");');

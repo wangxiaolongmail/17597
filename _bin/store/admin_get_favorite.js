@@ -5,8 +5,8 @@ db.system.js.save({_id:"admin_get_favorite",value:function (params) {
 	var sess=checking_session(params);
 	if(sess.ok){
 		var 
-		tablename="favorite",
-		tablename_type="favorite_type",
+		tablename=params[C.TABLE_NAME],
+		tablename_type=params[C.CAT_TABLE_NAME],
 		page=params.page||1,
 		pageSize=params.pageSize||pub.pageSize,
 		recordCount=0,
