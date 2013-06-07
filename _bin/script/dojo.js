@@ -168,6 +168,12 @@
 						n += v; 
 						n += "'";
 					}
+				}else if(typeof v ==="boolean"){
+					if(v){
+						n += "true"; 
+					}else{
+						n += "false"; 
+					}
 				}else{
 					n += _toString(v,isbr,isShowCache,ispace);
 				}

@@ -133,6 +133,31 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
           	
 			$("#pager").html(a.join(""));
 			
+			var a=[];
+			var cur_obj={};
+			var list=obj[C.MODULE_LIST];
+			var len = list.length;
+			a.push("<ul class='nav'>");
+			for(var i=0;i<len;i++){
+				var o=list[i];
+				if(obj[C.CURRENT_MODULE]==o[C.MODULE_NAME]){
+				  cur_obj=o;
+				  a.push("<li class='active'>");
+				  a.push("<a href='#'>"+I18N[o[C.MODULE_NAME]]+"</a>");
+				  a.push("</li>");
+				}else{
+				  a.push("<li>");
+				  a.push("<a href='"+o[C.MODULE_URL]+"'>"+o[C.MODULE_NAME]+"</a>");
+				  a.push("</li>");
+				}
+			}
+			a.push("</ul>");
+			a.push("<ul class='nav pull-right'>");
+            a.push("<li>");
+			a.push("<a href='/e/Logout?sid="+sid+"'>"+I18N[C.LOGOUT]+"</a>");
+			a.push("</li>");
+          	a.push("</ul>");
+			$(".nav-collapse").html(a.join(""));
 			
 			var a=[];
 			var catlist=dojo.favorite_catlist;
@@ -150,41 +175,22 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			$("#select01").addClass("span2").html(a.join(""));
 			$("h4").html(obj.tablename);
 			var a=[];
-			a.push("<a class='btn "+C.ADD+"' href='#'>");
-			a.push(I18N[C.ADD]);
-			a.push("</a>"); 
-			a.push("<a class='btn "+C.EDIT+"' href='#'>");
-			a.push(I18N[C.EDIT]);
-			a.push("</a>"); 
-			a.push("<a class='btn "+C.DELETE+"' href='#'>");
-			a.push(I18N[C.DELETE]);
-			a.push("</a>"); 
-			$(".btn-group").html(a.join(""));
-			
-			var a=[];
-			var list=obj[C.MODULE_LIST];
-			var len = list.length;
-			a.push("<ul class='nav'>");
-			for(var i=0;i<len;i++){
-				var o=list[i];
-					if(obj[C.CURRENT_MODULE]==o[C.MODULE_NAME]){
-					  a.push("<li class='active'>");
-					  a.push("<a href='#'>"+I18N[o[C.MODULE_NAME]]+"</a>");
-					  a.push("</li>");
-					}else{
-					  a.push("<li>");
-					  a.push("<a href='"+o[C.MODULE_URL]+"'>"+o[C.MODULE_NAME]+"</a>");
-					  a.push("</li>");
-					}
+			if(cur_obj[C.ADD]){
+				a.push("<a class='btn "+C.ADD+"' href='#'>");
+				a.push(I18N[C.ADD]);
+				a.push("</a>"); 
 			}
-			a.push("</ul>");
-			a.push("<ul class='nav pull-right'>");
-            a.push("<li>");
-			a.push("<a href='/e/Logout?sid="+sid+"'>"+I18N[C.LOGOUT]+"</a>");
-			a.push("</li>");
-          	a.push("</ul>");
-			$(".nav-collapse").html(a.join(""));
-			
+			if(cur_obj[C.EDIT]){
+				a.push("<a class='btn "+C.EDIT+"' href='#'>");
+				a.push(I18N[C.EDIT]);
+				a.push("</a>"); 
+			}
+			if(cur_obj[C.DELETE]){
+				a.push("<a class='btn "+C.DELETE+"' href='#'>");
+				a.push(I18N[C.DELETE]);
+				a.push("</a>"); 
+			}
+			$(".btn-group").html(a.join(""));
 			
 			var s=$.html();
 			var a=[];
