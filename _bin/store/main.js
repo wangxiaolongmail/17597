@@ -3,8 +3,11 @@ db.system.js.save({_id:"main",value:function (params) {
 	var result;
 	switch(params[C.STORED_METHOD]) 
 	{   
-		 case "admin_get_favorite":   
-				result=admin_get_favorite(params);   
+		 case "admin_Index":   
+				result=admin_Index(params);   
+				break;
+		 case "admin_favorite_List":   
+				result=admin_favorite_List(params);   
 				break;
 		 case "checkLogining":   
 				result=checkLogining(params);   

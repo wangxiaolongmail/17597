@@ -1,4 +1,4 @@
-db.system.js.save({_id:"admin_get_favorite",value:function (params) {
+db.system.js.save({_id:"admin_Index",value:function (params) {
 	var pub=public();
 	var C=constant();
 	var params=params||{};

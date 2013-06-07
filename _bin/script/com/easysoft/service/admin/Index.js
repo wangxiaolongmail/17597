@@ -25,7 +25,7 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			o[C.REMOTE_ADDRESS]=this.dog.req.connection.remoteAddress;
 			o[C.TABLE_NAME] ='favorite';
 			o[C.CAT_TABLE_NAME] ='favorite_type';
-			o[C.STORED_METHOD] ='admin_get_favorite';
+			o[C.STORED_METHOD] ='admin_Index';
 			var cmd = "main("+dojo.toString(o)+")";
 			console.log('dojo.db.eval("'+cmd+'");');
 			dojo.db.eval(cmd, dojo.hitch(this,this.drawPage));

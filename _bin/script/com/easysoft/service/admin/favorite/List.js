@@ -25,7 +25,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			o[C.REMOTE_ADDRESS]=this.dog.req.connection.remoteAddress;
 			o[C.TABLE_NAME] ='favorite';
 			o[C.CAT_TABLE_NAME] ='favorite_type';
-			o[C.STORED_METHOD] ='admin_get_favorite';
+			o[C.STORED_METHOD] ='admin_favorite_List';
 			var cmd = "main("+dojo.toString(o)+")";
 			console.log('dojo.db.eval("'+cmd+'");');
 			dojo.db.eval(cmd, dojo.hitch(this,this.drawPage));
@@ -176,7 +176,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			a.push('$("#select01").change(function()');
 			a.push('{');
 				  //a.push('alert($(this).val());');
-				  a.push('location.href="'+cur_obj[C.MODULE_URL]+'?sid='+sid+'&category="+$(this).val();');
+				  a.push('location.href="?sid='+sid+'&category="+$(this).val();');
 			a.push('});');
 			a.push('$("a.'+C.DELETE+'").on("click",function()');
 			a.push('{');
