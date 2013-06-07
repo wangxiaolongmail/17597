@@ -9,6 +9,9 @@ db.system.js.save({_id:"main",value:function (params) {
 		 case "checkLogining":   
 				result=checkLogining(params);   
 				break;
+		 case "logout":   
+				result=logout(params);   
+				break;
 		 default:  
 				result={ok:false,err:C.STORED_METHOD+" is undefined"};    
 	}

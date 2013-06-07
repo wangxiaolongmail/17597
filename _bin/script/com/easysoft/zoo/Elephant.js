@@ -29,9 +29,9 @@ dojo.declare("com.easysoft.zoo.Elephant","com.easysoft.Widget",{
 				var remoteAddress=dojo.toString(req.connection.remoteAddress);
 				if( remoteAddress != dojo.conf.DOMAIN_IP &&  remoteAddress != dojo.conf.default_vm_ip ){
 					var timestamp=new Date().getTime();
-					console.log("req.headers:"+timestamp+":"+dojo.toString(req.headers));
-					console.log("req.connection.remoteAddress:"+timestamp+":"+dojo.toString(req.connection.remoteAddress));
-					console.log("req.method:"+timestamp+":"+dojo.toString(req.method));
+					//console.log("req.headers:"+timestamp+":"+dojo.toString(req.headers));
+					//console.log("req.connection.remoteAddress:"+timestamp+":"+dojo.toString(req.connection.remoteAddress));
+					//console.log("req.method:"+timestamp+":"+dojo.toString(req.method));
 					var timestamp=new Date();
 					refer=req.headers.referer||req.headers.refer;
 					console.log("request|"+timestamp+"|"+dojo.toString(req.method)+"|"+dojo.toString(req.connection.remoteAddress)+"|"+req.headers["user-agent"]+"|"+refer);

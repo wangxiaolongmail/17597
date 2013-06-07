@@ -11,8 +11,10 @@ db.system.js.save({_id:"create_i18n",value:function () {
 	db.i18n.insert({_id:C.USER_NAME,cn:"用户名"});
 	db.i18n.insert({_id:C.PASSWORD,cn:"密码"});
 	db.i18n.insert({_id:C.LOGIN,cn:"登录"});
+	db.i18n.insert({_id:C.LOGOUT,cn:"退出"});
 	db.i18n.insert({_id:C.SITE_NAME,cn:"17597.net"});
 	db.i18n.insert({_id:C.OK,cn:"确定"});
+	
 	return db.i18n.find().toArray();
 }})
 

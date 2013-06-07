@@ -18,6 +18,7 @@ db.system.js.save({_id:"constant",value:function () {
 				IS_TIMEOUT:"IS_TIMEOUT",
 				LOGIN:"LOGIN",
 				LOGIN_TIME:"LOGIN_TIME",
+				LOGOUT:"LOGOUT",
 				PASSWORD:"PASSWORD",
 				USER_NAME:"USER_NAME",
 				MODULE_NAME:"MODULE_NAME",
