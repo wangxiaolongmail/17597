@@ -216,7 +216,8 @@ dojo.declare( "com.easysoft.zoo.Dog" , "com.easysoft.Widget" , {
 						if( err ){
 							this.findNotFile();
 						}else{
-							var o = dojo.atm([$c.c_extname,dojo.path.extname(this.m_name),$c.c_cache,o[$c.c_cache],$c.c_Last_Modified,dojo.getTimestamp()]);
+							//var o = dojo.atm([$c.c_extname,dojo.path.extname(this.m_name),$c.c_cache,o[$c.c_cache],$c.c_Last_Modified,dojo.getTimestamp()]);
+							var o = dojo.atm([$c.c_extname,dojo.path.extname(this.m_name),$c.c_cache,o[$c.c_cache],$c.c_Last_Modified,this.m_name]);
 							
 							dojo.setObject(this.m_name,o,d.mBuffer,"/");
 							var a=dojo.route.noBufferList;
