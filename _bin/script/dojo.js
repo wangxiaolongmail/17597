@@ -174,6 +174,8 @@
 					}else{
 						n += "false"; 
 					}
+				}else if(typeof v ==="undefined"){
+					n += "undefined";
 				}else{
 					n += _toString(v,isbr,isShowCache,ispace);
 				}

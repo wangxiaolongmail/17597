@@ -67,7 +67,9 @@
 			{ pathname:$c.c_url_client_easysoft_admin_css_min,servletClass:"com.easysoft.service.css_min"},
 			{ pathname:$c.c_url_001_012,servletClass:"com.easysoft.service.admin.clearPageBuffer"},
 			{ pathname:"/easysoft/admin/favorite_del",servletClass:"com.easysoft.service.admin.favorite_del"},
-			{ pathname:"/e/Logout",servletClass:"com.easysoft.service.Logout"}
+			{ pathname:"/e/Logout",servletClass:"com.easysoft.service.Logout"},
+			{ pathname:"/easysoft/admin/favorite/list",servletClass:"com.easysoft.service.admin.favorite.List"}
+			
 			
 		],
 		staticServletMapping:[

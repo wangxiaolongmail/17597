@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Guidware ClaimCenter</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/wy/docs.css">
+  </head>
+
+  <body>
+
+
+  <!-- Navbar
+    ================================================== -->
+    <div class="navbar  navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a href="./index.html" class="brand">Guidware ClaimCenter</a>
+          <div class="nav-collapse">
+	    	<ul class="nav">
+              <li class="active">
+                <a href="#">Desktop</a>
+              </li>
+              <li class="">
+                <a href="#">Search</a>
+              </li>
+              <li class="">
+                <a href="#">Address Book</a>
+              </li>
+              <li class="">
+                <a href="#">Claim</a>
+              </li>
+              <li class="disabled">
+                <a href="#">Vacation</a>
+              </li>
+            </ul>
+            <!--form class="navbar-search pull-left" action="">
+            <input type="text" class="search-query span2" placeholder="Search">
+          	</form-->
+          	<ul class="nav pull-right">
+            <li><a href="#">Link</a></li>
+            <li class="divider-vertical"></li>
+            <li><a href="#">Link</a></li>
+            <!--li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li-->
+          </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    
+      <div class="row">
+        <div id="left_bar" class="span3 columns">
+        	<div style="padding-top:53px;">
+                <div class="well" style="padding: 8px 0;">
+                    <ul class="nav nav-list">
+                    	<li class="nav-header">
+                        	Actions
+                        </li>
+                        <li class="active">
+                        <a href="#"><i class="icon-list-alt"></i>Activities<span class="badge badge-inverse pull-right">38</span></a>
+                        </li>
+                        <li>
+                        <a href="#"><i class="icon-list-alt"></i>Claims<span class="badge pull-right">21</span></a></li>
+                        <li>
+                        <a href="#"><i class="icon-list-alt"></i>Exposures<span class="badge pull-right">22</span></a></li>
+                        <li>
+                        <a href="#"><i class="icon-list-alt"></i>Queues<span class="badge pull-right">0</span></a></li>
+                        <li>
+                        <a href="#"><i class="icon-calendar"></i>Clendar</a></li>
+                        <li>
+                        <a href="#"><i class="icon-list-alt"></i>Bulk Invoices</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="right_bar" class="span9 columns">
+        	<div>
+              <h4>Activities</h4>
+<div class="clearfix">
+             <div style="float:left;padding-bottom:10px;padding-right:7px">
+                  <div id="tool_button" class="btn-group">
+                      <button class="btn disabled">Assign</button>
+                      <button class="btn disabled">Skip</button>
+                      <button class="btn disabled">Complete</button>
+                      <button class="btn disabled">Aprove</button>
+                      <button class="btn disabled">Reject</button>
+                      <button class="btn Print-Export">Print/Export</button>
+                  </div>
+              </div>
+              <div style="float:left;padding-right:7px">
+                  <select id="select01">
+                    <option>请选择</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+              </div>
+	      <div style="float:left;">
+    <div class="input-append">
+    <input class="span2" id="appendedInputButton" type="text">
+    <button class="btn" type="button">Go!</button>
+   		 </div>
+              </div>
+</div>
+
+   
+
+              <table id="list1" class="table table-bordered table-striped">
+                <thead>
+                 <tr>
+                   <th style="width: 10px;">
+                       <label class="checkbox">
+                        <input type="checkbox" value="optionAll">
+                       </label>
+                   </th>
+                   <th style="width: 10px;"><i class="icon-star-empty"></i></th>
+                   <th style="width: 100px;">ID</th>
+                   <th style="width: 100px;">Due</th>
+                   <th style="width: 100px;">Priority</th>
+                   <th style="width: 100px;">Subject</th>
+                   <th style="width: 100px;">Claim</th>
+                   <th>Insured</th>
+                 </tr>
+                </thead>
+                <tbody>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option1">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>1</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td align="center">
+                       <label class="checkbox">
+                        <input type="checkbox" value="option2">
+                       </label>
+                   </td>
+                   <td>&nbsp;</td>
+                   <td>1</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                       <label class="checkbox">
+                        <input type="checkbox" value="option3">
+                       </label>
+                   </td>
+                   <td><i class="icon-star-empty"></i></td>
+                   <td>xiaolong</td>
+                   <td>2</td>
+                   <td>3</td>
+                   <td>4</td>
+                   <td>5</td>
+                   <td>6</td>
+                 </tr>
+                </tbody>
+                <tbody>
+                </tbody>
+              </table>
+              <div id="pager" class="pagination pagination-centered">
+                    <ul>
+                        <li class="disabled"><a href="#">«</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="?page=2">2</a></li>
+                        <li><a href="?page=3">3</a></li>
+                        <li><a href="?page=4">4</a></li>
+                        <li><a href="?page=5">5</a></li>
+                        <li><a href="#">»</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      </div>
+
+
+
+
+
+     <!-- Footer
+      ================================================== -->
+      <footer class="footer">
+        
+      </footer>
+
+    </div><!-- /container -->
+
+
+
+    <script src="/jquery/jquery-2.0.0.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+	/*script_debug_replace*/
+	/*script_body_replace*/
+	/*
+	$.get(g_url, {}, function (data, textStatus){
+		var s="";
+		for(var i=0;i<data.length;i++){
+			var o=data[i];
+			s+="<tr><td>"+o.ID+"</td>";
+			s+="<td>"+o.Due+"</td>";
+			s+="<td>"+o.Priority+"</td>";
+			s+="<td>"+o.Subject+"</td>";
+			s+="<td>"+o.Claim+"</td></tr>";
+		}
+		//$("#list1 > tbody").html(s);
+	});
+		
+	$(".Print-Export").click(function(){
+		alert("Print-Export");
+		$("#list1 input[type='checkbox']:checked").each(function(){
+			alert($(this).val());
+			//alert($(this).attr("checked"));
+		});
+	});
+	*/
+    </script>
+
+
+  
+
+</body></html>
