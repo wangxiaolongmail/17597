@@ -56,24 +56,19 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			}
 			this.draw();
 		},
-		draw:function(){
+		drawMainMenu:function($,sid){
 			var obj=this.m_obj;
 			var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
-			var $ = dojo.cheerio.load(dojo.wy_index_html);
-			$("#left_bar").remove();
-			$("#right_bar").removeClass("span9").addClass("span12");
-			var sid=this.sid;
-			
 			
 			var a=[];
-			var cur_obj={};
+			this.cur_obj={};
 			var list=obj[C.MODULE_LIST];
 			var len = list.length;
 			a.push("<ul class='nav'>");
 			for(var i=0;i<len;i++){
 				var o=list[i];
 				if(obj[C.CURRENT_MODULE]==o[C.MODULE_NAME]){
-				  cur_obj=o;
+				  this.cur_obj=o;
 				  a.push("<li class='active'>");
 				  a.push("<a href='#'>"+I18N[o[C.MODULE_NAME]]+"</a>");
 				  a.push("</li>");
@@ -90,6 +85,16 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			a.push("</li>");
           	a.push("</ul>");
 			$(".nav-collapse").html(a.join(""));
+		},
+		draw:function(){
+			var obj=this.m_obj;
+			var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
+			var $ = dojo.cheerio.load(dojo.wy_index_html);
+			$("#left_bar").remove();
+			$("#right_bar").removeClass("span9").addClass("span12");
+			var sid=this.sid;
+			
+			this.drawMainMenu($,sid);
 			
 			var s=$.html();
 			var a=[];

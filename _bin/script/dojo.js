@@ -176,6 +176,8 @@
 					}
 				}else if(typeof v ==="undefined"){
 					n += "undefined";
+				}else if(typeof v ==="number"){
+					n += ""+v;
 				}else{
 					n += _toString(v,isbr,isShowCache,ispace);
 				}
