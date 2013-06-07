@@ -27,6 +27,8 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Redirect" 
 		o[C.USER_NAME] = this.queryForm[C.USER_NAME];
 		o[C.PASSWORD] =dojo.md5(this.queryForm[C.PASSWORD]);
 		o[C.REMOTE_ADDRESS]=this.dog.req.connection.remoteAddress;
+		var s=this.dog.req.headers["user-agent"];
+		o[C.USER_AGENT]=s.replace(/;/g,"");
 		o[C.STORED_METHOD] ='checkLogining';
 		var cmd = "main("+dojo.toString(o)+")";
 		console.log('db.eval("'+cmd+'");');
@@ -42,13 +44,18 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Redirect" 
 				var o = dojo.atm([$c.c_cache,""+err,$c.c_Last_Modified,dojo.getTimestamp()]);
 				this.dog.echoLast(o);
 		}else{
-			if(o.ok){
-				var url=(o[C.MODULE_LIST])[0][C.MODULE_URL];
-				this.set_redirect_url(url+"?sid="+o.sid);
-				this.lastPrint();
-				dojo.sendMail({title:o[C.USER_NAME]+" loging system successful"});
+			if(o){
+				if(o.ok){
+					var url=(o[C.MODULE_LIST])[0][C.MODULE_URL];
+					this.set_redirect_url(url+"?sid="+o.sid);
+					this.lastPrint();
+					dojo.sendMail({title:o[C.USER_NAME]+" loging system successful"});
+				}else{
+					var o = dojo.atm([$c.c_cache,o.err,$c.c_Last_Modified,dojo.getTimestamp()]);
+					this.dog.echoLast(o);
+				}
 			}else{
-				var o = dojo.atm([$c.c_cache,o.err,$c.c_Last_Modified,dojo.getTimestamp()]);
+				var o = dojo.atm([$c.c_cache,"db exec error",$c.c_Last_Modified,dojo.getTimestamp()]);
 				this.dog.echoLast(o);
 			}
 		}

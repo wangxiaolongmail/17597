@@ -13,7 +13,9 @@ db.system.js.save({_id:"checking_session",value:function (params) {
 					if(params[C.CURRENT_URL]==o[C.MODULE_URL]){
 						var newUpdateDate=(new Date()).getTime();
 						if((newUpdateDate-rs[C.UPDATE_TIME])<pub.interval){
-							db.session.update({_id:ObjectId(sid)},{'$set':{'updateTime':newUpdateDate}});
+							var op={};
+							op[C.UPDATE_TIME]=newUpdateDate;
+							db.session.update({_id:ObjectId(sid)},{'$set':op});
 							rs.ok=true;
 							rs[C.CURRENT_MODULE]=o[C.MODULE_NAME];
 							return rs;

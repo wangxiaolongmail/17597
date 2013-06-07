@@ -28,7 +28,9 @@ db.system.js.save({_id:"constant",value:function () {
 				SITE_NAME:"SITE_NAME",
 				STORED_METHOD:"stored_method",
                 TITLE:"TITLE",
-                UPDATE_TIME:"UPDATE_TIME"
+                UPDATE_TIME:"UPDATE_TIME",
+				USER_AGENT:"USER_AGENT",
+				REFER:"REFER"
         };
 }})
 

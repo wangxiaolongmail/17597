@@ -22,11 +22,16 @@ db.system.js.save({_id:"checkLogining",value:function (params) {
 			var _id=ObjectId();
 			o["_id"]=_id;
 			o["sid"]=_id.valueOf();
-			o[C.USER_NAME]=params[C.USER_NAME];
 			o[C.LOGIN_TIME]=(new Date()).getTime();
 			o[C.UPDATE_TIME]=o[C.LOGIN_TIME];
-			o[C.REMOTE_ADDRESS]=params[C.REMOTE_ADDRESS];
 			o[C.MODULE_LIST]=a;
+			for (var key in params) { 
+				if (params.hasOwnProperty(key)) { 
+					o[key]=params[key];
+				} 
+			} 
+			delete o[C.PASSWORD];
+			delete o[C.STORED_METHOD];
 			db.session.insert(o);
 			o.ok=true;
 			return o;
