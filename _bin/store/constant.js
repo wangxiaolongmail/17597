@@ -17,6 +17,7 @@ db.system.js.save({_id:"constant",value:function () {
 				IS_CATEGORY:"IS_CATEGORY",
 				IS_OPEN:"IS_OPEN",
 				IS_TIMEOUT:"IS_TIMEOUT",
+				IS_PUBLIC:"IS_PUBLIC",
 				LOGIN:"LOGIN",
 				LOGIN_TIME:"LOGIN_TIME",
 				LOGOUT:"LOGOUT",

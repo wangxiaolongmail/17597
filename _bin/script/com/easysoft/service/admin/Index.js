@@ -39,7 +39,7 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Login" 
 		var s=$.html();
 		var a=[];
 		s=s.replace("/*script_body_replace*/",a.join("\n"));
-		s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(this.obj,true));
+		s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(this.data,true));
 		this.endPaint(s);
 	},
 	drawMainMenu:function(){
