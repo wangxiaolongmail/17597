@@ -51,6 +51,7 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Service" , {
 	},
 	read_template:function(){
 		this.m_fimename= dojo.dir+this.template_dir+this.template_file;
+		console.log(this.m_fimename);
 		var text=dojo.getObject(this.m_fimename, false, dojo.mBuffer,"/");
 		if(text){
 			this.template_text=text;
@@ -62,7 +63,7 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Service" , {
 					this.template_text=text;
 					this.postCreate();
 				}else{
-					this.echoLast();
+					this.dog.findNotFile();
 			    }
 			}));
 		}
