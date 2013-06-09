@@ -3,6 +3,9 @@ db.system.js.save({_id:"main",value:function (params) {
 	var result;
 	switch(params[C.STORED_METHOD]) 
 	{   
+		 case "get_view_favorite":   
+				result=get_view_favorite(params);   
+				break;  
 		 case "admin_Index":   
 				result=admin_Index(params);   
 				break;

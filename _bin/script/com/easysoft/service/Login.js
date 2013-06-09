@@ -12,9 +12,9 @@
  * 
  * @author wxlwang
  */
+dojo.import("com.easysoft.service.Index");
 dojo.provide("com.easysoft.service.Login");
-dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Tempalte" , {
-	template_dir:"/wy/",
+dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Index" , {
 	template_file:"login.html",
 	postCreate:function(){
 		this.postDraw();
