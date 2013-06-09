@@ -42,28 +42,9 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Login" 
 		s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(this.obj,true));
 		this.endPaint(s);
 	},
-	exec:function(op){
-		var cmd = "main("+dojo.toString(op)+")";
-		console.log('dojo.db.eval("'+cmd+'");');
-		dojo.db.eval(cmd, dojo.hitch(this,this.draw));
-	},
-	draw:function(err,obj){
-		if(err){
-			var o = dojo.atm([$c.c_cache,""+dojo.toString(err),$c.c_Last_Modified,dojo.getTimestamp()]);
-			this.dog.echoLast(o);
-			return;
-		}
-		if(!obj.ok){
-			var o = dojo.atm([$c.c_cache,""+obj.err,$c.c_Last_Modified,dojo.getTimestamp()]);
-			this.dog.echoLast(o);
-			return;
-		}
-		this.m_obj=obj;
-		this.postDraw();
-	},
 	drawMainMenu:function(){
 		var sid=this.sid;
-		var obj=this.m_obj;
+		var obj=this.data;
 		var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
 		
 		var a=[];

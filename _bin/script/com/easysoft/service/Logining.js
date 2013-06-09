@@ -12,12 +12,11 @@
  * 
  * @author wxlwang
  */
-dojo.import("com.easysoft.service.Redirect");
+dojo.import("com.easysoft.Widget");
 dojo.provide("com.easysoft.service.Logining");
-dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Redirect" , {
+dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.Widget" , {
 	success_redirect_url:$c.c_url_001_701,
 	error_redirect_url:$c.c_url_001_707,
-	db_path:"/_d/maodan/table/user",
 	create:function(){
 		console.log("com.easysoft.service.Logining::create");
 		var a=[],
@@ -47,8 +46,7 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Redirect" 
 			if(o){
 				if(o.ok){
 					var url=(o[C.MODULE_LIST])[0][C.MODULE_URL];
-					this.set_redirect_url(url+"?sid="+o.sid);
-					this.lastPrint();
+					this.redirect(url+"?sid="+o.sid);
 					dojo.sendMail({title:o[C.USER_NAME]+" loging system successful"});
 				}else{
 					var o = dojo.atm([$c.c_cache,o.err,$c.c_Last_Modified,dojo.getTimestamp()]);
@@ -59,11 +57,5 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Redirect" 
 				this.dog.echoLast(o);
 			}
 		}
-	},
-	lastPrint:function(){
-		this.attachTemplate();
-		this.buildRendering();
-		this.postCreate();
-		this.echo();
 	}
 });
