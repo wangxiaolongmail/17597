@@ -17,28 +17,27 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Service" , {
 	template_dir:"/wy/",
 	template_file:"login.html",
 	create:function(){
-		this.m_fimename= dojo.dir+this.template_dir+this.template_file;
-		var text=dojo.getObject(this.m_fimename, false, dojo.mBuffer,"/");
-		if(text){
-			this.draw(text);
-
-		}else{
-			dojo.fs.readFile( this.m_fimename , dojo.conf.default_charset , dojo.hitch( this , function ( err , text ) {
-				if( !err ){
-					dojo.setObject(this.m_fimename,text,dojo.mBuffer,"/");
-					this.draw(text);
-				}else{
-					this.echoLast();
-			        }
-			}));
-		}
-	
-        },
-	draw:function(text){
+		console.log(this.widgetName+"::create");
+		this.read_template();
+    },
+	postCreate:function(){
+		this.beginPaint();
+		this.draw();
+    },
+	beginPaint:function(){
+		this.dog.res.writeHead( 200 , {"Content-Type":"text/html"} );
+		console.log(this.widgetName+"::beginPaint");
+	},
+	endPaint:function(s){
+		this.dog.res.write( s , "utf-8" );
+		this.dog.res.end();
+		console.log(this.widgetName+"::endPaint");
+	},
+	draw:function(){
 		var a=[],
 		I18N=dojo.i18n,
 		C=dojo.cst;	
-		var $ = dojo.cheerio.load(text);
+		var $ = dojo.cheerio.load(this.template_text);
 		
 			a.push('<h3>'+I18N[C.SITE_NAME]+'</h3>');
 			a.push('<label>'+I18N[C.USER_NAME]+':</label>');
@@ -48,9 +47,24 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Service" , {
 			a.push('<button type="submit" class="btn btn-primary">'+I18N[C.OK]+'</button>');
 			$("form").attr("action",$c.c_url_001_702).html(a.join("\n"));
 		
-		var s=$.html();
-		var o = dojo.atm([$c.c_cache,s,$c.c_Last_Modified,dojo.getTimestamp()]);
-		this.dog.echoLast(o);
-
-	}	
+		this.endPaint($.html());
+	},
+	read_template:function(){
+		this.m_fimename= dojo.dir+this.template_dir+this.template_file;
+		var text=dojo.getObject(this.m_fimename, false, dojo.mBuffer,"/");
+		if(text){
+			this.template_text=text;
+			this.postCreate();
+		}else{
+			dojo.fs.readFile( this.m_fimename , dojo.conf.default_charset , dojo.hitch( this , function ( err , text ) {
+				if( !err ){
+					dojo.setObject(this.m_fimename,text,dojo.mBuffer,"/");
+					this.template_text=text;
+					this.postCreate();
+				}else{
+					this.echoLast();
+			    }
+			}));
+		}
+	}
 });

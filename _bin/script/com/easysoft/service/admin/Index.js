@@ -13,24 +13,28 @@
  * @author wxlwang
  */
 dojo.provide("com.easysoft.service.admin.Index");
-dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service" , {
-        create:function(){
-		console.log("com.easysoft.service.admin.Index::create");
-		var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
+dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Login" , {
+	template_file:"index.html",
+    postCreate:function(){
+		var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
 		this.sid=this.queryString.sid;
-		o["sid"] =this.sid;
-		o["page"] =this.queryString.page;
-		o["category"] =this.queryString.category;
-		o[C.CURRENT_URL]=this.dog.m_urlObject.pathname;
-		o[C.REMOTE_ADDRESS]=this.dog.req.connection.remoteAddress;
-		o[C.TABLE_NAME] ='favorite';
-		o[C.CAT_TABLE_NAME] ='favorite_type';
-		o[C.STORED_METHOD] ='admin_Index';
-		var cmd = "main("+dojo.toString(o)+")";
+		op["sid"] =this.sid;
+		op["page"] =this.queryString.page;
+		op["category"] =this.queryString.category;
+		op[C.CURRENT_URL]=this.dog.m_urlObject.pathname;
+		op[C.REMOTE_ADDRESS]=this.dog.req.connection.remoteAddress;
+		op[C.TABLE_NAME] ='favorite';
+		op[C.CAT_TABLE_NAME] ='favorite_type';
+		op[C.STORED_METHOD] ='admin_Index';
+		this.beginPaint();
+		this.exec(op);
+    },
+	exec:function(op){
+		var cmd = "main("+dojo.toString(op)+")";
 		console.log('dojo.db.eval("'+cmd+'");');
-		dojo.db.eval(cmd, dojo.hitch(this,this.drawPage));
-        },
-	drawPage:function(err,obj){
+		dojo.db.eval(cmd, dojo.hitch(this,this.draw));
+	},
+	draw:function(err,obj){
 		if(err){
 			var o = dojo.atm([$c.c_cache,""+dojo.toString(err),$c.c_Last_Modified,dojo.getTimestamp()]);
 			this.dog.echoLast(o);
@@ -41,20 +45,20 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 			this.dog.echoLast(o);
 			return;
 		}
+		var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
+		var sid=this.sid;
 		this.m_obj=obj;
-		if(dojo.wy_index_html){
-			this.draw();
-		}else{
-			dojo.fs.readFile( dojo.dir+"/wy/index.html" , dojo.conf.default_charset , dojo.hitch( this , this.createEx));
-		}
-	},
-	createEx:function(err,template){
-		if( err ){
-			this.echo404();
-		}else{
-			dojo.wy_index_html=template;
-		}
-		this.draw();
+		var $ = dojo.cheerio.load(this.template_text);
+		$("#left_bar").remove();
+		$("#right_bar").removeClass("span9").addClass("span12");
+		
+		this.drawMainMenu($,sid);
+		
+		var s=$.html();
+		var a=[];
+		s=s.replace("/*script_body_replace*/",a.join("\n"));
+		s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(obj,true));
+		this.endPaint(s);
 	},
 	drawMainMenu:function($,sid){
 		var obj=this.m_obj;
@@ -80,28 +84,10 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Service
 		}
 		a.push("</ul>");
 		a.push("<ul class='nav pull-right'>");
-    a.push("<li>");
-		a.push("<a href='/e/Logout?sid="+sid+"'>"+I18N[C.LOGOUT]+"</a>");
-		a.push("</li>");
-	a.push("</ul>");
+    	a.push("<li>");
+			a.push("<a href='/e/Logout?sid="+sid+"'>"+I18N[C.LOGOUT]+"</a>");
+			a.push("</li>");
+		a.push("</ul>");
 		$(".nav-collapse").html(a.join(""));
-	},
-	draw:function(){
-		var obj=this.m_obj;
-		var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
-		var $ = dojo.cheerio.load(dojo.wy_index_html);
-		$("#left_bar").remove();
-		$("#right_bar").removeClass("span9").addClass("span12");
-		var sid=this.sid;
-		
-		this.drawMainMenu($,sid);
-		
-		var s=$.html();
-		var a=[];
-		s=s.replace("/*script_body_replace*/",a.join("\n"));
-		s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(obj,true));
-		var o = dojo.atm([$c.c_cache,s,$c.c_Last_Modified,dojo.getTimestamp()]);
-		this.dog.echoLast(o);
 	}
-
 });
