@@ -37,7 +37,7 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Service" , {
 		var a=[],
 		I18N=dojo.i18n,
 		C=dojo.cst;	
-		var $ = dojo.cheerio.load(this.template_text);
+		var $ = this.getDom();
 		
 			a.push('<h3>'+I18N[C.SITE_NAME]+'</h3>');
 			a.push('<label>'+I18N[C.USER_NAME]+':</label>');
@@ -48,6 +48,9 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Service" , {
 			$("form").attr("action",$c.c_url_001_702).html(a.join("\n"));
 		
 		this.endPaint($.html());
+	},
+	getDom:function(){
+		return dojo.cheerio.load(this.template_text);
 	},
 	read_template:function(){
 		this.m_fimename= dojo.dir+this.template_dir+this.template_file;

@@ -29,6 +29,19 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Login" 
 		this.beginPaint();
 		this.exec(op);
     },
+	postDraw:function(){
+		var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
+		var sid=this.sid;
+		var $ = this.getDom();
+		$("#left_bar").remove();
+		$("#right_bar").removeClass("span9").addClass("span12");
+		$(".nav-collapse").html(this.drawMainMenu());
+		var s=$.html();
+		var a=[];
+		s=s.replace("/*script_body_replace*/",a.join("\n"));
+		s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(this.obj,true));
+		this.endPaint(s);
+	},
 	exec:function(op){
 		var cmd = "main("+dojo.toString(op)+")";
 		console.log('dojo.db.eval("'+cmd+'");');
@@ -45,22 +58,11 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Login" 
 			this.dog.echoLast(o);
 			return;
 		}
-		var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
-		var sid=this.sid;
 		this.m_obj=obj;
-		var $ = dojo.cheerio.load(this.template_text);
-		$("#left_bar").remove();
-		$("#right_bar").removeClass("span9").addClass("span12");
-		
-		this.drawMainMenu($,sid);
-		
-		var s=$.html();
-		var a=[];
-		s=s.replace("/*script_body_replace*/",a.join("\n"));
-		s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(obj,true));
-		this.endPaint(s);
+		this.postDraw();
 	},
-	drawMainMenu:function($,sid){
+	drawMainMenu:function(){
+		var sid=this.sid;
 		var obj=this.m_obj;
 		var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
 		
@@ -88,6 +90,6 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Login" 
 			a.push("<a href='/e/Logout?sid="+sid+"'>"+I18N[C.LOGOUT]+"</a>");
 			a.push("</li>");
 		a.push("</ul>");
-		$(".nav-collapse").html(a.join(""));
+		return a.join("");
 	}
 });
