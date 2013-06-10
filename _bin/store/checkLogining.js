@@ -11,9 +11,7 @@ db.system.js.save({_id:"checkLogining",value:function (params) {
 		var a=[];
 		while (cursor.hasNext()) {
 			var item=cursor.next();
-			var op={};
-			op[C.MODULE_NAME]=item[C.MODULE_NAME];
-			item[C.MODULE_URL]=db.module.findOne( op )[C.MODULE_URL];
+			item[C.MODULE_URL]=getUrlName(item[C.MODULE_NAME]);
 			delete item._id;
 			a.push(item);
 		}
@@ -27,7 +25,7 @@ db.system.js.save({_id:"checkLogining",value:function (params) {
 			o[C.MODULE_LIST]=a;
 			var op={};
 			op[C.MODULE_NAME]=C.LOGOUT;
-			op[C.MODULE_URL]=db.module.findOne( op )[C.LOGOUT];
+			op[C.MODULE_URL]=getUrlName(C.LOGOUT);
 			o[C.R_MODULE_LIST]=[op];
 			o[C.IS_OPEN]=true;
 			o[C.IS_TIMEOUT]=false;
