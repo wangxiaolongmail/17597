@@ -57,7 +57,7 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
                 a.push("</ul>");
                 a.push("<ul class='nav pull-right'>");
         	a.push("<li>");
-                        a.push("<a href='/e/login'>"+I18N[C.LOGOUT]+"</a>");
+                        a.push("<a href='/e/login'>"+I18N[C.LOGIN]+"</a>");
                         a.push("</li>");
                 a.push("</ul>");
                 return a.join("");
