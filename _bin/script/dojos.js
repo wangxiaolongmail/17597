@@ -204,7 +204,7 @@
 		});
 	}
 	function _sendMail( obj , fn ){
-		return;
+		
 		var smtpTransport = dojo.mail.createTransport("SMTP", {
 
 			host: "smtp.163.com",
@@ -215,9 +215,9 @@
 
 			auth: {
 
-				user: "wangxiaolongmail@163.com",
+				user: "net17597@163.com",
 
-				pass: "wswddcxy"
+				pass: "ws123456"
 
 			}
 
