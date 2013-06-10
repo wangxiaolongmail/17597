@@ -24,7 +24,7 @@ dojo.declare("com.easysoft.zoo.Elephant","com.easysoft.Widget",{
 		dojo.$ele=this;
 		this.init(); 
 		dojo.http.createServer(dojo.hitch(this,function(req,res){
-			try{
+			//try{
 				
 				var remoteAddress=dojo.toString(req.connection.remoteAddress);
 				if( remoteAddress != dojo.conf.DOMAIN_IP &&  remoteAddress != dojo.conf.default_vm_ip ){
@@ -37,10 +37,10 @@ dojo.declare("com.easysoft.zoo.Elephant","com.easysoft.Widget",{
 					console.log("request|"+timestamp+"|"+dojo.toString(req.method)+"|"+dojo.toString(req.connection.remoteAddress)+"|"+req.headers["user-agent"]+"|"+refer);
 				}
 				dojo.createObject("com.easysoft.zoo.Dog",{ req:req , res:res });
-			}
-			catch(err){
-				this._findNotFile(res,"source:elephant,"+err);
-			}
+			//}
+			//catch(err){
+			//	this._findNotFile(res,"source:elephant,"+err);
+			//}
 		})).listen(dojo.conf.port);
 	},
 	init:function(){

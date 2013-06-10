@@ -37,7 +37,6 @@
 			{ pathname:$c.c_url_001_005,servletClass:"com.easysoft.service.admin.article.previewArticle"},
 			{ pathname:$c.c_url_001_011,servletClass:"com.easysoft.service.admin.log.getLogList"},
 			{ pathname:$c.c_url_001_700,servletClass:"com.easysoft.service.admin.Exit"},
-			{ pathname:$c.c_url_001_701,servletClass:"com.easysoft.service.admin.Index"},
 			{ pathname:$c.c_url_001_702,servletClass:"com.easysoft.service.Logining",method:"post"},
 			{ pathname:$c.c_url_001_703,servletClass:"com.easysoft.service.Login"},
 			{ pathname:$c.c_url_001_704,servletClass:"com.easysoft.service.admin.article.manageDatabase"},
@@ -68,6 +67,7 @@
 			{ pathname:$c.c_url_001_012,servletClass:"com.easysoft.service.admin.clearPageBuffer"},
 			{ pathname:"/easysoft/admin/favorite_del",servletClass:"com.easysoft.service.admin.favorite_del"},
 			{ pathname:"/e/Logout",servletClass:"com.easysoft.service.Logout"},
+			{ pathname:"/easysoft/admin/start",servletClass:"com.easysoft.service.admin.Start"},
 			{ pathname:"/easysoft/admin/favorite/list",servletClass:"com.easysoft.service.admin.favorite.List"}
 			
 			
