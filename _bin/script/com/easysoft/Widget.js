@@ -51,6 +51,7 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 		}
 	},
 	exec:function(op){
+		this.beginPaint();
 		var cmd = "main("+dojo.toString(op)+")";
 		console.log('dojo.db.eval("'+cmd+'");');
 		dojo.db.eval(cmd, dojo.hitch(this,this.draw));
@@ -59,9 +60,7 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 		if(!err){
 			if(data!=null){
 				if(data.ok){
-					this.m_obj=data;
-					this.data=data;
-					this.postDraw();
+					this.endPaint(this.postDraw(data));
 				}else{
 					this.endPaint(data.err);
 				}
@@ -75,16 +74,19 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 	redirect:function(url){
 		this.res.writeHead( 302 , dojo.atm([$c.c_location,url])); 
 		this.res.end();
-		console.log(this.widgetName+"::redirect--"+url);
+		console.log(this.widgetName+"::redirect--");
+		console.log(url);
 	},
 	beginPaint:function(){
 		this.dog.res.writeHead( 200 , {"Content-Type":"text/html"} );
 		console.log(this.widgetName+"::beginPaint");
 	},
 	endPaint:function(s){
-		this.dog.res.write( s , "utf-8" );
-		this.dog.res.end();
-		console.log(this.widgetName+"::endPaint");
+		if(s){
+			this.dog.res.write( s , "utf-8" );
+			this.dog.res.end();
+			console.log(this.widgetName+"::endPaint");
+		}
 	}
 }); 
 

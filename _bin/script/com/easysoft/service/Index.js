@@ -20,10 +20,9 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
     postCreate:function(){
 		var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
 		op[C.STORED_METHOD] ='get_view_favorite';
-		this.beginPaint();
 		this.exec(op);
     },
-	postDraw:function(){
+	postDraw:function(data){
 		var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
 		var sid=this.sid;
 		var $ = this.getDom();
@@ -31,9 +30,8 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 		$(".brand").html("");
 		$("#right_bar").removeClass("span9").addClass("span12");
 		var s=$.html();
-		var a=[];
 		s=s.replace("/*script_body_replace*/",a.join("\n"));
-		s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(this.data,true));
-		this.endPaint(s);
+		s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(data,true));
+		return s;
 	}
 });

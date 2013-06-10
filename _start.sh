@@ -27,5 +27,6 @@ echoThis "nohup supervisor node ${currentPath}${port}/_start.js > $log 2>&1 &"
 
 nohup supervisor node ${currentPath}${port}/_start.js > $log 2>&1 & 
 
+echo "tail -f /home/wxl/82/$log" > "_logaddr.txt"
 
 echoThis "start server"

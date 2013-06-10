@@ -26,35 +26,31 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Login" 
 		op[C.TABLE_NAME] ='favorite';
 		op[C.CAT_TABLE_NAME] ='favorite_type';
 		op[C.STORED_METHOD] ='admin_Index';
-		this.beginPaint();
 		this.exec(op);
     },
-	postDraw:function(){
+	postDraw:function(data){
 		var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
 		var sid=this.sid;
 		var $ = this.getDom();
 		$("#left_bar").remove();
 		$("#right_bar").removeClass("span9").addClass("span12");
-		$(".nav-collapse").html(this.drawMainMenu());
+		$(".nav-collapse").html(this.drawMainMenu(data));
 		var s=$.html();
 		var a=[];
 		s=s.replace("/*script_body_replace*/",a.join("\n"));
-		s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(this.data,true));
-		this.endPaint(s);
+		s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(data,true));
+		return s;
 	},
-	drawMainMenu:function(){
+	drawMainMenu:function(data){
 		var sid=this.sid;
-		var obj=this.data;
 		var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
-		
-		var a=[];
 		this.cur_obj={};
-		var list=obj[C.MODULE_LIST];
+		var list=data[C.MODULE_LIST];
 		var len = list.length;
 		a.push("<ul class='nav'>");
 		for(var i=0;i<len;i++){
 			var o=list[i];
-			if(obj[C.CURRENT_MODULE]==o[C.MODULE_NAME]){
+			if(data[C.CURRENT_MODULE]==o[C.MODULE_NAME]){
 			  this.cur_obj=o;
 			  a.push("<li class='active'>");
 			  a.push("<a href='#'>"+I18N[o[C.MODULE_NAME]]+"</a>");

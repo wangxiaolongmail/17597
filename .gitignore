@@ -1,4 +1,5 @@
 nohup.out
+_logaddr.txt
 _log/
 bootstrap/
 bootstrap/css/*.css

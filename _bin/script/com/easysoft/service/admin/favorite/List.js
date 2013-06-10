@@ -26,15 +26,14 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			op[C.TABLE_NAME] ='favorite';
 			op[C.CAT_TABLE_NAME] ='favorite_type';
 			op[C.STORED_METHOD] ='admin_favorite_List';
-			this.beginPaint();
 			this.exec(op);
         },
-		postDraw:function(){
+		postDraw:function(data){
 			var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
 			var $ = this.getDom();
 			$("#left_bar").remove();
 			$("#right_bar").removeClass("span9").addClass("span12");
-			var obj=this.m_obj;
+			var obj=data;
 			var a=[];
 			var list=obj.list;
 			var len = list.length;
@@ -109,7 +108,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			$("#pager").html(a.join(""));
 			
 			
-			$(".nav-collapse").html(this.drawMainMenu());
+			$(".nav-collapse").html(this.drawMainMenu(data));
 			
 			var a=[];
 			var catlist=dojo.favorite_catlist;
@@ -163,7 +162,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			a.push('});');
 			s=s.replace("/*script_body_replace*/",a.join("\n"));
 			s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(obj,true));
-			this.endPaint(s);
+			return s;
 		}
 
 });

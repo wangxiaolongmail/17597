@@ -17,9 +17,11 @@ dojo.provide("com.easysoft.service.Login");
 dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Index" , {
 	template_file:"login.html",
 	postCreate:function(){
-		this.postDraw();
+                var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
+                op[C.STORED_METHOD] ='login';
+                this.exec(op);
     },
-	postDraw:function(){
+	postDraw:function(data){
 		var a=[],
 		I18N=dojo.i18n,
 		C=dojo.cst;	
@@ -33,6 +35,6 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Index" , {
 			a.push('<button type="submit" class="btn btn-primary">'+I18N[C.OK]+'</button>');
 			$("form").attr("action",$c.c_url_001_702).html(a.join("\n"));
 		
-		this.endPaint($.html());
+		return $.html();
 	}
 });
