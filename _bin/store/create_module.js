@@ -21,4 +21,11 @@ db.system.js.save({_id:"create_module",value:function (params) {
 	obj[C.MODULE_URL]="/";
 	obj[C.IS_PUBLIC]=true;
 	db.module.insert(obj);
+	
+	var obj={};
+	obj["_id"]="LOGOUT";
+	obj[C.MODULE_NAME]="LOGOUT";
+	obj[C.MODULE_URL]="/e/Logout";
+	obj[C.IS_PUBLIC]=true;
+	db.module.insert(obj);
 }})

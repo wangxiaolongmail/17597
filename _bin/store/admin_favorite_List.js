@@ -50,6 +50,7 @@ db.system.js.save({_id:"admin_favorite_List",value:function (params) {
 				pageSize:pageSize,pageCount:pageCount,pageRecordCount:pageRecordCount,list:list,category:category
 			};
 			result[C.MODULE_LIST]=sess[C.MODULE_LIST];
+			result[C.R_MODULE_LIST]=sess[C.R_MODULE_LIST];
 			result[C.CURRENT_MODULE]=sess[C.CURRENT_MODULE];
 			return result;
 		}

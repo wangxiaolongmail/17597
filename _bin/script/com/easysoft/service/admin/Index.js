@@ -62,9 +62,11 @@ dojo.declare( "com.easysoft.service.admin.Index" , "com.easysoft.service.Login" 
 			}
 		}
 		a.push("</ul>");
+		var o=data[C.R_MODULE_LIST][0];
+		//var len = list.length;
 		a.push("<ul class='nav pull-right'>");
-    	a.push("<li>");
-			a.push("<a href='/e/Logout?sid="+sid+"'>"+I18N[C.LOGOUT]+"</a>");
+    			a.push("<li>");
+			a.push("<a href='"+o[C.MODULE_URL]+"?sid="+sid+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
 			a.push("</li>");
 		a.push("</ul>");
 		return a.join("");

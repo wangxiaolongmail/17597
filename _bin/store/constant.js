@@ -24,6 +24,7 @@ db.system.js.save({_id:"constant",value:function () {
 				PASSWORD:"PASSWORD",
 				USER_NAME:"USER_NAME",
 				MODULE_NAME:"MODULE_NAME",
+				R_MODULE_NAME:"R_MODULE_NAME",
 				MODULE_URL:"MODULE_URL",
 				MODULE_LIST:"MODULE_LIST",
 				MODULE_URL_LIST:"MODULE_URL_LIST",

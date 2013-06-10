@@ -25,6 +25,10 @@ db.system.js.save({_id:"checkLogining",value:function (params) {
 			o[C.LOGIN_TIME]=(new Date()).getTime();
 			o[C.UPDATE_TIME]=o[C.LOGIN_TIME];
 			o[C.MODULE_LIST]=a;
+			var op={};
+			op[C.MODULE_NAME]=C.LOGOUT;
+			op[C.MODULE_URL]=db.module.findOne( op )[C.LOGOUT];
+			o[C.R_MODULE_LIST]=[op];
 			o[C.IS_OPEN]=true;
 			o[C.IS_TIMEOUT]=false;
 			for (var key in params) { 
