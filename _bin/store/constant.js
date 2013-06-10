@@ -9,6 +9,7 @@ db.system.js.save({_id:"constant",value:function () {
 				CURRENT_MODULE:"CURRENT_MODULE",
                 DELETE:"DELETE",
 				EDIT:"EDIT",
+				EASYSOFT_INDEX:"EASYSOFT_INDEX",
 				FAVORITE:"FAVORITE",
 				ID:"ID",
 				IS_NEW:"IS_NEW",

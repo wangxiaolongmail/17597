@@ -16,15 +16,15 @@ db.system.js.save({_id:"create_module",value:function (params) {
 	db.module.insert(obj);
 
 	var obj={};
-	obj["_id"]="INDEX";
-	obj[C.MODULE_NAME]="INDEX";
+	obj["_id"]=C.EASYSOFT_INDEX;
+	obj[C.MODULE_NAME]=C.EASYSOFT_INDEX;
 	obj[C.MODULE_URL]="/";
 	obj[C.IS_PUBLIC]=true;
 	db.module.insert(obj);
 	
 	var obj={};
-	obj["_id"]="LOGOUT";
-	obj[C.MODULE_NAME]="LOGOUT";
+	obj["_id"]=C.LOGOUT;
+	obj[C.MODULE_NAME]=C.LOGOUT;
 	obj[C.MODULE_URL]="/e/Logout";
 	obj[C.IS_PUBLIC]=true;
 	db.module.insert(obj);

@@ -17,9 +17,14 @@ dojo.provide("com.easysoft.service.Index");
 dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 	template_dir:"/wy/",
 	template_file:"index.html",
+	role_name:"r_easysoft",
+
+
     postCreate:function(){
 		var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
-		op[C.STORED_METHOD] ='get_view_favorite';
+		op[C.ROLE_NAME] =this.role_name;
+		op[C.STORED_METHOD] ='make_favorite';
+
 		this.exec(op);
     },
 	postDraw:function(data){
@@ -50,7 +55,7 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
                           a.push("</li>");
                         }else{
                           a.push("<li>");
-                         // a.push("<a href='"+o[C.MODULE_URL]+'>"+I18N[o[C.MODULE_NAME]]+"</a>");
+                          a.push("<a href='"+o[C.MODULE_URL]+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
                           a.push("</li>");
                         }
                 }

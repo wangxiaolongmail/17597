@@ -1,4 +1,5 @@
-db.system.js.save({_id:"make_favorite",value:function(){
+db.system.js.save({_id:"make_favorite",value:function(params){
+		var C=constant();
 		var s="";
 		var cursor =db.favorite_type.find();
 		var arr=[];
@@ -15,17 +16,11 @@ db.system.js.save({_id:"make_favorite",value:function(){
 			o.list=aa;
 			arr.push(o);
 		}
-
+		var a=_get_module_list(params[C.ROLE_NAME]);
 		var result={
 		  ok:true,
-		  list:arr,
-		  'MODULE_LIST':[{
-		      'MODULE_NAME':'FAVORITE',
-		      'ROLE_NAME':'r_wxl',
-		      'MODULE_URL':'/easysoft/admin/start'
-		    }
-		  ],
-		  'CURRENT_MODULE':'FAVORITE'};
+		  list:arr};
+		result[C.MODULE_LIST]=a;
 
 		return result;
 	}

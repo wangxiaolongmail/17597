@@ -15,6 +15,7 @@ db.system.js.save({_id:"create_i18n",value:function () {
 	db.i18n.insert({_id:C.LOGOUT,cn:"退出"});
 	db.i18n.insert({_id:C.SITE_NAME,cn:"17597.net"});
 	db.i18n.insert({_id:C.OK,cn:"确定"});
+	db.i18n.insert({_id:C.EASYSOFT_INDEX,cn:"网址"});
 	
 	return db.i18n.find().toArray();
 }})

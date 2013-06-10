@@ -5,16 +5,7 @@ db.system.js.save({_id:"checkLogining",value:function (params) {
 	op[C.PASSWORD]=params[C.PASSWORD];
 	var rs =db.user.findOne(op);
 	if (rs) {
-		var op={};
-		op[C.ROLE_NAME]=rs[C.ROLE_NAME];
-		var cursor=db.authority.find(op);
-		var a=[];
-		while (cursor.hasNext()) {
-			var item=cursor.next();
-			item[C.MODULE_URL]=getUrlName(item[C.MODULE_NAME]);
-			delete item._id;
-			a.push(item);
-		}
+		var a=_get_module_list(rs[C.ROLE_NAME]);
 		if(a.length>0){
 			var o={};
 			var _id=ObjectId();
