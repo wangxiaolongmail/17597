@@ -10,6 +10,8 @@ db.system.js.save({_id:"constant",value:function () {
                 DELETE:"DELETE",
 				EDIT:"EDIT",
 				EASYSOFT_INDEX:"EASYSOFT_INDEX",
+				EASYSOFT_ADMIN_START="EASYSOFT_ADMIN_START",
+				EASYSOFT_ADMIN_FAVORITE_LIST="EASYSOFT_ADMIN_FAVORITE_LIST",
 				FAVORITE:"FAVORITE",
 				ID:"ID",
 				IS_NEW:"IS_NEW",

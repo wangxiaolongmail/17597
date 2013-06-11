@@ -14,7 +14,7 @@
  */
 dojo.provide("com.easysoft.service.admin.Start");
 dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" , {
-	template_file:"index.html",
+	template_file:"start.html",
     postCreate:function(){
 		var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
 		this.sid=this.queryString.sid;

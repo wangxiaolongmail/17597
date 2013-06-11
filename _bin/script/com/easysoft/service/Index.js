@@ -37,7 +37,7 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
       		$(".nav-collapse").html(this.drawMainMenu(data));
       		
 var list=data.list
-		a.push("<table>");
+		a.push("<table class='table table-bordered table-striped'>");
 
 		for(var i=0;i<list.length;i++){
 
@@ -48,10 +48,9 @@ var o=list[i];
 			
 			var list2=o.list;
 for(var j=0;j<list2.length;j++){
-		a.push("<a href='"+list2[j].article_url+"'>");
+		a.push("&nbsp;");
+		a.push("<a target='_blank' href='"+list2[j].article_url+"'>"+list2[j].article_title+"</a>");
 
-a.push(list2[j].article_title);
-		a.push("<a>");
 
 
 }

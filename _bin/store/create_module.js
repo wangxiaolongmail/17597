@@ -2,15 +2,15 @@ db.system.js.save({_id:"create_module",value:function (params) {
 	var C=constant();
 	db.module.remove();
 	var obj={};
-	obj["_id"]=C.FAVORITE;
-	obj[C.MODULE_NAME]=C.FAVORITE;
+	obj["_id"]=C.EASYSOFT_ADMIN_START;
+	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_START;
 	obj[C.MODULE_URL]="/easysoft/admin/start";
 	obj[C.IS_PUBLIC]=false;
 	db.module.insert(obj);
 		
 	var obj={};
-	obj["_id"]=C.ADMIN_FAVORITE_LIST;
-	obj[C.MODULE_NAME]=C.ADMIN_FAVORITE_LIST;
+	obj["_id"]=C.EASYSOFT_ADMIN_FAVORITE_LIST;
+	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_FAVORITE_LIST;
 	obj[C.MODULE_URL]="/easysoft/admin/favorite/list";
 	obj[C.IS_PUBLIC]=false;
 	db.module.insert(obj);
