@@ -68,7 +68,7 @@ for(var j=0;j<list2.length;j++){
 
 		var s=$.html();
 		s=s.replace("/*script_body_replace*/","");
-		s=s.replace("/*script_debug_replace*/",this.drawDebug());
+		s=s.replace("/*script_debug_replace*/",this.drawDebug(data));
 		return s;
 	},
 	drawDebug:function(data){
