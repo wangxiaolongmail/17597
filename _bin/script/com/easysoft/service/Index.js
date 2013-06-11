@@ -67,9 +67,12 @@ for(var j=0;j<list2.length;j++){
 
 
 		var s=$.html();
-		s=s.replace("/*script_body_replace*/",a.join("\n"));
-		s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(data,true));
+		s=s.replace("/*script_body_replace*/","");
+		s=s.replace("/*script_debug_replace*/",this.drawDebug());
 		return s;
+	},
+	drawDebug:function(data){
+		return "window.debug="+dojo.toString(data,true);
 	},
         drawMainMenu:function(data){
                 var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
