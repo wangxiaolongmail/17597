@@ -13,7 +13,7 @@
  * @author wxlwang
  */
 dojo.provide("com.easysoft.service.admin.favorite.List");
-dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service.admin.Index" , {
+dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service.admin.Start" , {
 		template_file:"favorite_list.html",
         postCreate:function(){
 			var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
