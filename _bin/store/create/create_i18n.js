@@ -15,6 +15,7 @@ db.system.js.save({_id:"create_i18n",value:function () {
 	db.i18n.insert({_id:C.LOGOUT,cn:"退出"});
 	db.i18n.insert({_id:C.SITE_NAME,cn:"17597.net"});
 	db.i18n.insert({_id:C.OK,cn:"确定"});
+	db.i18n.insert({_id:C.EASYSOFT_LOGIN,cn:"登录"});
 	db.i18n.insert({_id:C.EASYSOFT_INDEX,cn:"网址"});
 	db.i18n.insert({_id:C.EASYSOFT_ADMIN_START,cn:"开始"});
 	db.i18n.insert({_id:C.EASYSOFT_ADMIN_FAVORITE_LIST,cn:"收藏夹"});
