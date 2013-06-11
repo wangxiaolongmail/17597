@@ -143,6 +143,7 @@ function fn_conn_db(){
 						var op={};
 						op[C.SERVLET_CLASS]=o[C.SERVLET_CLASS];
 						op[C.PATH_NAME]=o[C.MODULE_URL];
+						op[C.METHOD]=o[C.METHOD];
 						dojo.route.dynamicServletMapping.push(op);	
 					}
 					dojo.fi18n=function(name){

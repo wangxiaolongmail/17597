@@ -7,6 +7,7 @@ db.system.js.save({_id:"create_module",value:function (params) {
 	obj[C.MODULE_URL]="/easysoft/admin/start";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.Start";
 	obj[C.IS_PUBLIC]=false;
+	obj[C.METHOD]=C.GET;
 	db.module.insert(obj);
 		
 	var obj={};
@@ -15,6 +16,7 @@ db.system.js.save({_id:"create_module",value:function (params) {
 	obj[C.MODULE_URL]="/easysoft/admin/favorite/list";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.favorite.List";
 	obj[C.IS_PUBLIC]=false;
+	obj[C.METHOD]=C.GET;
 	db.module.insert(obj);
 
 	var obj={};
@@ -23,6 +25,7 @@ db.system.js.save({_id:"create_module",value:function (params) {
 	obj[C.MODULE_URL]="/";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Index";
 	obj[C.IS_PUBLIC]=true;
+	obj[C.METHOD]=C.GET;
 	db.module.insert(obj);
 	
 	var obj={};
@@ -31,6 +34,7 @@ db.system.js.save({_id:"create_module",value:function (params) {
 	obj[C.MODULE_URL]="/e/Logout";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Logout";
 	obj[C.IS_PUBLIC]=true;
+	obj[C.METHOD]=C.GET;
 	db.module.insert(obj);
 	
 	var obj={};
@@ -39,6 +43,7 @@ db.system.js.save({_id:"create_module",value:function (params) {
 	obj[C.MODULE_URL]="/e/login";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Login";
 	obj[C.IS_PUBLIC]=true;
+	obj[C.METHOD]=C.GET;
 	db.module.insert(obj);
 
 }})
