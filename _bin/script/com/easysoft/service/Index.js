@@ -35,6 +35,38 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 		$(".brand").html("");
 		$("#right_bar").removeClass("span9").addClass("span12");
       		$(".nav-collapse").html(this.drawMainMenu(data));
+      		
+var list=data.list
+		a.push("<table>");
+
+		for(var i=0;i<list.length;i++){
+
+var o=list[i];
+		a.push("<tr>");
+		a.push("<td>");
+			a.push(o.article_title);
+			
+			var list2=o.list;
+for(var j=0;j<list2.length;j++){
+		a.push("<a href='"+list2[j].article_url+"'>");
+
+a.push(list2[j].article_title);
+		a.push("<a>");
+
+
+}
+		a.push("</td>");
+
+		
+		a.push("</tr>");
+
+		}
+		
+		a.push("</table>");
+
+		$("#right_bar").html(a.join("\n"));
+
+
 		var s=$.html();
 		s=s.replace("/*script_body_replace*/",a.join("\n"));
 		s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(data,true));
