@@ -6,8 +6,8 @@ db.system.js.save({_id:"main",value:function (params) {
 		 case "make_favorite":   
 				result=make_favorite(params);   
 				break;  
-		 case "admin_Index":   
-				result=admin_Index(params);   
+		 case "admin_Start":   
+				result=admin_Start(params);   
 				break;
 		 case "admin_favorite_List":   
 				result=admin_favorite_List(params);   

@@ -15,7 +15,7 @@
 dojo.import("com.easysoft.Widget");
 dojo.provide("com.easysoft.zoo.Dog");
 dojo.declare( "com.easysoft.zoo.Dog" , "com.easysoft.Widget" , {
-	postCreate:function(){ 
+	create:function(){ 
 		this.req.url=dojo.domainParseUrl(this.req.url);
 		this.bark(); 
 	},

@@ -25,7 +25,7 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 		op[C.REMOTE_ADDRESS]=this.dog.req.connection.remoteAddress;
 		op[C.TABLE_NAME] ='favorite';
 		op[C.CAT_TABLE_NAME] ='favorite_type';
-		op[C.STORED_METHOD] ='admin_Index';
+		op[C.STORED_METHOD] ='admin_Start';
 		this.exec(op);
     },
 	postDraw:function(data){
