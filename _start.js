@@ -96,12 +96,21 @@ function fn_conn_db(){
 			dojo.db.eval(cmd, function(err,obj){
 					dojo.favorite_catlist=obj.favorite_catlist;
 					dojo.cst=obj.cst;
+					var C=obj.cst;
 					var a=obj.i18n;
 					dojo.i18n={};
 					for(var i=0;i<a.length;i++){
 						var o=a[i];
 						dojo.i18n[o._id]=o.cn;
 					}	
+					var a=obj.module;
+					for(var i=0;i<a.length;i++){
+						var o=a[i];
+						var op={};
+						op[C.SERVLET_CLASS]=o[C.SERVLET_CLASS];
+						op[C.PATH_NAME]=o[C.MODULE_URL];
+						dojo.route.dynamicServletMapping.push(op);	
+					}
 				});
 		}else{
 			console.log("--conn db err--");
@@ -109,7 +118,6 @@ function fn_conn_db(){
 	});
 }
 
-fn_conn_db();
 
 console.log("require request");
 dojo.request = require('request');
@@ -134,6 +142,7 @@ dojo.__filename=__filename;
 require("./_bin/script/dojos");
 dojo.import("mime");
 dojo.import("conf");
+fn_conn_db();
 dojo.import("com.easysoft.zoo.Elephant");
 console.log('This platform is ' + dojo.process.platform);
 console.log('Version: ' + dojo.process.version);

@@ -6,6 +6,7 @@ db.system.js.save({_id:"truck",value:function () {
         return {
 			cst:C,
 			i18n:db.i18n.find().toArray(),
+			module:db.module.find().toArray(),
 			favorite_catlist:favorite_catlist
         };
 }})
