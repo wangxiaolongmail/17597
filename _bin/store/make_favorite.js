@@ -16,12 +16,13 @@ db.system.js.save({_id:"make_favorite",value:function(params){
 			o.list=aa;
 			arr.push(o);
 		}
-		var a=_get_module_list(params[C.ROLE_NAME]);
 		var result={
 		  ok:true,
-		  list:arr};
+		  list:arr
+		};
+		var a=_get_module_list(params[C.ROLE_NAME]);
 		result[C.MODULE_LIST]=a;
-
+		result[C.CURRENT_MODULE]=C.EASYSOFT_INDEX;
 		return result;
 	}
 })
