@@ -23,6 +23,12 @@ db.system.js.save({_id:"make_favorite",value:function(params){
 		var a=_get_module_list(params[C.ROLE_NAME]);
 		result[C.MODULE_LIST]=a;
 		result[C.CURRENT_MODULE]=C.EASYSOFT_INDEX;
+
+			var op={};
+			op[C.MODULE_NAME]=C.EASYSOFT_LOGIN;
+			op[C.MODULE_URL]=getUrlName(C.EASYSOFT_LOGIN);
+			result[C.R_MODULE_LIST]=[op];
+
 		return result;
 	}
 })

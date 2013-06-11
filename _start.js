@@ -145,6 +145,9 @@ function fn_conn_db(){
 						op[C.PATH_NAME]=o[C.MODULE_URL];
 						dojo.route.dynamicServletMapping.push(op);	
 					}
+					dojo.fi18n=function(name){
+						return dojo.i18n[name]||name;
+					}
 				});
 			dojo.createObject("com.easysoft.zoo.Elephant",{dir:dojo.dir});
 		}else{

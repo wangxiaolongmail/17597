@@ -89,16 +89,18 @@ for(var j=0;j<list2.length;j++){
                           a.push("</li>");
                         }else{
                           a.push("<li>");
-                          a.push("<a href='"+o[C.MODULE_URL]+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
+                          a.push("<a href='"+o[C.MODULE_URL]+"'>"+dojo.fi18n(o[C.MODULE_NAME])+"</a>");
                           a.push("</li>");
                         }
                 }
                 a.push("</ul>");
-                a.push("<ul class='nav pull-right'>");
-        	a.push("<li>");
-                        a.push("<a href='/e/login'>"+I18N[C.LOGIN]+"</a>");
-                        a.push("</li>");
-                a.push("</ul>");
+                var o=data[C.R_MODULE_LIST][0];
+		//var len = list.length;
+		a.push("<ul class='nav pull-right'>");
+    			a.push("<li>");
+			a.push("<a href='"+o[C.MODULE_URL]+"'>"+dojo.fi18n(o[C.MODULE_NAME])+"</a>");
+			a.push("</li>");
+		a.push("</ul>");
                 return a.join("");
         }
 
