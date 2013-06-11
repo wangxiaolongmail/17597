@@ -85,6 +85,40 @@ dojo.less = require('less');
 
 
 
+
+console.log("require request");
+dojo.request = require('request');
+
+console.log("require connect");
+dojo.connect = require('connect');
+
+console.log("require formidable");
+dojo.formidable = require('formidable');
+
+
+console.log("require async");
+dojo.async = require('async');
+
+console.log("require express");
+dojo.express = require('express');
+
+
+
+dojo.dir=__dirname;
+dojo.__filename=__filename;
+require("./_bin/script/dojos");
+dojo.import("mime");
+dojo.import("conf");
+dojo.import("com.easysoft.zoo.Elephant");
+console.log('This platform is ' + dojo.process.platform);
+console.log('Version: ' + dojo.process.version);
+dojo.conf.port=input_port||dojo.conf.port;
+dojo.conf.DOMAIN_IP=DOMAIN_IP||dojo.conf.DOMAIN_IP;
+dojo.conf.DOMAIN_NAME=DOMAIN_NAME||dojo.conf.DOMAIN_NAME;
+dojo.conf.EXEC_PATH=EXEC_PATH||dojo.conf.EXEC_PATH;
+console.log('Port: ' + dojo.conf.port);
+console.log('__filename: ' + dojo.__filename);
+
 function fn_conn_db(){
 	var server = new dojo.mongodb.Server('localhost',27017,{auto_reconnect:true,max_pool_size:1});
 	var conn = dojo.mongodb.Db('test',server);
@@ -112,45 +146,12 @@ function fn_conn_db(){
 						dojo.route.dynamicServletMapping.push(op);	
 					}
 				});
+			dojo.createObject("com.easysoft.zoo.Elephant",{dir:dojo.dir});
 		}else{
 			console.log("--conn db err--");
 		}
 	});
 }
 
-
-console.log("require request");
-dojo.request = require('request');
-
-console.log("require connect");
-dojo.connect = require('connect');
-
-console.log("require formidable");
-dojo.formidable = require('formidable');
-
-
-console.log("require async");
-dojo.async = require('async');
-
-console.log("require express");
-dojo.express = require('express');
-
-
-
-dojo.dir=__dirname;
-dojo.__filename=__filename;
-require("./_bin/script/dojos");
-dojo.import("mime");
-dojo.import("conf");
 fn_conn_db();
-dojo.import("com.easysoft.zoo.Elephant");
-console.log('This platform is ' + dojo.process.platform);
-console.log('Version: ' + dojo.process.version);
-dojo.conf.port=input_port||dojo.conf.port;
-dojo.conf.DOMAIN_IP=DOMAIN_IP||dojo.conf.DOMAIN_IP;
-dojo.conf.DOMAIN_NAME=DOMAIN_NAME||dojo.conf.DOMAIN_NAME;
-dojo.conf.EXEC_PATH=EXEC_PATH||dojo.conf.EXEC_PATH;
-console.log('Port: ' + dojo.conf.port);
-console.log('__filename: ' + dojo.__filename);
-dojo.createObject("com.easysoft.zoo.Elephant",{dir:dojo.dir});
 console.log(dojo.os.hostname());  
