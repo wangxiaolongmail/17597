@@ -24,10 +24,7 @@ db.system.js.save({_id:"admin_favorite_type_List",value:function (params) {
 			}
 			pageRecordCount=id;
 			var pageCount=Math.ceil(recordCount/pageSize);
-			var metadata=[
-                                {field:"id",lable:"id"},
-                                {field:"article_title",lable:C.TITLE}
-                        ];
+			var metadata=_get_metadata()[tablename];
 			var result={
 				ok:true,tablename:tablename,metadata:metadata,page:page,recordCount:recordCount,
 				pageSize:pageSize,pageCount:pageCount,pageRecordCount:pageRecordCount,list:list

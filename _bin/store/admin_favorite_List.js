@@ -21,7 +21,7 @@ db.system.js.save({_id:"admin_favorite_List",value:function (params) {
 			recordCount=db[tablename].find(option).count();
 			var cursor =db[tablename].find(option).limit(pageSize).skip(pageSize*(page-1));
 			var list=[];
-			var metadata=pub.metadata(tablename);
+			var metadata=_get_metadata()[tablename];
 			var id=0;
 			while (cursor.hasNext()) {
 				id++; 
