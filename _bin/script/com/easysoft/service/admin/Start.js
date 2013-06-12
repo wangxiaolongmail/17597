@@ -43,6 +43,7 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 	},
 	drawMainMenu:function(data){
 		var sid=this.sid;
+		var fi18n=dojo.fi18n;
 		var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
 		this.cur_obj={};
 		var list=data[C.MODULE_LIST];
@@ -53,11 +54,11 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 			if(data[C.CURRENT_MODULE]==o[C.MODULE_NAME]){
 			  this.cur_obj=o;
 			  a.push("<li class='active'>");
-			  a.push("<a href='#'>"+I18N[o[C.MODULE_NAME]]+"</a>");
+			  a.push("<a href='#'>"+fi18n(o[C.MODULE_NAME])+"</a>");
 			  a.push("</li>");
 			}else{
 			  a.push("<li>");
-			  a.push("<a href='"+o[C.MODULE_URL]+"?sid="+sid+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
+			  a.push("<a href='"+o[C.MODULE_URL]+"?sid="+sid+"'>"+fi18n(o[C.MODULE_NAME])+"</a>");
 			  a.push("</li>");
 			}
 		}
@@ -66,7 +67,7 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 		//var len = list.length;
 		a.push("<ul class='nav pull-right'>");
     			a.push("<li>");
-			a.push("<a href='"+o[C.MODULE_URL]+"?sid="+sid+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
+			a.push("<a href='"+o[C.MODULE_URL]+"?sid="+sid+"'>"+fi18n(o[C.MODULE_NAME])+"</a>");
 			a.push("</li>");
 		a.push("</ul>");
 		return a.join("");
