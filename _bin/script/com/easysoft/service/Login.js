@@ -33,7 +33,8 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Index" , {
 			a.push('<label>'+I18N[C.PASSWORD]+':</label>');
 			a.push('<input style="height:30px" class="span3" name="'+C.PASSWORD+'" type="password">');
 			a.push('<button type="submit" class="btn btn-primary">'+I18N[C.OK]+'</button>');
-			$("form").attr("action",$c.c_url_001_702).html(a.join("\n"));
+			var url=data[C.MODULE_URL];
+			$("form").attr("action",url).html(a.join("\n"));
 		
 		return $.html();
 	}

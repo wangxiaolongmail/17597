@@ -1,4 +1,4 @@
-db.system.js.save({_id:"create_module",value:function (params) {
+db.system.js.save({_id:"create_module",value:function () {
 	var C=constant();
 	db.module.remove();
 	var obj={};
@@ -45,5 +45,13 @@ db.system.js.save({_id:"create_module",value:function (params) {
 	obj[C.IS_PUBLIC]=true;
 	obj[C.METHOD]=C.GET;
 	db.module.insert(obj);
-
+	
+	var obj={};
+	obj["_id"]=C.EASYSOFT_LOGINING;
+	obj[C.MODULE_NAME]=C.EASYSOFT_LOGINING;
+	obj[C.MODULE_URL]="/e/logining";
+	obj[C.SERVLET_CLASS]="com.easysoft.service.Logining";
+	obj[C.IS_PUBLIC]=true;
+	obj[C.METHOD]=C.POST;
+	db.module.insert(obj);
 }})
