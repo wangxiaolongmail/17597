@@ -12,6 +12,9 @@ db.system.js.save({_id:"main",value:function (params) {
 		 case "admin_favorite_List":   
 				result=admin_favorite_List(params);   
 				break;
+		 case "admin_favorite_type_List":   
+				result=admin_favorite_type_List(params);   
+				break;
 		 case "checkLogining":   
 				result=checkLogining(params);   
 				break;

@@ -28,11 +28,67 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			op[C.STORED_METHOD] ='admin_favorite_List';
 			this.exec(op);
         },
-		postDraw:function(data){
+	 drawSelectType:function(data){
+			var category=data.category;
+			var a=[];
+			var catlist=dojo.favorite_catlist;
+			var len = catlist.length;
+			for(var i=0;i<len;i++){
+				var o=catlist[i];
+				if(o.category==category){
+					a.push("<option selected value='"+o.category+"'>");
+				}else{
+					a.push("<option value='"+o.category+"'>");
+				}
+				a.push(o.article_title);
+				a.push("</option>");
+			}
+			return a.join("\n");
+
+	 },
+	 drawSelectTypeScript:function(data){
+			var a=[],o={},I18N=dojo.i18n,C=dojo.cst,sid=this.sid;
+			a.push('$("#select01").change(function()');
+			a.push('{');
+				  //a.push('alert($(this).val());');
+				  a.push('location.href="?sid='+sid+'&category="+$(this).val();');
+			a.push('});');
+			a.push('$("a.'+C.DELETE+'").on("click",function()');
+			a.push('{');
+				a.push('$("#list1 input[type=\'checkbox\']:checked").each(function(){');
+					//a.push('alert($(this).val());');
+				a.push('});');
+				a.push('if(confirm("Is it delete record?")){');
+					a.push('location.href="/easysoft/admin/favorite_del?sid='+sid+'";');
+				a.push('}');
+			a.push('});');
+			return a.join("\n");
+	 },
+
+	 drawButton:function(data){
 			var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
-			var $ = this.getDom();
-			$("#left_bar").remove();
-			$("#right_bar").removeClass("span9").addClass("span12");
+			var cur_obj=this.cur_obj
+			if(cur_obj[C.ADD]){
+				a.push("<a class='btn "+C.ADD+"' href='#'>");
+				a.push(I18N[C.ADD]);
+				a.push("</a>"); 
+			}
+			if(cur_obj[C.EDIT]){
+				a.push("<a class='btn "+C.EDIT+"' href='#'>");
+				a.push(I18N[C.EDIT]);
+				a.push("</a>"); 
+			}
+			if(cur_obj[C.DELETE]){
+				a.push("<a class='btn "+C.DELETE+"' href='#'>");
+				a.push(I18N[C.DELETE]);
+				a.push("</a>"); 
+			}
+			return a.join("");
+
+	 },
+
+	 drawTable:function(data){
+			var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
 			var obj=data;
 			var a=[];
 			var list=obj.list;
@@ -72,8 +128,13 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 				a.push("</tr>");
 			}
 			a.push("</tbody>");
-			$("#list1").html(a.join(""));
-			
+			return a.join("");
+
+	 },
+
+	 drawPage:function(data){
+			var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
+			var obj=data;
 			var a=[],
 			pageCount=obj.pageCount,
 			page=obj.page,
@@ -105,63 +166,37 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			a.push("</ul>");
 			
           	
-			$("#pager").html(a.join(""));
+			return a.join("");
+
+
+	 },
+
+
+
+		postDraw:function(data){
+			var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
+			var $ = this.getDom();
+			$("#left_bar").remove();
+			$("#right_bar").removeClass("span9").addClass("span12");
+			
+			$("#list1").html(this.drawTable(data));
+			
+			$("#pager").html(this.drawPage(data));
 			
 			
 			$(".nav-collapse").html(this.drawMainMenu(data));
 			
-			var a=[];
-			var catlist=dojo.favorite_catlist;
-			var len = catlist.length;
-			for(var i=0;i<len;i++){
-				var o=catlist[i];
-				if(o.category==category){
-					a.push("<option selected value='"+o.category+"'>");
-				}else{
-					a.push("<option value='"+o.category+"'>");
-				}
-				a.push(o.article_title);
-				a.push("</option>");
-			}
-			$("#select01").addClass("span2").html(a.join(""));
-			$("h4").html(obj.tablename);
-			var a=[];
-			var cur_obj=this.cur_obj
-			if(cur_obj[C.ADD]){
-				a.push("<a class='btn "+C.ADD+"' href='#'>");
-				a.push(I18N[C.ADD]);
-				a.push("</a>"); 
-			}
-			if(cur_obj[C.EDIT]){
-				a.push("<a class='btn "+C.EDIT+"' href='#'>");
-				a.push(I18N[C.EDIT]);
-				a.push("</a>"); 
-			}
-			if(cur_obj[C.DELETE]){
-				a.push("<a class='btn "+C.DELETE+"' href='#'>");
-				a.push(I18N[C.DELETE]);
-				a.push("</a>"); 
-			}
-			$(".btn-group").html(a.join(""));
+			
+			$("#select01").addClass("span2").html(this.drawSelectType(data));
+
+			$("h4").html(data.tablename);
+
+			
+			$(".btn-group").html(this.drawButton(data));
 			
 			var s=$.html();
-			var a=[];
-			a.push('$("#select01").change(function()');
-			a.push('{');
-				  //a.push('alert($(this).val());');
-				  a.push('location.href="?sid='+sid+'&category="+$(this).val();');
-			a.push('});');
-			a.push('$("a.'+C.DELETE+'").on("click",function()');
-			a.push('{');
-				a.push('$("#list1 input[type=\'checkbox\']:checked").each(function(){');
-					//a.push('alert($(this).val());');
-				a.push('});');
-				a.push('if(confirm("Is it delete record?")){');
-					a.push('location.href="/easysoft/admin/favorite_del?sid='+sid+'";');
-				a.push('}');
-			a.push('});');
-			s=s.replace("/*script_body_replace*/",a.join("\n"));
-			s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(obj,true));
+			s=s.replace("/*script_body_replace*/",this.drawSelectTypeScript(data));
+			s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(data,true));
 			return s;
 		}
 
