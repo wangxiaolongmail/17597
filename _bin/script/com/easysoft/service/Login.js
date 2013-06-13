@@ -39,14 +39,6 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Index" , {
 			$("form").attr("action",url).html(a.join("\n"));
 		
 		var s=$.html();
-		s=s+this.drawDebug(data);
 		return s;
-	},
-	drawDebug:function(data){
-		var a=[];
-		a.push("<script type='text/javascript'>");
-		a.push("window.debug="+dojo.toString(data,true));
-		a.push("</script>");
-		return a.join("\n");
 	}
 });

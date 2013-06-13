@@ -38,7 +38,6 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 		var s=$.html();
 		var a=[];
 		s=s.replace("/*script_body_replace*/",a.join("\n"));
-		s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(data,true));
 		return s;
 	},
 	drawMainMenu:function(data){

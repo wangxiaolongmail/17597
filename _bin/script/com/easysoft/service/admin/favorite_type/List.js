@@ -52,7 +52,6 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.List" , "com.easysoft.se
 			
 			var s=$.html();
 			s=s.replace("/*script_body_replace*/",this.drawSelectTypeScript(data));
-			s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(data,true));
 			return s;
 		}
 

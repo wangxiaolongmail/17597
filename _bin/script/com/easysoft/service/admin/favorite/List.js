@@ -196,7 +196,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			
 			var s=$.html();
 			s=s.replace("/*script_body_replace*/",this.drawSelectTypeScript(data));
-			s=s.replace("/*script_debug_replace*/","window.debug="+dojo.toString(data,true));
 			return s;
 		}
 

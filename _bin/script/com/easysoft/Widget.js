@@ -56,11 +56,20 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 		console.log('dojo.db.eval("'+cmd+'");');
 		dojo.db.eval(cmd, dojo.hitch(this,this.draw));
 	},
+	drawDebug:function(data){
+		var a=[];
+		a.push("<script type='text/javascript'>");
+		a.push("window.debug="+dojo.toString(data,true));
+		a.push("</script>");
+		return a.join("\n");
+	},
 	draw:function(err,data){
 		if(!err){
 			if(data!=null){
 				if(data.ok){
-					this.endPaint(this.postDraw(data));
+					var s=this.postDraw(data);
+					s=s+this.drawDebug(data);
+					this.endPaint(s);
 				}else{
 					this.endPaint(data.err);
 				}
