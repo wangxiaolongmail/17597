@@ -43,7 +43,7 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Index" , {
 		a.push('var node=$("input[name=\''+C.USER_NAME+'\']");');
 		a.push('node.bind("focus",function(){');
 			a.push('$("form").append("<label>'+I18N[C.CHECK_CODE]+':</label>")');
-			a.push('$("form").append("<input style=\'height:30px\' class=\'span3\' name=\''+C.CHECK_CODE+'\' >")');
+			a.push('$("form").append("<input style=\'height:30px\' class=\'span3\' name=\''+C.CHECK_CODE+'\'  type=\'text\' >")');
 			a.push('$("form").append("<img src=\''+data[C.EASYSOFT_CHECK_CODE]+'\' />")');
 			a.push('$("form").append("<button type=\'submit\' class=\'btn btn-primary\'>'+I18N[C.OK]+'</button>")');
 			a.push('node.unbind("focus");');
