@@ -26,7 +26,7 @@ db.system.js.save({_id:"make_favorite",value:function(params){
 
 			var op={};
 			op[C.MODULE_NAME]=C.EASYSOFT_LOGIN;
-			op[C.MODULE_URL]=getUrlName(C.EASYSOFT_LOGIN);
+			op[C.MODULE_URL]=_get_url(C.EASYSOFT_LOGIN);
 			result[C.R_MODULE_LIST]=[op];
 
 		return result;
