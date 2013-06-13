@@ -7,6 +7,7 @@ db.system.js.save({_id:"constant",value:function () {
 				CACHE:"CACHE",
 				CURRENT_URL:"CURRENT_URL",
 				CURRENT_MODULE:"CURRENT_MODULE",
+				CHECK_CODE:"CHECK_CODE",
 				DELETE:"DELETE",
 				EDIT:"EDIT",
 				EASYSOFT_INDEX:"EASYSOFT_INDEX",

@@ -15,9 +15,9 @@ db.system.js.save({_id:"_get_check_code",value:function (name) {
 		var o={};
 		o.a=a;
 		o.b=b;
-		o.width=100;
-		o.height=30;
-		o.bgColor='#000';
+		o.w=100;
+		o.h=30;
+		o.bgColor='#fff';
 		o.font='bold 30px sans-serif';
 		o.globalAlpha = .8;
 		o.ok=true;

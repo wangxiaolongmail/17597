@@ -32,7 +32,8 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Index" , {
 			a.push('<input style="height:30px" class="span3" name="'+C.USER_NAME+'" type="text">');
 			a.push('<label>'+I18N[C.PASSWORD]+':</label>');
 			a.push('<input style="height:30px" class="span3" name="'+C.PASSWORD+'" type="password">');
-			a.push('<label>'+I18N[C.PASSWORD]+':</label>');
+			a.push('<label>'+I18N[C.CHECK_CODE]+':</label>');
+			a.push('<input style="height:30px" class="span3" name="'+C.CHECK_CODE+'" type="password">');
 			a.push('<img src="'+data[C.EASYSOFT_CHECK_CODE]+'" />');
 			a.push('<button type="submit" class="btn btn-primary">'+I18N[C.OK]+'</button>');
 			var url=data[C.MODULE_URL];

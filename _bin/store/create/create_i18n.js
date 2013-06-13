@@ -6,6 +6,7 @@ db.system.js.save({_id:"create_i18n",value:function () {
 	db.i18n.insert({_id:C.ADMIN_FAVORITE_LIST,cn:"收藏夹列表"});
 	db.i18n.insert({_id:C.TITLE,cn:"标题"});
 	db.i18n.insert({_id:C.CATEGORY,cn:"类别"});
+	db.i18n.insert({_id:C.CHECK_CODE,cn:"验证码"});
 	db.i18n.insert({_id:C.DELETE,cn:"删除"});
 	db.i18n.insert({_id:C.EDIT,cn:"编辑"});
 	db.i18n.insert({_id:C.FAVORITE,cn:"收藏夹"});

@@ -20,12 +20,14 @@ dojo.declare( "com.easysoft.service.CheckCode" , "com.easysoft.Widget" , {
 		this.exec(op);
 	},
 	postDraw:function(data){
-		var canvas = new dojo.canvas(100, 30),
+		var w=data.w;
+		var h=data.h
+		var canvas = new dojo.canvas(w, h),
 		ctx = canvas.getContext('2d');
 
-		ctx.fillStyle = '#fff';
-		ctx.fillRect(0, 0, 100, 30);
-		ctx.font = 'bold 30px sans-serif';
+		ctx.fillStyle = data.bgColor;
+		ctx.fillRect(0, 0, w, h);
+		ctx.font = data.font;
 
 		ctx.globalAlpha = .8;
 		for (var i = 0; i < 4; i++) {
