@@ -17,9 +17,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 		template_file:"favorite_list.html",
         postCreate:function(){
 			var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
-			this.sid=this.queryString.sid;
-			var op=this.getbo();
-			op["sid"] =this.sid;
+			var op=this.getsbo();
 			op["page"] =this.queryString.page;
 			op["category"] =this.queryString.category;
 			op[C.TABLE_NAME] ='favorite';

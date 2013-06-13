@@ -15,15 +15,15 @@
 dojo.provide("com.easysoft.service.admin.Start");
 dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" , {
 	template_file:"start.html",
+	getsbo:function(sname){
+		var op=this.getbo();
+		this.sid=this.queryString.sid;
+		op["sid"] =this.sid;
+		return op;
+	},
     postCreate:function(){
 		var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
-		this.sid=this.queryString.sid;
-		var op=this.getbo();
-		op["sid"] =this.sid;
-		op["page"] =this.queryString.page;
-		op["category"] =this.queryString.category;
-		op[C.TABLE_NAME] ='favorite';
-		op[C.CAT_TABLE_NAME] ='favorite_type';
+		var op=this.getsbo();
 		op[C.STORED_METHOD] ='admin_Start';
 		this.exec(op);
     },
