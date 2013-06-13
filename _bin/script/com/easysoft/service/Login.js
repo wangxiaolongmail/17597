@@ -32,10 +32,21 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Index" , {
 			a.push('<input style="height:30px" class="span3" name="'+C.USER_NAME+'" type="text">');
 			a.push('<label>'+I18N[C.PASSWORD]+':</label>');
 			a.push('<input style="height:30px" class="span3" name="'+C.PASSWORD+'" type="password">');
+			a.push('<label>'+I18N[C.PASSWORD]+':</label>');
+			a.push('<img src="'+data[C.EASYSOFT_CHECK_CODE]+'" />');
 			a.push('<button type="submit" class="btn btn-primary">'+I18N[C.OK]+'</button>');
 			var url=data[C.MODULE_URL];
 			$("form").attr("action",url).html(a.join("\n"));
 		
-		return $.html();
+		var s=$.html();
+		s=s+this.drawDebug(data);
+		return s;
+	},
+	drawDebug:function(data){
+		var a=[];
+		a.push("<script type='text/javascript'>");
+		a.push("window.debug="+dojo.toString(data,true));
+		a.push("</script>");
+		return a.join("\n");
 	}
 });
