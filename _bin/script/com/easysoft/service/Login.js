@@ -17,9 +17,10 @@ dojo.provide("com.easysoft.service.Login");
 dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Index" , {
 	template_file:"login.html",
 	postCreate:function(){
-                var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
-                op[C.STORED_METHOD] ='login';
-                this.exec(op);
+		var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
+		var op=this.getbo();
+		op[C.STORED_METHOD] ='login';
+		this.exec(op);
     },
 	postDraw:function(data){
 		var a=[],

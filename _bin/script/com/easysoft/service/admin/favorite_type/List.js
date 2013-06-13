@@ -18,11 +18,10 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.List" , "com.easysoft.se
         postCreate:function(){
 			var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
 			this.sid=this.queryString.sid;
+			var op=this.getbo();
 			op["sid"] =this.sid;
 			op["page"] =this.queryString.page;
 			op["category"] =this.queryString.category;
-			op[C.CURRENT_URL]=this.dog.m_urlObject.pathname;
-			op[C.REMOTE_ADDRESS]=this.dog.req.connection.remoteAddress;
 			op[C.TABLE_NAME] ='favorite_type';
 			op[C.STORED_METHOD] ='admin_favorite_type_List';
 			this.exec(op);

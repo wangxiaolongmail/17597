@@ -96,6 +96,12 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 			this.dog.res.end();
 			console.log(this.widgetName+"::endPaint");
 		}
+	},
+	getbo:function(){
+		var op={},C=dojo.cst;
+		op[C.CURRENT_URL]=this.dog.m_urlObject.pathname;
+		op[C.REMOTE_ADDRESS]=this.dog.req.connection.remoteAddress;
+		return op;
 	}
 }); 
 

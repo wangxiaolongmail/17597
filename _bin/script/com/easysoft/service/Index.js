@@ -18,10 +18,9 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 	template_dir:"/wy/",
 	template_file:"index.html",
 	role_name:"r_easysoft",
-
-
     postCreate:function(){
 		var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
+		var op=this.getbo();
 		op[C.ROLE_NAME] =this.role_name;
 		op[C.STORED_METHOD] ='make_favorite';
 

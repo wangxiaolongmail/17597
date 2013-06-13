@@ -17,6 +17,7 @@ dojo.provide("com.easysoft.service.Logining");
 dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.Widget" , {
 	postCreate:function(){
 		var a=[],I18N=dojo.i18n,C=dojo.cst,op={};
+		var op=this.getbo();
 		op[C.USER_NAME] = this.queryForm[C.USER_NAME];
 		op[C.PASSWORD] =dojo.md5(this.queryForm[C.PASSWORD]);
 		op[C.REMOTE_ADDRESS]=this.dog.req.connection.remoteAddress;
