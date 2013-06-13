@@ -18,7 +18,8 @@ db.system.js.save({_id:"create_i18n",value:function () {
 	db.i18n.insert({_id:C.EASYSOFT_LOGIN,cn:"登录"});
 	db.i18n.insert({_id:C.EASYSOFT_INDEX,cn:"网址"});
 	db.i18n.insert({_id:C.EASYSOFT_ADMIN_START,cn:"开始"});
-	db.i18n.insert({_id:C.EASYSOFT_ADMIN_FAVORITE_LIST,cn:"收藏夹"});
+	db.i18n.insert({_id:C.EASYSOFT_ADMIN_FAVORITE_LIST,cn:"网址"});
+	db.i18n.insert({_id:C.EASYSOFT_ADMIN_FAVORITE_TYPE_LIST,cn:"网址分类"});
 	return db.i18n.find().toArray();
 }})
 
