@@ -68,7 +68,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj["_id"]=C.EASYSOFT_CHECK_CODE;
 	obj[C.MODULE_NAME]=C.EASYSOFT_CHECK_CODE;
 	obj[C.MODULE_URL]="/e/check_code";
-	obj[C.SERVLET_CLASS]="com.easysoft.service.CheckImg";
+	obj[C.SERVLET_CLASS]="com.easysoft.service.CheckCode";
 	obj[C.IS_PUBLIC]=true;
 	obj[C.METHOD]=C.GET;
 	db.module.insert(obj);
