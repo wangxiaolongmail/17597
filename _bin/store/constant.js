@@ -28,6 +28,7 @@ db.system.js.save({_id:"constant",value:function () {
 				IS_OPEN:"IS_OPEN",
 				IS_TIMEOUT:"IS_TIMEOUT",
 				IS_PUBLIC:"IS_PUBLIC",
+				INSERT_TIME:"INSERT_TIME",
 				LOGIN:"LOGIN",
 				LOGIN_TIME:"LOGIN_TIME",
 				LOGOUT:"LOGOUT",
@@ -51,6 +52,7 @@ db.system.js.save({_id:"constant",value:function () {
 				CAT_TABLE_NAME:"CAT_TABLE_NAME",
 				UPDATE_TIME:"UPDATE_TIME",
 				USER_AGENT:"USER_AGENT",
+				VALUE:"VALUE",
 				REFER:"REFER"
         };
 }})

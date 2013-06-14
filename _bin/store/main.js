@@ -3,8 +3,8 @@ db.system.js.save({_id:"main",value:function (params) {
 	var result;
 	switch(params[C.STORED_METHOD]) 
 	{   
-		 case "_get_check_code":   
-				result=_get_check_code(params);   
+		 case "get_check_code":   
+				result=get_check_code(params);   
 				break;  
 		 case "make_favorite":   
 				result=make_favorite(params);   
