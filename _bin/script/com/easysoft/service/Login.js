@@ -40,7 +40,7 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Index" , {
 		var s=$.html();
 		var a=[];
 		a.push("<script type='text/javascript'>");
-		a.push('var node=$("input[name=\''+C.USER_NAME+'\']");');
+		a.push('var node=$("input[name=\''+C.PASSWORD+'\']");');
 		a.push('node.bind("focus",function(){');
 			a.push('$("form").append("<label>'+I18N[C.CHECK_CODE]+':</label>")');
 			a.push('$("form").append("<input style=\'height:30px\' class=\'span3\' name=\''+C.CHECK_CODE+'\'  type=\'text\' >")');
