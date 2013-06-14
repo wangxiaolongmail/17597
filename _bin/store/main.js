@@ -3,6 +3,9 @@ db.system.js.save({_id:"main",value:function (params) {
 	var result;
 	switch(params[C.STORED_METHOD]) 
 	{   
+		 case "goto":   
+				result=goto(params);   
+				break;   
 		 case "get_check_code":   
 				result=get_check_code(params);   
 				break;  

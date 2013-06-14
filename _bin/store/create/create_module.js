@@ -72,4 +72,13 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.IS_PUBLIC]=true;
 	obj[C.METHOD]=C.GET;
 	db.module.insert(obj);
+	
+	var obj={};
+	obj["_id"]=C.EASYSOFT_GO;
+	obj[C.MODULE_NAME]=C.EASYSOFT_GO;
+	obj[C.MODULE_URL]="/go";
+	obj[C.SERVLET_CLASS]="com.easysoft.service.Go";
+	obj[C.IS_PUBLIC]=true;
+	obj[C.METHOD]=C.GET;
+	db.module.insert(obj);
 }})

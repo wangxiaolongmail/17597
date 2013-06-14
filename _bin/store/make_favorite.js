@@ -23,6 +23,7 @@ db.system.js.save({_id:"make_favorite",value:function(params){
 		var a=_get_module_list(params[C.ROLE_NAME]);
 		result[C.MODULE_LIST]=a;
 		result[C.CURRENT_MODULE]=C.EASYSOFT_INDEX;
+		result[C.EASYSOFT_GO]=_get_url(C.EASYSOFT_GO);
 
 			var op={};
 			op[C.MODULE_NAME]=C.EASYSOFT_LOGIN;

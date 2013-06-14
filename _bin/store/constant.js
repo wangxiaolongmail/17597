@@ -17,6 +17,7 @@ db.system.js.save({_id:"constant",value:function () {
 				EASYSOFT_CHECK_CODE:"EASYSOFT_CHECK_CODE",
 				EASYSOFT_LOGIN:"EASYSOFT_LOGIN",
 				EASYSOFT_LOGINING:"EASYSOFT_LOGINING",
+				EASYSOFT_GO:"EASYSOFT_GO",
 				FAVORITE:"FAVORITE",
 				GET:"get",
 				POST:"post",

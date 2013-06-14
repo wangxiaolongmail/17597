@@ -48,7 +48,7 @@ var o=list[i];
 			var list2=o.list;
 for(var j=0;j<list2.length;j++){
 		a.push("&nbsp;");
-		a.push("<a target='_blank' href='"+list2[j].article_url+"'>"+list2[j].article_title+"</a>");
+		a.push("<a target='_blank' href='"+data[C.EASYSOFT_GO]+"?gotourl="+list2[j].article_url+"'>"+list2[j].article_title+"</a>");
 
 
 
