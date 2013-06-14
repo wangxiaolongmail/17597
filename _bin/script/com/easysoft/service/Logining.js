@@ -20,9 +20,8 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.Widget" , {
 		var op=this.getbo();
 		op[C.USER_NAME] = this.queryForm[C.USER_NAME];
 		op[C.PASSWORD] =dojo.md5(this.queryForm[C.PASSWORD]);
-		op[C.REMOTE_ADDRESS]=this.dog.req.connection.remoteAddress;
-		var s=this.dog.req.headers["user-agent"];
-		op[C.USER_AGENT]=s.replace(/;/g,"");
+		op[C.MID] = this.queryForm[C.MID];
+		op[C.CHECK_CODE] = this.queryForm[C.CHECK_CODE];
 		op[C.STORED_METHOD] ='checkLogining';
 		this.exec(op);
 	},

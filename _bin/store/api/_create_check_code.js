@@ -1,4 +1,5 @@
 db.system.js.save({_id:"_create_check_code",value:function () {
+		var C=constant();
 		items = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPRSTUVWXYZ23456789'.split(''),
 		vcode = '',
 		textColors = ['#FD0', '#6c0', '#09F', '#f30', '#aaa', '#3cc', '#cc0', '#A020F0', '#FFA500', '#A52A2A', '#8B6914', '#FFC0CB', '#90EE90'];
@@ -21,6 +22,7 @@ db.system.js.save({_id:"_create_check_code",value:function () {
 		o.font='bold 30px sans-serif';
 		o.globalAlpha = .8;
 		o.ok=true;
+		o[C.CHECK_CODE]=a.join("");
 		return o;
 }})
 

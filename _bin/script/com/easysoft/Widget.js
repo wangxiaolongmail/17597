@@ -101,6 +101,8 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 		var op={},C=dojo.cst;
 		op[C.CURRENT_URL]=this.dog.m_urlObject.pathname;
 		op[C.REMOTE_ADDRESS]=this.dog.req.connection.remoteAddress;
+		var s=this.dog.req.headers["user-agent"];
+		op[C.USER_AGENT]=s.replace(/;/g,"");
 		return op;
 	}
 }); 

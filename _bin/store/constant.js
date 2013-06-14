@@ -34,6 +34,7 @@ db.system.js.save({_id:"constant",value:function () {
 				LOGOUT:"LOGOUT",
 				PASSWORD:"PASSWORD",
 				USER_NAME:"USER_NAME",
+				MID:"mid",
 				MODULE_NAME:"MODULE_NAME",
 				METHOD:"method",
 				MODULE_URL:"MODULE_URL",
