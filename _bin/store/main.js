@@ -5,7 +5,7 @@ db.system.js.save({_id:"main",value:function (params) {
 	{   
 		 case "goto":   
 				result=goto(params);   
-				break;   
+				break; 
 		 case "get_check_code":   
 				result=get_check_code(params);   
 				break;  
@@ -29,7 +29,10 @@ db.system.js.save({_id:"main",value:function (params) {
 				break;
 		 case "logout":   
 				result=logout(params);   
-				break;
+				break;    
+		 case "truck":   
+				result=truck(params);   
+				break;  
 		 default:  
 				result={ok:false,err:C.STORED_METHOD+" is undefined"};    
 	}
