@@ -29,8 +29,8 @@ db.system.js.save({_id:"create_module",value:function () {
 	db.module.insert(obj);
 		
 	var obj={};
-	obj["_id"]=C.EASYSOFT_ADMIN_CONSTANT_LIST;
-	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_CONSTANT_LIST;
+	obj["_id"]=C.CONSTANT;
+	obj[C.MODULE_NAME]=C.CONSTANT;
 	obj[C.MODULE_URL]="/easysoft/admin/constant/list";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.constant.List";
 	obj[C.IS_PUBLIC]=false;

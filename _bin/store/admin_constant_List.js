@@ -24,9 +24,8 @@ db.system.js.save({_id:"admin_constant_List",value:function (params) {
 			}
 			pageRecordCount=id;
 			var pageCount=Math.ceil(recordCount/pageSize);
-			var metadata=_get_metadata(tablename);
 			var result={
-				ok:true,tablename:tablename,metadata:metadata,page:page,recordCount:recordCount,
+				ok:true,tablename:tablename,page:page,recordCount:recordCount,
 				pageSize:pageSize,pageCount:pageCount,pageRecordCount:pageRecordCount,list:list
 			};
 			result[C.MODULE_LIST]=sess[C.MODULE_LIST];

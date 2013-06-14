@@ -90,7 +90,9 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			var a=[];
 			var list=obj.list;
 			var len = list.length;
-			var metadata=obj.metadata;
+			//var metadata=obj.metadata;
+			var metadata=dojo[C.METADATA][data[C.INPUT][C.TABLE_NAME]];
+
 			a.push("<thead>");
 			a.push("<tr>");
 

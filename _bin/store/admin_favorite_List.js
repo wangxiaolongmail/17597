@@ -46,7 +46,7 @@ db.system.js.save({_id:"admin_favorite_List",value:function (params) {
 			pageRecordCount=id;
 			var pageCount=Math.ceil(recordCount/pageSize);
 			var result={
-				ok:true,tablename:tablename,metadata:metadata,page:page,recordCount:recordCount,
+				ok:true,tablename:tablename,page:page,recordCount:recordCount,
 				pageSize:pageSize,pageCount:pageCount,pageRecordCount:pageRecordCount,list:list,category:category
 			};
 			result[C.MODULE_LIST]=sess[C.MODULE_LIST];

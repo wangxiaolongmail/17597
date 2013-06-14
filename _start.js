@@ -150,6 +150,7 @@ function fn_conn_db(){
 					dojo.fi18n=function(name){
 						return dojo.i18n[name]||name;
 					}
+					dojo[C.METADATA]=obj[C.METADATA];
 				});
 			dojo.createObject("com.easysoft.zoo.Elephant",{dir:dojo.dir});
 		}else{

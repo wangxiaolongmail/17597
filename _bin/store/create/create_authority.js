@@ -27,7 +27,7 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 	db.authority.insert(obj);	
 
 	var obj={};
-	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_CONSTANT_LIST;
+	obj[C.MODULE_NAME]=C.CONSTANT;
 	obj[C.ROLE_NAME]="r_wxl";
 	obj[C.IS_NEW]=false;
 	obj[C.IS_EDIT]=false;
