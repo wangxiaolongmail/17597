@@ -52,6 +52,8 @@ db.system.js.save({_id:"constant",value:function () {
 				STORED_METHOD:"stored_method",
 				TITLE:"TITLE",
 				TABLE_NAME:"TABLE_NAME",
+				TO_URL:"tourl",
+				TO:"to",
 				CAT_TABLE_NAME:"CAT_TABLE_NAME",
 				UPDATE_TIME:"UPDATE_TIME",
 				USER_AGENT:"USER_AGENT",

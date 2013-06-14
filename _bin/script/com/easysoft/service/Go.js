@@ -18,13 +18,12 @@ dojo.declare( "com.easysoft.service.Go" , "com.easysoft.Widget" , {
 	postCreate:function(){
 		var a=[],I18N=dojo.i18n,C=dojo.cst,op={};
 		var op=this.getbo();
-		this.gotourl = this.queryString["gotourl"];
+		op[C.TO] =this.queryString[C.TO];
 		op[C.STORED_METHOD] ='goto';
 		this.exec(op);
 	},
 	postDraw:function(data){
-		var a=[],I18N=dojo.i18n,C=dojo.cst,op={};
-		var url=this.gotourl;
-		this.redirect(url);
+		var C=dojo.cst;
+		this.redirect(data[C.INPUT][C.TO]);
 	}
 });
