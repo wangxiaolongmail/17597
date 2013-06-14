@@ -53,6 +53,7 @@ db.system.js.save({_id:"constant",value:function () {
 				SITE_NAME:"SITE_NAME",
 				SERVLET_CLASS:"servletClass",
 				STORED_METHOD:"stored_method",
+				SHOW_FAVORITE:"show_favorite",
 				TITLE:"TITLE",
 				TABLE_NAME:"TABLE_NAME",
 				TO_URL:"tourl",

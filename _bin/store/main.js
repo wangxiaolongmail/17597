@@ -9,8 +9,8 @@ db.system.js.save({_id:"main",value:function (params) {
 		 case "get_check_code":   
 				result=get_check_code(params);   
 				break;  
-		 case "make_favorite":   
-				result=make_favorite(params);   
+		 case C.SHOW_FAVORITE:   
+				result=show_favorite(params);   
 				break;  
 		 case "admin_Start":   
 				result=admin_Start(params);   
