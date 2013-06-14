@@ -30,6 +30,8 @@ db.system.js.save({_id:"main",value:function (params) {
 		 default:  
 				result={ok:false,err:C.STORED_METHOD+" is undefined"};    
 	}
+	result[C.INPUT]=params;
+	_push_log(result);
 	return result;
 }})
 
