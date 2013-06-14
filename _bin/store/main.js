@@ -30,8 +30,8 @@ db.system.js.save({_id:"main",value:function (params) {
 		 case "logout":   
 				result=logout(params);   
 				break;    
-		 case "truck":   
-				result=truck(params);   
+		 case "init":   
+				result=init(params);   
 				break;  
 		 default:  
 				result={ok:false,err:C.STORED_METHOD+" is undefined"};    

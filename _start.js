@@ -126,7 +126,7 @@ function fn_conn_db(){
 		if(!err){
 			console.log("--conn db success--");
 			dojo.db=db;
-			var cmd = "main({'stored_method':'truck'})";
+			var cmd = "main({'stored_method':'init'})";
 			console.log('dojo.db.eval("'+cmd+'");');
 			dojo.db.eval(cmd, function(err,obj){
 					dojo.favorite_catlist=obj.favorite_catlist;
