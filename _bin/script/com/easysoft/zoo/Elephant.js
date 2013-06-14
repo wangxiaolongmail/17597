@@ -25,7 +25,7 @@ dojo.declare("com.easysoft.zoo.Elephant","com.easysoft.Widget",{
 		this.init(); 
 		dojo.http.createServer(dojo.hitch(this,function(req,res){
 			//try{
-				
+/*				
 				var remoteAddress=dojo.toString(req.connection.remoteAddress);
 				if( remoteAddress != dojo.conf.DOMAIN_IP &&  remoteAddress != dojo.conf.default_vm_ip ){
 					var timestamp=new Date().getTime();
@@ -34,8 +34,9 @@ dojo.declare("com.easysoft.zoo.Elephant","com.easysoft.Widget",{
 					//console.log("req.method:"+timestamp+":"+dojo.toString(req.method));
 					var timestamp=new Date();
 					refer=req.headers.referer||req.headers.refer;
-					console.log("request|"+timestamp+"|"+dojo.toString(req.method)+"|"+dojo.toString(req.connection.remoteAddress)+"|"+req.headers["user-agent"]+"|"+refer);
+					//console.log("request|"+timestamp+"|"+dojo.toString(req.method)+"|"+dojo.toString(req.connection.remoteAddress)+"|"+req.headers["user-agent"]+"|"+refer);
 				}
+*/
 				dojo.createObject("com.easysoft.zoo.Dog",{ req:req , res:res });
 			//}
 			//catch(err){

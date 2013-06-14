@@ -154,6 +154,9 @@ function fn_conn_db(){
 			dojo.createObject("com.easysoft.zoo.Elephant",{dir:dojo.dir});
 		}else{
 			console.log("--conn db err--");
+			setTimeout(function(){
+				console.log("=============exit=============");
+			},3000);
 		}
 	});
 }
