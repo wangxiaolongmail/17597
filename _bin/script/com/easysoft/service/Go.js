@@ -16,14 +16,14 @@ dojo.import("com.easysoft.Widget");
 dojo.provide("com.easysoft.service.Go");
 dojo.declare( "com.easysoft.service.Go" , "com.easysoft.Widget" , {
 	postCreate:function(){
-		var a=[],I18N=dojo.i18n,C=dojo.cst,op={};
+		var a=[],C=dojo.C,op={};
 		var op=this.getbo();
 		op[C.TO] =this.queryString[C.TO];
 		op[C.STORED_METHOD] ='goto';
 		this.exec(op);
 	},
 	postDraw:function(data){
-		var C=dojo.cst;
+		var C=dojo.C;
 		this.redirect(data[C.INPUT][C.TO]);
 	}
 });
