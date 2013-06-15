@@ -22,7 +22,7 @@ db.system.js.save({_id:"_get_metadata",value:function (name) {
 
 		var OP={};
 		OP[C.FIELD]=C.VALUE;
-		OP[C.LABLE]=C.VALUE;
+		OP[C.LABEL]=C.VALUE;
 		a.push(OP);
 
 		o[C.CONSTANT]=a;
@@ -32,4 +32,3 @@ db.system.js.save({_id:"_get_metadata",value:function (name) {
 			return o;
 		}
 }})
-

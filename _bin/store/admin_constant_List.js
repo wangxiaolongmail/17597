@@ -31,6 +31,8 @@ db.system.js.save({_id:"admin_constant_List",value:function (params) {
 			result[C.MODULE_LIST]=sess[C.MODULE_LIST];
 			result[C.R_MODULE_LIST]=sess[C.R_MODULE_LIST];
 			result[C.CURRENT_MODULE]=sess[C.CURRENT_MODULE];
+			result["newlist2"]=1;
+
 			return result;
 		}
 		return build();
