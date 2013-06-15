@@ -24,6 +24,7 @@ db.system.js.save({_id:"constant",value:function () {
 				FIELD:"field",
 				GET:"get",
 				ID:"ID",
+				I18N:"I18N",
 				IS_NEW:"IS_NEW",
 				IS_EDIT:"IS_EDIT",
 				IS_DELETE:"IS_DELETE",

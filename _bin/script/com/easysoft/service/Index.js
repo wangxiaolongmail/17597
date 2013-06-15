@@ -84,7 +84,7 @@ for(var j=0;j<list2.length;j++){
                           a.push("</li>");
                         }else{
                           a.push("<li>");
-                          a.push("<a href='"+o[C.MODULE_URL]+"'>"+dojo.fi18n(o[C.MODULE_NAME])+"</a>");
+                          a.push("<a href='"+o[C.MODULE_URL]+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
                           a.push("</li>");
                         }
                 }
@@ -93,7 +93,7 @@ for(var j=0;j<list2.length;j++){
 		//var len = list.length;
 		a.push("<ul class='nav pull-right'>");
     			a.push("<li>");
-			a.push("<a target='_blank' href='"+o[C.MODULE_URL]+"'>"+dojo.fi18n(o[C.MODULE_NAME])+"</a>");
+			a.push("<a target='_blank' href='"+o[C.MODULE_URL]+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
 			a.push("</li>");
 		a.push("</ul>");
                 return a.join("");

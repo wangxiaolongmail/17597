@@ -130,26 +130,12 @@ function fn_conn_db(){
 			console.log('dojo.db.eval("'+cmd+'");');
 			dojo.db.eval(cmd, function(err,obj){
 					dojo.favorite_catlist=obj.favorite_catlist;
-					dojo.cst=obj.cst;
-					var C=obj.cst;
-					var a=obj.i18n;
-					dojo.i18n={};
-					for(var i=0;i<a.length;i++){
-						var o=a[i];
-						dojo.i18n[o._id]=o.cn;
-					}	
-					var a=obj.module;
-					for(var i=0;i<a.length;i++){
-						var o=a[i];
-						var op={};
-						op[C.SERVLET_CLASS]=o[C.SERVLET_CLASS];
-						op[C.PATH_NAME]=o[C.MODULE_URL];
-						op[C.METHOD]=o[C.METHOD];
-						dojo.route.dynamicServletMapping.push(op);	
-					}
-					dojo.fi18n=function(name){
-						return dojo.i18n[name]||name;
-					}
+					dojo.C=obj.C;
+					dojo.cst=dojo.C;
+					var C=dojo.C;
+					dojo.i18n=obj[C.I18N];
+					dojo[C.I18N]=obj[C.I18N];
+					dojo.route.dynamicServletMapping=obj.dynamicServletMapping;
 					dojo[C.METADATA]=obj[C.METADATA];
 					dojo.debugInitData=obj;
 
