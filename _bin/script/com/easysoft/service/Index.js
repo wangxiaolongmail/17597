@@ -19,7 +19,7 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 	template_file:"index.html",
 	role_name:"r_easysoft",
     postCreate:function(){
-		var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
+		var a=[],o={},op={},C=dojo.C;
 		var op=this.getbo();
 		op[C.ROLE_NAME] =this.role_name;
 		op[C.STORED_METHOD] =C.SHOW_FAVORITE;
@@ -27,7 +27,7 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 		this.exec(op);
     },
 	postDraw:function(data){
-		var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
+		var a=[],o={},C=dojo.C;
 		var sid=this.sid;
 		var $ = this.getDom();
 		$("#left_bar").remove();
@@ -70,7 +70,7 @@ for(var j=0;j<list2.length;j++){
 		return s;
 	},
         drawMainMenu:function(data){
-                var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
+                var a=[],o={},I18N=dojo.I18N,C=dojo.C;
                 this.cur_obj={};
                 var list=data[C.MODULE_LIST];
                 var len = list.length;

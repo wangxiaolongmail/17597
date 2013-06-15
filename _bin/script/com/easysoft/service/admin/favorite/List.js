@@ -16,7 +16,7 @@ dojo.provide("com.easysoft.service.admin.favorite.List");
 dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service.admin.Start" , {
 		template_file:"favorite_list.html",
         postCreate:function(){
-			var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
+			var a=[],o={},op={},C=dojo.C;
 			var op=this.getsbo();
 			op["page"] =this.queryString.page;
 			op["category"] =this.queryString.category;
@@ -44,7 +44,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 
 	 },
 	 drawSelectTypeScript:function(data){
-			var a=[],o={},I18N=dojo.i18n,C=dojo.cst,sid=this.sid;
+			var a=[],o={},I18N=dojo.I18N,C=dojo.C,sid=this.sid;
 			a.push('$("#select01").change(function()');
 			a.push('{');
 				  //a.push('alert($(this).val());');
@@ -63,7 +63,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 	 },
 
 	 drawButton:function(data){
-			var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
+			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
 			var cur_obj=this.cur_obj
 			if(cur_obj[C.ADD]){
 				a.push("<a class='btn "+C.ADD+"' href='#'>");
@@ -85,7 +85,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 	 },
 
 	 drawTable:function(data){
-			var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
+			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
 			var obj=data;
 			var a=[];
 			var list=obj.list;
@@ -132,7 +132,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 	 },
 
 	 drawPage:function(data){
-			var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
+			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
 			var obj=data;
 			var a=[],
 			pageCount=obj.pageCount,
@@ -173,7 +173,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 
 
 		postDraw:function(data){
-			var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
+			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
 			var $ = this.getDom();
 			$("#left_bar").remove();
 			$("#right_bar").removeClass("span9").addClass("span12");

@@ -129,17 +129,10 @@ function fn_conn_db(){
 			var cmd = "main({'stored_method':'init'})";
 			console.log('dojo.db.eval("'+cmd+'");');
 			dojo.db.eval(cmd, function(err,obj){
-					dojo.favorite_catlist=obj.favorite_catlist;
-					dojo.C=obj.C;
-					dojo.cst=dojo.C;
-					var C=dojo.C;
-					dojo.i18n=obj[C.I18N];
-					dojo[C.I18N]=obj[C.I18N];
-					dojo.route.dynamicServletMapping=obj.dynamicServletMapping;
-					dojo[C.METADATA]=obj[C.METADATA];
-					dojo.debugInitData=obj;
-
-				});
+				dojo.mixin(dojo,obj);
+				dojo.route.dynamicServletMapping=obj.dynamicServletMapping;
+				dojo.debugInitData=obj;
+			});
 			dojo.createObject("com.easysoft.zoo.Elephant",{dir:dojo.dir});
 		}else{
 			console.log("--conn db err--");

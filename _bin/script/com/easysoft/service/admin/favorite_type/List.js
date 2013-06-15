@@ -16,7 +16,7 @@ dojo.provide("com.easysoft.service.admin.favorite_type.List");
 dojo.declare( "com.easysoft.service.admin.favorite_type.List" , "com.easysoft.service.admin.favorite.List" , {
 		template_file:"favorite_list.html",
         postCreate:function(){
-			var a=[],o={},op={},I18N=dojo.i18n,C=dojo.cst;
+			var a=[],o={},op={},C=dojo.C;
 			var op=this.getsbo();
 			op["page"] =this.queryString.page;
 			op["category"] =this.queryString.category;
@@ -27,7 +27,7 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.List" , "com.easysoft.se
 
 		postDraw:function(data){
 			
-			var a=[],o={},I18N=dojo.i18n,C=dojo.cst;
+			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
 			var $ = this.getDom();
 			$("#left_bar").remove();
 			$("#right_bar").removeClass("span9").addClass("span12");

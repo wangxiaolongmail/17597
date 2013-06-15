@@ -102,7 +102,7 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 		}
 	},
 	getbo:function(){
-		var op={},C=dojo.cst;
+		var op={},C=dojo.C;
 		op[C.CURRENT_URL]=this.dog.m_urlObject.pathname;
 		op[C.REMOTE_ADDRESS]=this.dog.req.connection.remoteAddress;
 		var s=this.dog.req.headers["user-agent"];
