@@ -26,8 +26,6 @@ db.system.js.save({_id:"admin_favorite_List",value:function (params) {
 			while (cursor.hasNext()) {
 				id++; 
 				var item=cursor.next();
-				var o=db[tablename_type].findOne( { category : item.category } );
-				item.category=o.article_title;
 				item.id=id;
 				var new_item={};
 				var a=metadata;

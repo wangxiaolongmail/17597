@@ -21,7 +21,7 @@ db.system.js.save({_id:"init",value:function () {
 		I18N[o._id]=o.cn;
 	}
 	result[C.I18N]=I18N;
-	result["favorite_type"]=favorite_type;
+	result[C.FAVORITE_TYPE]=favorite_type;
 	var dynamicServletMapping=[];
 	var a=db.module.find().toArray()
 	for(var i=0;i<a.length;i++){

@@ -5,6 +5,7 @@ db.system.js.save({_id:"constant",value:function () {
 				ALL:"ALL",
 				CATEGORY:"CATEGORY",
 				CACHE:"CACHE",
+				FAVORITE_TYPE:"favorite_type",
 				CURRENT_URL:"CURRENT_URL",
 				CURRENT_MODULE:"CURRENT_MODULE",
 				CHECK_CODE:"CHECK_CODE",

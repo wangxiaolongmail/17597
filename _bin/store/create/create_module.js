@@ -40,7 +40,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	var obj={};
 	obj["_id"]=C.LOGOUT;
 	obj[C.MODULE_NAME]=C.LOGOUT;
-	obj[C.MODULE_URL]="/e/Logout";
+	obj[C.MODULE_URL]="/easysoft/Logout";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Logout";
 	obj[C.IS_PUBLIC]=true;
 	obj[C.METHOD]=C.GET;
@@ -49,7 +49,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	var obj={};
 	obj["_id"]=C.EASYSOFT_LOGIN;
 	obj[C.MODULE_NAME]=C.EASYSOFT_LOGIN;
-	obj[C.MODULE_URL]="/e/login";
+	obj[C.MODULE_URL]="/easysoft/login";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Login";
 	obj[C.IS_PUBLIC]=true;
 	obj[C.METHOD]=C.GET;
@@ -58,7 +58,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	var obj={};
 	obj["_id"]=C.EASYSOFT_LOGINING;
 	obj[C.MODULE_NAME]=C.EASYSOFT_LOGINING;
-	obj[C.MODULE_URL]="/e/logining";
+	obj[C.MODULE_URL]="/easysoft/logining";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Logining";
 	obj[C.IS_PUBLIC]=true;
 	obj[C.METHOD]=C.POST;
@@ -67,7 +67,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	var obj={};
 	obj["_id"]=C.EASYSOFT_CHECK_CODE;
 	obj[C.MODULE_NAME]=C.EASYSOFT_CHECK_CODE;
-	obj[C.MODULE_URL]="/e/check_code";
+	obj[C.MODULE_URL]="/easysoft/check_code";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.CheckCode";
 	obj[C.IS_PUBLIC]=true;
 	obj[C.METHOD]=C.GET;
