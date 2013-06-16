@@ -2,7 +2,7 @@ db.system.js.save({_id:"admin_favorite_type_List",value:function (params) {
 	var pub=public();
 	var C=constant();
 	var params=params||{};
-	var sess=checking_session(params);
+	var sess=_get_session(params);
 	if(sess.ok){
 		var 
 		tablename=params[C.TABLE_NAME],
