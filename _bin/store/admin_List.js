@@ -1,4 +1,4 @@
-db.system.js.save({_id:"admin_favorite_List",value:function (params) {
+db.system.js.save({_id:"admin_List",value:function (params) {
 	var C=constant();
 	var params=params||{};
 	var sess=_get_session(params);

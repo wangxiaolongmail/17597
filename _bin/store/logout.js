@@ -8,6 +8,9 @@ db.system.js.save({_id:"logout",value:function (params) {
 		op[C.UPDATE_TIME]=(new Date()).getTime();
 		db.session.update({_id:ObjectId(sid)},{'$set':op});
 	}
-	return {ok:true};
+	var op={};
+	op[C.LOGOUT]=_get_url(C.LOGOUT);
+	op.ok=true;
+	return op;
 }})
 

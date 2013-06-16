@@ -23,7 +23,8 @@ dojo.declare( "com.easysoft.service.Logout" , "com.easysoft.Widget" , {
 		this.exec(op);
 
 	},
-	postDraw:function(){
-		this.redirect("/e/login");
+	postDraw:function(data){
+		var a=[],o={},op={},C=dojo.C;
+		this.redirect(data[C.LOGOUT]);
 	}
 });

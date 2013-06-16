@@ -20,7 +20,7 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.List" , "com.easysoft.se
 			var op=this.getsbo();
 			op["page"] =this.queryString.page;
 			op[C.TABLE_NAME] ='favorite_type';
-			op[C.STORED_METHOD] ='admin_favorite_List';
+			op[C.STORED_METHOD] ='admin_List';
 			this.exec(op);
         },
 
