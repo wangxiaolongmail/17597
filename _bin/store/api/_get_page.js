@@ -9,19 +9,19 @@ db.system.js.save({_id:"_get_page",value:function (params) {
 		recordCount=0,
 		pageRecordCount=0,
 		category=params.category||C.ALL;	
-			if(category==C.ALL){
-				var option={};
-			}else{
-				var option={category:category};
-			}
-			recordCount=db[tablename].find(option).count();
-			var list =db[tablename].find(option).limit(pageSize).skip(pageSize*(page-1)).toArray();
-			pageRecordCount=pageSize;
-			var pageCount=Math.ceil(recordCount/pageSize);
-			var result={
-				ok:true,tablename:tablename,page:page,recordCount:recordCount,
-				pageSize:pageSize,pageCount:pageCount,pageRecordCount:pageRecordCount,list:list,category:category
-			};
+		if(category==C.ALL){
+			var option={};
+		}else{
+			var option={category:category};
+		}
+		recordCount=db[tablename].find(option).count();
+		var list =db[tablename].find(option).limit(pageSize).skip(pageSize*(page-1)).toArray();
+		pageRecordCount=pageSize;
+		var pageCount=Math.ceil(recordCount/pageSize);
+		var result={
+			tablename:tablename,page:page,recordCount:recordCount,
+			pageSize:pageSize,pageCount:pageCount,pageRecordCount:pageRecordCount,list:list,category:category
+		};
 		return result;
 }})
 
