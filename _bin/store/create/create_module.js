@@ -8,6 +8,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.Start";
 	obj[C.IS_PUBLIC]=false;
 	obj[C.METHOD]=C.GET;
+	obj[C.IS_MENU]=true;
 	db.module.insert(obj);
 		
 	var obj={};
@@ -17,6 +18,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.favorite.List";
 	obj[C.IS_PUBLIC]=false;
 	obj[C.METHOD]=C.GET;
+	obj[C.IS_MENU]=true;
 	db.module.insert(obj);
 		
 	var obj={};
@@ -26,6 +28,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.favorite.Add";
 	obj[C.IS_PUBLIC]=false;
 	obj[C.METHOD]=C.GET;
+	obj[C.IS_MENU]=false;
 	db.module.insert(obj);
 		
 	var obj={};
@@ -35,6 +38,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.favorite_type.List";
 	obj[C.IS_PUBLIC]=false;
 	obj[C.METHOD]=C.GET;
+	obj[C.IS_MENU]=true;
 	db.module.insert(obj);
 
 	var obj={};
@@ -44,6 +48,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Index";
 	obj[C.IS_PUBLIC]=true;
 	obj[C.METHOD]=C.GET;
+	obj[C.IS_MENU]=true;
 	db.module.insert(obj);
 	
 	var obj={};
@@ -53,6 +58,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Logout";
 	obj[C.IS_PUBLIC]=true;
 	obj[C.METHOD]=C.GET;
+	obj[C.IS_MENU]=false;
 	db.module.insert(obj);
 	
 	var obj={};
@@ -62,6 +68,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Login";
 	obj[C.IS_PUBLIC]=true;
 	obj[C.METHOD]=C.GET;
+	obj[C.IS_MENU]=false;
 	db.module.insert(obj);
 	
 	var obj={};
@@ -71,6 +78,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Logining";
 	obj[C.IS_PUBLIC]=true;
 	obj[C.METHOD]=C.POST;
+	obj[C.IS_MENU]=false;
 	db.module.insert(obj);
 	
 	var obj={};
@@ -80,6 +88,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.SERVLET_CLASS]="com.easysoft.service.CheckCode";
 	obj[C.IS_PUBLIC]=true;
 	obj[C.METHOD]=C.GET;
+	obj[C.IS_MENU]=false;
 	db.module.insert(obj);
 	
 	var obj={};
@@ -89,5 +98,6 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Go";
 	obj[C.IS_PUBLIC]=true;
 	obj[C.METHOD]=C.GET;
+	obj[C.IS_MENU]=false;
 	db.module.insert(obj);
 }})

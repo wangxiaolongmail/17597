@@ -35,6 +35,7 @@ db.system.js.save({_id:"constant",value:function () {
 				IS_OPEN:"IS_OPEN",
 				IS_TIMEOUT:"IS_TIMEOUT",
 				IS_PUBLIC:"IS_PUBLIC",
+				IS_MENU:"IS_MENU",
 				INPUT:"INPUT",
 				INSERT_TIME:"INSERT_TIME",
 				KEY:"KEY",
