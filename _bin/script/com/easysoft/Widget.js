@@ -65,7 +65,6 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 			a.push("<script type='text/javascript'>");
 			a.push("window.debugInitData="+dojo.toString(dojo.debugInitData,true));
 			a.push("</script>");
-	
 			return a.join("\n");
 		}else{
 			return "";
