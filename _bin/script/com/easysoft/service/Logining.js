@@ -22,7 +22,7 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.Widget" , {
 		op[C.PASSWORD] =dojo.md5(this.queryForm[C.PASSWORD]);
 		op[C.MID] = this.queryForm[C.MID];
 		op[C.CHECK_CODE] = this.queryForm[C.CHECK_CODE];
-		op[C.STORED_METHOD] ='checkLogining';
+		op[C.STORED_METHOD] ='logining';
 		this.exec(op);
 	},
 	postDraw:function(data){

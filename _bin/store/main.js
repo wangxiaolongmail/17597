@@ -18,8 +18,8 @@ db.system.js.save({_id:"main",value:function (params) {
 		 case "admin_List":   
 				result=admin_List(params);   
 				break;
-		 case "checkLogining":   
-				result=checkLogining(params);   
+		 case "logining":   
+				result=logining(params);   
 				break;
 		 case "login":   
 				result=login(params);   

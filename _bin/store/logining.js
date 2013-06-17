@@ -1,4 +1,4 @@
-db.system.js.save({_id:"checkLogining",value:function (params) {
+db.system.js.save({_id:"logining",value:function (params) {
 	var C=constant();
 	var mdata=_get_mdata(params.mid);
 	if(mdata[C.CHECK_CODE]===params[C.CHECK_CODE]){
