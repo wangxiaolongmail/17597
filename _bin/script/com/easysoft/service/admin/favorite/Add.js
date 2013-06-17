@@ -24,6 +24,14 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			op[C.CAT_TABLE_NAME] =C.FAVORITE_TYPE;
 			op[C.STORED_METHOD] ='admin_List';
 			this.exec(op);
-        }
+        },
+	postDraw:function(data){
+			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+			var $ = this.getDom();
+			
+			var s=$.html();
+			return s;
+		}
+
 
 });
