@@ -3,7 +3,7 @@ db.system.js.save({_id:"constant",value:function () {
 				ADD:"ADD",
 				ADMIN_FAVORITE_LIST:"ADMIN_FAVORITE_LIST",
 				ALL:"ALL",
-				CATEGORY:"CATEGORY",
+				CATEGORY:"category",
 				CACHE:"CACHE",
 				FAVORITE_TYPE:"favorite_type",
 				CURRENT_URL:"CURRENT_URL",

@@ -21,7 +21,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			op["page"] =this.queryString.page;
 			op["category"] =this.queryString.category;
 			op[C.TABLE_NAME] ='favorite';
-			op[C.CAT_TABLE_NAME] ='favorite_type';
+			op[C.CAT_TABLE_NAME] =C.FAVORITE_TYPE;
 			op[C.STORED_METHOD] ='admin_List';
 			this.exec(op);
         },
@@ -82,9 +82,9 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 		 var C=dojo.C;
 		 var a=dojo[C.METADATA][data[C.INPUT][C.TABLE_NAME]];
 		 dojo.each(a,function(k,v,i){
-			 if(v.field==="category"){
+			 if(v[C.FIELD]===C.CATEGORY){
 				 v.format=function(val){
-					 return dojo["favorite_type"][val];
+					 return dojo[C.FAVORITE_TYPE][val];
 				 }
 			 }
 		 });
