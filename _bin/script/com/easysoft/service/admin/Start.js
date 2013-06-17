@@ -48,6 +48,7 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 		a.push("<ul class='nav'>");
 		for(var i=0;i<len;i++){
 			var o=list[i];
+if(o[C.IS_MENU]){
 			if(data[C.CURRENT_MODULE]==o[C.MODULE_NAME]){
 			  this.cur_obj=o;
 			  a.push("<li class='active'>");
@@ -58,6 +59,8 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 			  a.push("<a href='"+o[C.MODULE_URL]+"?sid="+sid+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
 			  a.push("</li>");
 			}
+}
+			
 		}
 		a.push("</ul>");
 		var o=data[C.R_MODULE_LIST][0];

@@ -78,7 +78,7 @@ for(var j=0;j<list2.length;j++){
                 for(var i=0;i<len;i++){
                         var o=list[i];
 if(o[C.IS_MENU]){
-if(data[C.CURRENT_MODULE]==o[C.MODULE_NAME]){
+	if(data[C.CURRENT_MODULE]==o[C.MODULE_NAME]){
                           this.cur_obj=o;
                           a.push("<li class='active'>");
                           a.push("<a href='#'>"+I18N[o[C.MODULE_NAME]]+"</a>");
