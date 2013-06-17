@@ -26,22 +26,17 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			this.exec(op);
         },
 	 drawSelectType:function(data){
-			var category=data.category;
-			var a=[];
-			var catlist=dojo.favorite_catlist;
-			var len = catlist.length;
-			for(var i=0;i<len;i++){
-				var o=catlist[i];
-				if(o.category==category){
-					a.push("<option selected value='"+o.category+"'>");
+			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+			dojo.each(dojo[C.FAVORITE_TYPE],function(k,v,i){
+				if(k==data.category){
+					a.push("<option selected value='"+k+"'>");
 				}else{
-					a.push("<option value='"+o.category+"'>");
+					a.push("<option value='"+k+"'>");
 				}
-				a.push(o.article_title);
+				a.push(v);
 				a.push("</option>");
-			}
+			});
 			return a.join("\n");
-
 	 },
 	 drawSelectTypeScript:function(data){
 			var a=[],o={},I18N=dojo.I18N,C=dojo.C,sid=this.sid;
@@ -83,15 +78,25 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			return a.join("");
 
 	 },
-
+	 get_metadata:function(data){
+		 var C=dojo.C;
+		 var a=dojo[C.METADATA][data[C.INPUT][C.TABLE_NAME]];
+		 dojo.each(a,function(k,v,i){
+			 if(v.field==="category"){
+				 v.format=function(val){
+					 return dojo["favorite_type"][val];
+				 }
+			 }
+		 });
+		 return a;
+	 },
 	 drawTable:function(data){
 			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
 			var obj=data;
 			var a=[];
 			var list=obj.list;
 			var len = list.length;
-			//var metadata=obj.metadata;
-			var metadata=dojo[C.METADATA][data[C.INPUT][C.TABLE_NAME]];
+			var metadata=this.get_metadata(data);
 
 			a.push("<thead>");
 			a.push("<tr>");
@@ -120,7 +125,12 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 					for(var ii=0;ii<metadata.length;ii++){
 						if(!metadata[ii].ishidden){
 							a.push("<td>");
-							a.push(o[metadata[ii].field]);
+							if(metadata[ii].format){
+								var tmp = metadata[ii].format(o[metadata[ii].field]);
+								a.push(tmp);
+							}else{
+								a.push(o[metadata[ii].field]);
+							}
 							a.push("</td>");
 						}
 					}

@@ -11,7 +11,6 @@ db.system.js.save({_id:"init",value:function () {
 	}
         var result={
 		C:C,
-		favorite_catlist:favorite_catlist,
 		metadata:_get_metadata()
         };
 	var I18N={};
