@@ -21,10 +21,9 @@ dojo.import("com.easysoft.schedule.Schedule");
 dojo.provide("com.easysoft.zoo.Elephant");
 dojo.declare("com.easysoft.zoo.Elephant","com.easysoft.Widget",{
 	postCreate:function(){
-		dojo.$ele=this;
 		dojo.import("route");
-		dojo.http.createServer(dojo.hitch(this,function(req,res){
+		dojo.http.createServer(function(req,res){
 			dojo.createObject("com.easysoft.zoo.Dog",{ req:req , res:res });
-		})).listen(dojo.conf.port);
+		}).listen(dojo.conf.port);
 	}
 });

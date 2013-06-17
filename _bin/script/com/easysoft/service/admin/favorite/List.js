@@ -59,19 +59,20 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 
 	 drawButton:function(data){
 			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
-			var cur_obj=this.cur_obj
-			if(cur_obj[C.ADD]){
-				a.push("<a class='btn "+C.ADD+"' href='#'>");
+			var cur_obj=this.cur_obj;
+			console.log(cur_obj);
+			if(cur_obj[C.IS_NEW]){
+				a.push("<a class='btn "+C.IS_NEW+"' href='add?sid="+this.sid+"'>");
 				a.push(I18N[C.ADD]);
 				a.push("</a>"); 
 			}
-			if(cur_obj[C.EDIT]){
-				a.push("<a class='btn "+C.EDIT+"' href='#'>");
+			if(cur_obj[C.IS_EDIT]){
+				a.push("<a class='btn "+C.IS_EDIT+"' href='#'>");
 				a.push(I18N[C.EDIT]);
 				a.push("</a>"); 
 			}
-			if(cur_obj[C.DELETE]){
-				a.push("<a class='btn "+C.DELETE+"' href='#'>");
+			if(cur_obj[C.IS_DELETE]){
+				a.push("<a class='btn "+C.IS_DELETE+"' href='#'>");
 				a.push(I18N[C.DELETE]);
 				a.push("</a>"); 
 			}
