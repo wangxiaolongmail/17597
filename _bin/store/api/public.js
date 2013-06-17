@@ -3,9 +3,7 @@ db.system.js.save({_id:"public",value:function () {
                 interval:20*60*1000,
                 pageSize:10,
                 isCache:false,
-                metadata:function(key){
-			return db.metadata.findOne({_id:key})["value"];
-		},
+				isClientDebug:false,
                 i18n:function(key){
                         return ((db.i18n.findOne({_id:key})||{})["cn"])||key;
                 }

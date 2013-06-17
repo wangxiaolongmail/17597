@@ -57,15 +57,19 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 		dojo.db.eval(cmd, dojo.hitch(this,this.draw));
 	},
 	drawDebug:function(data){
-		var a=[];
-		a.push("<script type='text/javascript'>");
-		a.push("window.debug="+dojo.toString(data,true));
-		a.push("</script>");
-		a.push("<script type='text/javascript'>");
-		a.push("window.debugInitData="+dojo.toString(dojo.debugInitData,true));
-		a.push("</script>");
-
-		return a.join("\n");
+		if(dojo.isClientDebug){
+			var a=[];
+			a.push("<script type='text/javascript'>");
+			a.push("window.debug="+dojo.toString(data,true));
+			a.push("</script>");
+			a.push("<script type='text/javascript'>");
+			a.push("window.debugInitData="+dojo.toString(dojo.debugInitData,true));
+			a.push("</script>");
+	
+			return a.join("\n");
+		}else{
+			return "";
+		}
 	},
 	draw:function(err,data){
 		if(!err){

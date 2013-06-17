@@ -31,6 +31,7 @@ db.system.js.save({_id:"init",value:function () {
 		op[C.METHOD]=o[C.METHOD];
 		dynamicServletMapping.push(op);	
 	}
+	result.isClientDebug=pub.isClientDebug;
 	result["dynamicServletMapping"]=dynamicServletMapping;
 	return result;
 }})

@@ -23,6 +23,7 @@ db.system.js.save({_id:"constant",value:function () {
 				EASYSOFT_GO:"EASYSOFT_GO",
 				FAVORITE:"FAVORITE",
 				FIELD:"field",
+				FORMAT:"format",
 				GET:"get",
 				ID:"ID",
 				I18N:"I18N",

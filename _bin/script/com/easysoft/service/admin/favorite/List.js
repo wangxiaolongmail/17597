@@ -83,7 +83,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 		 var a=dojo[C.METADATA][data[C.INPUT][C.TABLE_NAME]];
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
-				 v.format=function(val){
+				 v[C.FORMAT]=function(val){
 					 return dojo[C.FAVORITE_TYPE][val];
 				 }
 			 }
@@ -125,11 +125,11 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 					for(var ii=0;ii<metadata.length;ii++){
 						if(!metadata[ii].ishidden){
 							a.push("<td>");
-							if(metadata[ii].format){
-								var tmp = metadata[ii].format(o[metadata[ii].field]);
+							if(metadata[ii][C.FORMAT]){
+								var tmp = metadata[ii][C.FORMAT](o[metadata[ii][C.FIELD]]);
 								a.push(tmp);
 							}else{
-								a.push(o[metadata[ii].field]);
+								a.push(o[metadata[ii][C.FIELD]]);
 							}
 							a.push("</td>");
 						}
