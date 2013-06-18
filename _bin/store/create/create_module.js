@@ -26,6 +26,14 @@ db.system.js.save({_id:"create_module",value:function () {
 	db.module.insert(obj);
 		
 	var obj={};
+	obj["_id"]=C.EASYSOFT_ADMIN_FAVORITE_SAVE;
+	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_FAVORITE_SAVE;
+	obj[C.MODULE_URL]="/easysoft/admin/favorite/save";
+	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.favorite.Save";
+	obj[C.METHOD]=C.GET;
+	db.module.insert(obj);
+		
+	var obj={};
 	obj["_id"]=C.EASYSOFT_ADMIN_FAVORITE_TYPE_LIST;
 	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_FAVORITE_TYPE_LIST;
 	obj[C.MODULE_URL]="/easysoft/admin/favorite_type/list";

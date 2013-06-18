@@ -28,6 +28,11 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 	obj[C.IS_DELETE]=true;
 	obj[C.IS_MENU]=false;
 	db.authority.insert(obj);
+	
+	var obj={};
+	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_FAVORITE_SAVE;
+	obj[C.ROLE_NAME]="r_wxl";
+	db.authority.insert(obj);
 
 	var obj={};
 	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_FAVORITE_TYPE_LIST;

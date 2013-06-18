@@ -12,6 +12,9 @@ db.system.js.save({_id:"admin_main",value:function (params) {
 		 case "admin_Add":   
 				result=admin_Add(params);   
 				break;
+		 case "admin_Save":   
+				result=admin_Save(params);   
+				break;
 		 case "logining":   
 				result=logining(params);   
 				break;
