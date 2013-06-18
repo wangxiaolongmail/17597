@@ -15,12 +15,13 @@
 dojo.provide("com.easysoft.service.admin.favorite.List");
 dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service.admin.Start" , {
 		template_file:"favorite_list.html",
+		table_name:"favorite",
         postCreate:function(){
 			var a=[],o={},op={},C=dojo.C;
 			var op=this.getsbo();
 			op["page"] =this.queryString.page;
 			op["category"] =this.queryString.category;
-			op[C.TABLE_NAME] ='favorite';
+			op[C.TABLE_NAME] =this.table_name;
 			op[C.CAT_TABLE_NAME] =C.FAVORITE_TYPE;
 			op[C.STORED_METHOD] ='admin_List';
 			this.exec(op);
@@ -106,37 +107,37 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			a.push("<td>");
 			a.push("&nbsp;");
 			a.push("</td>");
-			for(var ii=0;ii<metadata.length;ii++){
-					if(!metadata[ii].ishidden){
-							a.push("<td>");
-							a.push(metadata[ii].lable);
-							a.push("</td>");
-					}
-			}
+			dojo.each(metadata,function(k,v,i){
+				if(!v[C.IS_HIDDEN]){
+						a.push("<td>");
+						a.push(v.lable);
+						a.push("</td>");
+				}
+			});
 
 			a.push("</tr>");
 			a.push("</thead>");
 			a.push("<tbody>");
-			for(var i=0;i<len;i++){
-				var o=list[i];
+			dojo.each(list,function(k,v,i){
+				var o=v;
 				a.push("<tr>");
 					a.push("<td>");
 					a.push("<input type='checkbox' value='"+o._id+"'/>");
 					a.push("</td>");
-					for(var ii=0;ii<metadata.length;ii++){
-						if(!metadata[ii].ishidden){
+					dojo.each(metadata,function(k,v,i){
+						if(!v[C.IS_HIDDEN]){
 							a.push("<td>");
-							if(metadata[ii][C.FORMAT]){
-								var tmp = metadata[ii][C.FORMAT](o[metadata[ii][C.FIELD]]);
+							if(v[C.FORMAT]){
+								var tmp = v[C.FORMAT](o[v[C.FIELD]]);
 								a.push(tmp);
 							}else{
-								a.push(o[metadata[ii][C.FIELD]]);
+								a.push(o[v[C.FIELD]]);
 							}
 							a.push("</td>");
 						}
-					}
+					});
 				a.push("</tr>");
-			}
+			});
 			a.push("</tbody>");
 			return a.join("");
 

@@ -14,20 +14,35 @@
  */
 dojo.provide("com.easysoft.service.admin.favorite.Add");
 dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.admin.favorite.List" , {
-		template_file:"favorite_list.html",
+		template_file:"favorite_add.html",
         postCreate:function(){
 			var a=[],o={},op={},C=dojo.C;
 			var op=this.getsbo();
 			op["page"] =this.queryString.page;
 			op["category"] =this.queryString.category;
-			op[C.TABLE_NAME] ='favorite';
+			op[C.TABLE_NAME] =this.table_name;
 			op[C.CAT_TABLE_NAME] =C.FAVORITE_TYPE;
-			op[C.STORED_METHOD] ='admin_List';
+			op[C.STORED_METHOD] ='admin_Add';
 			this.exec(op);
         },
 	postDraw:function(data){
 			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
 			var $ = this.getDom();
+			$(".nav-collapse").html(this.drawMainMenu(data));
+			
+			var metadata=this.get_metadata(data);
+			a.push("<form class=\"well span3\" method=\"post\" action=\"\">");
+			dojo.each(metadata,function(k,v,i){
+				if(!v[C.IS_HIDDEN]){
+						a.push("<label>");
+						a.push(v.lable);
+						a.push("</label>");
+						a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
+				}
+			});
+			a.push("<button type=\'submit\' class=\'btn btn-primary\'>"+I18N[C.OK]+"</button>");
+			a.push("</form>");
+			$("#apbody").html(a.join("\n"));
 			
 			var s=$.html();
 			return s;
