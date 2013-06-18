@@ -28,6 +28,8 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
         },
 	 drawSelectType:function(data){
 			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+			var data=data||{};
+			a.push("<select class=\"span2\" id=\"select01\">");
 			dojo.each(dojo[C.FAVORITE_TYPE],function(k,v,i){
 				if(k==data.category){
 					a.push("<option selected value='"+k+"'>");
@@ -37,6 +39,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 				a.push(v);
 				a.push("</option>");
 			});
+			a.push("</select");
 			return a.join("\n");
 	 },
 	 drawSelectTypeScript:function(data){
@@ -89,6 +92,9 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 					 return dojo[C.FAVORITE_TYPE][val];
 				 }
 			 }
+			 if(v[C.FIELD]===C._ID){
+				 v[C.IS_HIDDEN]=true;
+			 }
 		 });
 		 return a;
 	 },
@@ -110,7 +116,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			dojo.each(metadata,function(k,v,i){
 				if(!v[C.IS_HIDDEN]){
 						a.push("<td>");
-						a.push(v.lable);
+						a.push(v[C.FIELD]);
 						a.push("</td>");
 				}
 			});
@@ -198,7 +204,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			$(".nav-collapse").html(this.drawMainMenu(data));
 			
 			
-			$("#select01").addClass("span2").html(this.drawSelectType(data));
+			$("#selectWrap").html(this.drawSelectType(data));
 
 			$("h4").html(data.tablename);
 

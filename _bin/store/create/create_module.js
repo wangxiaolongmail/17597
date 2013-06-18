@@ -30,7 +30,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_FAVORITE_SAVE;
 	obj[C.MODULE_URL]="/easysoft/admin/favorite/save";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.favorite.Save";
-	obj[C.METHOD]=C.GET;
+	obj[C.METHOD]=C.POST;
 	db.module.insert(obj);
 		
 	var obj={};

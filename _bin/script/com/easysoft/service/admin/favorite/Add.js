@@ -25,21 +25,41 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			op[C.STORED_METHOD] ='admin_Add';
 			this.exec(op);
         },
+	 get_metadata:function(data){
+		 var C=dojo.C;
+		 var a=dojo[C.METADATA][data[C.INPUT][C.TABLE_NAME]];
+		 dojo.each(a,function(k,v,i){
+			 if(v[C.FIELD]===C.CATEGORY){
+				 v[C.FORMAT]=function(){
+					 return this.drawSelectType();
+				 }
+			 }
+			 if(v[C.FIELD]===C._ID){
+				 v[C.IS_HIDDEN]=true;
+			 }
+		 });
+		 return a;
+	 },
 	postDraw:function(data){
 			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
 			var $ = this.getDom();
 			$(".nav-collapse").html(this.drawMainMenu(data));
 			
 			var metadata=this.get_metadata(data);
-			a.push("<form class=\"well span3\" method=\"post\" action=\"save\">");
+			a.push("<form class=\"well span3\" method=\"post\" action=\"save?sid="+this.sid+"\">");
 			dojo.each(metadata,function(k,v,i){
 				if(!v[C.IS_HIDDEN]){
 						a.push("<label>");
-						a.push(v.lable);
+						a.push(v[C.FIELD]);
 						a.push("</label>");
-						a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
+						if(v[C.FORMAT]){
+							var tmp = v[C.FORMAT].call(this);
+							a.push(tmp);
+						}else{
+							a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
+						}
 				}
-			});
+			},this);
 			a.push("<button type=\'submit\' class=\'btn btn-primary\'>"+I18N[C.OK]+"</button>");
 			a.push("</form>");
 			$("#apbody").html(a.join("\n"));

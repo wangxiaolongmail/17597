@@ -14,7 +14,6 @@
  */
 dojo.provide("com.easysoft.service.admin.favorite.Save");
 dojo.declare( "com.easysoft.service.admin.favorite.Save" , "com.easysoft.service.admin.favorite.Add" , {
-		template_file:"favorite_add.html",
         postCreate:function(){
 			var a=[],o={},op={},C=dojo.C;
 			var op=this.getsbo();
@@ -28,6 +27,9 @@ dojo.declare( "com.easysoft.service.admin.favorite.Save" , "com.easysoft.service
 	postDraw:function(data){
 			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
 			var $ = this.getDom();
+			$(".nav-collapse").html(this.drawMainMenu(data));
+			
+			$("#apbody").html("hello");
 			
 			var s=$.html();
 			return s;
