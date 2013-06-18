@@ -20,9 +20,17 @@ dojo.declare( "com.easysoft.service.admin.favorite.Save" , "com.easysoft.service
 			var obj={};
 			var a=dojo[C.METADATA][this.table_name];
 			dojo.each(a,function(k,v,i){
+					console.log(v);
 				var field=v[C.FIELD];
+				var type=v[C.TYPE];
 				if(field!=C._ID){
-					obj[field]= this.queryForm[field];
+					console.log(field);
+					console.log(type);
+					if(type==C.INT){
+						obj[field]= parseInt(this.queryForm[field]);
+					}else{
+						obj[field]= this.queryForm[field];
+					}
 				}
 			},this);
 			op[C.INSERT_OBJ] =obj;

@@ -43,9 +43,10 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 				 v[C.IS_HIDDEN]=true;
 			 }
 			 if(v[C.FIELD]===C.ARTICLE_PRI){
-				 v[C.FORMAT]=function(lable){
+				 v[C.IS_HIDDEN]=false;
+				 v[C.FORMAT]=function(){
 					var a=[];
-					a.push("<input value=\"0\" type=\"hidden\" class=\"span3\" name=\""+C.ARTICLE_PRI+"\">");
+					a.push("<input value=\"0\" type=\"text\" class=\"span3\" name=\""+C.ARTICLE_PRI+"\">");
 					return a.join("\n");
 				 }
 			 }
@@ -62,8 +63,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			dojo.each(metadata,function(k,v,i){
 				if(!v[C.IS_HIDDEN]){
 						if(v[C.FORMAT]){
-							var tmp = v[C.FORMAT].call(this,v[C.FIELD]);
-							a.push(tmp);
+							a.push(v[C.FORMAT].call(this,v[C.FIELD]));
 						}else{
 							a.push("<label>");
 							a.push(v[C.FIELD]);
