@@ -96,6 +96,9 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			 if(v[C.FIELD]===C._ID){
 				 v[C.IS_HIDDEN]=true;
 			 }
+			 if(v[C.FIELD]===C.ARTICLE_PRI){
+				 v[C.IS_HIDDEN]=true;
+			 }
 		 });
 		 return a;
 	 },

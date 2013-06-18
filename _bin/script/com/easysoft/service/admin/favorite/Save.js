@@ -25,7 +25,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.Save" , "com.easysoft.service
 					obj[field]= this.queryForm[field];
 				}
 			},this);
-			console.log(obj);
 			op[C.INSERT_OBJ] =obj;
 			op[C.TABLE_NAME] =this.table_name;
 			op[C.CAT_TABLE_NAME] =C.FAVORITE_TYPE;

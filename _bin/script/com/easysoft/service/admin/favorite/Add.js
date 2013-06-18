@@ -30,12 +30,24 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 		 var a=dojo[C.METADATA][data[C.INPUT][C.TABLE_NAME]];
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
-				 v[C.FORMAT]=function(){
-					 return this.drawSelectType({classname:"span3"});
+				 v[C.FORMAT]=function(lable){
+					var a=[];
+					a.push("<label>");
+					a.push(lable);
+					a.push("</label>");
+					a.push(this.drawSelectType({classname:"span3"}));
+					return a.join("\n");
 				 }
 			 }
 			 if(v[C.FIELD]===C._ID){
 				 v[C.IS_HIDDEN]=true;
+			 }
+			 if(v[C.FIELD]===C.ARTICLE_PRI){
+				 v[C.FORMAT]=function(lable){
+					var a=[];
+					a.push("<input value=\"0\" type=\"hidden\" class=\"span3\" name=\""+C.ARTICLE_PRI+"\">");
+					return a.join("\n");
+				 }
 			 }
 		 });
 		 return a;
@@ -49,13 +61,13 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			a.push("<form class=\"well span3\" method=\"post\" action=\"save?sid="+this.sid+"\">");
 			dojo.each(metadata,function(k,v,i){
 				if(!v[C.IS_HIDDEN]){
-						a.push("<label>");
-						a.push(v[C.FIELD]);
-						a.push("</label>");
 						if(v[C.FORMAT]){
-							var tmp = v[C.FORMAT].call(this);
+							var tmp = v[C.FORMAT].call(this,v[C.FIELD]);
 							a.push(tmp);
 						}else{
+							a.push("<label>");
+							a.push(v[C.FIELD]);
+							a.push("</label>");
 							a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
 						}
 				}
