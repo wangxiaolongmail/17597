@@ -2,12 +2,12 @@ db.system.js.save({_id:"_get_metadata",value:function (name) {
 		var C=constant();
 		var o={
 			 "favorite":[
-						{field:"_id"},
-						{field:"article_title"},
+						{field:C._ID},
+						{field:C.ARTICLE_TITLE},
 						{field:C.CATEGORY},
-						{field:"article_url"}
+						{field:C.ARTICLE_URL}
 					],
-			"favorite_type":[{field:"article_title"}]
+			"favorite_type":[{field:C.ARTICLE_TITLE}]
          };
 		if(name){
 			return o[name];

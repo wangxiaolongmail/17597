@@ -29,7 +29,8 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 	 drawSelectType:function(data){
 			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
 			var data=data||{};
-			a.push("<select class=\"span2\" id=\"select01\">");
+			var classname=data.classname||"span2";
+			a.push("<select class=\""+classname+"\" name=\""+C.CATEGORY+"\">");
 			dojo.each(dojo[C.FAVORITE_TYPE],function(k,v,i){
 				if(k==data.category){
 					a.push("<option selected value='"+k+"'>");
@@ -44,7 +45,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 	 },
 	 drawSelectTypeScript:function(data){
 			var a=[],o={},I18N=dojo.I18N,C=dojo.C,sid=this.sid;
-			a.push('$("#select01").change(function()');
+			a.push('$("select").change(function()');
 			a.push('{');
 				  //a.push('alert($(this).val());');
 				  a.push('location.href="?sid='+sid+'&category="+$(this).val();');

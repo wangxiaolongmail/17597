@@ -31,7 +31,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
 				 v[C.FORMAT]=function(){
-					 return this.drawSelectType();
+					 return this.drawSelectType({classname:"span3"});
 				 }
 			 }
 			 if(v[C.FIELD]===C._ID){
