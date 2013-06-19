@@ -27,7 +27,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
         },
 	 get_metadata:function(data){
 		 var C=dojo.C;
-		 var a=dojo[C.METADATA][data[C.INPUT][C.TABLE_NAME]];
+		 var a=dojo.clone(dojo[C.METADATA][data[C.INPUT][C.TABLE_NAME]]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
 				 v[C.FORMAT]=function(lable){
@@ -43,11 +43,8 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 				 v[C.IS_HIDDEN]=true;
 			 }
 			 if(v[C.FIELD]===C.ARTICLE_PRI){
-				 v[C.IS_HIDDEN]=false;
 				 v[C.FORMAT]=function(){
-					var a=[];
-					a.push("<input value=\"0\" type=\"text\" class=\"span3\" name=\""+C.ARTICLE_PRI+"\">");
-					return a.join("\n");
+					return "<input value=\"0\" type=\"hidden\" class=\"span3\" name=\""+C.ARTICLE_PRI+"\">";
 				 }
 			 }
 		 });

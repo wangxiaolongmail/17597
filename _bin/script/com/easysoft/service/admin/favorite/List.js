@@ -86,7 +86,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 	 },
 	 get_metadata:function(data){
 		 var C=dojo.C;
-		 var a=dojo[C.METADATA][data[C.INPUT][C.TABLE_NAME]];
+		 var a=dojo.clone(dojo[C.METADATA][data[C.INPUT][C.TABLE_NAME]]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
 				 v[C.FORMAT]=function(val){
@@ -94,7 +94,9 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 				 }
 			 }
 			 if(v[C.FIELD]===C._ID){
-				 v[C.IS_HIDDEN]=true;
+				 v[C.FORMAT]=function(val){
+					 return "<input type='checkbox' value='"+val+"'/>";
+				 }
 			 }
 			 if(v[C.FIELD]===C.ARTICLE_PRI){
 				 v[C.IS_HIDDEN]=true;
@@ -113,10 +115,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			a.push("<thead>");
 			a.push("<tr>");
 
-
-			a.push("<td>");
-			a.push("&nbsp;");
-			a.push("</td>");
 			dojo.each(metadata,function(k,v,i){
 				if(!v[C.IS_HIDDEN]){
 						a.push("<td>");
@@ -131,15 +129,11 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			dojo.each(list,function(k,v,i){
 				var o=v;
 				a.push("<tr>");
-					a.push("<td>");
-					a.push("<input type='checkbox' value='"+o._id+"'/>");
-					a.push("</td>");
 					dojo.each(metadata,function(k,v,i){
 						if(!v[C.IS_HIDDEN]){
 							a.push("<td>");
 							if(v[C.FORMAT]){
-								var tmp = v[C.FORMAT](o[v[C.FIELD]]);
-								a.push(tmp);
+								a.push(v[C.FORMAT](o[v[C.FIELD]]));
 							}else{
 								a.push(o[v[C.FIELD]]);
 							}
