@@ -32,6 +32,7 @@ db.system.js.save({_id:"init",value:function () {
 	}
 	result.isClientDebug=pub.isClientDebug;
 	result["dynamicServletMapping"]=dynamicServletMapping;
+	result[C.ROLE]=_get_role();
 	return result;
 }})
 

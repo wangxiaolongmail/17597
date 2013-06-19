@@ -4,4 +4,5 @@ db.system.js.save({_id:"_mixin",value:function (t,s) {
 			t[k]=v;
 		});
 	};
+	return t;
 }})

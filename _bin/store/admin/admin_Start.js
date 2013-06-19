@@ -4,11 +4,7 @@ db.system.js.save({_id:"admin_Start",value:function (params) {
 	var params=params||{};
 	var obj=_get_session(params);
 	if(obj.ok){
-		var op={ok:true};
-		op[C.MODULE_LIST]=obj[C.MODULE_LIST];
-		op[C.R_MODULE_LIST]=obj[C.R_MODULE_LIST];
-		op[C.CURRENT_MODULE]=obj[C.CURRENT_MODULE];
-		return op;
+		return obj;
 	}else{
 		return obj;
 	}

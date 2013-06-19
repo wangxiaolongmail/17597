@@ -18,9 +18,12 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 									var op={};
 									op[C.UPDATE_TIME]=newUpdateDate;
 									db.session.update({_id:ObjectId(sid)},{'$set':op});
-									rs.ok=true;
-									rs[C.CURRENT_MODULE]=o[C.MODULE_NAME];
-									return rs;
+									var op={};
+									op.ok=true;
+									op[C.R_MODULE_LIST]=rs[C.R_MODULE_LIST];
+									op[C.CURRENT_MODULE]=o[C.MODULE_NAME];
+									op[C.ROLE_NAME]=o[C.ROLE_NAME];
+									return op;
 								}else{
 									var op={};
 									op[C.IS_TIMEOUT]=true;

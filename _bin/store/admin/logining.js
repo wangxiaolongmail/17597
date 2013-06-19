@@ -22,6 +22,7 @@ db.system.js.save({_id:"logining",value:function (params) {
 				o[C.R_MODULE_LIST]=[op];
 				o[C.IS_OPEN]=true;
 				o[C.IS_TIMEOUT]=false;
+				o[C.ROLE_NAME]=rs[C.ROLE_NAME];
 				for (var key in params) { 
 					if (params.hasOwnProperty(key)) { 
 						o[key]=params[key];

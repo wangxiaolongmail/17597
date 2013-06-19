@@ -72,7 +72,7 @@ for(var j=0;j<list2.length;j++){
         drawMainMenu:function(data){
                 var a=[],o={},I18N=dojo.I18N,C=dojo.C;
                 this.cur_obj={};
-                var list=data[C.MODULE_LIST];
+                var list=dojo[C.ROLE][data[C.ROLE_NAME]];
                 var len = list.length;
                 a.push("<ul class='nav'>");
                 for(var i=0;i<len;i++){
