@@ -56,7 +56,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			$(".nav-collapse").html(this.drawMainMenu(data));
 			
 			var metadata=this.get_metadata(data);
-			a.push("<form class=\"well span3\" method=\"post\" action=\"save?sid="+this.sid+"\">");
+			a.push("<form class=\"well span3\" method=\"post\" action=\"insert?sid="+this.sid+"\">");
 			dojo.each(metadata,function(k,v,i){
 				if(!v[C.IS_HIDDEN]){
 						if(v[C.FORMAT]){
@@ -76,6 +76,4 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			var s=$.html();
 			return s;
 		}
-
-
 });
