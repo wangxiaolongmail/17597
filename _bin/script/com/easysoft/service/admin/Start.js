@@ -43,7 +43,7 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 		var sid=this.sid;
 		var a=[],o={},I18N=dojo.I18N,C=dojo.C;
 		this.cur_obj={};
-		var list=dojo[C.ROLE][data[C.ROLE_NAME]];
+		var list=this.getMenuList(data);
 		var len = list.length;
 		a.push("<ul class='nav'>");
 		for(var i=0;i<len;i++){

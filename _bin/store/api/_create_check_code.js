@@ -25,4 +25,3 @@ db.system.js.save({_id:"_create_check_code",value:function () {
 		o[C.CHECK_CODE]=a.join("");
 		return o;
 }})
-

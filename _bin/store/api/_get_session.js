@@ -8,10 +8,10 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 			if(rs[C.IS_OPEN]){
 				if(!rs[C.IS_TIMEOUT]){
 					if(rs[C.REMOTE_ADDRESS]==params[C.REMOTE_ADDRESS]){
-						var a=rs[C.MODULE_LIST];
-						var len=a.length;
-						for(var i=0;i<len;i++){
-							var o = a[i];
+						var a=rs[C.MODULE_LIST]||[];
+						var result={ok:false,err:"module not find"};
+						_each(a,function(k,v,i){
+							var o = v;
 							if(params[C.CURRENT_URL]==o[C.MODULE_URL]){
 								var newUpdateDate=(new Date()).getTime();
 								if((newUpdateDate-rs[C.UPDATE_TIME])<pub.interval){
@@ -23,15 +23,18 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 									op[C.R_MODULE_LIST]=rs[C.R_MODULE_LIST];
 									op[C.CURRENT_MODULE]=o[C.MODULE_NAME];
 									op[C.ROLE_NAME]=o[C.ROLE_NAME];
-									return op;
+									result=op;
 								}else{
 									var op={};
 									op[C.IS_TIMEOUT]=true;
 									db.session.update({_id:ObjectId(sid)},{'$set':op});
-									return {ok:false,err:"session timeout"};
+									result={ok:false,err:"session timeout"};
 								}
+								return true;
 							}
-						}
+						});
+						return result;
+
 					}else{
 						return {ok:false,err:"ip error"};
 					}

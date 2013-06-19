@@ -104,6 +104,9 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 			console.log(this.widgetName+"::endPaint");
 		}
 	},
+	getMenuList:function(data){
+		return dojo[dojo.C.ROLE][data[dojo.C.ROLE_NAME]];
+	},
 	getbo:function(){
 		var op={},C=dojo.C;
 		op[C.CURRENT_URL]=this.dog.m_urlObject.pathname;
