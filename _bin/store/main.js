@@ -15,7 +15,7 @@ db.system.js.save({_id:"main",value:function (params) {
 		 default:  
 				result=admin_main(params);    
 	}
-	result[C.INPUT]=params;
+	_mixin(result,params);
 	_push_log(result);
 	return result;
 }})

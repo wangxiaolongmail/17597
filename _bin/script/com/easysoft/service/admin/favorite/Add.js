@@ -27,7 +27,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
         },
 	 get_metadata:function(data){
 		 var C=dojo.C;
-		 var a=dojo.clone(dojo[C.METADATA][data[C.INPUT][C.TABLE_NAME]]);
+		 var a=dojo.clone(dojo[C.METADATA][data[C.TABLE_NAME]]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
 				 v[C.FORMAT]=function(lable){

@@ -24,6 +24,6 @@ dojo.declare( "com.easysoft.service.Go" , "com.easysoft.Widget" , {
 	},
 	postDraw:function(data){
 		var C=dojo.C;
-		this.redirect(data[C.INPUT][C.TO]);
+		this.redirect(data[C.TO]);
 	}
 });
