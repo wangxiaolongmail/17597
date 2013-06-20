@@ -9,4 +9,3 @@ db.system.js.save({_id:"public",value:function () {
                 }
         };
 }})
-

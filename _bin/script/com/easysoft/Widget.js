@@ -105,7 +105,7 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 		}
 	},
 	getMenuList:function(data){
-		return dojo[dojo.C.ROLE][data[dojo.C.ROLE_NAME]];
+		return dojo[dojo.C.ROLE][data[dojo.C.ROLE_NAME]][dojo.C.LEFT];
 	},
 	getbo:function(){
 		var op={},C=dojo.C;
