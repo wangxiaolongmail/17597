@@ -69,38 +69,36 @@ for(var j=0;j<list2.length;j++){
 		s=s.replace("/*script_body_replace*/","");
 		return s;
 	},
-        drawMainMenu:function(data){
-                var a=[],o={},I18N=dojo.I18N,C=dojo.C;
-                this.cur_obj={};
-                var mlist=this.getMenuList(data);
-				var list=mlist[dojo.C.LEFT];
-                var len = list.length;
-                a.push("<ul class='nav'>");
-                for(var i=0;i<len;i++){
-                        var o=list[i];
-if(o[C.IS_MENU]){
-	if(data[C.CURRENT_MODULE]==o[C.MODULE_NAME]){
-                          this.cur_obj=o;
-                          a.push("<li class='active'>");
-                          a.push("<a href='#'>"+I18N[o[C.MODULE_NAME]]+"</a>");
-                          a.push("</li>");
-                        }else{
-                          a.push("<li>");
-                          a.push("<a href='"+o[C.MODULE_URL]+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
-                          a.push("</li>");
-                        }
-}
-                        
-                }
-                a.push("</ul>");
-                var o=mlist[C.RIGHT][0];
-		//var len = list.length;
+    drawMainMenu:function(data){
+		var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+		this.cur_obj={};
+		var mlist=this.getMenuList(data);
+		var list=mlist[dojo.C.LEFT];
+		var len = list.length;
+		a.push("<ul class='nav'>");
+		dojo.each(list,function(k,v,i){
+				var o=v;
+				if(o[C.IS_MENU]){
+					if(data[C.CURRENT_MODULE]==o[C.MODULE_NAME]){
+					  this.cur_obj=o;
+					  a.push("<li class='active'>");
+					  a.push("<a href='#'>"+I18N[o[C.MODULE_NAME]]+"</a>");
+					  a.push("</li>");
+					}else{
+					  a.push("<li>");
+					  a.push("<a href='"+o[C.MODULE_URL]+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
+					  a.push("</li>");
+					}
+				}
+		},this);
+		a.push("</ul>");
+		var o=mlist[C.RIGHT][0];
 		a.push("<ul class='nav pull-right'>");
-    			a.push("<li>");
+				a.push("<li>");
 			a.push("<a target='_blank' href='"+o[C.MODULE_URL]+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
 			a.push("</li>");
 		a.push("</ul>");
-                return a.join("");
-        }
+		return a.join("");
+	}
 
 });

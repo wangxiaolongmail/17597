@@ -47,22 +47,21 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 		var list=mlist[dojo.C.LEFT];
 		var len = list.length;
 		a.push("<ul class='nav'>");
-		for(var i=0;i<len;i++){
-			var o=list[i];
-if(o[C.IS_MENU]){
-			if(data[C.CURRENT_MODULE]==o[C.MODULE_NAME]){
-			  this.cur_obj=o;
-			  a.push("<li class='active'>");
-			  a.push("<a href='#'>"+I18N[o[C.MODULE_NAME]]+"</a>");
-			  a.push("</li>");
-			}else{
-			  a.push("<li>");
-			  a.push("<a href='"+o[C.MODULE_URL]+"?sid="+sid+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
-			  a.push("</li>");
+		dojo.each(list,function(k,v,i){
+			var o=v;
+			if(o[C.IS_MENU]){
+				if(data[C.CURRENT_MODULE]==o[C.MODULE_NAME]){
+				  this.cur_obj=o;
+				  a.push("<li class='active'>");
+				  a.push("<a href='#'>"+I18N[o[C.MODULE_NAME]]+"</a>");
+				  a.push("</li>");
+				}else{
+				  a.push("<li>");
+				  a.push("<a href='"+o[C.MODULE_URL]+"?sid="+sid+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
+				  a.push("</li>");
+				}
 			}
-}
-			
-		}
+		},this);
 		a.push("</ul>");
 		var o=mlist[C.RIGHT][0];
 		//var len = list.length;
