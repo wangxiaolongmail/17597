@@ -28,8 +28,12 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.Widget" , {
 	postDraw:function(data){
 		var a=[],C=dojo.C,op={};
 		var a=this.getMenuList(data)[dojo.C.LEFT];
-		var url=a[0][C.MODULE_URL];
-		this.redirect(url+"?sid="+data.sid);
-		dojo.sendMail({title:data[C.USER_NAME]+" loging system successful"});
+		if(a.length>0){
+			var url=a[0][C.MODULE_URL];
+			this.redirect(url+"?sid="+data.sid);
+			dojo.sendMail({title:data[C.USER_NAME]+" loging system successful"});
+		}else{
+			this._findNotFile();
+		}
 	}
 });
