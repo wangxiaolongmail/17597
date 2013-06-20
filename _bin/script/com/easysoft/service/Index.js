@@ -23,7 +23,6 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 		var op=this.getbo();
 		op[C.ROLE_NAME] =this.role_name;
 		op[C.STORED_METHOD] =C.SHOW_FAVORITE;
-
 		this.exec(op);
        },
 	postDraw:function(data){
@@ -31,42 +30,31 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 		var sid=this.sid;
 		var $ = this.getDom();
 		$("#left_bar").remove();
-		$(".brand").html(I18N[C.SITE_NAME]);
+		var tilte=I18N[C.SITE_NAME];
+		$("title").html(tilte);
+		$(".brand").html(tilte);
 		$("#right_bar").removeClass("span9").addClass("span12");
       		$(".nav-collapse").html(this.drawMainMenu(data));
       		
-var list=data.list
 		a.push("<table class='table table-bordered table-striped'>");
-
-		for(var i=0;i<list.length;i++){
-
-var o=list[i];
-		a.push("<tr>");
-		a.push("<td>");
+		dojo.each(data.list,function(k,v,i){
+			var o=v;
+			a.push("<tr>");
+			a.push("<td>");
 			a.push(o.article_title);
-			
-			var list2=o.list;
-for(var j=0;j<list2.length;j++){
-		a.push("&nbsp;");
-		a.push("<a target='_blank' href='"+data[C.GO]+"?"+C.TO+"="+list2[j].article_url+"'>"+list2[j].article_title+"</a>");
+			dojo.each(o.list,function(k,v,i){
+				a.push("&nbsp;");
+				a.push("<a target='_blank' href='"+data[C.GO]+"?"+C.TO+"="+v.article_url+"'>"+v.article_title+"</a>");
 
-
-
-}
-		a.push("</td>");
-
-		
-		a.push("</tr>");
-
-		}
-		
+			});
+			a.push("</td>");
+			a.push("</tr>");
+		});
 		a.push("</table>");
 
 		$("#right_bar").html(a.join("\n"));
 
-
 		var s=$.html();
-		s=s.replace("/*script_body_replace*/","");
 		return s;
 	},
     drawMainMenu:function(data){
