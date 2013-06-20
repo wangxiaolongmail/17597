@@ -25,13 +25,13 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 		op[C.STORED_METHOD] =C.SHOW_FAVORITE;
 
 		this.exec(op);
-      },
+       },
 	postDraw:function(data){
-		var a=[],o={},C=dojo.C;
+		var a=[],o={},I18N=dojo.I18N,C=dojo.C;
 		var sid=this.sid;
 		var $ = this.getDom();
 		$("#left_bar").remove();
-		$(".brand").html("");
+		$(".brand").html(I18N[C.SITE_NAME]);
 		$("#right_bar").removeClass("span9").addClass("span12");
       		$(".nav-collapse").html(this.drawMainMenu(data));
       		
