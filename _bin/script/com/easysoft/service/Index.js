@@ -18,14 +18,14 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 	template_dir:"/wy/",
 	template_file:"index.html",
 	role_name:"r_easysoft",
-    postCreate:function(){
+       postCreate:function(){
 		var a=[],o={},op={},C=dojo.C;
 		var op=this.getbo();
 		op[C.ROLE_NAME] =this.role_name;
 		op[C.STORED_METHOD] =C.SHOW_FAVORITE;
 
 		this.exec(op);
-    },
+      },
 	postDraw:function(data){
 		var a=[],o={},C=dojo.C;
 		var sid=this.sid;
@@ -48,7 +48,7 @@ var o=list[i];
 			var list2=o.list;
 for(var j=0;j<list2.length;j++){
 		a.push("&nbsp;");
-		a.push("<a target='_blank' href='"+data[C.EASYSOFT_GO]+"?"+C.TO+"="+list2[j].article_url+"'>"+list2[j].article_title+"</a>");
+		a.push("<a target='_blank' href='"+data[C.GO]+"?"+C.TO+"="+list2[j].article_url+"'>"+list2[j].article_title+"</a>");
 
 
 

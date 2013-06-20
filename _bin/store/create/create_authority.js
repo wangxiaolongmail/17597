@@ -3,7 +3,7 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 	db.authority.remove();
 
 	var obj={};
-	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_START;
+	obj[C.MODULE_NAME]=C.EASYSOFT+C.ADMIN+C.START;;
 	obj[C.ROLE_NAME]="r_wxl";
 	obj[C.IS_NEW]=false;
 	obj[C.IS_EDIT]=false;
@@ -12,7 +12,7 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 	db.authority.insert(obj);
 
 	var obj={};
-	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_FAVORITE_LIST;
+	obj[C.MODULE_NAME]=C.EASYSOFT+C.ADMIN+C.FAVORITE+C.LIST;
 	obj[C.ROLE_NAME]="r_wxl";
 	obj[C.IS_NEW]=true;
 	obj[C.IS_EDIT]=true;
@@ -21,7 +21,7 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 	db.authority.insert(obj);
 
 	var obj={};
-	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_FAVORITE_ADD;
+	obj[C.MODULE_NAME]=C.EASYSOFT+C.ADMIN+C.FAVORITE+C.ADD;
 	obj[C.ROLE_NAME]="r_wxl";
 	obj[C.IS_NEW]=true;
 	obj[C.IS_EDIT]=true;
@@ -30,17 +30,17 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 	db.authority.insert(obj);
 	
 	var obj={};
-	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_FAVORITE_SAVE;
+	obj[C.MODULE_NAME]=C.EASYSOFT+C.ADMIN+C.FAVORITE+C.SAVE;
 	obj[C.ROLE_NAME]="r_wxl";
 	db.authority.insert(obj);	
 	
 	var obj={};
-	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_FAVORITE_INSERT;
+	obj[C.MODULE_NAME]=C.EASYSOFT+C.ADMIN+C.FAVORITE+C.INSERT;
 	obj[C.ROLE_NAME]="r_wxl";
 	db.authority.insert(obj);
 
 	var obj={};
-	obj[C.MODULE_NAME]=C.EASYSOFT_ADMIN_FAVORITE_TYPE_LIST;
+	obj[C.MODULE_NAME]=C.EASYSOFT+C.ADMIN+C.FAVORITE_TYPE+C.LIST;
 	obj[C.ROLE_NAME]="r_wxl";
 	obj[C.IS_NEW]=false;
 	obj[C.IS_EDIT]=false;
@@ -49,7 +49,7 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 	db.authority.insert(obj);
 
 	var obj={};
-	obj[C.MODULE_NAME]=C.EASYSOFT_INDEX;
+	obj[C.MODULE_NAME]=C.EASYSOFT+C.INDEX;
 	obj[C.ROLE_NAME]="r_easysoft";
 	obj[C.IS_MENU]=true;
 	db.authority.insert(obj);

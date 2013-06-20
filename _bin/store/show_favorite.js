@@ -20,10 +20,8 @@ db.system.js.save({_id:"show_favorite",value:function(params){
 		  ok:true,
 		  list:arr
 		};
-		var a=_get_module_list(params[C.ROLE_NAME]);
-		result[C.MODULE_LIST]=a;
-		result[C.CURRENT_MODULE]=C.EASYSOFT_INDEX;
-		result[C.EASYSOFT_GO]=_get_url(C.EASYSOFT_GO);
+		result[C.CURRENT_MODULE]=C.EASYSOFT+C.INDEX;
+		result[C.GO]=_get_url(C.EASYSOFT+C.GO);
 		return result;
 	}
 })
