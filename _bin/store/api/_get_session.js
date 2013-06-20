@@ -20,7 +20,6 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 									db.session.update({_id:ObjectId(sid)},{'$set':op});
 									var op={};
 									op.ok=true;
-									op[C.R_MODULE_LIST]=rs[C.R_MODULE_LIST];
 									op[C.CURRENT_MODULE]=o[C.MODULE_NAME];
 									op[C.ROLE_NAME]=o[C.ROLE_NAME];
 									op[C.IS_OPEN]=o[C.IS_OPEN];

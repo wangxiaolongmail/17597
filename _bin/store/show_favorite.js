@@ -24,12 +24,6 @@ db.system.js.save({_id:"show_favorite",value:function(params){
 		result[C.MODULE_LIST]=a;
 		result[C.CURRENT_MODULE]=C.EASYSOFT_INDEX;
 		result[C.EASYSOFT_GO]=_get_url(C.EASYSOFT_GO);
-
-			var op={};
-			op[C.MODULE_NAME]=C.EASYSOFT_LOGIN;
-			op[C.MODULE_URL]=_get_url(C.EASYSOFT_LOGIN);
-			result[C.R_MODULE_LIST]=[op];
-
 		return result;
 	}
 })

@@ -13,10 +13,6 @@ db.system.js.save({_id:"logining",value:function (params) {
 			o["sid"]=_id.valueOf();
 			o[C.LOGIN_TIME]=(new Date()).getTime();
 			o[C.UPDATE_TIME]=o[C.LOGIN_TIME];
-			var op={};
-			op[C.MODULE_NAME]=C.LOGOUT;
-			op[C.MODULE_URL]=_get_url(C.LOGOUT);
-			o[C.R_MODULE_LIST]=[op];
 			o[C.IS_OPEN]=true;
 			o[C.IS_TIMEOUT]=false;
 			o[C.ROLE_NAME]=rs[C.ROLE_NAME];
