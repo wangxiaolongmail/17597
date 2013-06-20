@@ -72,7 +72,8 @@ for(var j=0;j<list2.length;j++){
         drawMainMenu:function(data){
                 var a=[],o={},I18N=dojo.I18N,C=dojo.C;
                 this.cur_obj={};
-                var list=this.getMenuList(data);
+                var mlist=this.getMenuList(data);
+				var list=mlist[dojo.C.LEFT];
                 var len = list.length;
                 a.push("<ul class='nav'>");
                 for(var i=0;i<len;i++){
@@ -92,7 +93,7 @@ if(o[C.IS_MENU]){
                         
                 }
                 a.push("</ul>");
-                var o=data[C.R_MODULE_LIST][0];
+                var o=mlist[C.RIGHT][0];
 		//var len = list.length;
 		a.push("<ul class='nav pull-right'>");
     			a.push("<li>");
