@@ -31,7 +31,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			var data=data||{};
 			var classname=data.classname||"span2";
 			a.push("<select class=\""+classname+"\" name=\""+C.CATEGORY+"\">");
-			dojo.each(dojo[C.FAVORITE_TYPE],function(k,v,i){
+			dojo.each(dojo[C.DICT][C.FAVORITE_TYPE],function(k,v,i){
 				if(k==data.category){
 					a.push("<option selected value='"+k+"'>");
 				}else{
@@ -90,7 +90,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
 				 v[C.FORMAT]=function(val){
-					 return dojo[C.FAVORITE_TYPE][val];
+					 return dojo[C.DICT][C.FAVORITE_TYPE][val];
 				 }
 			 }
 			 if(v[C.FIELD]===C._ID){
