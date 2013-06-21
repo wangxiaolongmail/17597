@@ -4,7 +4,7 @@ db.system.js.save({_id:"_get_role",value:function (name) {
 	var o={};
 	_each(a,function(k,v,i){
 		var op={};
-		op[C.IS_GUEST]=v[C.IS_GUEST];
+		_mixin(op,v);
 		op[C.LEFT]=_get_module_list(v[C.ROLE_NAME]);
 		if(v[C.IS_GUEST]){
 			var oo={};

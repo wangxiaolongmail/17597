@@ -59,6 +59,7 @@ db.system.js.save({_id:"constant",value:function () {
 				PATH_NAME:"pathname",
 				PASSWORD:"PASSWORD",
 				POST:"post",
+				PUBLIC:"PUBLIC",
 				USER_NAME:"USER_NAME",
 				MID:"mid",
 				METADATA:"metadata",

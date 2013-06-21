@@ -30,8 +30,6 @@ db.system.js.save({_id:"init",value:function () {
 		op[C.METHOD]=o[C.METHOD];
 		dynamicServletMapping.push(op);	
 	}
-	result.isClientDebug=pub.isClientDebug;
-	result.isAdminClientDebug=pub.isAdminClientDebug;
 	result["dynamicServletMapping"]=dynamicServletMapping;
 	result[C.ROLE]=_get_role();
 	result[C._ID]=C.APPLICATION;

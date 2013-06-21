@@ -17,7 +17,7 @@ dojo.provide("com.easysoft.service.Index");
 dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 	template_dir:"/wy/",
 	template_file:"index.html",
-	role_name:"r_easysoft",
+	role_name:dojo.C.ROLE+dojo.C.PUBLIC,
        postCreate:function(){
 		var a=[],o={},op={},C=dojo.C;
 		var op=this.getbo();
