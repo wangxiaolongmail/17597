@@ -15,11 +15,12 @@
 dojo.provide("com.easysoft.service.admin.favorite_type.List");
 dojo.declare( "com.easysoft.service.admin.favorite_type.List" , "com.easysoft.service.admin.favorite.List" , {
 		template_file:"favorite_list.html",
+		table_name:"favorite_type",
         postCreate:function(){
 			var a=[],o={},op={},C=dojo.C;
 			var op=this.getsbo();
 			op["page"] =this.queryString.page;
-			op[C.TABLE_NAME] ='favorite_type';
+			op[C.TABLE_NAME] =this.table_name;
 			op[C.STORED_METHOD] ='admin_List';
 			this.exec(op);
         },
