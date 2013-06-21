@@ -6,7 +6,7 @@ db.system.js.save({_id:"logout",value:function (params) {
 		var op={};
 		op[C.IS_OPEN]=false;
 		op[C.UPDATE_TIME]=(new Date()).getTime();
-		db.session.update({_id:ObjectId(sid)},{'$set':op});
+		db.session.update({sid:sid},{'$set':op});
 	}
 	var op={};
 	op[C.MODULE_URL]=_get_url(C.EASYSOFT+C.LOGIN);
