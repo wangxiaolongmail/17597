@@ -16,7 +16,6 @@ db.system.js.save({_id:"logining",value:function (params) {
 			o[C.IS_OPEN]=true;
 			o[C.IS_TIMEOUT]=false;
 			o[C.ROLE_NAME]=rs[C.ROLE_NAME];
-			o[C.MODULE_LIST]=_get_module_list(rs[C.ROLE_NAME]);
 			_mixin(o,params);
 			db.session.insert(o);
 			o.ok=true;
