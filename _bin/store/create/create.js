@@ -1,4 +1,4 @@
-//db.eval("create()");
+//
 db.system.js.save({_id:"create",value:function () {
 		create_i18n();
 		create_role();
