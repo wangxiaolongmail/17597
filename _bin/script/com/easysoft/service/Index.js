@@ -23,7 +23,7 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 		var op=this.getbo();
 		op[C.ROLE_NAME] =this.role_name;
 		op[C.STORED_METHOD] =C.SHOW_FAVORITE;
-		this.exec(op);
+		 this.exec(op);
        },
 	postDraw:function(data){
 		var a=[],o={},I18N=dojo.I18N,C=dojo.C;

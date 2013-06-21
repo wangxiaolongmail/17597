@@ -2,17 +2,12 @@ db.system.js.save({_id:"init",value:function () {
 	var pub=public();
 	var C=constant();
 	
-    var result={
+    	var result={
 		C:C,
 		metadata:_get_metadata()
-    };
+    	};
 		
 	var a=db.favorite_type.find({},{article_title:true,category:true}).toArray();
-	var favorite_type={};
-	_each(a,function(k,v,i){
-		favorite_type[v.category]=v.article_title;
-	});
-	result[C.FAVORITE_TYPE]=favorite_type;
 	var dict={};
 	var favorite_type={};
 	_each(a,function(k,v,i){
@@ -41,7 +36,19 @@ db.system.js.save({_id:"init",value:function () {
 	result[C.ROLE]=_get_role();
 	result[C._ID]=C.APPLICATION;
 	result[C.DICT]=dict;
-	_push_mdata(result)
+	
+	var rs=db.favorite.find().sort({article_pri:-1}).limit(1);
+	var i;
+	if(rs){
+		i=rs.article_pri;
+	}else{
+		i=1;
+	}
+	var op={};
+	op[C.FAVORITE]=1;
+	result[C.PRI]=op;
+
+	_push_mdata(result);
 	return result;
 }})
 
