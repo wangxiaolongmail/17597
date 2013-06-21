@@ -3,7 +3,8 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 	var C=constant();
 	var sid=params.sid||"0";
 	if(sid.length===24){
-		var rs=db.session.findOne({sid:sid});
+		var lookup={sid:sid};
+		var rs=db.session.findOne(lookup);
 		if(rs){
 			if(rs[C.IS_OPEN]){
 				if(!rs[C.IS_TIMEOUT]){
@@ -19,7 +20,8 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 									if((newUpdateDate-rs[C.UPDATE_TIME])<pub.interval){
 										var op={};
 										op[C.UPDATE_TIME]=newUpdateDate;
-										db.session.update({_id:ObjectId(sid)},{'$set':op});
+										op[C.MID]="";
+										db.session.update(lookup,{'$set':op});
 										var op={};
 										op.ok=true;
 										op[C.CURRENT_MODULE]=o[C.MODULE_NAME];
@@ -29,7 +31,7 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 									}else{
 										var op={};
 										op[C.IS_TIMEOUT]=true;
-										db.session.update({_id:ObjectId(sid)},{'$set':op});
+										db.session.update(lookup,{'$set':op});
 										result={ok:false,err:"session timeout"};
 									}
 									return true;
