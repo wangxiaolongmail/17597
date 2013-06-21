@@ -3,7 +3,7 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 	db.authority.remove();
 	
 	var rolename=C.ROLE+C.EASYSOFT;
-	var obj={};
+	var obj=_geto();
 	obj[C.MODULE_NAME]=C.EASYSOFT+C.ADMIN+C.START;;
 	obj[C.ROLE_NAME]=rolename;
 	obj[C.IS_NEW]=false;
