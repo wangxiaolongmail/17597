@@ -3,7 +3,7 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 	var C=constant();
 	var sid=params.sid||"0";
 	if(sid.length===24){
-		var rs=db.session.findOne({sid:sid});
+		var rs=db.session.findOne({_id:ObjectId(sid)});
 		if(rs){
 			if(rs[C.IS_OPEN]){
 				if(!rs[C.IS_TIMEOUT]){
