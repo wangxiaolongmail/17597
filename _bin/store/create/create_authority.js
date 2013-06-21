@@ -3,14 +3,14 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 	db.authority.remove();
 	
 	var rolename=C.ROLE+C.EASYSOFT;
-	var obj=_geto();
+	var obj={};
 	obj[C.MODULE_NAME]=C.EASYSOFT+C.ADMIN+C.START;;
 	obj[C.ROLE_NAME]=rolename;
 	obj[C.IS_NEW]=false;
 	obj[C.IS_EDIT]=false;
 	obj[C.IS_DELETE]=false;
 	obj[C.IS_MENU]=true;
-	db.authority.insert(obj);
+	_insert(C.AUTHORITY,obj);
 
 	var obj={};
 	obj[C.MODULE_NAME]=C.EASYSOFT+C.ADMIN+C.FAVORITE+C.LIST;
@@ -19,7 +19,7 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 	obj[C.IS_EDIT]=true;
 	obj[C.IS_DELETE]=true;
 	obj[C.IS_MENU]=true;
-	db.authority.insert(obj);
+	_insert(C.AUTHORITY,obj);
 
 	var obj={};
 	obj[C.MODULE_NAME]=C.EASYSOFT+C.ADMIN+C.FAVORITE+C.ADD;
@@ -28,17 +28,17 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 	obj[C.IS_EDIT]=true;
 	obj[C.IS_DELETE]=true;
 	obj[C.IS_MENU]=false;
-	db.authority.insert(obj);
+	_insert(C.AUTHORITY,obj);
 	
 	var obj={};
 	obj[C.MODULE_NAME]=C.EASYSOFT+C.ADMIN+C.FAVORITE+C.SAVE;
 	obj[C.ROLE_NAME]=rolename;
-	db.authority.insert(obj);	
+	_insert(C.AUTHORITY,obj);	
 	
 	var obj={};
 	obj[C.MODULE_NAME]=C.EASYSOFT+C.ADMIN+C.FAVORITE+C.INSERT;
 	obj[C.ROLE_NAME]=rolename;
-	db.authority.insert(obj);
+	_insert(C.AUTHORITY,obj);
 
 	var obj={};
 	obj[C.MODULE_NAME]=C.EASYSOFT+C.ADMIN+C.FAVORITE_TYPE+C.LIST;
@@ -47,14 +47,14 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 	obj[C.IS_EDIT]=false;
 	obj[C.IS_DELETE]=false;
 	obj[C.IS_MENU]=true;
-	db.authority.insert(obj);
+	_insert(C.AUTHORITY,obj);
 
 	var rolename=C.ROLE+C.PUBLIC;
 	var obj={};
 	obj[C.MODULE_NAME]=C.EASYSOFT+C.INDEX;
 	obj[C.ROLE_NAME]=rolename;
 	obj[C.IS_MENU]=true;
-	db.authority.insert(obj);
+	_insert(C.AUTHORITY,obj);
 
 }})
 

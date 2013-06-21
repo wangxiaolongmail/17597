@@ -1,6 +1,7 @@
 db.system.js.save({_id:"constant",value:function () {
         return {
 				ADMIN:"ADMIN",
+				AUTHORITY:"authority",
 				APPLICATION:"APPLICATION",
 				ADD:"ADD",
 				ALL:"ALL",
