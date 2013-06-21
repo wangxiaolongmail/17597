@@ -1,6 +1,7 @@
 db.system.js.save({_id:"constant",value:function () {
         return {
 				ADMIN:"ADMIN",
+				APPLICATION:"APPLICATION",
 				ADD:"ADD",
 				ALL:"ALL",
 				ARTICLE_TITLE:"article_title",
@@ -83,6 +84,7 @@ db.system.js.save({_id:"constant",value:function () {
 				TYPE:"TYPE",
 				UPDATE_TIME:"UPDATE_TIME",
 				USER_AGENT:"USER_AGENT",
+				URL:"URL",
 				VALUE:"VALUE"
         };
 }})

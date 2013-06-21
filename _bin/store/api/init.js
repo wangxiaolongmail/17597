@@ -31,6 +31,7 @@ db.system.js.save({_id:"init",value:function () {
 		dynamicServletMapping.push(op);	
 	}
 	result.isClientDebug=pub.isClientDebug;
+	result.isAdminClientDebug=pub.isAdminClientDebug;
 	result["dynamicServletMapping"]=dynamicServletMapping;
 	result[C.ROLE]=_get_role();
 	return result;

@@ -4,6 +4,7 @@ db.system.js.save({_id:"public",value:function () {
                 pageSize:10,
                 isCache:false,
 				isClientDebug:false,
+				isAdminClientDebug:true,
                 i18n:function(key){
                         return ((db.i18n.findOne({_id:key})||{})["cn"])||key;
                 }

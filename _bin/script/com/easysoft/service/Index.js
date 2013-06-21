@@ -44,7 +44,7 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 			a.push(o.article_title);
 			dojo.each(o.list,function(k,v,i){
 				a.push("&nbsp;");
-				a.push("<a target='_blank' href='"+data[C.GO]+"?"+C.TO+"="+v.article_url+"'>"+v.article_title+"</a>");
+				a.push("<a target='_blank' href='"+data[C.URL+C.GO]+"?"+C.TO+"="+v.article_url+"'>"+v.article_title+"</a>");
 
 			});
 			a.push("</td>");
