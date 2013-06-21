@@ -66,6 +66,7 @@ db.system.js.save({_id:"constant",value:function () {
 				USER_NAME:"USER_NAME",
 				MID:"mid",
 				METADATA:"metadata",
+				MODULE:"module",
 				MODULE_NAME:"MODULE_NAME",
 				METHOD:"method",
 				MODULE_URL:"MODULE_URL",
@@ -74,7 +75,7 @@ db.system.js.save({_id:"constant",value:function () {
 				REQUEST:"REQUEST",
 				REFER:"REFER",
 				ROLE_NAME:"ROLE_NAME",
-				ROLE:"ROLE",
+				ROLE:"role",
 				RIGHT:"RIGHT",
 				REMOTE_ADDRESS:"REMOTE_ADDRESS",
 				SITE_NAME:"SITE_NAME",
@@ -92,6 +93,7 @@ db.system.js.save({_id:"constant",value:function () {
 				UPDATE_TIME:"UPDATE_TIME",
 				USER_AGENT:"USER_AGENT",
 				URL:"URL",
+				USER:"user",
 				VALUE:"VALUE"
         };
 }})
