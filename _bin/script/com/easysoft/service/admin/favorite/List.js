@@ -50,13 +50,13 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 				  //a.push('alert($(this).val());');
 				  a.push('location.href="?sid='+sid+'&category="+$(this).val();');
 			a.push('});');
-			a.push('$("a.'+C.DELETE+'").on("click",function()');
+			a.push('$("a.'+C.IS_DELETE+'").on("click",function()');
 			a.push('{');
 				a.push('$("#list1 input[type=\'checkbox\']:checked").each(function(){');
 					//a.push('alert($(this).val());');
 				a.push('});');
 				a.push('if(confirm("Is it delete record?")){');
-					a.push('location.href="/easysoft/admin/favorite_del?sid='+sid+'";');
+					a.push('location.href="del?sid='+sid+'";');
 				a.push('}');
 			a.push('});');
 			return a.join("\n");
@@ -141,6 +141,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 						}
 					});
 				a.push("</tr>");
+
 			});
 			a.push("</tbody>");
 			return a.join("");
