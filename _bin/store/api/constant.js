@@ -46,6 +46,7 @@ db.system.js.save({_id:"constant",value:function () {
 				IS_LOGINED:"IS_LOGINED",
 				IS_GUEST:"IS_GUEST",
 				IS_DEBUG:"IS_DEBUG",
+				IS_SHOW:"IS_SHOW",
 				INPUT:"INPUT",
 				INSERT_TIME:"INSERT_TIME",
 				INSERT:"INSERT",
