@@ -4,7 +4,9 @@ db.system.js.save({_id:"show_favorite",value:function(params){
 		_each(db.favorite_type.find().toArray(),function(k,v,i){
 			var o=v;
 			o.list=[];
-			_each(db.favorite.find( { _id : o._id } ).toArray(),function(k,v,i){
+			var op={};
+			op[C.CATEGORY]=o._id
+			_each(db.favorite.find( op ).toArray(),function(k,v,i){
 				o.list.push(v);
 			});
 			a.push(o);
