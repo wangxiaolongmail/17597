@@ -17,7 +17,7 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.List" , "com.easysoft.se
 		template_file:"favorite_list.html",
 		table_name:"favorite_type",
         postCreate:function(){
-			var a=[],o={},op={},C=dojo.C;
+			var a=[],o={},op={};
 			var op=this.getsbo();
 			op["page"] =this.queryString.page;
 			op[C.TABLE_NAME] =this.table_name;
@@ -27,7 +27,7 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.List" , "com.easysoft.se
 
 		postDraw:function(data){
 			
-			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+			var a=[],o={};
 			var $ = this.getDom();
 			$("#left_bar").remove();
 			$("#right_bar").removeClass("span9").addClass("span12");

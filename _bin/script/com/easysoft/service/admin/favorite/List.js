@@ -17,7 +17,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 		template_file:"favorite_list.html",
 		table_name:"favorite",
         postCreate:function(){
-			var a=[],o={},op={},C=dojo.C;
+			var a=[],o={},op={};
 			var op=this.getsbo();
 			op["page"] =this.queryString.page;
 			op["category"] =this.queryString.category;
@@ -27,7 +27,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			this.exec(op);
         },
 	 drawSelectType:function(data){
-			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+			var a=[],o={};
 			var data=data||{};
 			var classname=data.classname||"span2";
 			a.push("<select class=\""+classname+"\" name=\""+C.CATEGORY+"\">");
@@ -44,7 +44,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			return a.join("\n");
 	 },
 	 drawSelectTypeScript:function(data){
-			var a=[],o={},I18N=dojo.I18N,C=dojo.C,sid=this.sid;
+			var a=[],o={},sid=this.sid;
 			a.push('$("select").change(function()');
 			a.push('{');
 				  //a.push('alert($(this).val());');
@@ -63,7 +63,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 	 },
 
 	 drawButton:function(data){
-			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+			var a=[],o={};
 			var cur_obj=this.cur_obj;
 			console.log(cur_obj);
 			if(cur_obj[C.IS_NEW]){
@@ -85,7 +85,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 
 	 },
 	 get_metadata:function(data){
-		 var C=dojo.C;
 		 var a=dojo.clone(dojo[C.METADATA][data[C.TABLE_NAME]]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
@@ -105,7 +104,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 		 return a;
 	 },
 	 drawTable:function(data){
-			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+			var a=[],o={};
 			var obj=data;
 			var a=[];
 			var list=obj.list;
@@ -149,7 +148,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 	 },
 
 	 drawPage:function(data){
-			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+			var a=[],o={};
 			var obj=data;
 			var a=[],
 			pageCount=obj.pageCount,
@@ -190,7 +189,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 
 
 		postDraw:function(data){
-			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+			var a=[],o={};
 			var $ = this.getDom();
 			$("#left_bar").remove();
 			$("#right_bar").removeClass("span9").addClass("span12");

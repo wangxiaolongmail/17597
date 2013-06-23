@@ -15,7 +15,7 @@
 dojo.provide("com.easysoft.service.admin.favorite.Save");
 dojo.declare( "com.easysoft.service.admin.favorite.Save" , "com.easysoft.service.admin.favorite.Add" , {
         postCreate:function(){
-			var a=[],o={},op={},C=dojo.C;
+			var a=[],o={},op={};
 			var op=this.getsbo();
 			var obj={};
 			var a=dojo[C.METADATA][this.table_name];
@@ -40,7 +40,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Save" , "com.easysoft.service
 			this.exec(op);
         },
 		postDraw:function(data){
-			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+			var a=[],o={};
 			var $ = this.getDom();
 			$(".nav-collapse").html(this.drawMainMenu(data));
 			

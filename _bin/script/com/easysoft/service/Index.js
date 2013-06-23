@@ -17,16 +17,16 @@ dojo.provide("com.easysoft.service.Index");
 dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 	template_dir:"/wy/",
 	template_file:"index.html",
-	role_name:dojo.C.ROLE+dojo.C.PUBLIC,
+	role_name:C.ROLE+C.PUBLIC,
        postCreate:function(){
-		var a=[],o={},op={},C=dojo.C;
+		var a=[],o={},op={};
 		var op=this.getbo();
 		op[C.ROLE_NAME] =this.role_name;
 		op[C.STORED_METHOD] =C.SHOW_FAVORITE;
 		 this.exec(op);
        },
 	postDraw:function(data){
-		var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+		var a=[],o={};
 		var sid=this.sid;
 		var $ = this.getDom();
 		$("#left_bar").remove();
@@ -58,7 +58,7 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 		return s;
 	},
     drawMainMenu:function(data){
-		var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+		var a=[],o={};
 		this.cur_obj={};
 		var mlist=this.getMenuList(data);
 		a.push("<ul class='nav'>");

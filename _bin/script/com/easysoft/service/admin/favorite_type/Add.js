@@ -16,7 +16,7 @@ dojo.provide("com.easysoft.service.admin.favorite_type.Add");
 dojo.declare( "com.easysoft.service.admin.favorite_type.Add" , "com.easysoft.service.admin.favorite_type.List" , {
 	template_file:"favorite_add.html",
        postCreate:function(){
-			var a=[],o={},op={},C=dojo.C;
+			var a=[],o={};
 			var op=this.getsbo();
 			op["page"] =this.queryString.page;
 			op["category"] =this.queryString.category;
@@ -26,7 +26,6 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.Add" , "com.easysoft.ser
 			this.exec(op);
         },
 	 get_metadata:function(data){
-		 var C=dojo.C;
 		 var a=dojo.clone(dojo[C.METADATA][data[C.TABLE_NAME]]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C._ID){
@@ -41,7 +40,7 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.Add" , "com.easysoft.ser
 		 return a;
 	 },
 	postDraw:function(data){
-			var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+			var a=[],o={};
 			var $ = this.getDom();
 			$(".nav-collapse").html(this.drawMainMenu(data));
 			

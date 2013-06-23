@@ -22,13 +22,13 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 		return op;
 	},
      postCreate:function(){
-		var a=[],o={},op={},C=dojo.C;
+		var a=[],o={},op={};
 		var op=this.getsbo();
 		op[C.STORED_METHOD] ='admin_Start';
 		this.exec(op);
     },
 	postDraw:function(data){
-		var a=[],o={},C=dojo.C;
+		var a=[],o={};
 		var sid=this.sid;
 		var $ = this.getDom();
 		$("#left_bar").remove();
@@ -41,10 +41,10 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 	},
 	drawMainMenu:function(data){
 		var sid=this.sid;
-		var a=[],o={},I18N=dojo.I18N,C=dojo.C;
+		var a=[],o={};
 		this.cur_obj={};
 		var mlist=this.getMenuList(data);
-		var list=mlist[dojo.C.LEFT];
+		var list=mlist[C.LEFT];
 		var len = list.length;
 		a.push("<ul class='nav'>");
 		dojo.each(list,function(k,v,i){

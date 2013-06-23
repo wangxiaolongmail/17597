@@ -5,6 +5,7 @@ db.system.js.save({_id:"login",value:function (params) {
 	op.ok=true;
 	op.mid=_push_mdata(_create_check_code());
 	op[C.CHECK_CODE]=_get_url(C.EASYSOFT+C.CHECK_CODE);
+	op[C.IS_SHOW+C.CHECK_CODE]=false;
 	return op;
 }})
 

@@ -16,7 +16,7 @@ dojo.import("com.easysoft.Widget");
 dojo.provide("com.easysoft.service.Logining");
 dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.Widget" , {
 	postCreate:function(){
-		var a=[],C=dojo.C,op={};
+		var a=[],op={};
 		var op=this.getbo();
 		op[C.USER_NAME] = this.queryForm[C.USER_NAME];
 		op[C.PASSWORD] =dojo.md5(this.queryForm[C.PASSWORD]);
@@ -26,7 +26,27 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.Widget" , {
 		this.exec(op);
 	},
 	postDraw:function(data){
-		var a=[],C=dojo.C,op={};
+if(data[C.IS+C.CHECK_CODE]){
+console.log("1");
+		var a=[],op={};
+		var a=this.getMenuList(data)[dojo.C.LEFT];
+		if(a.length>0){
+			var url=a[0][C.MODULE_URL];
+			this.redirect(url+"?sid="+data.sid);
+			dojo.sendMail({title:data[C.USER_NAME]+" loging system successful"});
+		}else{
+console.log("3");
+
+			this._findNotFile();
+		}
+
+}else{
+console.log("2");
+
+			this._findNotFile();
+}
+/*
+		var a=[],op={};
 		var a=this.getMenuList(data)[dojo.C.LEFT];
 		if(a.length>0){
 			var url=a[0][C.MODULE_URL];
@@ -35,5 +55,6 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.Widget" , {
 		}else{
 			this._findNotFile();
 		}
+*/
 	}
 });
