@@ -36,7 +36,7 @@ dojo.declare( "com.easysoft.service.LoginingCheckCode" , "com.easysoft.service.I
 			a.push('<input style="height:30px" class="span3" name="'+C.PASSWORD+'" type="password">');
 			a.push("<label>"+I18N[C.CHECK_CODE]+":</label>");
 			a.push("<input style=\'height:30px\' class=\'span3\' name=\'"+C.CHECK_CODE+"\'  type=\'text\' >");
-			a.push("<img src=\'"+data[C.CHECK_CODE]+"?mid="+data.mid+"\' />");
+			a.push("<img src=\'"+URL[C.EASYSOFT+C.CHECK_CODE]+"?mid="+data.mid+"\' />");
 			a.push("<input name=\'mid\' type=\'hidden\' value=\'"+data.mid+"\' >");
 			a.push("<button type=\'submit\' class=\'btn btn-primary\'>"+I18N[C.OK]+"</button>");
 			var url=data[C.MODULE_URL];

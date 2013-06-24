@@ -17,7 +17,6 @@ db.system.js.save({_id:"logining",value:function (params) {
 		o[C.PASSWORD]=params[C.PASSWORD];
 		o[C.CHECK_CODE]=_create_check_code();
 		op[C.MID]=_push_mdata(o);
-		op[C.URL]=_get_url(C.EASYSOFT+C.LOGINING+C.CHECK_CODE);
 	}
 	op.ok=true;
 	return op;

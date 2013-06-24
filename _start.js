@@ -134,6 +134,7 @@ function fn_conn_db(){
 				dojo.debugInitData=obj;
 				global.C=dojo.C;
 				global.I18N=dojo.I18N;
+				global.URL=dojo.URL;
 			});
 			dojo.createObject("com.easysoft.zoo.Elephant",{dir:dojo.dir});
 		}else{
