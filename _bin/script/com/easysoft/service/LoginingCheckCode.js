@@ -20,6 +20,7 @@ dojo.declare( "com.easysoft.service.LoginingCheckCode" , "com.easysoft.service.I
 		var a=[],o={},op={};
 		var op=this.getbo();
 		op[C.ROLE_NAME] =this.role_name;
+		op[C.MID] =this.queryString[C.MID];
 		op[C.STORED_METHOD] ='loginingCheckCode';
 		this.exec(op);
     },
