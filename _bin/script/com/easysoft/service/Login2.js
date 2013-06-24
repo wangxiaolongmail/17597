@@ -13,15 +13,15 @@
  * @author wxlwang
  */
 dojo.import("com.easysoft.service.Index");
-dojo.provide("com.easysoft.service.LoginingCheckCode");
-dojo.declare( "com.easysoft.service.LoginingCheckCode" , "com.easysoft.service.Index" , {
+dojo.provide("com.easysoft.service.Login2");
+dojo.declare( "com.easysoft.service.Login2" , "com.easysoft.service.Index" , {
 	template_file:"login.html",
 	postCreate:function(){
 		var a=[],o={},op={};
 		var op=this.getbo();
 		op[C.ROLE_NAME] =this.role_name;
 		op[C.MID] =this.queryString[C.MID];
-		op[C.STORED_METHOD] ='loginingCheckCode';
+		op[C.STORED_METHOD] ='Login2';
 		this.exec(op);
     },
 

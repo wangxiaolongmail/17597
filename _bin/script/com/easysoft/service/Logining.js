@@ -28,7 +28,7 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Login" , {
 		///easysoft/loginingCheckCode
 if(data[C.IS+C.CHECK_CODE]){
 console.log("2");
-		this.redirect(URL[C.EASYSOFT+C.LOGINING+C.CHECK_CODE]+"?"+C.MID+"="+data[C.MID]);
+		this.redirect(URL[C.EASYSOFT+C.LOGIN2]+"?"+C.MID+"="+data[C.MID]);
 
 }else{
 console.log("1");

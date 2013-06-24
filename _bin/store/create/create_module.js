@@ -93,9 +93,9 @@ db.system.js.save({_id:"create_module",value:function () {
 	_insert(C.MODULE,obj);	
 	
 	var obj={};
-	obj[C.MODULE_NAME]=C.EASYSOFT+C.LOGINING+C.CHECK_CODE;
-	obj[C.MODULE_URL]="/easysoft/loginingCheckCode";
-	obj[C.SERVLET_CLASS]="com.easysoft.service.LoginingCheckCode";
+	obj[C.MODULE_NAME]=C.EASYSOFT+C.LOGIN2;
+	obj[C.MODULE_URL]="/easysoft/"+C.LOGIN2;
+	obj[C.SERVLET_CLASS]="com.easysoft.service."+C.LOGIN2;
 	obj[C.METHOD]=C.GET;
 	_insert(C.MODULE,obj);
 	
