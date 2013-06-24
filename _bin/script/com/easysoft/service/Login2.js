@@ -31,11 +31,10 @@ dojo.declare( "com.easysoft.service.Login2" , "com.easysoft.service.Index" , {
 		var $ = this.getDom();
 			a.push("<label>"+I18N[C.CHECK_CODE]+":</label>");
 			a.push("<input style=\'height:30px\' class=\'span3\' name=\'"+C.CHECK_CODE+"\'  type=\'text\' >");
-			a.push("<img src=\'"+URL[C.EASYSOFT+C.CHECK_CODE]+"?mid="+data.mid+"\' />");
-			a.push("<input name=\'mid\' type=\'hidden\' value=\'"+data.mid+"\' >");
+			a.push("<img src=\'"+URL[C.EASYSOFT+C.CHECK_CODE]+"?mid="+data[C.MID]+"\' />");
+			a.push("<input name=\'mid\' type=\'hidden\' value=\'"+data[C.MID]+"\' >");
 			a.push("<button type=\'submit\' class=\'btn btn-primary\'>"+I18N[C.OK]+"</button>");
-			var url=data[C.MODULE_URL];
-			$("form").attr("action",url).html(a.join("\n"));
+			$("form").attr("action",URL[C.LOGINING2]).html(a.join("\n"));
 		var s=$.html();
 		return s;
 	}

@@ -28,7 +28,6 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Index" , {
 	postDraw:function(data){
 		var a=[];	
 		var $ = this.getDom();
-			a.push('<h3>'+I18N[C.SITE_NAME]+'</h3>');
 			a.push('<label>'+I18N[C.USER_NAME]+':</label>');
 			a.push('<input style="height:30px" class="span3" name="'+C.USER_NAME+'" type="text">');
 			a.push('<label>'+I18N[C.PASSWORD]+':</label>');
