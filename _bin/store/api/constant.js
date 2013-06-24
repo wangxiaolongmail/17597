@@ -53,6 +53,8 @@ db.system.js.save({_id:"constant",value:function () {
 				KEY:"KEY",
 				LOGIN:"LOGIN",
 				LOGINING:"LOGINING",
+				LOGIN2:"LOGIN2",
+				LOGINING2:"LOGINING2",
 				LOGIN_TIME:"LOGIN_TIME",
 				LOGOUT:"LOGOUT",
 				LABEL:"label",
