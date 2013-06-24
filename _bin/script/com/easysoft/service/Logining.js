@@ -26,7 +26,12 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.Widget" , {
 		this.exec(op);
 	},
 	postDraw:function(data){
+		///easysoft/loginingCheckCode
 if(data[C.IS+C.CHECK_CODE]){
+console.log("2");
+		this.redirect("/easysoft/loginingCheckCode");
+
+}else{
 console.log("1");
 		var a=[],op={};
 		var a=this.getMenuList(data)[dojo.C.LEFT];
@@ -39,11 +44,6 @@ console.log("3");
 
 			this._findNotFile();
 		}
-
-}else{
-console.log("2");
-
-			this._findNotFile();
 }
 /*
 		var a=[],op={};
