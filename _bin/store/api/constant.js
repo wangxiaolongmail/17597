@@ -81,6 +81,7 @@ db.system.js.save({_id:"constant",value:function () {
 				ROLE_NAME:"ROLE_NAME",
 				ROLE:"role",
 				RIGHT:"RIGHT",
+				REGISTER:"Register",
 				REMOTE_ADDRESS:"REMOTE_ADDRESS",
 				SITE_NAME:"SITE_NAME",
 				SERVLET_CLASS:"servletClass",
