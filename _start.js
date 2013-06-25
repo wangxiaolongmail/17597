@@ -137,6 +137,7 @@ function fn_conn_db(){
 				global.URL=obj.URL;
 				global.METADATA=obj[C.METADATA];
 				global.ROLE=obj[C.ROLE];
+				global.DICT=obj[C.DICT];
 			});
 			dojo.createObject("com.easysoft.zoo.Elephant",{dir:dojo.dir});
 		}else{
