@@ -89,6 +89,7 @@ db.system.js.save({_id:"constant",value:function () {
 				STRING:"STRING",
 				SAVE:"SAVE",
 				START:"START",
+				SID:"sid",
 				TITLE:"TITLE",
 				TABLE_NAME:"TABLE_NAME",
 				TO_URL:"tourl",

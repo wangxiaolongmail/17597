@@ -8,13 +8,8 @@ db.system.js.save({_id:"Logining2",value:function (params) {
 		var rs =db.user.findOne(op);
 		if (rs) {
 			var o={};
-			var _id=ObjectId();
 			o["_id"]=mdata[C.USER_NAME];
-			o["sid"]=_id.valueOf();
-			o[C.LOGIN_TIME]=(new Date()).getTime();
-			o[C.UPDATE_TIME]=o[C.LOGIN_TIME];
-			o[C.IS_OPEN]=true;
-			o[C.IS_TIMEOUT]=false;
+			_update_session(o);
 			o[C.ROLE_NAME]=rs[C.ROLE_NAME];
 			_mixin(o,params);
 			_mixin(o,mdata);
