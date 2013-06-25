@@ -24,6 +24,9 @@ db.system.js.save({_id:"admin_main",value:function (params) {
 		 case "Login2":   
 				result=Login2(params);   
 				break;
+		 case "Logining2":   
+				result=Logining2(params);   
+				break;
 		 case "login":   
 				result=login(params);   
 				break;
