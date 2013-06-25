@@ -26,7 +26,7 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.Add" , "com.easysoft.ser
 			this.exec(op);
         },
 	 get_metadata:function(data){
-		 var a=dojo.clone(dojo[C.METADATA][data[C.TABLE_NAME]]);
+		 var a=dojo.clone(METADATA[data[C.TABLE_NAME]]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C._ID){
 				 v[C.IS_HIDDEN]=true;

@@ -132,9 +132,10 @@ function fn_conn_db(){
 				dojo.mixin(dojo,obj);
 				dojo.route.dynamicServletMapping=obj.dynamicServletMapping;
 				dojo.debugInitData=obj;
-				global.C=dojo.C;
-				global.I18N=dojo.I18N;
-				global.URL=dojo.URL;
+				global.C=obj.C;
+				global.I18N=obj.I18N;
+				global.URL=obj.URL;
+				global.METADATA=obj[C.METADATA];
 			});
 			dojo.createObject("com.easysoft.zoo.Elephant",{dir:dojo.dir});
 		}else{
