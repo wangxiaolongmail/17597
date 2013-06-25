@@ -9,6 +9,15 @@ db.system.js.save({_id:"logining",value:function (params) {
 	if(obj){
 		var op={};
 		op[C.IS+C.CHECK_CODE]=false;
+		var _id=ObjectId();
+		obj["sid"]=_id.valueOf();
+		obj[C.LOGIN_TIME]=(new Date()).getTime();
+		obj[C.UPDATE_TIME]=obj[C.LOGIN_TIME];
+		obj[C.IS_OPEN]=true;
+		obj[C.IS_TIMEOUT]=false;
+		db.session.save(obj);
+		_mixin(op,obj);
+		delete params[C.ROLE_NAME];
 	}else{
 		var op={};
 		op[C.IS+C.CHECK_CODE]=true;
