@@ -20,6 +20,7 @@ db.system.js.save({_id:"constant",value:function () {
 				DELETE:"DELETE",
 				DEBUG:"Debug",
 				DICT:"DICT",
+				DATE:"DATE",
 				EDIT:"EDIT",
 				EASYSOFT:"EASYSOFT",
 				FAVORITE:"favorite",
