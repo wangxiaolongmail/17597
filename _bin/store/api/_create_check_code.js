@@ -22,6 +22,6 @@ db.system.js.save({_id:"_create_check_code",value:function () {
 		o.font='bold 30px sans-serif';
 		o.globalAlpha = .8;
 		o.ok=true;
-		o[C.CHECK_CODE]=a.join("");
+		o[C.VALUE]=a.join("");
 		return o;
 }})
