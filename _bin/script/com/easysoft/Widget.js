@@ -57,7 +57,7 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 		dojo.db.eval(cmd, dojo.hitch(this,this.draw));
 	},
 	drawDebug:function(data){
-		if(dojo[C.ROLE][data[C.ROLE_NAME]][C.IS_DEBUG]){
+		if(ROLE[data[C.ROLE_NAME]][C.IS_DEBUG]){
 			var a=[];
 			a.push("<script type='text/javascript'>");
 			a.push("window.debug="+dojo.toString(data,true));
@@ -105,7 +105,7 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 		}
 	},
 	getMenuList:function(data){
-		return dojo[C.ROLE][data[C.ROLE_NAME]];
+		return ROLE[data[C.ROLE_NAME]];
 	},
 	getbo:function(){
 		var op={};
