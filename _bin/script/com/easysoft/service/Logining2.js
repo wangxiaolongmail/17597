@@ -25,7 +25,7 @@ dojo.declare( "com.easysoft.service.Logining2" , "com.easysoft.service.Login" , 
 	},
 	postDraw:function(data){
 		var a=[],op={};
-		var a=this.getMenuList(data)[dojo.C.LEFT];
+		var a=this.getMenuList(data)[C.LEFT];
 		if(a.length>0){
 			var url=a[0][C.MODULE_URL];
 			this.redirect(url+"?sid="+data.sid);

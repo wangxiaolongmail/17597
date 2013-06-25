@@ -15,7 +15,7 @@
 dojo.provide("com.easysoft.service.CheckCode");
 dojo.declare( "com.easysoft.service.CheckCode" , "com.easysoft.Widget" , {
 	postCreate:function(){
-		var a=[],C=dojo.C,op={};
+		var a=[],op={};
 		var op=this.getbo();
 		op.mid =this.queryString.mid||"";
 		op[C.STORED_METHOD] ='get_check_code';

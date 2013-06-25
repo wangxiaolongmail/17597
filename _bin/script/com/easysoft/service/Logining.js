@@ -26,15 +26,12 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Login" , {
 	},
 	postDraw:function(data){
 		if(data[C.IS+C.CHECK_CODE]){
-		console.log(C.EASYSOFT+C.LOGIN2);
-		console.log(URL);
-		console.log(URL[C.EASYSOFT+C.LOGIN2]);
 				this.redirect(URL[C.EASYSOFT+C.LOGIN2]+"?"+C.MID+"="+data[C.MID]);
 		
 		}else{
 		console.log("1");
 				var a=[],op={};
-				var a=this.getMenuList(data)[dojo.C.LEFT];
+				var a=this.getMenuList(data)[C.LEFT];
 				if(a.length>0){
 					var url=a[0][C.MODULE_URL];
 					this.redirect(url+"?sid="+data.sid);
