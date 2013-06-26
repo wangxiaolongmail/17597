@@ -4,7 +4,7 @@ db.system.js.save({_id:"logining",value:function (params) {
 	op[C.USER_NAME]=params[C.USER_NAME];
 	op[C.USER_AGENT]=params[C.USER_AGENT];
 	op[C.PASSWORD]=params[C.PASSWORD];
-	op[C.REMOTE_ADDRESS]=params[C.REMOTE_ADDRESS];
+	op[C.REMOTE+C.ADDRESS]=params[C.REMOTE+C.ADDRESS];
 	var obj=db.session.findOne(op);
 	if(obj){
 		var op={};

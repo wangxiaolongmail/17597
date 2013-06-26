@@ -8,7 +8,7 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 		if(rs){
 			if(rs[C.IS_OPEN]){
 				if(!rs[C.IS_TIMEOUT]){
-					if(rs[C.REMOTE_ADDRESS]==params[C.REMOTE_ADDRESS]){
+					if(rs[C.REMOTE+C.ADDRESS]==params[C.REMOTE+C.ADDRESS]){
 						var result={ok:false,err:"module not find"};
 						var obj=_get_mdata(C.APPLICATION);
 						if(obj){
