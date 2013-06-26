@@ -30,7 +30,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.servi
 					}
 				}
 			},this);
-			op[C.INSERT_OBJ] =obj;
+			op[C.INSERT+C.OBJECT] =obj;
 			op[C.TABLE_NAME] =this.table_name;
 			op[C.STORED_METHOD] ='admin_Insert';
 			this.exec(op);
