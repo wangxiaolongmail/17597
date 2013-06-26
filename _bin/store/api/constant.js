@@ -63,6 +63,7 @@ db.system.js.save({_id:"constant",value:function () {
 				OK:"OK",
 				OBJECT:"Object",
 				PRI:"PRI",
+				PAGE:"page",
 				PATH_NAME:"pathname",
 				PASSWORD:"PASSWORD",
 				POST:"post",

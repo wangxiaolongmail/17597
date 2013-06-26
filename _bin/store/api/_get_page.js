@@ -4,11 +4,11 @@ db.system.js.save({_id:"_get_page",value:function (params) {
 		var 
 		tablename=params[C.TABLE_NAME],
 		tablename_type=params[C.TABLE+C.TYPE],
-		page=params.page||1,
+		page=params[C.PAGE]||1,
 		pageSize=params.pageSize||pub.pageSize,
 		recordCount=0,
 		pageRecordCount=0,
-		category=params.category||C.ALL;	
+		category=params[C.CATEGORY]||C.ALL;	
 		if(category==C.ALL){
 			var option={};
 		}else{
@@ -24,4 +24,3 @@ db.system.js.save({_id:"_get_page",value:function (params) {
 		};
 		return result;
 }})
-

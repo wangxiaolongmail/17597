@@ -19,7 +19,7 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.List" , "com.easysoft.se
         postCreate:function(){
 			var a=[],o={},op={};
 			var op=this.getsbo();
-			op["page"] =this.queryString.page;
+			op[C.PAGE] =this.queryString[C.PAGE];
 			op[C.TABLE_NAME] =this.table_name;
 			op[C.STORED_METHOD] ='admin_List';
 			this.exec(op);

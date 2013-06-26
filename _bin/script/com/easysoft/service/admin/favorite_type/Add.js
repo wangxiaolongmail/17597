@@ -18,8 +18,6 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.Add" , "com.easysoft.ser
        postCreate:function(){
 			var a=[],o={};
 			var op=this.getsbo();
-			op["page"] =this.queryString.page;
-			op["category"] =this.queryString.category;
 			op[C.TABLE_NAME] =this.table_name;
 			op[C.STORED_METHOD] ='admin_Add';
 			this.exec(op);
