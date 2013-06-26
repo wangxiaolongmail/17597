@@ -134,7 +134,7 @@ function fn_conn_db(){
 				global.C=obj.C;
 				global.I18N=obj.I18N;
 				global.URL=obj.URL;
-				global.METADATA=obj[C.METADATA];
+				global.SCHEMA=obj[C.SCHEMA];
 				global.ROLE=obj[C.ROLE];
 				global.DICT=obj[C.DICT];
 			});

@@ -1,7 +1,7 @@
 db.system.js.save({_id:"create_role",value:function () {
 		var C=constant();
 		db[C.ROLE].remove();
-		var obj={};
+		var obj={}; 
 		obj[C.ROLE_NAME]=C.ROLE+C.EASYSOFT;
 		obj[C.IS_GUEST]=false;
 		obj[C.IS_DEBUG]=true;

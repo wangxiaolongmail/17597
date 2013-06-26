@@ -24,8 +24,23 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			op[C.STORED_METHOD] ='admin_Add';
 			this.exec(op);
         },
+	
+	 drawLinkSelect:function(o){
+			var a=[];
+			a.push("<select name=\""+o[C.FIELD]+"\">");
+			if(o[C.LINK]){
+				dojo.each(DICT[o[C.LINK]],function(k,v,i){
+					a.push("<option value='"+k+"'>");
+					a.push(v);
+					a.push("</option>");
+				});
+			}
+			a.push("</select");
+			return a.join("\n");
+	 },
+
 	 get_metadata:function(data){
-		 var a=dojo.clone(METADATA[data[C.TABLE_NAME]]);
+		 var a=dojo.clone(SCHEMA[data[C.TABLE_NAME]]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
 				 v[C.FORMAT]=function(lable){
@@ -33,7 +48,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 					a.push("<label>");
 					a.push(lable);
 					a.push("</label>");
-					a.push(this.drawSelectType({classname:"span3"}));
+					a.push(this.drawLinkSelect(v));
 					return a.join("\n");
 				 }
 			 }

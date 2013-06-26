@@ -4,7 +4,7 @@ db.system.js.save({_id:"init",value:function () {
 	
     	var result={
 		C:C,
-		metadata:_get_metadata()
+		Schema:_get_schema()
     	};
 		
 	var a=db.favorite_type.find().toArray();

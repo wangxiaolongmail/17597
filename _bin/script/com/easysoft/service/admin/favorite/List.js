@@ -85,7 +85,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 
 	 },
 	 get_metadata:function(data){
-		 var a=dojo.clone(METADATA[data[C.TABLE_NAME]]);
+		 var a=dojo.clone(SCHEMA[data[C.TABLE_NAME]]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
 				 v[C.FORMAT]=function(val){
