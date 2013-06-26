@@ -3,7 +3,7 @@ db.system.js.save({_id:"_get_page",value:function (params) {
 		var C=constant();
 		var 
 		tablename=params[C.TABLE_NAME],
-		tablename_type=params[C.CAT_TABLE_NAME],
+		tablename_type=params[C.TABLE+C.NAME+C.TYPE],
 		page=params.page||1,
 		pageSize=params.pageSize||pub.pageSize,
 		recordCount=0,

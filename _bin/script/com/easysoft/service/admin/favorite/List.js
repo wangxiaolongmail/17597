@@ -22,7 +22,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			op["page"] =this.queryString.page;
 			op["category"] =this.queryString.category;
 			op[C.TABLE_NAME] =this.table_name;
-			op[C.CAT_TABLE_NAME] =C.FAVORITE_TYPE;
+			op[C.TABLE+C.NAME+C.TYPE] =C.FAVORITE_TYPE;
 			op[C.STORED_METHOD] ='admin_List';
 			this.exec(op);
         },
