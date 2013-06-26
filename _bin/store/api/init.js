@@ -7,11 +7,11 @@ db.system.js.save({_id:"init",value:function () {
 		metadata:_get_metadata()
     	};
 		
-	var a=db.favorite_type.find({},{article_title:true,category:true}).toArray();
+	var a=db.favorite_type.find().toArray();
 	var dict={};
 	var favorite_type={};
 	_each(a,function(k,v,i){
-		favorite_type[v._id.valueOf()]=v.article_title;
+		favorite_type[v._id.valueOf()]=v[C.NAME];
 	});
 	dict[C.FAVORITE_TYPE]=favorite_type;
 	
@@ -42,13 +42,6 @@ db.system.js.save({_id:"init",value:function () {
 	result[C._ID]=C.APPLICATION;
 	result[C.DICT]=dict;
 	
-	var rs=db.favorite.find().sort({article_pri:-1}).limit(1);
-	var i;
-	if(rs){
-		i=rs.article_pri;
-	}else{
-		i=1;
-	}
 	var op={};
 	op[C.FAVORITE]=1;
 	result[C.PRI]=op;

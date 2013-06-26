@@ -41,10 +41,10 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 			var o=v;
 			a.push("<tr>");
 			a.push("<td>");
-			a.push(o.article_title);
+			a.push(o[C.NAME]);
 			dojo.each(o.list,function(k,v,i){
 				a.push("&nbsp;");
-				a.push("<a target='_blank' href='"+data[C.URL+C.GO]+"?"+C.TO+"="+v.article_url+"'>"+v.article_title+"</a>");
+				a.push("<a target='_blank' href='"+data[C.URL+C.GO]+"?"+C.TO+"="+v[C.URL]+"'>"+v[C.NAME]+"</a>");
 
 			});
 			a.push("</td>");

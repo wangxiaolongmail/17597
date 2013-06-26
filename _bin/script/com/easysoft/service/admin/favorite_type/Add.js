@@ -30,9 +30,9 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.Add" , "com.easysoft.ser
 			 if(v[C.FIELD]===C._ID){
 				 v[C.IS_HIDDEN]=true;
 			 }
-			 if(v[C.FIELD]===C.ARTICLE_PRI){
+			 if(v[C.FIELD]===C.PRI){
 				 v[C.FORMAT]=function(){
-					return "<input value=\"0\" type=\"hidden\" class=\"span3\" name=\""+C.ARTICLE_PRI+"\">";
+					return "<input value=\"0\" type=\"hidden\" class=\"span3\" name=\""+C.PRI+"\">";
 				 }
 			 }
 		 });

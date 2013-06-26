@@ -97,7 +97,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 					 return "<input type='checkbox' value='"+val+"'/>";
 				 }
 			 }
-			 if(v[C.FIELD]===C.ARTICLE_PRI){
+			 if(v[C.FIELD]===C.PRI){
 				 v[C.IS_HIDDEN]=true;
 			 }
 		 });
