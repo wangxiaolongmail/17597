@@ -2,7 +2,7 @@ db.system.js.save({_id:"logining",value:function (params) {
 	var C=constant();
 	var op={};
 	op[C.USER_NAME]=params[C.USER_NAME];
-	op[C.USER_AGENT]=params[C.USER_AGENT];
+	op[C.USER+C.AGENT]=params[C.USER+C.AGENT];
 	op[C.PASSWORD]=params[C.PASSWORD];
 	op[C.REMOTE+C.ADDRESS]=params[C.REMOTE+C.ADDRESS];
 	var obj=db.session.findOne(op);

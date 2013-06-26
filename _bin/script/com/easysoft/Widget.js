@@ -112,7 +112,7 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 		op[C.CURRENT_URL]=this.dog.m_urlObject.pathname;
 		op[C.REMOTE+C.ADDRESS]=this.dog.req.connection.remoteAddress;
 		var s=this.dog.req.headers["user-agent"];
-		op[C.USER_AGENT]=s.replace(/;/g,"");
+		op[C.USER+C.AGENT]=s.replace(/;/g,"");
 		return op;
 	}
 }); 

@@ -6,6 +6,7 @@ db.system.js.save({_id:"constant",value:function () {
 				ADDRESS:"Address",
 				ADD:"ADD",
 				ALL:"ALL",
+				AGENT:"Agent",
 				ARTICLE_TITLE:"article_title",
 				ARTICLE_URL:"article_url",
 				ARTICLE_PRI:"article_pri",
@@ -98,7 +99,6 @@ db.system.js.save({_id:"constant",value:function () {
 				TO:"to",
 				TYPE:"TYPE",
 				UPDATE_TIME:"UPDATE_TIME",
-				USER_AGENT:"USER_AGENT",
 				URL:"URL",
 				USER:"user",
 				VALUE:"VALUE"
