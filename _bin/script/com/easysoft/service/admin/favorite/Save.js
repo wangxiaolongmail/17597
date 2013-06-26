@@ -35,7 +35,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.Save" , "com.easysoft.service
 			},this);
 			op[C.INSERT_OBJ] =obj;
 			op[C.TABLE_NAME] =this.table_name;
-			op[C.CAT_TABLE_NAME] =C.FAVORITE_TYPE;
 			op[C.STORED_METHOD] ='admin_Insert';
 			this.exec(op);
         },
