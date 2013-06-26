@@ -1,1 +1,0 @@
-{ "options" : { "create" : "view_favorite", "capped" : true, "size" : 100000, "max" : 100 }, "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "ns" : "test.view_favorite", "name" : "_id_" } ] }
