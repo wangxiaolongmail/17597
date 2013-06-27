@@ -23,7 +23,7 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.Add" , "com.easysoft.ser
 			this.exec(op);
         },
 	 define_schema:function(data){
-		 var a=dojo.clone(SCHEMA[data[C.TABLE_NAME]]);
+		 var a=this.get_schema_list(data);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C._ID){
 				 v[C.IS_HIDDEN]=true;
