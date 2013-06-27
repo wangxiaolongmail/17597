@@ -22,7 +22,7 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.Add" , "com.easysoft.ser
 			op[C.STORED_METHOD] ='admin_Add';
 			this.exec(op);
         },
-	 get_metadata:function(data){
+	 define_schema:function(data){
 		 var a=dojo.clone(SCHEMA[data[C.TABLE_NAME]]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C._ID){
@@ -41,7 +41,7 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.Add" , "com.easysoft.ser
 			var $ = this.getDom();
 			$(".nav-collapse").html(this.drawMainMenu(data));
 			
-			var metadata=this.get_metadata(data);
+			var metadata=this.define_schema(data);
 			a.push("<form class=\"well span3\" method=\"post\" action=\"insert?sid="+this.sid+"\">");
 			dojo.each(metadata,function(k,v,i){
 				if(!v[C.IS_HIDDEN]){

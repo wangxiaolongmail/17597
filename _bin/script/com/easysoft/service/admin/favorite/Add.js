@@ -37,7 +37,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			return a.join("\n");
 	 },
 
-	 get_metadata:function(data){
+	 define_schema:function(data){
 		 var a=dojo.clone(SCHEMA[data[C.TABLE_NAME]]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
@@ -66,7 +66,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			var $ = this.getDom();
 			$(".nav-collapse").html(this.drawMainMenu(data));
 			
-			var metadata=this.get_metadata(data);
+			var metadata=this.define_schema(data);
 			a.push("<form class=\"well span3\" method=\"post\" action=\"insert?sid="+this.sid+"\">");
 			dojo.each(metadata,function(k,v,i){
 				if(!v[C.IS_HIDDEN]){

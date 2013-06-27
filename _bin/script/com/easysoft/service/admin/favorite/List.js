@@ -84,7 +84,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			return a.join("");
 
 	 },
-	 get_metadata:function(data){
+	 define_schema:function(data){
 		 var a=dojo.clone(SCHEMA[data[C.TABLE_NAME]]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
@@ -109,7 +109,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			var a=[];
 			var list=obj.list;
 			var len = list.length;
-			var metadata=this.get_metadata(data);
+			var metadata=this.define_schema(data);
 
 			a.push("<thead>");
 			a.push("<tr>");
