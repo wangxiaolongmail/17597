@@ -43,8 +43,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 				 v[C.FORMAT]=function(k,v,i,tn){
 					PRI[tn]=PRI[tn]+1;
 					var i=PRI[tn];
-					console.log("-------------");
-					console.log(i);
 					return "<input value=\""+i+"\" type=\"hidden\" class=\"span3\" name=\""+C.PRI+"\">";
 				 }
 			 }
