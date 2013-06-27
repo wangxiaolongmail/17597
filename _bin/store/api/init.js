@@ -1,13 +1,17 @@
 db.system.js.save({_id:"init",value:function () {
-	var pub=public();
 	var C=constant();
 	
-    var result={
-		C:C,
-		Schema:_get_schema()
-    };
+    var result={C:C};
+	var schema=_get_schema();
+	result[C.SCHEMA]=schema;
 	
-	var dict=_get_dict(C.FAVORITE_TYPE);
+	var dict={};
+	_each(schema,function(k,v,i){
+		if(v[C.IS_DICT]){
+			_mixin(dict,_get_dict(k));
+		}
+	});
+	result[C.DICT]=dict;
 	
 	var I18N={};
 	var a=db.i18n.find().toArray()
@@ -27,6 +31,7 @@ db.system.js.save({_id:"init",value:function () {
 		dynamicServletMapping.push(op);	
 	});
 	result["dynamicServletMapping"]=dynamicServletMapping;
+	
 	var map={};
 	_each(a,function(k,v,i){
 		map[v[C.MODULE_NAME]]=v[C.MODULE_URL];
@@ -34,11 +39,14 @@ db.system.js.save({_id:"init",value:function () {
 	result[C.URL]=map;
 	result[C.ROLE]=_get_role();
 	result[C._ID]=C.APPLICATION;
-	result[C.DICT]=dict;
 	
-	var op={};
-	op[C.FAVORITE]=1;
-	result[C.PRI]=op;
+	var o={};
+	_each(schema,function(k,v,i){
+		if(v[C.IS_PRI]){
+			_mixin(o,_get_pri(k));
+		}
+	});
+	result[C.PRI]=o;
 
 	_push_mdata(result);
 	return result;
