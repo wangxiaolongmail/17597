@@ -24,7 +24,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
         },
 
 	 define_schema:function(data){
-		 var a=this.get_schema_list(data);
+		  var a=this.get_schema_list(data[C.TABLE_NAME]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
 				 v[C.FORMAT]=function(lable){

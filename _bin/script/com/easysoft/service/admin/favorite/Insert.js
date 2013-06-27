@@ -18,7 +18,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.servi
 			var a=[],o={},op={};
 			var op=this.getsbo();
 			var obj={};
-			var a=SCHEMA[this.table_name][C.LIST];
+			var a=this.get_schema_list(this.table_name);
 			dojo.each(a,function(k,v,i){
 				var field=v[C.FIELD];
 				var type=v[C.TYPE];
@@ -36,6 +36,9 @@ dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.servi
 			this.exec(op);
         },
 		postDraw:function(data){
+			if(data[C.IS_DICT]){
+				dojo.mixin(DICT,dojo.clone(data[C.DICT]));
+			}
 			var a=[],o={};
 			var $ = this.getDom();
 			$(".nav-collapse").html(this.drawMainMenu(data));
