@@ -2,18 +2,12 @@ db.system.js.save({_id:"init",value:function () {
 	var pub=public();
 	var C=constant();
 	
-    	var result={
+    var result={
 		C:C,
 		Schema:_get_schema()
-    	};
-		
-	var a=db.favorite_type.find().toArray();
-	var dict={};
-	var favorite_type={};
-	_each(a,function(k,v,i){
-		favorite_type[v._id.valueOf()]=v[C.NAME];
-	});
-	dict[C.FAVORITE_TYPE]=favorite_type;
+    };
+	
+	var dict=_get_dict(C.FAVORITE_TYPE);
 	
 	var I18N={};
 	var a=db.i18n.find().toArray()
