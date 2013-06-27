@@ -22,20 +22,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			op[C.STORED_METHOD] ='admin_Add';
 			this.exec(op);
         },
-	
-	 drawLinkSelect:function(o){
-			var a=[];
-			a.push("<select name=\""+o[C.FIELD]+"\">");
-			if(o[C.LINK]){
-				dojo.each(DICT[o[C.LINK]],function(k,v,i){
-					a.push("<option value='"+k+"'>");
-					a.push(v);
-					a.push("</option>");
-				});
-			}
-			a.push("</select");
-			return a.join("\n");
-	 },
 
 	 define_schema:function(data){
 		 var a=dojo.clone(SCHEMA[data[C.TABLE_NAME]]);

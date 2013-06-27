@@ -26,20 +26,17 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			op[C.STORED_METHOD] ='admin_List';
 			this.exec(op);
         },
-	 drawSelectType:function(data){
-			var a=[],o={};
-			var data=data||{};
-			var classname=data.classname||"span2";
-			a.push("<select class=\""+classname+"\" name=\""+C.CATEGORY+"\">");
-			dojo.each(DICT[C.FAVORITE_TYPE],function(k,v,i){
-				if(k==data.category){
-					a.push("<option selected value='"+k+"'>");
-				}else{
+	
+	 drawLinkSelect:function(o){
+			var a=[];
+			a.push("<select name=\""+o[C.FIELD]+"\">");
+			if(o[C.LINK]){
+				dojo.each(DICT[o[C.LINK]],function(k,v,i){
 					a.push("<option value='"+k+"'>");
-				}
-				a.push(v);
-				a.push("</option>");
-			});
+					a.push(v);
+					a.push("</option>");
+				});
+			}
 			a.push("</select");
 			return a.join("\n");
 	 },
@@ -88,6 +85,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 		 var a=dojo.clone(SCHEMA[data[C.TABLE_NAME]]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
+				 this.m_select=v;
 				 v[C.FORMAT]=function(val){
 					 return DICT[C.FAVORITE_TYPE][val];
 				 }
@@ -202,7 +200,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			$(".nav-collapse").html(this.drawMainMenu(data));
 			
 			
-			$("#selectWrap").html(this.drawSelectType(data));
+			$("#selectWrap").html(this.drawLinkSelect(this.m_select));
 
 			$("h4").html(data.tablename);
 
