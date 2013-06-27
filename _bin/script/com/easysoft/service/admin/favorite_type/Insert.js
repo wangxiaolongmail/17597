@@ -14,5 +14,5 @@
  */
 dojo.provide("com.easysoft.service.admin.favorite_type.Insert");
 dojo.declare( "com.easysoft.service.admin.favorite_type.Insert" , "com.easysoft.service.admin.favorite.Insert" , {
-		table_name:"favorite_type"
+		table_name:C.FAVORITE_TYPE
 });

@@ -15,7 +15,7 @@
 dojo.provide("com.easysoft.service.admin.favorite_type.List");
 dojo.declare( "com.easysoft.service.admin.favorite_type.List" , "com.easysoft.service.admin.favorite.List" , {
 		template_file:"favorite_list.html",
-		table_name:"favorite_type",
+		table_name:C.FAVORITE_TYPE,
         postCreate:function(){
 			var a=[],o={},op={};
 			var op=this.getsbo();

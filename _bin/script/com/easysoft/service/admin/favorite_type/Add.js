@@ -13,17 +13,11 @@
  * @author wxlwang
  */
 dojo.provide("com.easysoft.service.admin.favorite_type.Add");
-dojo.declare( "com.easysoft.service.admin.favorite_type.Add" , "com.easysoft.service.admin.favorite_type.List" , {
+dojo.declare( "com.easysoft.service.admin.favorite_type.Add" , "com.easysoft.service.admin.favorite.Add" , {
 	template_file:"favorite_add.html",
-       postCreate:function(){
-			var a=[],o={};
-			var op=this.getsbo();
-			op[C.TABLE_NAME] =this.table_name;
-			op[C.STORED_METHOD] ='admin_Add';
-			this.exec(op);
-        },
-	 define_schema:function(data){
-		  var a=this.get_schema_list(data[C.TABLE_NAME]);
+	table_name:C.FAVORITE_TYPE,
+	define_schema:function(data){
+		 var a=this.get_schema_list(data[C.TABLE_NAME]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C._ID){
 				 v[C.IS_HIDDEN]=true;
@@ -35,7 +29,7 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.Add" , "com.easysoft.ser
 			 }
 		 },this);
 		 return a;
-	 },
+	},
 	postDraw:function(data){
 			var a=[],o={};
 			var $ = this.getDom();
