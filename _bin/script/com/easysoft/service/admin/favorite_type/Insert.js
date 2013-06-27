@@ -36,6 +36,9 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.Insert" , "com.easysoft.
 			this.exec(op);
         },
 	postDraw:function(data){
+			if(data[C.IS_DICT]){
+				dojo.mixin(DICT,data[C.DICT]);
+			}
 			var a=[],o={};
 			var $ = this.getDom();
 			$(".nav-collapse").html(this.drawMainMenu(data));
