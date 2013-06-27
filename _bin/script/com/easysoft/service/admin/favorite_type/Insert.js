@@ -18,7 +18,7 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.Insert" , "com.easysoft.
 			var a=[],o={},op={};
 			var op=this.getsbo();
 			var obj={};
-			var a=SCHEMA[this.table_name];
+			var a=SCHEMA[this.table_name][C.LIST];
 			dojo.each(a,function(k,v,i){
 				var field=v[C.FIELD];
 				var type=v[C.TYPE];
