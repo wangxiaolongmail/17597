@@ -27,10 +27,10 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 		  var a=this.get_schema_list(data[C.TABLE_NAME]);
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
-				 v[C.FORMAT]=function(lable){
+				 v[C.FORMAT]=function(k,v,i){
 					var a=[];
 					a.push("<label>");
-					a.push(lable);
+					a.push(v[C.FIELD]);
 					a.push("</label>");
 					a.push(this.drawLinkSelect(v));
 					return a.join("\n");
@@ -40,8 +40,12 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 				 v[C.IS_HIDDEN]=true;
 			 }
 			 if(v[C.FIELD]===C.PRI){
-				 v[C.FORMAT]=function(){
-					return "<input value=\"0\" type=\"hidden\" class=\"span3\" name=\""+C.PRI+"\">";
+				 v[C.FORMAT]=function(k,v,i,tn){
+					PRI[tn]=PRI[tn]+1;
+					var i=PRI[tn];
+					console.log("-------------");
+					console.log(i);
+					return "<input value=\""+i+"\" type=\"hidden\" class=\"span3\" name=\""+C.PRI+"\">";
 				 }
 			 }
 		 },this);
@@ -57,7 +61,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			dojo.each(metadata,function(k,v,i){
 				if(!v[C.IS_HIDDEN]){
 						if(v[C.FORMAT]){
-							a.push(v[C.FORMAT].call(this,v[C.FIELD]));
+							a.push(v[C.FORMAT].call(this,k,v,i,this.table_name));
 						}else{
 							a.push("<label>");
 							a.push(v[C.FIELD]);
