@@ -44,7 +44,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 					return "<input value=\"0\" type=\"hidden\" class=\"span3\" name=\""+C.PRI+"\">";
 				 }
 			 }
-		 });
+		 },this);
 		 return a;
 	 },
 	postDraw:function(data){

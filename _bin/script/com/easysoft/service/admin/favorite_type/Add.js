@@ -33,7 +33,7 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.Add" , "com.easysoft.ser
 					return "<input value=\"0\" type=\"hidden\" class=\"span3\" name=\""+C.PRI+"\">";
 				 }
 			 }
-		 });
+		 },this);
 		 return a;
 	 },
 	postDraw:function(data){
