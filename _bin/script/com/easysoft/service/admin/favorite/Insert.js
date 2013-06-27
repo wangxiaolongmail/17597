@@ -25,6 +25,12 @@ dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.servi
 				if(field!=C._ID){
 					if(type==C.INT){
 						obj[field]= parseInt(this.queryForm[field]);
+					}else if(type==C.URL){
+						var s= this.queryForm[field];
+						if(s.indexOf("http://")<0){
+							s="http://"+s;
+						}
+						obj[field]= s;
 					}else{
 						obj[field]= this.queryForm[field];
 					}
