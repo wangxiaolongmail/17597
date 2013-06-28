@@ -20,17 +20,19 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			var op=this.getsbo();
 			op[C.TABLE_NAME] =this.table_name;
 			op[C.STORED_METHOD] ='admin_Add';
+		 	this.reqList=[];
 			this.exec(op);
         },
-
-	 define_schema:function(data){
-		 var a=this.get_schema_list(data[C.TABLE_NAME]);
-		 this.reqList=[];
+     addReqList:function(v){
+		if(v[C.IS_REQUIRED]){
+			this.reqList.push(v[C.FIELD]);
+		}
+	 },
+	 define_schema:function(){
+		 var a=this.get_schema_list(this.table_name);
 		 dojo.each(a,function(k,v,i){
-			if(v[C.IS_REQUIRED]){
-				this.reqList.push(v[C.FIELD]);
-			}
-			if(v[C.FIELD]===C.CATEGORY){
+			this.addReqList(v);
+			if(v[C.TYPE]===C.CATEGORY){
 				 v[C.FORMAT]=function(k,v,i){
 					var a=[];
 					a.push("<label>");
@@ -40,10 +42,10 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 					return a.join("\n");
 				 }
 			 }
-			 if(v[C.FIELD]===C._ID){
+			 if(v[C.TYPE]===C._ID){
 				 v[C.IS_HIDDEN]=true;
 			 }
-			 if(v[C.FIELD]===C.PRI){
+			 if(v[C.TYPE]===C.PRI){
 				 v[C.FORMAT]=function(k,v,i,tn){
 					PRI[tn]=PRI[tn]+1;
 					var i=PRI[tn];
@@ -53,7 +55,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 		 },this);
 		 return a;
 	 },
-	onSubmit:function(){
+	drawFormEvent:function(){
 		var a=[];
 		a.push("<script type='text/javascript'>");
 		a.push("$(document).ready(function(){");
@@ -87,7 +89,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			var $ = this.getDom();
 			$(".nav-collapse").html(this.drawMainMenu(data));
 			
-			var metadata=this.define_schema(data);
+			var metadata=this.define_schema();
 			a.push("<form class=\"well span3\" method=\"post\" action=\"insert?sid="+this.sid+"\">");
 			dojo.each(metadata,function(k,v,i){
 				if(!v[C.IS_HIDDEN]){
@@ -108,7 +110,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			$("#apbody").html(a.join("\n"));
 			
 			var s=$.html();
-			var s=s+this.onSubmit();
 			return s;
 		}
 });

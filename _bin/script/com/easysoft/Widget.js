@@ -70,11 +70,15 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 			return "";
 		}
 	},
+	drawFormEvent:function(){
+		return "";
+	},
 	draw:function(err,data){
 		if(!err){
 			if(data!=null){
 				if(data.ok){
 					var s=this.postDraw(data);
+					s=s+this.drawFormEvent();
 					s=s+this.drawDebug(data);
 					this.endPaint(s);
 				}else{

@@ -4,19 +4,19 @@ db.system.js.save({_id:"_get_schema",value:function (name) {
 		o[C.FAVORITE]={
 			IS_PRI:true,
 			LIST:[
-					{field:C._ID,TYPE:C.STRING},
-					{field:C.NAME,TYPE:C.STRING,IS_REQUIRED:true},
+					{field:C._ID,TYPE:C._ID},
+					{field:C.NAME,TYPE:C.NAME,IS_REQUIRED:true},
 					{field:C.CATEGORY,TYPE:C.CATEGORY,Link:C.FAVORITE_TYPE},
 					{field:C.URL,TYPE:C.URL,IS_REQUIRED:true},
-					{field:C.PRI,TYPE:C.INT}
+					{field:C.PRI,TYPE:C.PRI}
 			]
 		};
 		o[C.FAVORITE_TYPE]={
 			IS_DICT:true,
 			IS_PRI:true,
 			LIST:[
-					{field:C.NAME,TYPE:C.STRING},
-					{field:C.PRI,TYPE:C.INT}
+					{field:C.NAME,TYPE:C.NAME,IS_REQUIRED:true},
+					{field:C.PRI,TYPE:C.PRI}
 			]
 		};
 		if(name){
