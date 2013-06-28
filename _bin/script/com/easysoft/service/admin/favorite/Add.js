@@ -14,15 +14,15 @@
  */
 dojo.provide("com.easysoft.service.admin.favorite.Add");
 dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.admin.favorite.List" , {
-		template_file:"favorite_add.html",
-        postCreate:function(){
+	template_file:"favorite_add.html",
+    postCreate:function(){
 			var a=[],o={},op={};
 			var op=this.getsbo();
 			op[C.TABLE_NAME] =this.table_name;
 			op[C.STORED_METHOD] ='admin_Add';
 		 	this.reqList=[];
 			this.exec(op);
-        },
+     },
      addReqList:function(v){
 		if(v[C.IS_REQUIRED]){
 			this.reqList.push(v[C.FIELD]);
@@ -57,32 +57,37 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 	 },
 	drawFormEvent:function(){
 		var a=[];
+		a.push("");
 		a.push("<script type='text/javascript'>");
+		a.push("var fn="+this.clientFormEvent);
 		a.push("$(document).ready(function(){");
-			a.push("var a="+dojo.toString(this.reqList)+";");
-			a.push("$('form').submit(function(){");
-				a.push("var flag=true;");
-				a.push("$.each(a, function(i,v){");
-					  a.push("var n=$(\"input[name=\"+v+\"]\");");
-					  a.push("var s=n.val();");
-					  a.push("if(s===''){");
-						  a.push("flag=false;");
-						  a.push("n.parent().addClass(\""+C.ERROR+"\");");
-						  a.push("return false;");
-					  a.push("}else{");
-						  a.push("return true;");
-					  a.push("}");
-				a.push("}); ");
-				a.push("return flag;");
-			a.push("});");
-			a.push("$.each(a, function(i,v){");
-				a.push("$(\"input[name=\"+v+\"]\").keyup(function(){");
-					a.push("$(this).parent().removeClass(\""+C.ERROR+"\");");
-				a.push("});");
-			a.push("}); ");
+			a.push("fn("+dojo.toString(this.reqList)+",'"+C.ERROR+"');");
 		a.push("});");
 		a.push("</script>");
+		a.push("");
 		return a.join("\n");
+	},
+	clientFormEvent:function(a,ERROR){
+		$('form').submit(function(){
+			var flag=true;
+			$.each(a, function(i,v){
+				  var n=$("input[name="+v+"]");
+				  var s=n.val();
+				  if(s===''){
+					  flag=false;
+					  n.parent().addClass(ERROR);
+					  return false;
+				  }else{
+					  return true;
+				  }
+			}); 
+			return flag;
+		});
+		$.each(a, function(i,v){
+			$("input[name="+v+"]").keyup(function(){
+				$(this).parent().removeClass(ERROR);
+			});
+		});
 	},
 	postDraw:function(data){
 			var a=[],aa=[],o={};
