@@ -11,6 +11,9 @@ db.system.js.save({_id:"main",value:function (params) {
 				break;  
 		 case C.SHOW_FAVORITE:   
 				result=show_favorite(params);   
+				break;  
+		 case "Register":   
+				result=Register(params);   
 				break;
 		 default:  
 				result=admin_main(params);    
