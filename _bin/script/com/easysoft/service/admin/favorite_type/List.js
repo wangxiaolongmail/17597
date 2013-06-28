@@ -47,9 +47,7 @@ dojo.declare( "com.easysoft.service.admin.favorite_type.List" , "com.easysoft.se
 			
 			$(".btn-group").html(this.drawButton(data));
 			
-			var s=$.html();
-			s=s.replace("/*script_body_replace*/",this.drawSelectTypeScript(data));
-			return s;
+			return $.html();
 		}
 
 });

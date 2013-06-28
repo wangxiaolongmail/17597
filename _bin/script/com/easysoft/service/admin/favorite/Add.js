@@ -32,7 +32,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 		 var a=this.get_schema_list();
 		 dojo.each(a,function(k,v,i){
 			this.addReqList(v);
-			if(v[C.TYPE]===C.CATEGORY){
+			if(v[C.FIELD]===C.CATEGORY){
 				 v[C.FORMAT]=function(k,v,i){
 					var a=[];
 					a.push("<label>");
@@ -42,16 +42,23 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 					return a.join("\n");
 				 }
 			 }
-			 if(v[C.TYPE]===C._ID){
-				 v[C.IS_HIDDEN]=true;
-			 }
-			 if(v[C.TYPE]===C.PRI){
+			 if(v[C.FIELD]===C.NAME || v[C.FIELD]===C.URL){
+				 v[C.FORMAT]=function(k,v,i,tn){
+					var a=[];
+					a.push("<label>");
+					a.push(v[C.FIELD]);
+					a.push("</label>");
+					a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
+					return a.join("\n");
+				 }
+		 	}	
+			if(v[C.FIELD]===C.PRI){
 				 v[C.FORMAT]=function(k,v,i,tn){
 					PRI[tn]=PRI[tn]+1;
 					var i=PRI[tn];
 					return "<input value=\""+i+"\" type=\"hidden\" class=\"span3\" name=\""+C.PRI+"\">";
 				 }
-			 }
+			}
 		 },this);
 		 return a;
 	 },
@@ -102,18 +109,12 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			var metadata=this.define_schema();
 			a.push("<form class=\"well span3\" method=\"post\" action=\"insert?sid="+this.sid+"\">");
 			dojo.each(metadata,function(k,v,i){
-				if(!v[C.IS_HIDDEN]){
-						a.push("<div class=\"control-group\">");
 						if(v[C.FORMAT]){
+							a.push("<div class=\"control-group\">");
 							a.push(v[C.FORMAT].call(this,k,v,i,this.table_name));
-						}else{
-							a.push("<label>");
-							a.push(v[C.FIELD]);
-							a.push("</label>");
-							a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
+							a.push("</div>");
 						}
-						a.push("</div>");
-				}
+						
 			},this);
 			a.push("<button type=\'submit\' class=\'btn btn-primary\'>"+I18N[C.OK]+"</button>");
 			a.push("</form>");
