@@ -81,11 +81,11 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			return a.join("");
 
 	 },
-	 get_schema_list:function(name){
-		 return dojo.clone(SCHEMA[name][C.LIST]);
+	 get_schema_list:function(){
+		 return dojo.clone(SCHEMA[this.table_name][C.LIST]);
 	 },
 	 define_schema:function(data){
-		 var a=this.get_schema_list(data[C.TABLE_NAME]);
+		 var a=this.get_schema_list();
 		 dojo.each(a,function(k,v,i){
 			 if(v[C.FIELD]===C.CATEGORY){
 				 this.m_select=v;

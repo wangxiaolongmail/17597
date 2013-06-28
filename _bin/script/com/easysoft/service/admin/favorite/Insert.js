@@ -18,12 +18,12 @@ dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.servi
 			var a=[],o={},op={};
 			var op=this.getsbo();
 			var obj={};
-			var a=this.get_schema_list(this.table_name);
+			var a=this.get_schema_list();
 			dojo.each(a,function(k,v,i){
 				var field=v[C.FIELD];
 				var type=v[C.TYPE];
 				if(field!=C._ID){
-					if(type==C.INT){
+					if(type==C.PRI){
 						obj[field]= parseInt(this.queryForm[field]);
 					}else if(type==C.URL){
 						var s= this.queryForm[field];

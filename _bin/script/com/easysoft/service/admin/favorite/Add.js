@@ -29,7 +29,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 		}
 	 },
 	 define_schema:function(){
-		 var a=this.get_schema_list(this.table_name);
+		 var a=this.get_schema_list();
 		 dojo.each(a,function(k,v,i){
 			this.addReqList(v);
 			if(v[C.TYPE]===C.CATEGORY){
@@ -61,13 +61,13 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 		a.push("<script type='text/javascript'>");
 		a.push("var fn="+this.clientFormEvent);
 		a.push("$(document).ready(function(){");
-			a.push("fn("+dojo.toString(this.reqList)+",'"+C.ERROR+"');");
+			a.push("fn("+dojo.toString(this.reqList)+");");
 		a.push("});");
 		a.push("</script>");
 		a.push("");
 		return a.join("\n");
 	},
-	clientFormEvent:function(a,ERROR){
+	clientFormEvent:function(a){
 		$('form').submit(function(){
 			var flag=true;
 			$.each(a, function(i,v){
@@ -75,7 +75,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 				  var s=n.val();
 				  if(s===''){
 					  flag=false;
-					  n.parent().addClass(ERROR);
+					  n.parent().addClass("error");
 					  return false;
 				  }else{
 					  return true;
@@ -85,7 +85,12 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 		});
 		$.each(a, function(i,v){
 			$("input[name="+v+"]").keyup(function(){
-				$(this).parent().removeClass(ERROR);
+				$(this).parent().removeClass("error");
+			});
+		});
+		$.each(a, function(i,v){
+			$("input[name="+v+"]").change(function(){
+				$(this).parent().removeClass("error");
 			});
 		});
 	},
