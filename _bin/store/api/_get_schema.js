@@ -5,9 +5,9 @@ db.system.js.save({_id:"_get_schema",value:function (name) {
 			IS_PRI:true,
 			LIST:[
 					{field:C._ID,TYPE:C.STRING},
-					{field:C.NAME,TYPE:C.STRING},
-					{field:C.CATEGORY,TYPE:C.STRING,Link:C.FAVORITE_TYPE},
-					{field:C.URL,TYPE:C.URL},
+					{field:C.NAME,TYPE:C.STRING,IS_REQUIRED:true},
+					{field:C.CATEGORY,TYPE:C.CATEGORY,Link:C.FAVORITE_TYPE},
+					{field:C.URL,TYPE:C.URL,IS_REQUIRED:true},
 					{field:C.PRI,TYPE:C.INT}
 			]
 		};

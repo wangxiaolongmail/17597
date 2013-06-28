@@ -35,8 +35,6 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 		$("#right_bar").removeClass("span9").addClass("span12");
 		$(".nav-collapse").html(this.drawMainMenu(data));
 		var s=$.html();
-		var a=[];
-		s=s.replace("/*script_body_replace*/",a.join("\n"));
 		return s;
 	},
 	drawMainMenu:function(data){
