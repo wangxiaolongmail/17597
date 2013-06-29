@@ -80,6 +80,7 @@ db.system.js.save({_id:"constant",value:function () {
 				NAME:"Name",
 				REQUEST:"REQUEST",
 				REFER:"REFER",
+				REPEAT:"Repeat",
 				ROLE_NAME:"ROLE_NAME",
 				ROLE:"role",
 				RIGHT:"RIGHT",
