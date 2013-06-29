@@ -19,6 +19,15 @@ db.system.js.save({_id:"_get_schema",value:function (name) {
 					{field:C.PRI,TYPE:C.PRI}
 			]
 		};
+		o[C.USER]={
+			IS_PRI:true,
+			LIST:[
+					{field:C.NAME,TYPE:C.NAME},
+					{field:C.USER_NAME,TYPE:C.NAME,IS_REQUIRED:true},
+					{field:C.PASSWORD,TYPE:C.PASSWORD,IS_REQUIRED:true},
+					{field:C.PRI,TYPE:C.PRI}
+			]
+		};
 		if(name){
 			return o[name];
 		}else{
