@@ -125,6 +125,7 @@ dojo.provide("com.easysoft.service.Tempalte");
 dojo.declare( "com.easysoft.service.Tempalte" , "com.easysoft.Widget" , {
 	template_dir:"",
 	template_file:"",
+	reqList:[],
 	create:function(){
 		console.log(this.widgetName+"::create");
 		this.read_template();
@@ -132,6 +133,37 @@ dojo.declare( "com.easysoft.service.Tempalte" , "com.easysoft.Widget" , {
 	getDom:function(){
 		return dojo.cheerio.load(this.template_text);
 	},
+     	addReqList:function(v){
+		if(v[C.IS_REQUIRED]){
+			this.reqList.push(v[C.FIELD]);
+		}
+	},
+	get_schema_list:function(){
+		return dojo.clone(SCHEMA[this.table_name][C.LIST]);
+	},
+	_define_schema:function(){},
+	define_schema:function(){
+		this.reqList=[];
+		 var a=this.get_schema_list();
+		 dojo.each(a,function(k,v,i){
+			this.addReqList(v);
+			this._define_schema(k,v,i);
+		 },this);
+		 return a;
+	},
+	 drawLinkSelect:function(o){
+			var a=[];
+			a.push("<select name=\""+o[C.FIELD]+"\">");
+			if(o[C.LINK]){
+				dojo.each(DICT[o[C.LINK]],function(k,v,i){
+					a.push("<option value='"+k+"'>");
+					a.push(v);
+					a.push("</option>");
+				});
+			}
+			a.push("</select");
+			return a.join("\n");
+	 },
 	read_template:function(){
 		this.beginPaint();
 		this.m_fimename= dojo.dir+this.template_dir+this.template_file;

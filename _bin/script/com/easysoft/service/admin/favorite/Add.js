@@ -13,54 +13,45 @@
  * @author wxlwang
  */
 dojo.provide("com.easysoft.service.admin.favorite.Add");
-dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.admin.favorite.List" , {
+dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.admin.Start" , {
+	template_dir:"/wy/",
 	template_file:"favorite_add.html",
-    postCreate:function(){
-			var a=[],o={},op={};
-			var op=this.getsbo();
-			op[C.TABLE_NAME] =this.table_name;
-			op[C.STORED_METHOD] ='admin_Add';
-		 	this.reqList=[];
-			this.exec(op);
-     },
-     addReqList:function(v){
-		if(v[C.IS_REQUIRED]){
-			this.reqList.push(v[C.FIELD]);
-		}
-	 },
-	 define_schema:function(){
-		 var a=this.get_schema_list();
-		 dojo.each(a,function(k,v,i){
-			this.addReqList(v);
-			if(v[C.FIELD]===C.CATEGORY){
-				 v[C.FORMAT]=function(k,v,i){
-					var a=[];
-					a.push("<label>");
-					a.push(v[C.FIELD]);
-					a.push("</label>");
-					a.push(this.drawLinkSelect(v));
-					return a.join("\n");
-				 }
-			 }
-			 if(v[C.FIELD]===C.NAME || v[C.FIELD]===C.URL){
-				 v[C.FORMAT]=function(k,v,i,tn){
-					var a=[];
-					a.push("<label>");
-					a.push(v[C.FIELD]);
-					a.push("</label>");
-					a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
-					return a.join("\n");
-				 }
-		 	}	
-			if(v[C.FIELD]===C.PRI){
-				 v[C.FORMAT]=function(k,v,i,tn){
-					PRI[tn]=PRI[tn]+1;
-					var i=PRI[tn];
-					return "<input value=\""+i+"\" type=\"hidden\" class=\"span3\" name=\""+C.PRI+"\">";
-				 }
+	table_name:"favorite",
+	postCreate:function(){
+		var a=[],o={},op={};
+		var op=this.getsbo();
+		op[C.TABLE_NAME] =this.table_name;
+		op[C.STORED_METHOD] ='admin_Add';
+		this.exec(op);
+	},
+	_define_schema:function(k,v,i){
+		if(v[C.FIELD]===C.CATEGORY){
+			v[C.FORMAT]=function(k,v,i){
+				var a=[];
+				a.push("<label>");
+				a.push(v[C.FIELD]);
+				a.push("</label>");
+				a.push(this.drawLinkSelect(v));
+				return a.join("\n");
 			}
-		 },this);
-		 return a;
+		}
+		if(v[C.FIELD]===C.NAME || v[C.FIELD]===C.URL){
+			v[C.FORMAT]=function(k,v,i,tn){
+				var a=[];
+				a.push("<label>");
+				a.push(v[C.FIELD]);
+				a.push("</label>");
+				a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
+				return a.join("\n");
+			}
+		}	
+		if(v[C.FIELD]===C.PRI){
+			v[C.FORMAT]=function(k,v,i,tn){
+				PRI[tn]=PRI[tn]+1;
+				var i=PRI[tn];
+				return "<input value=\""+i+"\" type=\"hidden\" class=\"span3\" name=\""+C.PRI+"\">";
+			}
+		}
 	 },
 	drawFormEvent:function(){
 		var a=[];

@@ -9,7 +9,7 @@ db.system.js.save({_id:"create_role",value:function () {
 		var obj={};
 		obj[C.ROLE_NAME]=C.ROLE+C.PUBLIC;
 		obj[C.IS_GUEST]=true;
-		obj[C.IS_DEBUG]=false;
+		obj[C.IS_DEBUG]=true;
 		_insert(C.ROLE,obj);
 
 }})

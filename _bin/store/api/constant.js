@@ -95,6 +95,7 @@ db.system.js.save({_id:"constant",value:function () {
 				START:"START",
 				SID:"sid",
 				SCHEMA:"Schema",
+				SUBMIT:"Submit",
 				TITLE:"TITLE",
 				TABLE_NAME:"TABLE_NAME",
 				TABLE:"Table",

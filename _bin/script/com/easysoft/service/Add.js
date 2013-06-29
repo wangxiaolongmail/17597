@@ -12,45 +12,38 @@
  * 
  * @author wxlwang
  */
-dojo.import("com.easysoft.service.Tempalte");
-dojo.provide("com.easysoft.service.Register");
-dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Tempalte" , {
-	template_dir:"/wy/",
-	template_file:"login.html",
-	role_name:C.ROLE+C.PUBLIC,
-	table_name:C.USER,
+dojo.provide("com.easysoft.service.admin.favorite.Add");
+dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.Tempalte" , {
+	template_file:"favorite_add.html",
+	table_name:"favorite",
 	postCreate:function(){
 		var a=[],o={},op={};
-		var op=this.getbo();
-		op[C.ROLE_NAME] =this.role_name;
-		op[C.STORED_METHOD] ='Register';
+		var op=this.getsbo();
+		op[C.TABLE_NAME] =this.table_name;
+		op[C.STORED_METHOD] ='admin_Add';
 		this.exec(op);
 	},
 	_define_schema:function(k,v,i){
-		if(v[C.FIELD]===C.NAME || v[C.FIELD]===C.USER_NAME ){
+		if(v[C.FIELD]===C.CATEGORY){
+			v[C.FORMAT]=function(k,v,i){
+				var a=[];
+				a.push("<label>");
+				a.push(v[C.FIELD]);
+				a.push("</label>");
+				a.push(this.drawLinkSelect(v));
+				return a.join("\n");
+			}
+		}
+		if(v[C.FIELD]===C.NAME || v[C.FIELD]===C.URL){
 			v[C.FORMAT]=function(k,v,i,tn){
 				var a=[];
-				a.push("<div class=\"control-group\">");
 				a.push("<label>");
 				a.push(v[C.FIELD]);
 				a.push("</label>");
 				a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
-				a.push("</div>");
 				return a.join("\n");
 			}
-		 }	
-		if(v[C.FIELD]===C.PASSWORD || v[C.FIELD]===C.REPEAT+C.PASSWORD){
-			v[C.FORMAT]=function(k,v,i,tn){
-				var a=[];
-				a.push("<div class=\"control-group\">");
-				a.push("<label>");
-				a.push(v[C.FIELD]);
-				a.push("</label>");
-				a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
-				a.push("</div>");
-				return a.join("\n");
-			}
-		 }	
+		}	
 		if(v[C.FIELD]===C.PRI){
 			v[C.FORMAT]=function(k,v,i,tn){
 				PRI[tn]=PRI[tn]+1;
@@ -58,20 +51,20 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Tempalte" 
 				return "<input value=\""+i+"\" type=\"hidden\" class=\"span3\" name=\""+C.PRI+"\">";
 			}
 		}
-	},
+	 },
 	drawFormEvent:function(){
 		var a=[];
 		a.push("");
 		a.push("<script type='text/javascript'>");
 		a.push("var fn="+this.clientFormEvent);
 		a.push("$(document).ready(function(){");
-			a.push("fn("+dojo.toString(this.reqList)+",'"+C.PASSWORD+"','"+C.REPEAT+C.PASSWORD+"');");
+			a.push("fn("+dojo.toString(this.reqList)+");");
 		a.push("});");
 		a.push("</script>");
 		a.push("");
 		return a.join("\n");
 	},
-	clientFormEvent:function(a,s1,s2){
+	clientFormEvent:function(a){
 		$('form').submit(function(){
 			var flag=true;
 			$.each(a, function(i,v){
@@ -84,16 +77,7 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Tempalte" 
 				  }else{
 					  return true;
 				  }
-			});
-			if(flag){ 
-				var v1=$("input[name="+s1+"]").val();
-				var n2=$("input[name="+s2+"]");
-				var v2=n2.val();
-				if(v1!==v2){
-					n2.parent().addClass("error");
-					flag=false;
-				}
-			}
+			}); 
 			return flag;
 		});
 		$.each(a, function(i,v){
@@ -108,18 +92,25 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Tempalte" 
 		});
 	},
 	postDraw:function(data){
-		var a=[];	
-		var $ = this.getDom();
-		var metadata=this.define_schema();
-		a.push("<form class=\"well span3\" method=\"post\" action=\"RegisterSubmit\">");
-		dojo.each(metadata,function(k,v,i){
-			if(v[C.FORMAT]){
-				a.push(v[C.FORMAT].call(this,k,v,i,this.table_name));
-			}			
-		},this);
-		a.push("<button type=\'submit\' class=\'btn btn-primary\'>"+I18N[C.OK]+"</button>");
-		a.push("</form>");
-		$("#apbody").html(a.join("\n"));
-		return $.html();
-	}
+			var a=[],aa=[],o={};
+			var $ = this.getDom();
+			$(".nav-collapse").html(this.drawMainMenu(data));
+			
+			var metadata=this.define_schema();
+			a.push("<form class=\"well span3\" method=\"post\" action=\"insert?sid="+this.sid+"\">");
+			dojo.each(metadata,function(k,v,i){
+						if(v[C.FORMAT]){
+							a.push("<div class=\"control-group\">");
+							a.push(v[C.FORMAT].call(this,k,v,i,this.table_name));
+							a.push("</div>");
+						}
+						
+			},this);
+			a.push("<button type=\'submit\' class=\'btn btn-primary\'>"+I18N[C.OK]+"</button>");
+			a.push("</form>");
+			$("#apbody").html(a.join("\n"));
+			
+			var s=$.html();
+			return s;
+		}
 });

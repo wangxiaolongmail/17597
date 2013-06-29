@@ -26,19 +26,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			op[C.STORED_METHOD] ='admin_List';
 			this.exec(op);
         },
-	 drawLinkSelect:function(o){
-			var a=[];
-			a.push("<select name=\""+o[C.FIELD]+"\">");
-			if(o[C.LINK]){
-				dojo.each(DICT[o[C.LINK]],function(k,v,i){
-					a.push("<option value='"+k+"'>");
-					a.push(v);
-					a.push("</option>");
-				});
-			}
-			a.push("</select");
-			return a.join("\n");
-	 },
 	 drawSelectTypeScript:function(data){
 			var a=[],o={},sid=this.sid;
 			a.push('$("select").change(function()');
@@ -105,9 +92,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			}
 			return a.join("");
 
-	 },
-	 get_schema_list:function(){
-		 return dojo.clone(SCHEMA[this.table_name][C.LIST]);
 	 },
 	 define_schema:function(data){
 		 var a=this.get_schema_list();
