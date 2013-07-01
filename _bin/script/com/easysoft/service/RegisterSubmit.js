@@ -21,7 +21,11 @@ dojo.declare( "com.easysoft.service.RegisterSubmit" , "com.easysoft.service.Temp
 	table_name:C.USER,
 	postCreate:function(){
 		var op=this.getbo();
-		op[C.INSERT+C.OBJECT] =this.get_form_obj();
+		var o=this.get_form_obj();
+		o[C.ROLE_NAME] =C.ROLE+C.EASYSOFT;
+		o[C.PASSWORD] =dojo.md5(o[C.PASSWORD]);
+		o[C._ID] =o[C.USER_NAME];
+		op[C.INSERT+C.OBJECT] =o;
 		op[C.MID] =this.queryForm[C.MID];
 		op[C.ROLE_NAME] =this.role_name;
 		op[C.STORED_METHOD] =C.REGISTER+C.SUBMIT;

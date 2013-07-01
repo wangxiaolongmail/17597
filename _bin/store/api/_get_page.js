@@ -1,4 +1,4 @@
-db.system.js.save({_id:"_get_page",value:function (params) {
+db.system.js.save({_id:"_get_page",value:function (params,sess) {
 		var pub=public();
 		var C=constant();
 		var 
@@ -10,7 +10,7 @@ db.system.js.save({_id:"_get_page",value:function (params) {
 		pageRecordCount=0,
 		category=params[C.CATEGORY]||C.ALL;	
 		if(category==C.ALL){
-			var option={};
+			var option={USER_NAME:sess[C.USER_NAME]};
 		}else{
 			var option={category:category};
 		}

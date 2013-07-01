@@ -74,7 +74,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 	 drawButton:function(data){
 			var a=[],o={};
 			var cur_obj=this.cur_obj;
-			console.log(cur_obj);
 			if(cur_obj[C.IS_NEW]){
 				a.push("<a class='btn "+C.IS_NEW+"' href='add?sid="+this.sid+"'>");
 				a.push(I18N[C.ADD]);
