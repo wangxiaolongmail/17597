@@ -22,6 +22,7 @@ dojo.declare( "com.easysoft.service.RegisterSubmit" , "com.easysoft.service.Temp
 	postCreate:function(){
 		var op=this.getbo();
 		op[C.INSERT+C.OBJECT] =this.get_form_obj();
+		op[C.MID] =this.queryForm[C.MID];
 		op[C.ROLE_NAME] =this.role_name;
 		op[C.STORED_METHOD] =C.REGISTER+C.SUBMIT;
 		this.exec(op);

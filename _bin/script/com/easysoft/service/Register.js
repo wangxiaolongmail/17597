@@ -92,6 +92,7 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Tempalte" 
 		return a.join("\n");
 	},
 	clientFormEvent:function(a,s1,s2){
+		a.push(s2);
 		$('form').submit(function(){
 			var flag=true;
 			$.each(a, function(i,v){
