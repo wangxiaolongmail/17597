@@ -29,7 +29,6 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Login" , {
 				this.redirect(URL[C.EASYSOFT+C.LOGIN2]+"?"+C.MID+"="+data[C.MID]);
 		
 		}else{
-		console.log("1");
 				var a=[],op={};
 				var a=this.getMenuList(data)[C.LEFT];
 				if(a.length>0){
@@ -37,8 +36,6 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Login" , {
 					this.redirect(url+"?sid="+data.sid);
 					dojo.sendMail({title:data[C.USER_NAME]+" loging system successful"});
 				}else{
-		console.log("3");
-		
 					this._findNotFile();
 				}
 		}

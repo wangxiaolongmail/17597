@@ -112,6 +112,13 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.SERVLET_CLASS]="com.easysoft.service."+C.REGISTER;
 	obj[C.METHOD]=C.GET;
 	_insert(C.MODULE,obj);
+		
+	var obj={};
+	obj[C.MODULE_NAME]=C.REGISTER+C.SUBMIT;
+	obj[C.MODULE_URL]="/easysoft/"+C.REGISTER+C.SUBMIT;
+	obj[C.SERVLET_CLASS]="com.easysoft.service."+C.REGISTER+C.SUBMIT;
+	obj[C.METHOD]=C.POST;
+	_insert(C.MODULE,obj);
 	
 	var obj={};
 	obj[C.MODULE_NAME]=C.EASYSOFT+C.CHECK_CODE;

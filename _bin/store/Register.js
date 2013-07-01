@@ -1,13 +1,11 @@
 db.system.js.save({_id:"Register",value:function(params){
 		var C=constant();
-		var a=[];
-		var result={
-		  ok:true,
-		  list:a
-		};
-		result[C.CURRENT_MODULE]=C.EASYSOFT+C.INDEX;
-		result[C.URL+C.GO]=_get_url(C.EASYSOFT+C.GO);
-		return result;
+		var op={};
+		var o={};
+		o[C.CHECK_CODE]=_create_check_code();
+		op[C.MID]=_push_mdata(o);
+		op.ok=true;
+		return op;
 	}
 })
 

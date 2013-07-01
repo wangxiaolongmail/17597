@@ -141,6 +141,29 @@ dojo.declare( "com.easysoft.service.Tempalte" , "com.easysoft.Widget" , {
 	get_schema_list:function(){
 		return dojo.clone(SCHEMA[this.table_name][C.LIST]);
 	},
+	get_form_obj:function(){
+		var obj={};
+		var a=this.get_schema_list();
+		dojo.each(a,function(k,v,i){
+			var field=v[C.FIELD];
+			var type=v[C.TYPE];
+			val=this.queryForm[field];
+			if(typeof val != "undefined"){
+				if(type==C.PRI){
+					obj[field]= parseInt(val);
+				}else if(type==C.URL){
+					var s= val ;
+					if(s.indexOf("http://")<0){
+						s="http://"+s;
+					}
+					obj[field]= s;
+				}else{
+					obj[field]= val;
+				}
+			}
+		},this);
+		return obj;
+	},
 	_define_schema:function(){},
 	define_schema:function(){
 		this.reqList=[];

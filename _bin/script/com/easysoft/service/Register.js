@@ -23,7 +23,7 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Tempalte" 
 		var a=[],o={},op={};
 		var op=this.getbo();
 		op[C.ROLE_NAME] =this.role_name;
-		op[C.STORED_METHOD] ='Register';
+		op[C.STORED_METHOD] =C.REGISTER;
 		this.exec(op);
 	},
 	_define_schema:function(k,v,i){
@@ -39,14 +39,34 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Tempalte" 
 				return a.join("\n");
 			}
 		 }	
-		if(v[C.FIELD]===C.PASSWORD || v[C.FIELD]===C.REPEAT+C.PASSWORD){
+		if(v[C.FIELD]===C.PASSWORD){
 			v[C.FORMAT]=function(k,v,i,tn){
 				var a=[];
 				a.push("<div class=\"control-group\">");
 				a.push("<label>");
 				a.push(v[C.FIELD]);
 				a.push("</label>");
+				a.push("<input type=\"password\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
+				a.push("</div>");
+				a.push("<div class=\"control-group\">");
+				a.push("<label>");
+				a.push(C.REPEAT+v[C.FIELD]);
+				a.push("</label>");
+				a.push("<input type=\"password\" name=\""+C.REPEAT+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
+				a.push("</div>");
+				return a.join("\n");
+			}
+		 }		
+		if(v[C.FIELD]===C.CHECK_CODE){
+			v[C.FORMAT]=function(k,v,i,tn,mid){
+				var a=[];
+				a.push("<div class=\"control-group\">");
+				a.push("<label>");
+				a.push(v[C.FIELD]);
+				a.push("</label>");
 				a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
+				a.push("<img src=\'"+URL[C.EASYSOFT+C.CHECK_CODE]+"?mid="+mid+"\' />");
+				a.push("<input value=\""+mid+"\" type=\"hidden\" class=\"span3\" name=\""+C.MID+"\">");
 				a.push("</div>");
 				return a.join("\n");
 			}
@@ -111,10 +131,10 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Tempalte" 
 		var a=[];	
 		var $ = this.getDom();
 		var metadata=this.define_schema();
-		a.push("<form class=\"well span3\" method=\"post\" action=\"RegisterSubmit\">");
+		a.push("<form class=\"well span3\" method=\"post\" action=\""+C.REGISTER+C.SUBMIT+"\">");
 		dojo.each(metadata,function(k,v,i){
 			if(v[C.FORMAT]){
-				a.push(v[C.FORMAT].call(this,k,v,i,this.table_name));
+				a.push(v[C.FORMAT].call(this,k,v,i,this.table_name,data[C.MID]));
 			}			
 		},this);
 		a.push("<button type=\'submit\' class=\'btn btn-primary\'>"+I18N[C.OK]+"</button>");

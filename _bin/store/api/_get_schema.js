@@ -25,7 +25,7 @@ db.system.js.save({_id:"_get_schema",value:function (name) {
 					{field:C.NAME,TYPE:C.NAME},
 					{field:C.USER_NAME,TYPE:C.NAME,IS_REQUIRED:true},
 					{field:C.PASSWORD,TYPE:C.PASSWORD,IS_REQUIRED:true},
-					{field:C.REPEAT+C.PASSWORD,TYPE:C.PASSWORD,IS_REQUIRED:true},
+					{field:C.CHECK_CODE,TYPE:C.CHECK_CODE,IS_REQUIRED:true},
 					{field:C.PRI,TYPE:C.PRI}
 			]
 		};

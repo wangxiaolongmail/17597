@@ -12,27 +12,24 @@
  * 
  * @author wxlwang
  */
-dojo.provide("com.easysoft.service.admin.favorite.Insert");
-dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.service.admin.favorite.Add" , {
+dojo.import("com.easysoft.service.Tempalte");
+dojo.provide("com.easysoft.service.RegisterSubmit");
+dojo.declare( "com.easysoft.service.RegisterSubmit" , "com.easysoft.service.Tempalte" , {
+	template_dir:"/wy/",
+	template_file:"login.html",
+	role_name:C.ROLE+C.PUBLIC,
+	table_name:C.USER,
 	postCreate:function(){
-		var a=[],o={},op={};
-		var op=this.getsbo();
+		var op=this.getbo();
 		op[C.INSERT+C.OBJECT] =this.get_form_obj();
-		op[C.TABLE_NAME] =this.table_name;
-		op[C.STORED_METHOD] ='admin_Insert';
+		op[C.ROLE_NAME] =this.role_name;
+		op[C.STORED_METHOD] =C.REGISTER+C.SUBMIT;
 		this.exec(op);
-    },
+	},
 	postDraw:function(data){
-		if(data[C.IS_DICT]){
-			dojo.mixin(DICT,dojo.clone(data[C.DICT]));
-		}
-		var a=[],o={};
+		var a=[];	
 		var $ = this.getDom();
-		$(".nav-collapse").html(this.drawMainMenu(data));
-			
-		$("#apbody").html("hello");
-			
-		var s=$.html();
-		return s;
+		$("#apbody").html(a.join("\n"));
+		return $.html();
 	}
 });

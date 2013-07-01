@@ -14,6 +14,9 @@ db.system.js.save({_id:"main",value:function (params) {
 				break;  
 		 case "Register":   
 				result=Register(params);   
+				break; 
+		 case "RegisterSubmit":   
+				result=RegisterSubmit(params);   
 				break;
 		 default:  
 				result=admin_main(params);    
