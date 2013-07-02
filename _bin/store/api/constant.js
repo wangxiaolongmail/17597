@@ -2,7 +2,7 @@ db.system.js.save({_id:"constant",value:function () {
         return {
 				ADMIN:"ADMIN",
 				AUTHORITY:"authority",
-				APPLICATION:"APPLICATION",
+				APPLICATION:"Application",
 				ADDRESS:"Address",
 				ADD:"ADD",
 				ALL:"ALL",

@@ -10,7 +10,7 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 				if(!rs[C.IS_TIMEOUT]){
 					if(rs[C.REMOTE+C.ADDRESS]==params[C.REMOTE+C.ADDRESS]){
 						var result={ok:false,err:"module not find"};
-						var obj=_get_mdata(C.APPLICATION);
+						var obj=db[C.APPLICATION].findOne();
 						if(obj){
 							var a=obj[C.ROLE][rs[C.ROLE_NAME]][C.LEFT];
 							_each(a,function(k,v,i){
@@ -26,7 +26,7 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 										op.ok=true;
 										op[C.CURRENT_MODULE]=o[C.MODULE_NAME];
 										op[C.ROLE_NAME]=o[C.ROLE_NAME];
-										op[C.USER_NAME]=rs[C.USER_NAME];
+										op[C.IS_OPEN]=o[C.IS_OPEN];
 										result=op;
 									}else{
 										var op={};

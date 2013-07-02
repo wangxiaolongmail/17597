@@ -47,8 +47,9 @@ db.system.js.save({_id:"init",value:function () {
 		}
 	});
 	result[C.PRI]=o;
-
-	_push_mdata(result);
+	
+	db[C.APPLICATION].drop();
+	_insert(C.APPLICATION,result);
 	return result;
 }})
 
