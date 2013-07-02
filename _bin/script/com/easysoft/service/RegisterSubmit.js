@@ -17,7 +17,7 @@ dojo.provide("com.easysoft.service.RegisterSubmit");
 dojo.declare( "com.easysoft.service.RegisterSubmit" , "com.easysoft.service.Tempalte" , {
 	template_dir:"/wy/",
 	template_file:"login.html",
-	role_name:C.ROLE+C.PUBLIC,
+	role_name:C.PUBLIC,
 	table_name:C.USER,
 	postCreate:function(){
 		var op=this.getbo();

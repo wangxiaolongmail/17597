@@ -66,7 +66,7 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 		obj[C.ROLE_NAME]=rolename;
 		_insert(C.AUTHORITY,obj);
 
-	var rolename=C.ROLE+C.PUBLIC;
+	var rolename=C.PUBLIC;
 		var obj={};
 		obj[C.MODULE_NAME]=C.EASYSOFT+C.INDEX;
 		obj[C.ROLE_NAME]=rolename;
