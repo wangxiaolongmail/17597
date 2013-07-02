@@ -17,12 +17,10 @@ dojo.provide("com.easysoft.service.Register");
 dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Tempalte" , {
 	template_dir:"/wy/",
 	template_file:"login.html",
-	role_name:C.ROLE+C.PUBLIC,
 	table_name:C.USER,
 	postCreate:function(){
 		var a=[],o={},op={};
 		var op=this.getbo();
-		op[C.ROLE_NAME] =this.role_name;
 		op[C.STORED_METHOD] =C.REGISTER;
 		this.exec(op);
 	},

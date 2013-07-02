@@ -1,6 +1,7 @@
 db.system.js.save({_id:"main",value:function (params) {
 	var C=constant();
 	var result;
+	params[C.ROLE_NAME]=params[C.ROLE_NAME]||C.PUBLIC;
 	switch(params[C.STORED_METHOD]) 
 	{   
 		 case "goto":   
