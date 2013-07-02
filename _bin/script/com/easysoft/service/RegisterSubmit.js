@@ -22,7 +22,7 @@ dojo.declare( "com.easysoft.service.RegisterSubmit" , "com.easysoft.service.Temp
 	postCreate:function(){
 		var op=this.getbo();
 		var o=this.get_form_obj();
-		o[C.ROLE_NAME] =C.ROLE+C.EASYSOFT;
+		o[C.ROLE_NAME] =C.REGISTER;
 		o[C.PASSWORD] =dojo.md5(o[C.PASSWORD]);
 		o[C._ID] =o[C.USER_NAME];
 		op[C.INSERT+C.OBJECT] =o;

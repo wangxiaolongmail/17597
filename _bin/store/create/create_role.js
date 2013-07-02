@@ -6,10 +6,15 @@ db.system.js.save({_id:"create_role",value:function () {
 		obj[C.IS_GUEST]=false;
 		obj[C.IS_DEBUG]=true;
 		_insert(C.ROLE,obj);
+		var obj={}; 
+		obj[C.ROLE_NAME]=C.REGISTER;
+		obj[C.IS_GUEST]=false;
+		obj[C.IS_DEBUG]=true;
+		_insert(C.ROLE,obj);
 		var obj={};
 		obj[C.ROLE_NAME]=C.ROLE+C.PUBLIC;
 		obj[C.IS_GUEST]=true;
-		obj[C.IS_DEBUG]=true;
+		obj[C.IS_DEBUG]=false;
 		_insert(C.ROLE,obj);
 
 }})
