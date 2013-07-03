@@ -14,6 +14,7 @@ db.system.js.save({_id:"Logining2",value:function (params) {
 			o[C.ROLE_NAME]=rs[C.ROLE_NAME];
 			db.session.save(o);
 			o.ok=true;
+			delete params[C.ROLE_NAME];
 			return o;
 		}else{
 			return {ok:false,err:"user or password error"};
