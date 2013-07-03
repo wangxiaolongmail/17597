@@ -26,7 +26,7 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 										op.ok=true;
 										op[C.CURRENT_MODULE]=o[C.MODULE_NAME];
 										op[C.ROLE_NAME]=o[C.ROLE_NAME];
-										op[C.IS_OPEN]=o[C.IS_OPEN];
+										op[C.USER_NAME]=rs[C.USER_NAME];
 										result=op;
 									}else{
 										var op={};
