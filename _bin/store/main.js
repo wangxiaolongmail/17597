@@ -19,7 +19,20 @@ db.system.js.save({_id:"main",value:function (params) {
 		 case "RegisterSubmit":   
 				result=RegisterSubmit(params);   
 				break;
-		 default:  
+		 case "logining":   
+				result=logining(params);   
+				break;
+		 case "Login2":   
+				result=Login2(params);   
+				break;
+		 case "Logining2":   
+				result=Logining2(params);   
+				break;
+		 case "login":   
+				result=login(params);   
+				break;
+		 default:
+				delete params[C.ROLE_NAME];
 				result=admin_main(params);    
 	}
 	_mixin(result,params);
