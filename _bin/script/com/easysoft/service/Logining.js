@@ -18,7 +18,6 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Login" , {
 	postCreate:function(){
 		var a=[],op={};
 		var op=this.getbo();
-		op[C.ROLE_NAME] =this.role_name;
 		op[C.USER_NAME] = this.queryForm[C.USER_NAME];
 		op[C.PASSWORD] =dojo.md5(this.queryForm[C.PASSWORD]);
 		op[C.STORED_METHOD] ='logining';

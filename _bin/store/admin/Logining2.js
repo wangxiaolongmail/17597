@@ -8,10 +8,10 @@ db.system.js.save({_id:"Logining2",value:function (params) {
 		var rs =db.user.findOne(op);
 		if (rs) {
 			var o=_update_session();
-			o[C._ID]=mdata[C.USER_NAME];
-			o[C.ROLE_NAME]=rs[C.ROLE_NAME];
 			_mixin(o,params);
 			_mixin(o,mdata);
+			o[C._ID]=mdata[C.USER_NAME];
+			o[C.ROLE_NAME]=rs[C.ROLE_NAME];
 			db.session.save(o);
 			o.ok=true;
 			return o;
