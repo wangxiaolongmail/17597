@@ -38,7 +38,7 @@ db.system.js.save({_id:"init",value:function () {
 	});
 	result[C.URL]=map;
 	result[C.ROLE]=_get_role();
-	result[C._ID]=C.APPLICATION;
+	result[C._ID]=C.EASYSOFT;
 	
 	var o={};
 	_each(schema,function(k,v,i){

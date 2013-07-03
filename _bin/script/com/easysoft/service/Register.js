@@ -25,7 +25,7 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Tempalte" 
 		this.exec(op);
 	},
 	_define_schema:function(k,v,i){
-		if(v[C.FIELD]===C.NAME || v[C.FIELD]===C.USER_NAME ){
+		if( v[C.FIELD]===C.USER_NAME ){
 			v[C.FORMAT]=function(k,v,i,tn){
 				var a=[];
 				a.push("<div class=\"control-group\">");

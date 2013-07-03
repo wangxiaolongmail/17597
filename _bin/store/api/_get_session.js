@@ -10,7 +10,7 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 				if(!rs[C.IS_TIMEOUT]){
 					if(rs[C.REMOTE+C.ADDRESS]==params[C.REMOTE+C.ADDRESS]){
 						var result={ok:false,err:"module not find"};
-						var obj=db[C.APPLICATION].findOne();
+						var obj=db[C.APPLICATION].findOne({_id:C.EASYSOFT});
 						if(obj){
 							var a=obj[C.ROLE][rs[C.ROLE_NAME]][C.LEFT];
 							_each(a,function(k,v,i){
