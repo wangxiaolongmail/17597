@@ -86,6 +86,7 @@ db.system.js.save({_id:"constant",value:function () {
 				REGISTER:"Register",
 				REMOTE:"Remote",
 				REPEAT:"Repeat",
+				REMOVE:"Remove",
 				SITE_NAME:"SITE_NAME",
 				SERVLET_CLASS:"servletClass",
 				STORED_METHOD:"stored_method",

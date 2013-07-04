@@ -26,24 +26,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			op[C.STORED_METHOD] ='admin_List';
 			this.exec(op);
         },
-	 drawSelectTypeScript:function(data){
-			var a=[],o={},sid=this.sid;
-			a.push('$("select").change(function()');
-			a.push('{');
-				  a.push('location.href="?sid='+sid+'&category="+$(this).val();');
-			a.push('});');
-			a.push('$("a.'+C.IS_DELETE+'").on("click",function()');
-			a.push('{');
-				a.push('$("#list1 input[type=\'checkbox\']:checked").each(function(){');
-					//a.push('alert($(this).val());');
-				a.push('});');
-				a.push('if(confirm("Is it delete record?")){');
-					a.push('location.href="del?sid='+sid+'";');
-				a.push('}');
-			a.push('});');
-			return a.join("\n");
-	 },
-
 	drawFormEvent:function(){
 		var a=[];
 		a.push("");
@@ -67,7 +49,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 					
 				});
 				if(confirm("Is it delete record?")){
-					location.href="del?sid='+sid+'";
+					location.href="Remove?sid="+sid;
 				}
 			});
 	 },
@@ -152,6 +134,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			a.push("</tbody>");
 			return a.join("\n");
 	 },
+
 
 	 drawPage:function(data){
 			var a=[],o={};
