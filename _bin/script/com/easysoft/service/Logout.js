@@ -19,11 +19,8 @@ dojo.declare( "com.easysoft.service.Logout" , "com.easysoft.Widget" , {
 		var a=[],o={},op={};
 		var op=this.getbo();
 		op["sid"] = this.queryString.sid;
-		op[C.STORED_METHOD] ='logout';
-		console.log(this.queryString);
-		console.log(op);
+		op[C.STORED_METHOD] ='admin_Logout';
 		this.exec(op);
-
 	},
 	postDraw:function(data){
 		this.redirect(data[C.MODULE_URL]);

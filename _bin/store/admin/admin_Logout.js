@@ -1,4 +1,4 @@
-db.system.js.save({_id:"logout",value:function (params) {
+db.system.js.save({_id:"admin_Logout",value:function (params) {
 	var C=constant();
 	var sid=params["sid"];
 	var obj =db.session.findOne({sid:sid});
