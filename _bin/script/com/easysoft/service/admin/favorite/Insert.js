@@ -26,13 +26,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.servi
 		if(data[C.IS_DICT]){
 			dojo.mixin(DICT,dojo.clone(data[C.DICT]));
 		}
-		var a=[],o={};
-		var $ = this.getDom();
-		$(".nav-collapse").html(this.drawMainMenu(data));
-			
-		$("#apbody").html("hello");
-			
-		var s=$.html();
-		return s;
+		this.redirect("list?"+C.SID+"="+data[C.SID]);
 	}
 });

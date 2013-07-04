@@ -17,18 +17,12 @@ dojo.declare( "com.easysoft.service.admin.favorite.Remove" , "com.easysoft.servi
 	table_name:C.FAVORITE,
        postCreate:function(){
 		var op=this.getsbo();
+		op[C.RMID] =this.queryString[C.RMID];;
 		op[C.TABLE_NAME] =this.table_name;
 		op[C.STORED_METHOD] ='admin_Remove';
 		this.exec(op);
        },
 	postDraw:function(data){
-		var a=[],o={};
-		var $ = this.getDom();
-		$(".nav-collapse").html(this.drawMainMenu(data));
-			
-		$("#apbody").html("admin_Remove");
-			
-		var s=$.html();
-		return s;
+		this.redirect("list?"+C.SID+"="+data[C.SID]);
 	}
 });

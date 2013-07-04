@@ -45,12 +45,12 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			});
 			$("a."+s1).on("click",function()
 			{
-				$("#list1 input[type=\'checkbox\']:checked").each(function(){
-					
+				$("#list1 input[type=\'radio\']:checked").each(function(){
+					var rmid=$(this).val();
+					if(confirm("Is it delete record?")){
+						location.href="Remove?sid="+sid+"&rmid="+rmid;
+					}
 				});
-				if(confirm("Is it delete record?")){
-					location.href="Remove?sid="+sid;
-				}
 			});
 	 },
 	 drawButton:function(data){

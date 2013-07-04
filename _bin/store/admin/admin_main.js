@@ -18,10 +18,14 @@ db.system.js.save({_id:"admin_main",value:function (params) {
 		 case "admin_Insert":   
 				result=admin_Insert(params);   
 				break;
+		 case "admin_Remove":   
+				result=admin_Remove(params);   
+				break;  
 		 case "admin_Logout":   
 				result=admin_Logout(params);   
 				break;  
 		 default:  
+				params[C.STORED_METHOD]="admin_Empty";
 				result=admin_Empty(params);    
 	}
 	return result;
