@@ -18,7 +18,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.Update" , "com.easysoft.servi
 	postCreate:function(){
 		var a=[],o={},op={};
 		var op=this.getsbo();
-		op[C.RMID] =this.queryString[C.RMID];
 		op[C.TABLE_NAME] =this.table_name;
 		op[C.STORED_METHOD] ='admin_Update';
 		this.exec(op); 
@@ -95,7 +94,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Update" , "com.easysoft.servi
 	postDrawEx:function($,data){
 		var a=[];
 		var metadata=this.define_schema();
-		a.push("<form class=\"well span3\" method=\"post\" action=\"insert?sid="+this.sid+"\">");
+		a.push("<form class=\"well span3\" method=\"post\" action=\"UpdateSubmit?sid="+this.sid+"&rmid="+data[C.RMID]+"\">");
 		dojo.each(metadata,function(k,v,i){
 			if(v[C.FORMAT]){
 				a.push("<div class=\"control-group\">");

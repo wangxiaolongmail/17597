@@ -17,7 +17,9 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Index" 
 	getsbo:function(sname){
 		var op=this.getbo();
 		this.sid=this.queryString.sid;
+		this.rmid=this.queryString.rmid;
 		op["sid"] =this.sid;
+		op["rmid"] =this.rmid;
 		return op;
 	},
      postCreate:function(){
