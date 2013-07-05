@@ -14,40 +14,5 @@
  */
 dojo.provide("com.easysoft.service.admin.favorite_type.List");
 dojo.declare( "com.easysoft.service.admin.favorite_type.List" , "com.easysoft.service.admin.favorite.List" , {
-		template_file:"favorite_list.html",
-		table_name:C.FAVORITE_TYPE,
-        postCreate:function(){
-			var a=[],o={},op={};
-			var op=this.getsbo();
-			op[C.PAGE] =this.queryString[C.PAGE];
-			op[C.TABLE_NAME] =this.table_name;
-			op[C.STORED_METHOD] ='admin_List';
-			this.exec(op);
-        },
-
-		postDraw:function(data){
-			
-			var a=[],o={};
-			var $ = this.getDom();
-			$("#left_bar").remove();
-			$("#right_bar").removeClass("span9").addClass("span12");
-			
-			$("#list1").html(this.drawTable(data));
-			
-			$("#pager").html(this.drawPage(data));
-			
-			
-			$(".nav-collapse").html(this.drawMainMenu(data));
-			
-			
-			$("#select01").html("");
-
-			$("h4").html(data.tablename);
-
-			
-			$(".btn-group").html(this.drawButton(data));
-			
-			return $.html();
-		}
-
+		table_name:C.FAVORITE_TYPE
 });
