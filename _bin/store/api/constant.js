@@ -101,6 +101,7 @@ db.system.js.save({_id:"constant",value:function () {
 				TO:"to",
 				TYPE:"TYPE",
 				UPDATE_TIME:"UPDATE_TIME",
+				UPDATE:"Update",
 				URL:"URL",
 				URL_NAME:"URL_NAME",
 				USER_NAME:"USER_NAME",

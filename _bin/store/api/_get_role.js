@@ -13,7 +13,7 @@ db.system.js.save({_id:"_get_role",value:function (name) {
 			oo[C.URL]=_get_url(C.EASYSOFT+C.REGISTER);
 			list.push(oo);
 			var oo={};
-			oo[C.MODULE_NAME]=C.EASYSOFT+C.LOGIN;
+			oo[C.MODULE_NAME]=C.LOGIN;
 			oo[C.URL]=_get_url(C.EASYSOFT+C.LOGIN);
 			list.push(oo);
 		}else{

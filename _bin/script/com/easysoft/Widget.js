@@ -117,6 +117,7 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 		op[C.REMOTE+C.ADDRESS]=this.dog.req.connection.remoteAddress;
 		var s=this.dog.req.headers["user-agent"];
 		op[C.USER+C.AGENT]=s.replace(/;/g,"");
+		op[C.METHOD]=this.dog.req.method.toLowerCase();
 		return op;
 	}
 }); 
@@ -174,18 +175,25 @@ dojo.declare( "com.easysoft.service.Tempalte" , "com.easysoft.Widget" , {
 		 },this);
 		 return a;
 	},
-	 drawLinkSelect:function(o){
-			var a=[];
-			a.push("<select name=\""+o[C.FIELD]+"\">");
-			if(o[C.LINK]){
-				dojo.each(DICT[o[C.LINK]],function(k,v,i){
+	 drawLinkSelect:function(o,val){
+		var a=[];
+		a.push("<select name=\""+o[C.FIELD]+"\">");
+		if(o[C.LINK]){
+			dojo.each(DICT[o[C.LINK]],function(k,v,i){
+				if(k===val){
+					a.push("<option selected value='"+k+"'>");
+					a.push(v);
+					a.push("</option>");
+				}else{
 					a.push("<option value='"+k+"'>");
 					a.push(v);
 					a.push("</option>");
-				});
-			}
-			a.push("</select");
-			return a.join("\n");
+
+				}
+			});
+		}
+		a.push("</select");
+		return a.join("\n");
 	 },
 	read_template:function(){
 		this.beginPaint();

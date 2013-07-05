@@ -31,13 +31,13 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 		a.push("<script type='text/javascript'>");
 		a.push("var fn="+this.clientFormEvent);
 		a.push("$(document).ready(function(){");
-			a.push("fn('"+this.sid+"','"+C.IS_DELETE+"');");
+			a.push("fn('"+this.sid+"','"+C.IS_DELETE+"','"+C.IS_EDIT+"');");
 		a.push("});");
 		a.push("</script>");
 		a.push("");
 		return a.join("\n");
 	},
-	clientFormEvent:function(sid,s1){
+	clientFormEvent:function(sid,s1,s2){
 			$("select").change(function()
 			{
 				  location.href="?sid="+sid+"&category="+$(this).val();
@@ -51,11 +51,17 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 					}
 				});
 			});
+			$("a."+s2).on("click",function()
+			{
+				$("#list1 input[type=\'radio\']:checked").each(function(){
+					var rmid=$(this).val();
+					location.href="Update?sid="+sid+"&rmid="+rmid;				});
+			});
 	 },
 	 drawButton:function(data){
 			var a=[],o={};
 			var cur_obj=this.cur_obj;
-            a.push("<div id=\"tool_button\" class=\"btn-group\" style=\"padding-bottom:10px\">");
+            		a.push("<div id=\"tool_button\" class=\"btn-group\" style=\"padding-bottom:10px\">");
 			if(cur_obj[C.IS_NEW]){
 				a.push("<a class='btn "+C.IS_NEW+"' href='add?sid="+this.sid+"'>");
 				a.push(I18N[C.ADD]);

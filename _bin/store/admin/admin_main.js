@@ -9,9 +9,6 @@ db.system.js.save({_id:"admin_main",value:function (params) {
 		 case "admin_List":   
 				result=admin_List(params);   
 				break;
-		 case "admin_Add":   
-				result=admin_Add(params);   
-				break;
 		 case "admin_Save":   
 				result=admin_Save(params);   
 				break;
@@ -23,6 +20,9 @@ db.system.js.save({_id:"admin_main",value:function (params) {
 				break;  
 		 case "admin_Logout":   
 				result=admin_Logout(params);   
+				break;   
+		 case "admin_Update":   
+				result=admin_Update(params);   
 				break;  
 		 default:  
 				params[C.STORED_METHOD]="admin_Empty";

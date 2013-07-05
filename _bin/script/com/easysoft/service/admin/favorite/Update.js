@@ -12,39 +12,40 @@
  * 
  * @author wxlwang
  */
-dojo.provide("com.easysoft.service.admin.favorite.Add");
-dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.admin.Start" , {
+dojo.provide("com.easysoft.service.admin.favorite.Update");
+dojo.declare( "com.easysoft.service.admin.favorite.Update" , "com.easysoft.service.admin.Start" , {
 	table_name:C.FAVORITE,
 	postCreate:function(){
 		var a=[],o={},op={};
 		var op=this.getsbo();
+		op[C.RMID] =this.queryString[C.RMID];
 		op[C.TABLE_NAME] =this.table_name;
-		op[C.STORED_METHOD] ='admin';
-		this.exec(op);
+		op[C.STORED_METHOD] ='admin_Update';
+		this.exec(op); 
 	},
 	_define_schema:function(k,v,i){
 		if(v[C.FIELD]===C.CATEGORY){
-			v[C.FORMAT]=function(k,v,i){
+			v[C.FORMAT]=function(k,v,i,tn,obj){
 				var a=[];
 				a.push("<label>");
 				a.push(I18N[v[C.FIELD]]);
 				a.push("</label>");
-				a.push(this.drawLinkSelect(v));
+				a.push(this.drawLinkSelect(v,obj[v[C.FIELD]]));
 				return a.join("\n");
 			}
 		}
 		if(v[C.FIELD]===C.NAME || v[C.FIELD]===C.URL){
-			v[C.FORMAT]=function(k,v,i,tn){
+			v[C.FORMAT]=function(k,v,i,tn,obj){
 				var a=[];
 				a.push("<label>");
 				a.push(I18N[v[C.FIELD]]);
 				a.push("</label>");
-				a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
+				a.push("<input value=\""+obj[v[C.FIELD]]+"\" type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
 				return a.join("\n");
 			}
 		}	
 		if(v[C.FIELD]===C.PRI){
-			v[C.FORMAT]=function(k,v,i,tn){
+			v[C.FORMAT]=function(k,v,i,tn,obj){
 				PRI[tn]=PRI[tn]+1;
 				var i=PRI[tn];
 				return "<input value=\""+i+"\" type=\"hidden\" class=\"span3\" name=\""+C.PRI+"\">";
@@ -98,7 +99,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 		dojo.each(metadata,function(k,v,i){
 			if(v[C.FORMAT]){
 				a.push("<div class=\"control-group\">");
-				a.push(v[C.FORMAT].call(this,k,v,i,this.table_name));
+				a.push(v[C.FORMAT].call(this,k,v,i,this.table_name,data[C.UPDATE+C.OBJECT]));
 				a.push("</div>");
 			}
 		},this);

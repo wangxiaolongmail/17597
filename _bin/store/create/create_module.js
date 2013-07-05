@@ -32,6 +32,14 @@ db.system.js.save({_id:"create_module",value:function () {
 		
 	var obj={};
 	obj[C.MODULE_NAME]=C.FAVORITE;
+	obj[C.URL_NAME]=C.EASYSOFT+C.ADMIN+C.FAVORITE+C.UPDATE;
+	obj[C.URL]="/easysoft/admin/favorite/Update";
+	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.favorite.Update";
+	obj[C.METHOD]=C.GET;
+	_insert(C.MODULE,obj);
+		
+	var obj={};
+	obj[C.MODULE_NAME]=C.FAVORITE;
 	obj[C.URL_NAME]=C.EASYSOFT+C.ADMIN+C.FAVORITE+C.SAVE;
 	obj[C.URL]="/easysoft/admin/favorite/save";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.favorite.Save";
