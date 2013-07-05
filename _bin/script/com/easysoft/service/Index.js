@@ -42,7 +42,7 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 			a.push(o[C.NAME]);
 			dojo.each(o.list,function(k,v,i){
 				a.push("&nbsp;");
-				a.push("<a target='_blank' href='"+data[C.URL+C.GO]+"?"+C.TO+"="+v[C.URL]+"'>"+v[C.NAME]+"</a>");
+				a.push("<a target='_blank' href='"+URL[C.EASYSOFT+C.GO]+"?"+C.TO+"="+v[C.URL]+"'>"+v[C.NAME]+"</a>");
 
 			});
 			a.push("</td>");
@@ -63,7 +63,7 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 		dojo.each(mlist[C.LEFT],function(k,v,i){
 			var o=v;
 			if(o[C.IS_MENU]){
-				if(data[C.CURRENT_MODULE]==o[C.URL_NAME]){
+				if(data[C.URL_NAME]==o[C.URL_NAME]){
 					this.cur_obj=o;
 					a.push("<li class='active'>");
 					a.push("<a href='#'>"+I18N[o[C.URL_NAME]]+"</a>");

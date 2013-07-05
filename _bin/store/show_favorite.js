@@ -16,8 +16,7 @@ db.system.js.save({_id:"show_favorite",value:function(params){
 		  ok:true,
 		  list:a
 		};
-		result[C.CURRENT_MODULE]=C.EASYSOFT+C.INDEX;
-		result[C.URL+C.GO]=_get_url(C.EASYSOFT+C.GO);
+		result[C.URL_NAME]=C.EASYSOFT+C.INDEX;
 		return result;
 	}
 })

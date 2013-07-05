@@ -48,7 +48,7 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 		dojo.each(list,function(k,v,i){
 			var o=v;
 			if(o[C.IS_MENU]){
-				if(data[C.CURRENT_MODULE]==o[C.URL_NAME]){
+				if(data[C.URL_NAME]==o[C.URL_NAME]){
 				  this.cur_obj=o;
 				  a.push("<li class='active'>");
 				  a.push("<a href='#'>"+I18N[o[C.URL_NAME]]+"</a>");
