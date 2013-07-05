@@ -91,15 +91,16 @@ db.system.js.save({_id:"create_module",value:function () {
 	_insert(C.MODULE,obj);
 
 	var obj={};
-	obj[C.MODULE_NAME]=C.PUBLIC;
+	obj[C.MODULE_NAME]=C.INDEX;
 	obj[C.URL_NAME]=C.EASYSOFT+C.INDEX;
 	obj[C.URL]="/";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Index";
 	obj[C.METHOD]=C.GET;
+	obj[C.IS_MENU]=true;
 	_insert(C.MODULE,obj);
 	
 	var obj={};
-	obj[C.MODULE_NAME]=C.PUBLIC;
+	obj[C.MODULE_NAME]=C.INDEX;
 	obj[C.URL_NAME]=C.LOGOUT;
 	obj[C.URL]="/easysoft/Logout";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Logout";
@@ -107,7 +108,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	_insert(C.MODULE,obj);
 	
 	var obj={};
-	obj[C.MODULE_NAME]=C.PUBLIC;
+	obj[C.MODULE_NAME]=C.INDEX;
 	obj[C.URL_NAME]=C.EASYSOFT+C.LOGIN;
 	obj[C.URL]="/easysoft/login";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Login";
@@ -115,7 +116,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	_insert(C.MODULE,obj);
 	
 	var obj={};
-	obj[C.MODULE_NAME]=C.PUBLIC;
+	obj[C.MODULE_NAME]=C.INDEX;
 	obj[C.URL_NAME]=C.EASYSOFT+C.LOGINING;
 	obj[C.URL]="/easysoft/logining";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Logining";
@@ -123,7 +124,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	_insert(C.MODULE,obj);	
 	
 	var obj={};
-	obj[C.MODULE_NAME]=C.PUBLIC;
+	obj[C.MODULE_NAME]=C.INDEX;
 	obj[C.URL_NAME]=C.EASYSOFT+C.LOGIN2;
 	obj[C.URL]="/easysoft/"+C.LOGIN2;
 	obj[C.SERVLET_CLASS]="com.easysoft.service."+C.LOGIN2;
@@ -131,7 +132,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	_insert(C.MODULE,obj);	
 	
 	var obj={};
-	obj[C.MODULE_NAME]=C.PUBLIC;
+	obj[C.MODULE_NAME]=C.INDEX;
 	obj[C.URL_NAME]=C.EASYSOFT+C.LOGINING2;
 	obj[C.URL]="/easysoft/"+C.LOGINING2;
 	obj[C.SERVLET_CLASS]="com.easysoft.service."+C.LOGINING2;
@@ -139,7 +140,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	_insert(C.MODULE,obj);	
 	
 	var obj={};
-	obj[C.MODULE_NAME]=C.PUBLIC;
+	obj[C.MODULE_NAME]=C.INDEX;
 	obj[C.URL_NAME]=C.EASYSOFT+C.REGISTER;
 	obj[C.URL]="/easysoft/"+C.REGISTER;
 	obj[C.SERVLET_CLASS]="com.easysoft.service."+C.REGISTER;
@@ -147,7 +148,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	_insert(C.MODULE,obj);
 		
 	var obj={};
-	obj[C.MODULE_NAME]=C.PUBLIC;
+	obj[C.MODULE_NAME]=C.INDEX;
 	obj[C.URL_NAME]=C.REGISTER+C.SUBMIT;
 	obj[C.URL]="/easysoft/"+C.REGISTER+C.SUBMIT;
 	obj[C.SERVLET_CLASS]="com.easysoft.service."+C.REGISTER+C.SUBMIT;
@@ -155,7 +156,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	_insert(C.MODULE,obj);
 	
 	var obj={};
-	obj[C.MODULE_NAME]=C.PUBLIC;
+	obj[C.MODULE_NAME]=C.INDEX;
 	obj[C.URL_NAME]=C.EASYSOFT+C.CHECK_CODE;
 	obj[C.URL]="/easysoft/check_code";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.CheckCode";
@@ -163,7 +164,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	_insert(C.MODULE,obj);
 	
 	var obj={};
-	obj[C.MODULE_NAME]=C.PUBLIC;
+	obj[C.MODULE_NAME]=C.INDEX;
 	obj[C.URL_NAME]=C.EASYSOFT+C.GO;
 	obj[C.URL]="/go";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.Go";

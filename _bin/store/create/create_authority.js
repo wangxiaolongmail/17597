@@ -23,5 +23,13 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 			v[C.ROLE_NAME]=rolename;
 			_insert(C.AUTHORITY,v);
 		});
+	
+	var rolename=C.PUBLIC;
+		var a=db.module.find({"MODULE_NAME":C.INDEX}).toArray();
+		_each(a,function(k,v,i){
+			delete v["_id"];
+			v[C.ROLE_NAME]=rolename;
+			_insert(C.AUTHORITY,v);
+		});
 }})
 

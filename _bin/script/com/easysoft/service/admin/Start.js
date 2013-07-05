@@ -51,11 +51,11 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 				if(data[C.URL_NAME]==o[C.URL_NAME]){
 				  this.cur_obj=o;
 				  a.push("<li class='active'>");
-				  a.push("<a href='#'>"+I18N[o[C.URL_NAME]]+"</a>");
+				  a.push("<a href='#'>"+I18N[o[C.MODULE_NAME]]+"</a>");
 				  a.push("</li>");
 				}else{
 				  a.push("<li>");
-				  a.push("<a href='"+o[C.URL]+"?sid="+sid+"'>"+I18N[o[C.URL_NAME]]+"</a>");
+				  a.push("<a href='"+o[C.URL]+"?sid="+sid+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
 				  a.push("</li>");
 				}
 			}
@@ -65,7 +65,7 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 		//var len = list.length;
 		a.push("<ul class='nav pull-right'>");
     			a.push("<li>");
-			a.push("<a href='"+o[C.URL]+"?sid="+sid+"'>"+I18N[o[C.URL_NAME]]+"</a>");
+			a.push("<a href='"+o[C.URL]+"?sid="+sid+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");
 			a.push("</li>");
 		a.push("</ul>");
 		return a.join("");

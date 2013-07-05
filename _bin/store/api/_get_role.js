@@ -9,16 +9,16 @@ db.system.js.save({_id:"_get_role",value:function (name) {
 		var list=[];
 		if(v[C.IS_GUEST]){
 			var oo={};
-			oo[C.URL_NAME]=C.REGISTER;
+			oo[C.MODULE_NAME]=C.REGISTER;
 			oo[C.URL]=_get_url(C.EASYSOFT+C.REGISTER);
 			list.push(oo);
 			var oo={};
-			oo[C.URL_NAME]=C.EASYSOFT+C.LOGIN;
+			oo[C.MODULE_NAME]=C.EASYSOFT+C.LOGIN;
 			oo[C.URL]=_get_url(C.EASYSOFT+C.LOGIN);
 			list.push(oo);
 		}else{
 			var oo={};
-			oo[C.URL_NAME]=C.LOGOUT;
+			oo[C.MODULE_NAME]=C.LOGOUT;
 			oo[C.URL]=_get_url(C.LOGOUT);
 			list.push(oo);
 		}
