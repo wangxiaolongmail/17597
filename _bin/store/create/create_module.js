@@ -2,7 +2,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	var C=constant();
 	db[C.MODULE].remove();
 	var obj={};
-	obj[C.MODULE_NAME]=C.ADMIN;
+	obj[C.MODULE_NAME]=C.START;
 	obj[C.URL_NAME]=C.EASYSOFT+C.ADMIN+C.START;
 	obj[C.URL]="/easysoft/admin/start";
 	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.Start";

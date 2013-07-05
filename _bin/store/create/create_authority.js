@@ -11,7 +11,7 @@ db.system.js.save({_id:"create_authority",value:function (params) {
 		});
 	
 	var rolename=C.REGISTER;
-		var a=db.module.find({"MODULE_NAME":C.ADMIN}).toArray();
+		var a=db.module.find({"MODULE_NAME":C.START}).toArray();
 		_each(a,function(k,v,i){
 			delete v["_id"];
 			v[C.ROLE_NAME]=rolename;
