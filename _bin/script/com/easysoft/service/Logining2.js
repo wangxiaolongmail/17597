@@ -14,7 +14,7 @@
  */
 dojo.import("com.easysoft.service.Login");
 dojo.provide("com.easysoft.service.Logining2");
-dojo.declare( "com.easysoft.service.Logining2" , "com.easysoft.service.Login" , {
+dojo.declare( "com.easysoft.service.Logining2" , "com.easysoft.service.Logining" , {
 	postCreate:function(){
 		var a=[],op={};
 		var op=this.getbo();
@@ -24,14 +24,6 @@ dojo.declare( "com.easysoft.service.Logining2" , "com.easysoft.service.Login" , 
 		this.exec(op);
 	},
 	postDraw:function(data){
-		var a=[],op={};
-		var a=this.getMenuList(data)[C.LEFT];
-		if(a.length>0){
-			var url=a[0][C.URL];
-			this.redirect(url+"?sid="+data.sid);
-			dojo.sendMail({title:data[C.USER_NAME]+" loging system successful"});
-		}else{
-			this._findNotFile();
-		}
+		this.enterSystem(data);
 	}
 });

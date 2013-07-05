@@ -28,15 +28,21 @@ dojo.declare( "com.easysoft.service.Logining" , "com.easysoft.service.Login" , {
 				this.redirect(URL[C.EASYSOFT+C.LOGIN2]+"?"+C.MID+"="+data[C.MID]);
 		
 		}else{
-				var a=[],op={};
-				var a=this.getMenuList(data)[C.LEFT];
-				if(a.length>0){
-					var url=a[0][C.URL];
-					this.redirect(url+"?sid="+data.sid);
+			this.enterSystem(data);
+		}
+	},
+	enterSystem:function(data){
+		var a=[],op={};
+		var a=this.getMenuList(data)[C.LEFT];
+		if(a.length>0){
+			dojo.each(a,function(k,v,i){
+				if(v[C.IS_MENU]){
+					this.redirect(v[C.URL]+"?sid="+data.sid);
 					dojo.sendMail({title:data[C.USER_NAME]+" loging system successful"});
-				}else{
-					this._findNotFile();
 				}
+			},this);
+		}else{
+			this._findNotFile();
 		}
 	}
 });
