@@ -28,7 +28,7 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Index" , {
 				var a=[];
 				a.push("<div class=\"control-group\">");
 				a.push("<label>");
-				a.push(v[C.FIELD]);
+				a.push(I18N[v[C.FIELD]]);
 				a.push("</label>");
 				a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
 				a.push("</div>");
@@ -40,13 +40,13 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Index" , {
 				var a=[];
 				a.push("<div class=\"control-group\">");
 				a.push("<label>");
-				a.push(v[C.FIELD]);
+				a.push(I18N[v[C.FIELD]]);
 				a.push("</label>");
 				a.push("<input type=\"password\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
 				a.push("</div>");
 				a.push("<div class=\"control-group\">");
 				a.push("<label>");
-				a.push(C.REPEAT+v[C.FIELD]);
+				a.push(I18N[C.REPEAT]+I18N[v[C.FIELD]]);
 				a.push("</label>");
 				a.push("<input type=\"password\" name=\""+C.REPEAT+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
 				a.push("</div>");
@@ -58,7 +58,7 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Index" , {
 				var a=[];
 				a.push("<div class=\"control-group\">");
 				a.push("<label>");
-				a.push(v[C.FIELD]);
+				a.push(I18N[v[C.FIELD]]);
 				a.push("</label>");
 				a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
 				a.push("<img src=\'"+URL[C.EASYSOFT+C.CHECK_CODE]+"?mid="+mid+"\' />");

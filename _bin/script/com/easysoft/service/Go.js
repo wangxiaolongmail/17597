@@ -19,7 +19,7 @@ dojo.declare( "com.easysoft.service.Go" , "com.easysoft.Widget" , {
 		var a=[],op={};
 		var op=this.getbo();
 		op[C.TO] =this.queryString[C.TO];
-		op[C.STORED_METHOD] ='goto';
+		op[C.STORED_METHOD] ='';
 		this.exec(op);
 	},
 	postDraw:function(data){

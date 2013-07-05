@@ -109,7 +109,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			dojo.each(metadata,function(k,v,i){
 				if(v[C.FORMAT]){
 					a.push("<td>");
-					a.push(v[C.FIELD]);
+					a.push(I18N[v[C.FIELD]]);
 					a.push("</td>");
 				}
 			});

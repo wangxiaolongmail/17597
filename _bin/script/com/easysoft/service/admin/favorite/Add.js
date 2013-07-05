@@ -27,7 +27,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			v[C.FORMAT]=function(k,v,i){
 				var a=[];
 				a.push("<label>");
-				a.push(v[C.FIELD]);
+				a.push(I18N[v[C.FIELD]]);
 				a.push("</label>");
 				a.push(this.drawLinkSelect(v));
 				return a.join("\n");
@@ -37,7 +37,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			v[C.FORMAT]=function(k,v,i,tn){
 				var a=[];
 				a.push("<label>");
-				a.push(v[C.FIELD]);
+				a.push(I18N[v[C.FIELD]]);
 				a.push("</label>");
 				a.push("<input type=\"text\" name=\""+v[C.FIELD]+"\" class=\"span3\" style=\"height:30px\">");
 				return a.join("\n");
