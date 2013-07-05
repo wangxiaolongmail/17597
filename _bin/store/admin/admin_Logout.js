@@ -9,7 +9,6 @@ db.system.js.save({_id:"admin_Logout",value:function (params) {
 		db.session.update({sid:sid},{'$set':op});
 	}
 	var op={};
-	op[C.MODULE_URL]=_get_url(C.EASYSOFT+C.LOGIN);
 	op.ok=true;
 	return op;
 }})

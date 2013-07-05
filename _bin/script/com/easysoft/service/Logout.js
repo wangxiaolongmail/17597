@@ -23,6 +23,6 @@ dojo.declare( "com.easysoft.service.Logout" , "com.easysoft.Widget" , {
 		this.exec(op);
 	},
 	postDraw:function(data){
-		this.redirect(data[C.MODULE_URL]);
+		this.redirect(URL[C.EASYSOFT+C.LOGIN]);
 	}
 });

@@ -27,7 +27,7 @@ dojo.declare( "com.easysoft.service.Logining2" , "com.easysoft.service.Login" , 
 		var a=[],op={};
 		var a=this.getMenuList(data)[C.LEFT];
 		if(a.length>0){
-			var url=a[0][C.MODULE_URL];
+			var url=a[0][C.URL];
 			this.redirect(url+"?sid="+data.sid);
 			dojo.sendMail({title:data[C.USER_NAME]+" loging system successful"});
 		}else{

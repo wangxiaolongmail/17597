@@ -55,7 +55,7 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 				  a.push("</li>");
 				}else{
 				  a.push("<li>");
-				  a.push("<a href='"+o[C.MODULE_URL]+"?sid="+sid+"'>"+I18N[o[C.URL_NAME]]+"</a>");
+				  a.push("<a href='"+o[C.URL]+"?sid="+sid+"'>"+I18N[o[C.URL_NAME]]+"</a>");
 				  a.push("</li>");
 				}
 			}
@@ -65,7 +65,7 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 		//var len = list.length;
 		a.push("<ul class='nav pull-right'>");
     			a.push("<li>");
-			a.push("<a href='"+o[C.MODULE_URL]+"?sid="+sid+"'>"+I18N[o[C.URL_NAME]]+"</a>");
+			a.push("<a href='"+o[C.URL]+"?sid="+sid+"'>"+I18N[o[C.URL_NAME]]+"</a>");
 			a.push("</li>");
 		a.push("</ul>");
 		return a.join("");

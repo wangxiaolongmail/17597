@@ -4,7 +4,7 @@ db.system.js.save({_id:"_get_url",value:function (name) {
 	op[C.URL_NAME]=name;
 	var o=db.module.findOne( op );
 	if(o){
-		return o[C.MODULE_URL];
+		return o[C.URL];
 	}else{
 		return;
 	}

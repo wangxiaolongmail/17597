@@ -15,7 +15,7 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 							var a=obj[C.ROLE][rs[C.ROLE_NAME]][C.LEFT];
 							_each(a,function(k,v,i){
 								var o = v;
-								if(params[C.CURRENT_URL]==o[C.MODULE_URL]){
+								if(params[C.CURRENT_URL]==o[C.URL]){
 									var newUpdateDate=(new Date()).getTime();
 									if((newUpdateDate-rs[C.UPDATE_TIME])<pub.interval){
 										var op={};

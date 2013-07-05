@@ -7,7 +7,7 @@ db.system.js.save({_id:"_get_module_list",value:function (role_name) {
 		var a=[];
 		while (cursor.hasNext()) {
 			var item=cursor.next();
-			item[C.MODULE_URL]=_get_url(item[C.URL_NAME]);
+			item[C.URL]=_get_url(item[C.URL_NAME]);
 			delete item._id;
 			a.push(item);
 		}

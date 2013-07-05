@@ -26,7 +26,7 @@ db.system.js.save({_id:"init",value:function () {
 		var o=v;
 		var op={};
 		op[C.SERVLET_CLASS]=o[C.SERVLET_CLASS];
-		op[C.PATH_NAME]=o[C.MODULE_URL];
+		op[C.PATH_NAME]=o[C.URL];
 		op[C.METHOD]=o[C.METHOD];
 		dynamicServletMapping.push(op);	
 	});
@@ -34,7 +34,7 @@ db.system.js.save({_id:"init",value:function () {
 	
 	var map={};
 	_each(a,function(k,v,i){
-		map[v[C.URL_NAME]]=v[C.MODULE_URL];
+		map[v[C.URL_NAME]]=v[C.URL];
 	});
 	result[C.URL]=map;
 	result[C.ROLE]=_get_role();
