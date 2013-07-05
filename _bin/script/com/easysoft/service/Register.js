@@ -12,11 +12,9 @@
  * 
  * @author wxlwang
  */
-dojo.import("com.easysoft.service.Tempalte");
+dojo.import("com.easysoft.service.Index");
 dojo.provide("com.easysoft.service.Register");
-dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Tempalte" , {
-	template_dir:"/wy/",
-	template_file:"login.html",
+dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Index" , {
 	table_name:C.USER,
 	postCreate:function(){
 		var a=[],o={},op={};
@@ -90,6 +88,7 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Tempalte" 
 		return a.join("\n");
 	},
 	clientFormEvent:function(a,s1,s2){
+		$("input")[0].focus();
 		a.push(s2);
 		$('form').submit(function(){
 			var flag=true;
@@ -126,9 +125,8 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Tempalte" 
 			});
 		});
 	},
-	postDraw:function(data){
+	postDrawEx:function($,data){
 		var a=[];	
-		var $ = this.getDom();
 		var metadata=this.define_schema();
 		a.push("<form class=\"well span3\" method=\"post\" action=\""+C.REGISTER+C.SUBMIT+"\">");
 		dojo.each(metadata,function(k,v,i){
@@ -138,7 +136,6 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Tempalte" 
 		},this);
 		a.push("<button type=\'submit\' class=\'btn btn-primary\'>"+I18N[C.OK]+"</button>");
 		a.push("</form>");
-		$("#apbody").html(a.join("\n"));
-		return $.html();
+		$("#apBody").html(a.join("\n"));
 	}
 });

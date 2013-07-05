@@ -14,18 +14,17 @@
  */
 dojo.provide("com.easysoft.service.admin.favorite.List");
 dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service.admin.Start" , {
-	template_file:"favorite_list.html",
-	table_name:"favorite",
-       postCreate:function(){
-			var a=[],o={},op={};
-			var op=this.getsbo();
-			op[C.PAGE] =this.queryString[C.PAGE];
-			op[C.CATEGORY] =this.queryString[C.CATEGORY];
-			op[C.TABLE_NAME] =this.table_name;
-			op[C.TABLE+C.TYPE] =C.FAVORITE_TYPE;
-			op[C.STORED_METHOD] ='admin_List';
-			this.exec(op);
-        },
+	table_name:C.FAVORITE,
+    postCreate:function(){
+		var a=[],o={},op={};
+		var op=this.getsbo();
+		op[C.PAGE] =this.queryString[C.PAGE];
+		op[C.CATEGORY] =this.queryString[C.CATEGORY];
+		op[C.TABLE_NAME] =this.table_name;
+		op[C.TABLE+C.TYPE] =C.FAVORITE_TYPE;
+		op[C.STORED_METHOD] ='admin_List';
+		this.exec(op);
+    },
 	drawFormEvent:function(){
 		var a=[];
 		a.push("");
@@ -56,6 +55,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 	 drawButton:function(data){
 			var a=[],o={};
 			var cur_obj=this.cur_obj;
+            a.push("<div id=\"tool_button\" class=\"btn-group\" style=\"padding-bottom:10px\">");
 			if(cur_obj[C.IS_NEW]){
 				a.push("<a class='btn "+C.IS_NEW+"' href='add?sid="+this.sid+"'>");
 				a.push(I18N[C.ADD]);
@@ -71,8 +71,8 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 				a.push(I18N[C.DELETE]);
 				a.push("</a>"); 
 			}
-			return a.join("");
-
+			a.push("</div>"); 
+			return a.join("\n");
 	 },
 	 define_schema:function(data){
 		 var a=this.get_schema_list();
@@ -96,14 +96,13 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 		 },this);
 		 return a;
 	 },
-	 drawTable:function(data){
+	 drawTable:function(data,metadata){
 			var a=[],o={};
 			var obj=data;
 			var a=[];
 			var list=obj.list;
 			var len = list.length;
-			var metadata=this.define_schema(data);
-
+			a.push("<table id=\"list1\" class=\"table table-bordered table-striped\">");
 			a.push("<thead>");
 			a.push("<tr>");
 
@@ -132,6 +131,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 
 			});
 			a.push("</tbody>");
+			a.push("</table>");
 			return a.join("\n");
 	 },
 
@@ -145,6 +145,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			category=obj.category,
 			len = pageCount,
 			sid = this.sid;
+			a.push("<div id=\"pager\" class=\"pagination pagination-centered\">");
 			a.push("<ul>");
 			if(page==1){
 				a.push("<li class='disabled'><a href='#'>«</a></li>");
@@ -168,37 +169,23 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 				a.push("<li><a href='?sid="+sid+"&page="+page+"'>»</a></li>");
 			}
 			a.push("</ul>");
-			
-          	
-			return a.join("");
+			a.push("</div>");
+			return a.join("\n");
 
 
 	 },
-
-
-
-		postDraw:function(data){
-			var a=[],o={};
-			var $ = this.getDom();
-			$("#left_bar").remove();
-			$("#right_bar").removeClass("span9").addClass("span12");
-			
-			$("#list1").html(this.drawTable(data));
-			
-			$("#pager").html(this.drawPage(data));
-			
-			
-			$(".nav-collapse").html(this.drawMainMenu(data));
-			
-			
-			$("#selectWrap").html(this.drawLinkSelect(this.m_select));
-
-			$("h4").html(data.tablename);
-
-			
-			$(".btn-group").html(this.drawButton(data));
-			
-			return $.html();
-		}
-
+	postDrawEx:function($,data){
+		var metadata=this.define_schema(data);
+		var s="";
+		s+="<h4>"+data.tablename+"</h4>";
+		s+=this.drawButton(data);
+		s+=this.drawLinkSelect(this.m_select);
+		s+="<div class=\"input-append\">";
+		s+="<input class=\"span2\" id=\"appendedInputButton\" type=\"text\">";
+		s+="<button class=\"btn\" type=\"button\">Go!</button>";
+   		s+="</div>";
+		s+=this.drawTable(data,metadata);
+		s+=this.drawPage(data);
+		$("#apBody").html(s);
+	}
 });

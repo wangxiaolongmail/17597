@@ -14,9 +14,7 @@
  */
 dojo.provide("com.easysoft.service.admin.favorite.Add");
 dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.admin.Start" , {
-	template_dir:"/wy/",
-	template_file:"favorite_add.html",
-	table_name:"favorite",
+	table_name:C.FAVORITE,
 	postCreate:function(){
 		var a=[],o={},op={};
 		var op=this.getsbo();
@@ -66,6 +64,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 		return a.join("\n");
 	},
 	clientFormEvent:function(a){
+		$("input")[0].focus();
 		$('form').submit(function(){
 			var flag=true;
 			$.each(a, function(i,v){
@@ -92,26 +91,19 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 			});
 		});
 	},
-	postDraw:function(data){
-			var a=[],aa=[],o={};
-			var $ = this.getDom();
-			$(".nav-collapse").html(this.drawMainMenu(data));
-			
-			var metadata=this.define_schema();
-			a.push("<form class=\"well span3\" method=\"post\" action=\"insert?sid="+this.sid+"\">");
-			dojo.each(metadata,function(k,v,i){
-						if(v[C.FORMAT]){
-							a.push("<div class=\"control-group\">");
-							a.push(v[C.FORMAT].call(this,k,v,i,this.table_name));
-							a.push("</div>");
-						}
-						
-			},this);
-			a.push("<button type=\'submit\' class=\'btn btn-primary\'>"+I18N[C.OK]+"</button>");
-			a.push("</form>");
-			$("#apbody").html(a.join("\n"));
-			
-			var s=$.html();
-			return s;
-		}
+	postDrawEx:function($,data){
+		var a=[];
+		var metadata=this.define_schema();
+		a.push("<form class=\"well span3\" method=\"post\" action=\"insert?sid="+this.sid+"\">");
+		dojo.each(metadata,function(k,v,i){
+			if(v[C.FORMAT]){
+				a.push("<div class=\"control-group\">");
+				a.push(v[C.FORMAT].call(this,k,v,i,this.table_name));
+				a.push("</div>");
+			}
+		},this);
+		a.push("<button type=\'submit\' class=\'btn btn-primary\'>"+I18N[C.OK]+"</button>");
+		a.push("</form>");
+		$("#apBody").html(a.join("\n"));
+	}
 });

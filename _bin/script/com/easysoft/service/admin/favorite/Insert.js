@@ -13,7 +13,8 @@
  * @author wxlwang
  */
 dojo.provide("com.easysoft.service.admin.favorite.Insert");
-dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.service.admin.favorite.Add" , {
+dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.service.admin.Start" , {
+	table_name:C.FAVORITE,
 	postCreate:function(){
 		var a=[],o={},op={};
 		var op=this.getsbo();

@@ -13,15 +13,15 @@
  * @author wxlwang
  */
 dojo.provide("com.easysoft.service.admin.favorite.Remove");
-dojo.declare( "com.easysoft.service.admin.favorite.Remove" , "com.easysoft.service.admin.favorite.Add" , {
+dojo.declare( "com.easysoft.service.admin.favorite.Remove" , "com.easysoft.service.admin.Start" , {
 	table_name:C.FAVORITE,
-       postCreate:function(){
+    postCreate:function(){
 		var op=this.getsbo();
 		op[C.RMID] =this.queryString[C.RMID];;
 		op[C.TABLE_NAME] =this.table_name;
 		op[C.STORED_METHOD] ='admin_Remove';
 		this.exec(op);
-       },
+    },
 	postDraw:function(data){
 		this.redirect("list?"+C.SID+"="+data[C.SID]);
 	}

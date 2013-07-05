@@ -13,8 +13,7 @@
  * @author wxlwang
  */
 dojo.provide("com.easysoft.service.admin.Start");
-dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" , {
-	template_file:"start.html",
+dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Index" , {
 	getsbo:function(sname){
 		var op=this.getbo();
 		this.sid=this.queryString.sid;
@@ -27,16 +26,6 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 		op[C.STORED_METHOD] ='admin_Start';
 		this.exec(op);
     },
-	postDraw:function(data){
-		var a=[],o={};
-		var sid=this.sid;
-		var $ = this.getDom();
-		$("#left_bar").remove();
-		$("#right_bar").removeClass("span9").addClass("span12");
-		$(".nav-collapse").html(this.drawMainMenu(data));
-		var s=$.html();
-		return s;
-	},
 	drawMainMenu:function(data){
 		var sid=this.sid;
 		var a=[],o={};
@@ -62,7 +51,6 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Login" 
 		},this);
 		a.push("</ul>");
 		var o=mlist[C.RIGHT][0];
-		//var len = list.length;
 		a.push("<ul class='nav pull-right'>");
     			a.push("<li>");
 			a.push("<a href='"+o[C.URL]+"?sid="+sid+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");

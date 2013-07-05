@@ -22,18 +22,20 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 		var op=this.getbo();
 		op[C.STORED_METHOD] =C.SHOW_FAVORITE;
 		 this.exec(op);
-       },
+    },
 	postDraw:function(data){
 		var a=[],o={};
 		var sid=this.sid;
 		var $ = this.getDom();
-		$("#left_bar").remove();
 		var tilte=I18N[C.SITE_NAME];
 		$("title").html(tilte);
 		$(".brand").html(tilte);
-		$("#right_bar").removeClass("span9").addClass("span12");
-      		$(".nav-collapse").html(this.drawMainMenu(data));
-      		
+      	$(".nav-collapse").html(this.drawMainMenu(data));
+		this.postDrawEx($,data);
+		return $.html();
+	},
+	postDrawEx:function($,data){
+		var a=[];
 		a.push("<table class='table table-bordered table-striped'>");
 		dojo.each(data.list,function(k,v,i){
 			var o=v;
@@ -43,17 +45,12 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 			dojo.each(o.list,function(k,v,i){
 				a.push("&nbsp;");
 				a.push("<a target='_blank' href='"+URL[C.EASYSOFT+C.GO]+"?"+C.TO+"="+v[C.URL]+"'>"+v[C.NAME]+"</a>");
-
 			});
 			a.push("</td>");
 			a.push("</tr>");
 		});
 		a.push("</table>");
-
-		$("#right_bar").html(a.join("\n"));
-
-		var s=$.html();
-		return s;
+		$("#apBody").html(a.join("\n"));
 	},
     drawMainMenu:function(data){
 		var a=[],o={};
@@ -79,7 +76,7 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 		a.push("<ul class='nav pull-right'>");
 		dojo.each(mlist[C.RIGHT],function(k,v,i){
 			a.push("<li>");
-			a.push("<a target='_blank' href='"+v[C.URL]+"'>"+I18N[v[C.MODULE_NAME]]+"</a>");
+			a.push("<a href='"+v[C.URL]+"'>"+I18N[v[C.MODULE_NAME]]+"</a>");
 			a.push("</li>");
 		});
 		a.push("</ul>");
