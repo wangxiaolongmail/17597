@@ -74,7 +74,7 @@ db.system.js.save({_id:"constant",value:function () {
 				USER_NAME:"USER_NAME",
 				MID:"mid",
 				MODULE:"module",
-				MODULE_NAME:"MODULE_NAME",
+				URL_NAME:"URL_NAME",
 				METHOD:"method",
 				MODULE_URL:"MODULE_URL",
 				NAME:"Name",
@@ -105,6 +105,7 @@ db.system.js.save({_id:"constant",value:function () {
 				TYPE:"TYPE",
 				UPDATE_TIME:"UPDATE_TIME",
 				URL:"URL",
+				URL_NAME:"URL_NAME",
 				USER:"user",
 				VALUE:"VALUE"
         };

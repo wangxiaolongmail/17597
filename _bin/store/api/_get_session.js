@@ -24,7 +24,7 @@ db.system.js.save({_id:"_get_session",value:function (params) {
 										db.session.update(lookup,{'$set':op});
 										var op={};
 										op.ok=true;
-										op[C.CURRENT_MODULE]=o[C.MODULE_NAME];
+										op[C.CURRENT_MODULE]=o[C.URL_NAME];
 										op[C.ROLE_NAME]=o[C.ROLE_NAME];
 										op[C.USER_NAME]=rs[C.USER_NAME];
 										result=op;

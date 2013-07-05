@@ -34,7 +34,7 @@ db.system.js.save({_id:"init",value:function () {
 	
 	var map={};
 	_each(a,function(k,v,i){
-		map[v[C.MODULE_NAME]]=v[C.MODULE_URL];
+		map[v[C.URL_NAME]]=v[C.MODULE_URL];
 	});
 	result[C.URL]=map;
 	result[C.ROLE]=_get_role();
