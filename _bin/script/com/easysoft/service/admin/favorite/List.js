@@ -17,9 +17,10 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 	table_name:C.FAVORITE,
     postCreate:function(){
 		var a=[],o={},op={};
+		this.cat=this.queryString[C.CATEGORY];
 		var op=this.getsbo();
 		op[C.PAGE] =this.queryString[C.PAGE];
-		op[C.CATEGORY] =this.queryString[C.CATEGORY];
+		op[C.CATEGORY] =this.cat;
 		op[C.TABLE_NAME] =this.table_name;
 		op[C.TABLE+C.TYPE] =C.FAVORITE_TYPE;
 		op[C.STORED_METHOD] ='admin_List';
@@ -185,7 +186,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 		var s="";
 		s+="<h4>"+data.tablename+"</h4>";
 		s+=this.drawButton(data);
-		s+=this.drawLinkSelect(this.m_select);
+		s+=this.drawLinkSelect(this.m_select,this.cat);
 		s+="<div class=\"input-append\">";
 		s+="<input class=\"span2\" id=\"appendedInputButton\" type=\"text\">";
 		s+="<button class=\"btn\" type=\"button\">Go!</button>";

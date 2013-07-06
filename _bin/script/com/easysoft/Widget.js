@@ -57,7 +57,7 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 		dojo.db.eval(cmd, dojo.hitch(this,this.draw));
 	},
 	drawDebug:function(data){
-		if(ROLE[data[C.ROLE_NAME]][C.IS_DEBUG]){
+		if(!ROLE[data[C.ROLE_NAME]][C.IS_DEBUG]){
 			var a=[];
 			a.push("<script type='text/javascript'>");
 			a.push("window.debug="+dojo.toString(data,true));
@@ -178,7 +178,10 @@ dojo.declare( "com.easysoft.service.Tempalte" , "com.easysoft.Widget" , {
 	 drawLinkSelect:function(o,val){
 		var a=[];
 		a.push("<select name=\""+o[C.FIELD]+"\">");
-		if(o[C.LINK]){
+		if(o[C.LINK]){		
+			a.push("<option value=''>");
+			a.push(I18N[C.ALL]);
+			a.push("</option>");
 			dojo.each(DICT[o[C.LINK]],function(k,v,i){
 				if(k===val){
 					a.push("<option selected value='"+k+"'>");
