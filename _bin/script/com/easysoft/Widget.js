@@ -180,7 +180,6 @@ dojo.declare( "com.easysoft.service.Tempalte" , "com.easysoft.Widget" , {
 		a.push("<select name=\""+o[C.FIELD]+"\">");
 		if(o[C.LINK]){		
 			a.push("<option value=''>");
-			a.push(I18N[C.ALL]);
 			a.push("</option>");
 			dojo.each(DICT[o[C.LINK]],function(k,v,i){
 				if(k===val){

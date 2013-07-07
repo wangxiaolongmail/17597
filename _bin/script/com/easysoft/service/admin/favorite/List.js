@@ -47,7 +47,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			{
 				$("#list1 input[type=\'radio\']:checked").each(function(){
 					var rmid=$(this).val();
-					if(confirm("Is it delete record?")){
+					if(confirm("是否删除该条记录?")){
 						location.href="Remove?sid="+sid+"&rmid="+rmid;
 					}
 				});

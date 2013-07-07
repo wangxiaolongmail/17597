@@ -8,11 +8,11 @@ db.system.js.save({_id:"_get_page",value:function (params,sess) {
 		pageSize=params.pageSize||pub.pageSize,
 		recordCount=0,
 		pageRecordCount=0,
-		category=params[C.CATEGORY]||C.ALL;	
-		if(category==C.ALL){
+		category=params[C.CATEGORY]||"";	
+		if(category==""){
 			var option={USER_NAME:sess[C.USER_NAME]};
 		}else{
-			var option={category:category};
+			var option={category:category,USER_NAME:sess[C.USER_NAME]};
 		}
 		recordCount=db[tablename].find(option).count();
 		var list =db[tablename].find(option).limit(pageSize).skip(pageSize*(page-1)).toArray();
