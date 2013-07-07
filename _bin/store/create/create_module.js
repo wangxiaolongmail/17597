@@ -44,14 +44,6 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.URL]="/easysoft/admin/favorite/"+C.UPDATE+C.SUBMIT;
 	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.favorite."+C.UPDATE+C.SUBMIT;
 	obj[C.METHOD]=C.POST;
-	_insert(C.MODULE,obj);
-		
-	var obj={};
-	obj[C.MODULE_NAME]=C.FAVORITE;
-	obj[C.URL_NAME]=C.EASYSOFT+C.ADMIN+C.FAVORITE+C.SAVE;
-	obj[C.URL]="/easysoft/admin/favorite/save";
-	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.favorite.Save";
-	obj[C.METHOD]=C.POST;
 	_insert(C.MODULE,obj);	
 		
 	var obj={};
@@ -89,14 +81,6 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.favorite_type.Add";
 	obj[C.METHOD]=C.GET;
 	_insert(C.MODULE,obj);
-		
-	var obj={};
-	obj[C.MODULE_NAME]=C.FAVORITE_TYPE;
-	obj[C.URL_NAME]=C.EASYSOFT+C.ADMIN+C.FAVORITE_TYPE+C.SAVE;
-	obj[C.URL]="/easysoft/admin/favorite_type/save";
-	obj[C.SERVLET_CLASS]="com.easysoft.service.admin.favorite_type.Save";
-	obj[C.METHOD]=C.POST;
-	_insert(C.MODULE,obj);	
 		
 	var obj={};
 	obj[C.MODULE_NAME]=C.FAVORITE_TYPE;
