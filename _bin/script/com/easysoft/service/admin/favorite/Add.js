@@ -94,7 +94,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Add" , "com.easysoft.service.
 	postDrawEx:function($,data){
 		var a=[];
 		var metadata=this.define_schema();
-		a.push("<form class=\"well span3\" method=\"post\" action=\"insert?sid="+this.sid+"\">");
+		a.push("<form class=\"well span3\" method=\"post\" action=\""+C.INSERT+C.SUBMIT+"?sid="+this.sid+"\">");
 		dojo.each(metadata,function(k,v,i){
 			if(v[C.FORMAT]){
 				a.push("<div class=\"control-group\">");

@@ -34,7 +34,7 @@ db.system.js.save({_id:"constant",value:function () {
 				INT:"INT",
 				INDEX:"INDEX",
 				INPUT:"INPUT",
-				INSERT:"INSERT",
+				INSERT:"Insert",
 				IS_NEW:"IS_NEW",
 				IS_EDIT:"IS_EDIT",
 				IS_DELETE:"IS_DELETE",
