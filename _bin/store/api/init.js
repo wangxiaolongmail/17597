@@ -1,6 +1,6 @@
 db.system.js.save({_id:"init",value:function () {
 	var C=constant();
-	
+	create();
     var result={C:C};
 	var schema=_get_schema();
 	result[C.SCHEMA]=schema;

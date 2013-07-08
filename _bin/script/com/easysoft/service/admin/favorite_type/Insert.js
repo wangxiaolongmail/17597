@@ -12,7 +12,7 @@
  * 
  * @author wxlwang
  */
-dojo.provide("com.easysoft.service.admin.favorite_type.Add");
-dojo.declare( "com.easysoft.service.admin.favorite_type.Add" , "com.easysoft.service.admin.favorite.Add" , {
+dojo.provide("com.easysoft.service.admin.favorite_type.Insert");
+dojo.declare( "com.easysoft.service.admin.favorite_type.Insert" , "com.easysoft.service.admin.favorite.Insert" , {
 	table_name:C.FAVORITE_TYPE
 });

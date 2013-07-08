@@ -60,7 +60,7 @@ db.system.js.save({_id:"constant",value:function () {
 				LOGOUT:"LOGOUT",
 				LABEL:"label",
 				LEFT:"LEFT",
-				LIST:"LIST",
+				LIST:"List",
 				LINK:"Link",
 				OK:"OK",
 				OBJECT:"Object",

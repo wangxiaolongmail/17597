@@ -27,6 +27,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.InsertSubmit" , "com.easysoft
 		if(data[C.IS_DICT]){
 			dojo.mixin(DICT,dojo.clone(data[C.DICT]));
 		}
-		this.redirect("list?"+C.SID+"="+data[C.SID]);
+		this.redirect(C.LIST+"?"+C.SID+"="+data[C.SID]);
 	}
 });

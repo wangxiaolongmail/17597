@@ -64,7 +64,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			var cur_obj=this.cur_obj;
             		a.push("<div id=\"tool_button\" class=\"btn-group\" style=\"padding-bottom:10px\">");
 			if(cur_obj[C.IS_NEW]){
-				a.push("<a class='btn "+C.IS_NEW+"' href='add?sid="+this.sid+"'>");
+				a.push("<a class='btn "+C.IS_NEW+"' href='"+C.INSERT+"?sid="+this.sid+"'>");
 				a.push(I18N[C.ADD]);
 				a.push("</a>"); 
 			}

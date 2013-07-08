@@ -23,6 +23,6 @@ dojo.declare( "com.easysoft.service.admin.favorite.Remove" , "com.easysoft.servi
 		this.exec(op);
     },
 	postDraw:function(data){
-		this.redirect("list?"+C.SID+"="+data[C.SID]);
+		this.redirect(C.LIST+"?"+C.SID+"="+data[C.SID]);
 	}
 });

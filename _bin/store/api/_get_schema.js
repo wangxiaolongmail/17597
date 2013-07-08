@@ -3,7 +3,7 @@ db.system.js.save({_id:"_get_schema",value:function (name) {
 		var o={};
 		o[C.FAVORITE]={
 			IS_PRI:true,
-			LIST:[
+			List:[
 					{field:C._ID,TYPE:C._ID},
 					{field:C.NAME,TYPE:C.NAME,IS_REQUIRED:true},
 					{field:C.CATEGORY,TYPE:C.CATEGORY,Link:C.FAVORITE_TYPE},
@@ -14,7 +14,7 @@ db.system.js.save({_id:"_get_schema",value:function (name) {
 		o[C.FAVORITE_TYPE]={
 			IS_DICT:true,
 			IS_PRI:true,
-			LIST:[
+			List:[
 					{field:C._ID,TYPE:C._ID},
 					{field:C.NAME,TYPE:C.NAME,IS_REQUIRED:true},
 					{field:C.PRI,TYPE:C.PRI}
@@ -22,7 +22,7 @@ db.system.js.save({_id:"_get_schema",value:function (name) {
 		};
 		o[C.USER]={
 			IS_PRI:true,
-			LIST:[
+			List:[
 					{field:C.NAME,TYPE:C.NAME},
 					{field:C.USER_NAME,TYPE:C.NAME,IS_REQUIRED:true},
 					{field:C.PASSWORD,TYPE:C.PASSWORD,IS_REQUIRED:true},
