@@ -12,10 +12,7 @@
  * 
  * @author wxlwang
  */
-dojo.provide("com.easysoft.service.admin.log.getLogList");
-dojo.declare( "com.easysoft.service.admin.log.getLogList" , "com.easysoft.service.admin.Index" , {
-	templatePath:$c.c_templ_easysoft_service_Blank,
-	postMixInProperties:function(){
-		this.result=dojo.toString(dojo.log_list);
-	}
+dojo.provide("com.easysoft.service.admin.department.InsertSubmit");
+dojo.declare( "com.easysoft.service.admin.department.InsertSubmit" , "com.easysoft.service.admin.favorite.InsertSubmit" , {
+		table_name:C.DEPARTMENT
 });

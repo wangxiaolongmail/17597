@@ -1,6 +1,6 @@
 db.system.js.save({_id:"constant",value:function () {
         return {
-				ADMIN:"ADMIN",
+				ADMIN:"admin",
 				AUTHORITY:"authority",
 				APPLICATION:"Application",
 				ADDRESS:"Address",
@@ -18,6 +18,7 @@ db.system.js.save({_id:"constant",value:function () {
 				DEBUG:"Debug",
 				DICT:"DICT",
 				DATE:"DATE",
+				DEPARTMENT:"department",
 				EDIT:"EDIT",
 				EASYSOFT:"EASYSOFT",
 				ERROR:"error",
@@ -64,6 +65,8 @@ db.system.js.save({_id:"constant",value:function () {
 				LINK:"Link",
 				OK:"OK",
 				OBJECT:"Object",
+				ORGANIZE:"organize",
+				ORGANIZE_TYPE:"organize_type",
 				PRI:"PRI",
 				PAGE:"page",
 				PATH_NAME:"pathname",

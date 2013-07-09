@@ -12,7 +12,7 @@
  * 
  * @author wxlwang
  */
-dojo.provide("com.easysoft.service.admin.log.MemoryLog");
-dojo.declare( "com.easysoft.service.admin.log.MemoryLog" , "com.easysoft.service.admin.Index" , {
-	m_page_body_widget_name:"com.easysoft.client.admin.MemoryLog"
+dojo.provide("com.easysoft.service.admin.organize.UpdateSubmit");
+dojo.declare( "com.easysoft.service.admin.organize.UpdateSubmit" , "com.easysoft.service.admin.favorite.UpdateSubmit" , {
+	table_name:C.ORGANIZE
 });

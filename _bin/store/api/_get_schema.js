@@ -20,6 +20,33 @@ db.system.js.save({_id:"_get_schema",value:function (name) {
 					{field:C.PRI,TYPE:C.PRI}
 			]
 		};
+		o[C.DEPARTMENT]={
+			IS_DICT:true,
+			IS_PRI:true,
+			List:[
+					{field:C._ID,TYPE:C._ID},
+					{field:C.NAME,TYPE:C.NAME,IS_REQUIRED:true},
+					{field:C.PRI,TYPE:C.PRI}
+			]
+		};
+		o[C.ORGANIZE]={
+			IS_DICT:true,
+			IS_PRI:true,
+			List:[
+					{field:C._ID,TYPE:C._ID},
+					{field:C.NAME,TYPE:C.NAME,IS_REQUIRED:true},
+					{field:C.PRI,TYPE:C.PRI}
+			]
+		};
+		o[C.ORGANIZE_TYPE]={
+			IS_DICT:true,
+			IS_PRI:true,
+			List:[
+					{field:C._ID,TYPE:C._ID},
+					{field:C.NAME,TYPE:C.NAME,IS_REQUIRED:true},
+					{field:C.PRI,TYPE:C.PRI}
+			]
+		};
 		o[C.USER]={
 			IS_PRI:true,
 			List:[
