@@ -98,6 +98,14 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.METHOD]=C.GET;
 	obj[C.IS_MENU]=true;
 	_insert(C.MODULE,obj);
+		
+	var obj={};
+	obj[C.MODULE_NAME]=C.PROFILE;
+	obj[C.URL_NAME]=C.PROFILE+C.INTRODUCE;
+	obj[C.URL]=path+C.PROFILE+"/"+C.INTRODUCE;
+	obj[C.SERVLET_CLASS]=COM+C.PROFILE+"."+C.INTRODUCE;
+	obj[C.METHOD]=C.GET;
+	_insert(C.MODULE,obj);
 	
 	var a=[C.FAVORITE,C.FAVORITE_TYPE,C.DEPARTMENT,C.ORGANIZE,C.ORGANIZE_TYPE];
 	_each(a,function(k,v,i){
@@ -124,7 +132,7 @@ db.system.js.save({_id:"create_module",value:function () {
 		var obj={};
 		obj[C.MODULE_NAME]=v;
 		obj[C.URL_NAME]=C.EASYSOFT+C.ADMIN+v+C.UPDATE;
-		obj[C.URL]=path+C.FAVORITE+"/"+C.UPDATE;
+		obj[C.URL]=path+v+"/"+C.UPDATE;
 		obj[C.SERVLET_CLASS]=COM+v+"."+C.UPDATE;
 		obj[C.METHOD]=C.GET;
 		_insert(C.MODULE,obj);
@@ -132,7 +140,7 @@ db.system.js.save({_id:"create_module",value:function () {
 		var obj={};
 		obj[C.MODULE_NAME]=v;
 		obj[C.URL_NAME]=C.EASYSOFT+C.ADMIN+v+C.UPDATE+C.SUBMIT;
-		obj[C.URL]=path+C.FAVORITE+"/"+C.UPDATE+C.SUBMIT;
+		obj[C.URL]=path+v+"/"+C.UPDATE+C.SUBMIT;
 		obj[C.SERVLET_CLASS]=COM+v+"."+C.UPDATE+C.SUBMIT;
 		obj[C.METHOD]=C.POST;
 		_insert(C.MODULE,obj);	
@@ -140,7 +148,7 @@ db.system.js.save({_id:"create_module",value:function () {
 		var obj={};
 		obj[C.MODULE_NAME]=v;
 		obj[C.URL_NAME]=C.EASYSOFT+C.ADMIN+v+C.INSERT+C.SUBMIT;
-		obj[C.URL]=path+C.FAVORITE+"/"+C.INSERT+C.SUBMIT;
+		obj[C.URL]=path+v+"/"+C.INSERT+C.SUBMIT;
 		obj[C.SERVLET_CLASS]=COM+v+"."+C.INSERT+C.SUBMIT;
 		obj[C.METHOD]=C.POST;
 		_insert(C.MODULE,obj);	
