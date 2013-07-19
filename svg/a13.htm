@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<div id="rect" style="position:absolute;width:100px;height:100px;background:red"></div>
+<div id="rect2" style="position:absolute;width:100px;height:100px;background:green"></div>
+<body>
+    <script type="text/javascript">
+	var _d=document;
+	function byid(o){
+		return _d.getElementById(o);
+	}
+	function vDrag(o,ho){
+		ho=ho||o;
+		ho.onmousedown=function(a){
+			o.style.zIndex = 1;
+			var d=_d;
+			var x=a.layerX,y=a.layerY;
+			ho.setCapture();
+			d.onmousemove=function(e){
+				var tx=e.pageX-x,ty=e.pageY-y;
+				o.style.left = tx+"px";
+				o.style.top = ty+"px";
+				draw();
+			};
+			d.onmouseup=function(){
+				ho.releaseCapture();
+				d.onmousemove=null;
+				d.onmouseup=null;
+			};
+		};
+	}
+	function draw(){
+		var s="";
+		var o=byid("rect");
+		var x=parseInt(o.style.left||0);
+		var y=parseInt(o.style.top||0);
+		s=s+x+","+y+" ";
+		var o=byid("rect2");
+		var x=parseInt(o.style.left||0);
+		var y=parseInt(o.style.top||0);
+		s=s+x+","+y+" ";
+		drawLine(s);
+	}
+	vDrag(byid("rect"));
+	vDrag(byid("rect2"));
+    </script>
+<svg width="640" height="480" onload="init(evt)">
+
+<script><![CDATA[
+var g_node=null;
+function init(evt)
+{
+	var svgdoc=evt.target.ownerDocument;
+	g_node=svgdoc.createElementNS("http://www.w3.org/2000/svg","polyline");
+	var group=svgdoc.getElementById("group");
+	group.appendChild(g_node); 
+}
+function drawLine(points)
+{
+	g_node.setAttribute("style","fill:white;stroke:red;stroke-width:2");
+	g_node.setAttribute("points",points);
+}
+]]></script>
+
+<g id="group"></g>
+</svg>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+		.icon{
+			background-image:url(server.png);
+			width:45px;
+			height:45px;
+		}
+		.icon1{
+			background-image:url(et.png);
+			width:45px;
+			height:45px;
+		}
+		.icon2{
+			background-image:url(deploy.png);
+			width:45px;
+			height:45px;
+		}
+		.icon3{
+			background-image:url(connect.png);
+			width:45px;
+			height:45px;
+		}
+		.icon4{
+			background-image:url(vsp.png);
+			width:45px;
+			height:45px;
+		}
+		.icon5{
+			background-image:url(add.png);
+			width:20px;
+			height:20px;
+		}
+    </style>
+<script>
+	var _svg_d=null;
+	var _wc=8;
+	var _d=document;
+	var data={
+		lstyle:"fill:white;stroke:#ddd;stroke-width:3",
+		bg:"#eee",
+		border:"2px solid #ddd",
+		borderRadius: "5px",
+		borderWidth: 2,
+		adjustWidth: 6,
+		lmode:2,
+		zIndex:1,
+		w:120,
+		h:60,
+		iconWidth:50,
+		buttonHight:30,
+		buttonWidth:100,
+		buttonPadding:2,
+		typelist:[
+			{
+				isOnlyIcon:false,
+				iconClass:"icon"
+			},
+			{
+				isOnlyIcon:false,
+				iconClass:"icon1"
+			},
+			{
+				isOnlyIcon:false,
+				iconClass:"icon2"
+			},
+			{
+				isOnlyIcon:false,
+				iconClass:"icon3"
+			},
+			{
+				isOnlyIcon:false,
+				iconClass:"icon4"
+			},
+			{
+				isOnlyIcon:true,
+				iconClass:"icon5"
+			}
+		],
+		list:[
+		{
+			typeid:0,
+			title:"Web Application",
+			x:20,
+			y:100,
+			to:[
+				{id:1,title:"a1"}
+				]
+			},
+		{
+			typeid:1,
+			title:"Environment Target",
+			x:200,
+			y:100,
+			isBranch:true,
+			to:[
+				{id:2,title:"Development"},
+				{id:3,title:"India QA team"},
+				{id:4,title:"Production"}
+				]
+			},
+		{
+			typeid:2,
+			title:"Deploy",
+			x:500,
+			y:70,
+			to:[
+				{id:5,title:"b1"}
+				]
+			},
+		{
+			typeid:2,
+			title:"Deploy",
+			x:500,
+			y:180,
+			to:[
+				{id:6,title:"b1"}
+				]
+			},
+		{
+			typeid:3,
+			title:"Connect",
+			x:500,
+			y:280,
+			to:[
+				{id:7,title:"b1"}
+				]
+			},
+		{
+			typeid:4,
+			title:"Joe's Dev Env",
+			x:680,
+			y:70
+			},
+		{
+			typeid:4,
+			title:"WAS QA V1.2",
+			x:680,
+			y:180
+			},
+		{
+			typeid:4,
+			title:"Production WAS Environment",
+			x:680,
+			y:280
+			},
+		{
+			typeid:5,
+			title:"q",
+			x:780,
+			y:380
+			}
+		]
+	};
+	function _each(a,f){
+		if(!a) return;
+		for(var i=0;i<a.length;i++) f(a[i],i);
+	}
+	function _drag(o){
+		o.n.onmousedown=function(e){
+			var x=e.layerX,y=e.layerY;
+			o.n.setCapture();
+			_d.onmousemove=function(e){
+				draw(o,e.pageX-x,e.pageY-y);
+			};
+			_d.onmouseup=function(){
+				o.n.releaseCapture();
+				_d.onmousemove=_d.onmouseup=null;
+			};
+		};
+	}
+	function _drawElement(o){
+		if(!o.n){
+			var typeObj=data.typelist[o.typeid];
+			o.n=_d.createElement("div");
+			if(typeObj.isOnlyIcon){
+				var left=_d.createElement("div");
+				left.className=typeObj.iconClass;
+				o.n.appendChild(left);
+			}else{
+				var wrap=_d.createElement("div");
+				o.n.appendChild(wrap);
+				o.wrap=wrap;
+				var wrapButton=_d.createElement("div");
+				o.n.appendChild(wrapButton);
+				o.wrapButton=wrapButton;
+				wrapButton.align="right";
+				var layout=_d.createElement("div");
+				layout.className="layout";
+				wrap.appendChild(layout);
+					var left=_d.createElement("div");
+					left.style="float:left;";
+					left.className=typeObj.iconClass;
+					layout.appendChild(left);
+					var right=_d.createElement("div");
+					right.style="padding-left:"+data.iconWidth+"px";
+					layout.appendChild(right);
+					right.innerHTML=o.title;
+				var sty=o.wrap.style;
+				sty.width = o.w+"px";
+				sty.height = o.h+"px";
+				sty.background = o.bg;
+				sty.border = o.border;
+				sty.borderRadius = o.borderRadius;
+				if(o.isBranch){
+					_each(o.to,function(item){
+						var n=_d.createElement("div");
+						var sty=n.style;
+						sty.width = data.buttonWidth+"px";
+						sty.height = data.buttonHight+"px";
+						sty.background = o.bg;
+						sty.border = o.border;
+						sty.borderRadius = o.borderRadius;
+						sty.marginTop=data.buttonPadding+"px";
+						n.innerHTML=item.title;
+						o.wrapButton.appendChild(n);
+						item.n=n;
+					});
+				}
+			}
+			_d.body.appendChild(o.n);
+		}
+		var sty=o.n.style;
+		sty.position = "absolute";
+		sty.left = o.x+"px";
+		sty.top = o.y+"px";
+		sty.zIndex = o.zIndex;
+		_each(o.to,function(item){
+			if(!item.nline){
+				var group=_svg_d.getElementById("group");
+				var node=_svg_d.createElementNS("http://www.w3.org/2000/svg","path");
+				item.nline=node;
+				group.appendChild(node);
+			}
+		});
+	}
+	function _adjust(flag,isEnd){
+		return isEnd?flag*data.adjustWidth:0;
+	}
+	function _getLMPoint(o,flag,isEnd,i){
+		var x=o.x+o.w-_wc+_adjust(flag,isEnd)+2*data.borderWidth;
+		var y=o.y+o.h/2-_wc;
+		return {x:x,y:y};
+	}
+	function _getRMPoint(o,flag,isEnd,i){
+		var x=o.x-_wc+_adjust(flag,isEnd);
+		var y=o.y+o.h/2-_wc;
+		return {x:x,y:y};
+	}
+	function _getTMPoint(o,flag,isEnd,i){
+		var y=o.y-_wc;
+		var x=o.x+o.w/2-_wc+_adjust(flag,isEnd);
+		return {x:x,y:y};
+	}
+	function _getBMPoint(o,flag,isEnd,i){
+		var y=o.y+o.h-_wc+_adjust(flag,isEnd);
+		var x=o.x+o.w/2-_wc;
+		if(o.isBranch){
+			var len=o.to.length;
+			y=y+len*(data.buttonHight+data.buttonPadding+2*data.borderWidth);
+		}
+		return {x:x,y:y};
+	}
+	function _getLBPoint(o,flag,isEnd,i){
+		var x=o.x+o.w-_wc+_adjust(flag,isEnd);
+		var y=o.y+o.h-_wc+i*data.buttonHight+(i+1)*data.buttonPadding+(i+1)*2*data.borderWidth+data.buttonHight/2;
+		return {x:x,y:y};
+	}
+	function _getRBPoint(o,flag,isEnd,i){
+		var x=o.x-_wc+data.w-data.buttonWidth+_adjust(flag,isEnd);
+		var y=o.y+o.h-_wc+i*data.buttonHight+(i+1)*data.buttonPadding+(i+1)*2*data.borderWidth+data.buttonHight/2;
+		return {x:x,y:y};
+	}
+	function drawLine(){
+		_each(data.list,function(obj){
+			_each(obj.to,function(item,i){
+				var s="";
+				if(obj.isBranch){
+					var oo1=obj;oo2=data.list[item.id];
+					if(oo1.x>(oo2.x+oo2.w)){
+						var flag=1;
+						var o1=_getRBPoint(oo1,flag,false,i);
+						var o2=_getLMPoint(oo2,flag,true,i);
+					}else if(oo1.x>oo2.x){
+					}else{
+						var flag=1;
+						var o1=_getLBPoint(oo1,flag,false,i);
+						var o2=_getRMPoint(oo2,flag,true,i);
+					}
+				}else{
+					var oo1=obj;oo2=data.list[item.id];
+					if(oo1.x>(oo2.x+oo2.w)){
+						var flag=1;
+						var o1=_getRMPoint(oo1,flag,false,i);
+						var o2=_getLMPoint(oo2,flag,true,i);
+					}else if(oo1.x>oo2.x){
+						if(oo1.y>oo2.y){
+							var flag=1;
+							var o1=_getTMPoint(oo1,flag,false,i);
+							var o2=_getBMPoint(oo2,flag,true,i);
+						}else{
+							var flag=1;
+							var o1=_getBMPoint(oo1,flag,false,i);
+							var o2=_getTMPoint(oo2,flag,true,i);
+						}
+					}else{
+						var flag=-1;
+						var o1=_getLMPoint(oo1,flag,false,i);
+						var o2=_getRMPoint(oo2,flag,true,i);
+					}
+				}
+				s=s+"M "+o1.x+","+o1.y+" ";
+				var x=(o2.x-o1.x)/2+o1.x;
+				s=s+"Q "+x+","+o1.y+" ";
+				var y=(o2.y-o1.y)/2+o1.y;
+				s=s+" "+x+","+y+" ";
+				s=s+"T "+(o2.x)+","+o2.y+" ";
+				svg_drawLine(obj,s,i);
+			});
+		});
+	}
+	function draw(o,x,y){
+		_each(data.list,function(obj){
+			if(o==obj){
+				obj.x=x; obj.y=y;
+				_drawElement(obj);
+			}
+		});
+		drawLine();
+	}
+	function main(){
+		_each(data.list,function(o){
+			o.bg=o.bg||data.bg;
+			o.lmode=o.lmode||data.lmode;
+			o.zIndex=o.zIndex||data.zIndex;
+			o.w=o.w||data.w;
+			o.h=o.h||data.h;
+			o.border=o.border||data.border;
+			o.borderRadius=o.borderRadius||data.borderRadius;
+			if(o.to&&!o.lstyle) o.lstyle=data.lstyle;
+			_drawElement(o);
+			_drag(o);
+		})
+		drawLine();
+	}
+	function svg_init(evt)
+	{
+		_svg_d=evt.target.ownerDocument;
+		main();
+	}
+	function svg_drawLine(o,s1,i)
+	{
+		var node = o.to[i].nline;
+		node.setAttribute("style",o.lstyle);
+		node.setAttribute("marker-end","url(#idArrow)");
+		node.setAttribute("d",s1);
+	}
+</script>
+</head>
+<body>
+<svg width='1640' height='1480' onload='svg_init(evt)'>
+<defs>
+	<marker id="idArrow" viewBox="0 0 20 20" refX="0" refY="10" markerUnits="strokeWidth" markerWidth="3" markerHeight="10" orient="auto">
+         <path d="M 0 0 L 20 10 L 0 20 z" fill="#AAA" stroke="#ddd"/>
+    </marker>
+</defs>
+<g id='group'></g>
+</svg>
+</body>
+</html>

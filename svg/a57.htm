@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+		.icon{
+			background-image:url(server.png);
+			width:45px;
+			height:45px;
+		}
+		.icon1{
+			background-image:url(et.png);
+			width:45px;
+			height:45px;
+		}
+		.icon2{
+			background-image:url(deploy.png);
+			width:45px;
+			height:45px;
+		}
+		.icon3{
+			background-image:url(connect.png);
+			width:45px;
+			height:45px;
+		}
+		.icon4{
+			background-image:url(vsp.png);
+			width:45px;
+			height:45px;
+		}
+		.icon5{
+			background-image:url(add.png);
+			width:20px;
+			height:20px;
+		}
+		.disable_text_highlighting {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none; /* Webkit */
+			-moz-user-select: none;    /* Firefox */
+			-ms-user-select: none;     /* IE 10  */
+			/* Currently not supported in Opera but will be soon */
+			-o-user-select: none;
+			user-select: none;
+		}
+    </style>
+<script>
+	var _svg_d=document;
+	var _wc=0;
+	var _d=document;
+	var data={
+		isDragMode:false,
+		lstyle:"fill:white;stroke:#ddd;stroke-width:3",
+		bg:"#eee",
+		border:"2px solid #ddd",
+		borderRadius: "5px",
+		borderWidth: 2,
+		adjustWidth: 6,
+		lmode:2,
+		zIndex:1,
+		w:120,
+		h:60,
+		iconWidth:50,
+		buttonHight:30,
+		buttonWidth:100,
+		buttonPadding:2,
+		containerWidth:180,
+		containerHeight:500,
+		containerMargginX:10,
+		containerMargginY:10,
+		containerMargginGap:10,
+		containerPaddingY:60,
+		containerPaddingGap:20,
+		containerList:[
+			{title:"Virtual Application Component:"},
+			{title:"Rules / Policies:"},
+			{title:"Actions:"},
+			{title:"Virtual System Patterns:"}
+		],
+		isFix:true,
+		isDrag:true,
+		isAjustAutoX:true,
+		isAjustAutoY:true,
+		dialog:{
+			w:400,
+			h:300,
+			pad:10,
+			headheight:30,
+			schema:[
+				{field:"Component_name",label:"Component name",type:"input"},
+				{field:"Category",label:"Category",type:"select",src:"typelist"}
+			]
+		},
+		typelist:[
+			{
+				isOnlyIcon:false,
+				iconClass:"icon",
+				name:"icon"
+			},
+			{
+				isOnlyIcon:false,
+				iconClass:"icon1",
+				name:"icon1"
+			},
+			{
+				isOnlyIcon:false,
+				iconClass:"icon2",
+				name:"icon2"
+			},
+			{
+				isOnlyIcon:false,
+				iconClass:"icon3",
+				name:"icon3"
+			},
+			{
+				isOnlyIcon:false,
+				iconClass:"icon4",
+				name:"icon4"
+			},
+			{
+				isOnlyIcon:true,
+				iconClass:"icon5",
+				name:"icon5",
+				w:20,
+				h:20
+			}
+		],
+		list:[
+		{
+			id:"s1",
+			typeid:0,
+			title:"Web Application",
+			x:20,
+			y:100,
+			to:[
+					{destid:"s9",title:"a1"}
+				],
+			houseid:0
+			},
+		{
+			id:"s9",
+			typeid:5,
+			title:"",
+			x:780,
+			y:380,
+			houseid:1,
+			from:[
+					{srcid:"s1"}
+				],
+			to:[
+					{destid:"s3",title:"Development"}
+				]
+			},
+		{
+			id:"s3",
+			typeid:2,
+			title:"Deploy",
+			x:500,
+			y:70,
+			to:[
+				{destid:"s6",title:"b1"}
+				],
+			houseid:2
+			},
+		{
+			id:"s6",
+			typeid:4,
+			title:"Joe's Dev Env",
+			x:680,
+			y:70,
+			houseid:3
+			}
+		],
+		listmap:{}
+	};
+	function _remove_node(id){
+		var obj=null;
+		data.list=_map(data.list,function(o){
+			if(o.id!=id){
+				return true;
+			}else{
+				obj=o;
+				return false;
+			}
+		});
+		return obj;
+	}
+	function clickevent(id){
+		var old_obj=_remove_node(id);
+		var newid="newID1"
+		_each(old_obj.from,function(item){
+			var srcobj=data.listmap[item.srcid];
+			_each(srcobj.to,function(ite){
+				if(ite.destid==old_obj.id){
+					ite.destid=newid;
+				}
+			});
+		});
+		var houseid=1;
+		var o=
+		{
+			id:newid,
+			typeid:1,
+			title:"Environment Target",
+			houseid:houseid,
+			isBranch:true
+			}
+		var to=o.to=old_obj.to;
+		data.list.push(o);
+		
+		houseid++;
+		var newid="newID2"
+		var o={
+			id:newid,
+			typeid:2,
+			title:"Deploy",
+			houseid:houseid,
+			to:[{destid:"newID4"}]
+			}
+		data.list.push(o);
+		to.push({destid:newid,title:"aaa"});
+		
+		var newid="newID3"
+		var o={
+			id:newid,
+			typeid:2,
+			title:"Deploy",
+			houseid:houseid,
+			to:[{destid:"newID5"}]
+			}
+		data.list.push(o);
+		to.push({destid:newid,title:"bbb"});
+		
+		houseid++;
+		var newid="newID4"
+		var o={
+			id:newid,
+			typeid:4,
+			title:"Deploy",
+			houseid:houseid
+			}
+		data.list.push(o);
+		
+		var newid="newID5"
+		var o={
+			id:newid,
+			typeid:4,
+			title:"Deploy",
+			houseid:houseid
+			}
+		data.list.push(o);
+		
+		destroy();
+		init();
+	}
+	function _get_class(object) {
+		return Object.prototype.toString.call(object).match(/^\[object\s(.*)\]$/)[1];
+	}
+	function _is_number(val) {
+		return _get_class(val) === 'Number';
+	}
+	function _is_array(val) {
+		return _get_class(val) === 'Array';
+	}
+	function _is_boolean(val) {
+		return _get_class(val) === 'Boolean';
+	}
+	function _each(a,f){
+		if(_is_array(a)) for(var i=0;i<a.length;i++) f(a[i],i);
+	}
+	function _map(a,f){
+		var arr=[];
+		if(_is_array(a)) for(var i=0;i<a.length;i++){
+			if(f(a[i],i)){
+				arr.push(a[i]);
+			}
+		}
+		return arr;
+	}
+	function _drag(o){
+		var oh=o.n||o.oh;
+		oh.onmousedown=function(e){
+			var x=e.layerX,y=e.layerY;
+			oh.setCapture();
+			_d.onmousemove=function(e){
+				if(o.nBg){
+					_move_element(o,e.pageX-x,e.pageY-y);
+				}else{
+					draw(o,e.pageX-x,e.pageY-y);
+				}
+			};
+			_d.onmouseup=function(){
+				oh.releaseCapture();
+				_d.onmousemove=_d.onmouseup=null;
+			};
+		};
+	}
+	function addBody(node,parentNode){
+		if(parentNode){
+			parentNode.appendChild(node);
+		}else{
+			var pn=_d.getElementById("my");
+			pn.appendChild(node);
+		}
+	}
+	function _drawContainer(o){
+		if(!o.n){
+			o.n=_d.createElement("div");
+			addBody(o.n);
+		}
+		var sty=o.n.style;
+		sty.position = "absolute";
+		sty.left = o.x+"px";
+		sty.top = o.y+"px";
+		sty.width = o.w+"px";
+		sty.height = o.h+"px";
+		sty.zIndex = -1;
+		sty.background = "#FEF5ED";
+		sty.border = "2px solid #FDEADA";
+		sty.borderRadius = data.borderRadius;
+		o.x2=o.x+o.w;
+		o.y2=o.y+o.h;
+		o.n.innerHTML=o.title;
+		o.autoy=data.containerPaddingY;
+	}
+	function _drawElement(o){
+		if(!o.n){
+			var typeObj=data.typelist[o.typeid];
+			o.n=_d.createElement("div");
+			o.n.setAttribute("data_id",o.id);
+			if(typeObj.isOnlyIcon){
+				var left=_d.createElement("div");
+				left.className=typeObj.iconClass;
+				o.n.appendChild(left);
+			}else{
+				var wrap=_d.createElement("div");
+				o.n.appendChild(wrap);
+				o.wrap=wrap;
+				var wrapButton=_d.createElement("div");
+				o.n.appendChild(wrapButton);
+				o.wrapButton=wrapButton;
+				wrapButton.align="right";
+				var layout=_d.createElement("div");
+				layout.className="layout";
+				wrap.appendChild(layout);
+					var left=_d.createElement("div");
+					left.style="float:left;";
+					left.className=typeObj.iconClass;
+					layout.appendChild(left);
+					var right=_d.createElement("div");
+					right.style="padding-left:"+data.iconWidth+"px";
+					layout.appendChild(right);
+					right.innerHTML=o.title;
+					right.className="disable_text_highlighting";
+				var sty=o.wrap.style;
+				sty.width = o.w+"px";
+				sty.height = o.h+"px";
+				sty.background = o.bg;
+				sty.border = o.border;
+				sty.borderRadius = o.borderRadius;
+				if(o.isBranch){
+					_each(o.to,function(item){
+						var n=_d.createElement("div");
+						var sty=n.style;
+						sty.width = data.buttonWidth+"px";
+						sty.height = data.buttonHight+"px";
+						sty.background = o.bg;
+						sty.border = o.border;
+						sty.borderRadius = o.borderRadius;
+						sty.marginTop=data.buttonPadding+"px";
+						n.innerHTML=item.title;
+						o.wrapButton.appendChild(n);
+						item.n=n;
+					});
+				}
+			}
+			addBody(o.n);
+		}
+		var sty=o.n.style;
+		sty.position = "absolute";
+		sty.left = o.x+"px";
+		sty.top = o.y+"px";
+		sty.zIndex = o.zIndex;
+		_each(o.to,function(item){
+			if(!item.nline){
+				var group=_svg_d.getElementById("group");
+				var node=_svg_d.createElementNS("http://www.w3.org/2000/svg","path");
+				item.nline=node;
+				group.appendChild(node);
+			}
+		});
+	}
+	function _adjust(flag,isEnd){
+		return isEnd?flag*data.adjustWidth:0;
+	}
+	function _getLMPoint(o,flag,isEnd,i){
+		var x=o.x+o.w-_wc+_adjust(flag,isEnd)+2*data.borderWidth;
+		var y=o.y+o.h/2-_wc;
+		return {x:x,y:y};
+	}
+	function _getRMPoint(o,flag,isEnd,i){
+		var x=o.x-_wc+_adjust(flag,isEnd);
+		var y=o.y+o.h/2-_wc;
+		return {x:x,y:y};
+	}
+	function _getTMPoint(o,flag,isEnd,i){
+		var y=o.y-_wc;
+		var x=o.x+o.w/2-_wc+_adjust(flag,isEnd);
+		return {x:x,y:y};
+	}
+	function _getButtonHeight(o){
+		if(o.isBranch){
+			var len=o.to.length;
+			var y=len*(data.buttonHight+data.buttonPadding+2*data.borderWidth);
+			return y;
+		}else{
+			return 0;
+		}
+	}
+	function _getBMPoint(o,flag,isEnd,i){
+		var y=o.y+o.h-_wc+_adjust(flag,isEnd);
+		var x=o.x+o.w/2-_wc;
+		y=y+_getButtonHeight(o);
+		return {x:x,y:y};
+	}
+	function _getLBPoint(o,flag,isEnd,i){
+		var x=o.x+o.w-_wc+_adjust(flag,isEnd);
+		var y=o.y+o.h-_wc+i*data.buttonHight+(i+1)*data.buttonPadding+(i+1)*2*data.borderWidth+data.buttonHight/2;
+		return {x:x,y:y};
+	}
+	function _getRBPoint(o,flag,isEnd,i){
+		var x=o.x-_wc+data.w-data.buttonWidth+_adjust(flag,isEnd);
+		var y=o.y+o.h-_wc+i*data.buttonHight+(i+1)*data.buttonPadding+(i+1)*2*data.borderWidth+data.buttonHight/2;
+		return {x:x,y:y};
+	}
+	function drawLine(){
+		_each(data.list,function(obj){
+			_each(obj.to,function(item,i){
+				var s="";
+				var oo1=obj;oo2=data.listmap[item.destid];
+				if(!oo2) return;
+				if(!oo2||oo2.isHidden) return;
+				if(obj.isBranch){
+					if(oo1.x>(oo2.x+oo2.w)){
+						var flag=1;
+						var o1=_getRBPoint(oo1,flag,false,i);
+						var o2=_getLMPoint(oo2,flag,true,i);
+					}else if(oo1.x>oo2.x){
+					}else{
+						var flag=1;
+						var o1=_getLBPoint(oo1,flag,false,i);
+						var o2=_getRMPoint(oo2,flag,true,i);
+					}
+				}else{
+					if(oo1.x>(oo2.x+oo2.w)){
+						var flag=1;
+						var o1=_getRMPoint(oo1,flag,false,i);
+						var o2=_getLMPoint(oo2,flag,true,i);
+					}else if(oo1.x>oo2.x){
+						if(oo1.y>oo2.y){
+							var flag=1;
+							var o1=_getTMPoint(oo1,flag,false,i);
+							var o2=_getBMPoint(oo2,flag,true,i);
+						}else{
+							var flag=1;
+							var o1=_getBMPoint(oo1,flag,false,i);
+							var o2=_getTMPoint(oo2,flag,true,i);
+						}
+					}else{
+						var flag=-1;
+						var o1=_getLMPoint(oo1,flag,false,i);
+						var o2=_getRMPoint(oo2,flag,true,i);
+					}
+				}
+				s=s+"M "+o1.x+","+o1.y+" ";
+				var x=(o2.x-o1.x)/2+o1.x;
+				s=s+"Q "+x+","+o1.y+" ";
+				var y=(o2.y-o1.y)/2+o1.y;
+				s=s+" "+x+","+y+" ";
+				s=s+"T "+(o2.x)+","+o2.y+" ";
+				svg_drawLine(obj,s,i);
+			});
+		});
+	}
+	function _adjustPos(o,x,y){
+		if(data.isFix&&_is_number(o.houseid)){
+			var house=data.containerList[o.houseid];
+			var nx=x>house.x?x:house.x;
+			var ny=y>house.y?y:house.y;
+			var nx=(nx+o.w)<house.x2?nx:(house.x2-o.w);
+			var h=o.h+_getButtonHeight(o);
+			var ny=(ny+h)<house.y2?ny:(house.y2-h);
+			o.x=nx; o.y=ny;
+		}else{
+			o.x=x; o.y=y;
+		}
+	}
+	function _adjustAutoX(o){
+		if(data.isAjustAutoX&&_is_number(o.houseid)){
+			var house=data.containerList[o.houseid];
+			var x=(house.w)/2-(o.w)/2;
+			o.x=house.x+x;
+		}
+	}
+	function _adjustAutoY(o){
+		if(data.isAjustAutoY&&_is_number(o.houseid)){
+			var house=data.containerList[o.houseid];
+			o.y=house.autoy;
+			house.autoy=house.autoy+o.h+_getButtonHeight(o)+data.containerPaddingGap;
+		}
+	}
+	function draw(o,x,y){
+		_each(data.list,function(obj){
+			if(o==obj){
+				_adjustPos(o,x,y);
+				_drawElement(obj);
+			}
+		});
+		drawLine();
+	}
+	function main(){
+		init();
+	}
+	function destroy(){
+		var pn=_d.getElementById("my");
+		pn.innerHTML="";
+		var group=_svg_d.getElementById("group");
+		group.innerHTML="";
+		_each(data.list,function(o){
+			o.n=null;
+			_each(o.to,function(obj){
+				obj.nline=null;
+			});
+		})
+		_each(data.containerList,function(o){
+			o.n=null;
+		})
+		data.listmap={};
+	}
+	function init(){
+		var x=data.containerMargginX;
+		var y=data.containerMargginY;
+		var pad=data.containerMargginGap;
+		_each(data.typelist,function(o){
+			o.w=o.w||data.w;
+			o.h=o.h||data.h;
+		})
+		_each(data.containerList,function(o){
+			o.w=o.w||data.containerWidth;
+			o.h=o.h||data.containerHeight;
+			o.y=y;
+			o.x=x;
+			x=x+o.w+pad;
+			_drawContainer(o);
+		})
+		_each(data.list,function(o){
+			data.listmap[o.id]=o;
+		})
+		_each(data.list,function(o){
+			if(o.isHidden) return;
+			o.bg=o.bg||data.bg;
+			o.lmode=o.lmode||data.lmode;
+			o.zIndex=o.zIndex||data.zIndex;
+			o.w=data.typelist[o.typeid].w;
+			o.h=data.typelist[o.typeid].h;
+			
+			o.border=o.border||data.border;
+			o.borderRadius=o.borderRadius||data.borderRadius;
+			o.isDrag=_is_boolean(o.isDrag)?o.isDrag:data.isDrag;
+			if(o.to&&!o.lstyle) o.lstyle=data.lstyle;
+			_adjustPos(o,o.x,o.y);
+			_adjustAutoX(o);
+			_adjustAutoY(o);
+			_drawElement(o);
+		})
+		_each(data.list,function(o){
+			if(data.isDragMode){
+				_drag(o);
+			}else{
+				o.n.onclick=function(e){
+					var val=get_data_id(e.target);
+					update_dialog(val);
+					show_dialog(true);
+				};
+			}
+		})
+		drawLine();
+		_drawDialog();
+	}
+	function svg_init(evt)
+	{
+		//_svg_d=evt.target.ownerDocument;
+		main();
+	}
+	function svg_drawLine(o,s1,i)
+	{
+		var node = o.to[i].nline;
+		node.setAttribute("style",o.lstyle);
+		node.setAttribute("marker-end","url(#idArrow)");
+		node.setAttribute("d",s1);
+	}
+	function get_data_id(node){
+		var n=node;
+		var val=null;
+		for(var i=0;i<10;i++){
+			var val=n.getAttribute("data_id");
+			if(val==null){
+				n=n.parentNode;
+			}
+		}
+		return val;
+	}
+	function _move_element(o,x,y){
+		o.n.style.left=x+"px";
+		o.n.style.top=y+"px";
+	}
+	function show_dialog(flag){
+		if(flag){
+			data.dialog.n.style.display="";
+			data.dialog.nBg.style.display="";
+		}else{
+			data.dialog.n.style.display="none";
+			data.dialog.nBg.style.display="none";
+		}
+	}
+	function save_dialog(){
+		var dlg=data.dialog;
+		var val=dlg.inputNodeId.value;
+		var o=data.listmap[val];
+		_each(dlg.schema,function(item){
+			if(item.type=="input"){
+				o.title=item.n.value;
+			}
+			if(item.type=="select"){
+				o.typeid=item.n.selectedIndex;
+			}
+		});
+		destroy();
+		init();
+	}
+	function update_dialog(data_id){
+		var dlg=data.dialog;
+		var o=data.listmap[data_id];
+		dlg.inputNodeId.value=data_id;
+		_each(dlg.schema,function(item){
+			if(item.type=="input"){
+				if(item.field=="Component_name"){
+					item.n.value=o.title;
+				}
+			}
+			if(item.type=="select"){
+				item.n.innerHTML="";
+				_each(data[item.src],function(item2,i){
+					var optionNode = _d.createElement("option");
+					optionNode.innerHTML=item2.name;
+					if(o.typeid==i){
+						optionNode.selected="selected";
+					}
+					addBody(optionNode,item.n);
+				});
+			}
+		});
+	}
+	function _drawDialog()
+	{
+		var dialog=dlg=data.dialog;
+		var x=data.containerMargginX;
+		var y=data.containerMargginY;
+		var len=data.containerList.length;
+		var w=len*data.containerWidth+(len-1)*data.containerMargginGap+(len)*2-4;
+		var h=data.containerHeight;
+		var node = _d.createElement("div");
+		node.className="dialog_bg";
+		var sty=node.style;
+		sty.position = "absolute";
+		sty.left = x+"px";
+		sty.top = y+"px";
+		sty.width = w+"px";
+		sty.height = h+"px";
+		sty.zIndex = 999;
+		sty.background = "black";
+		sty.opacity=30/100;
+		sty.borderRadius = data.borderRadius;
+		addBody(node);
+		dlg.nBg=node;
+		
+		var x=data.containerMargginX+w/2-(dialog.w)/2;
+		var y=data.containerMargginY+data.containerHeight+2+2;
+		var y=y/2-(dialog.h)/2;
+		var node = _d.createElement("div");
+		node.className="dialog";
+		var sty=node.style;
+		sty.position = "absolute";
+		sty.left = x+"px";
+		sty.top = y+"px";
+		sty.width = dialog.w+"px";
+		sty.height = dialog.h+"px";
+		sty.zIndex = 999;
+		sty.background = "#FEF5ED";
+		sty.border = "2px solid #FDEADA";
+		sty.borderRadius = data.borderRadius;
+		addBody(node);
+		dlg.n=node;
+		
+		var headNode = _d.createElement("div");
+		var sty=headNode.style;
+		sty.position = "absolute";
+		sty.left = 0+"px";
+		sty.top = 0+"px";
+		sty.width = (dlg.w)+"px";
+		sty.height = (dlg.headheight)+"px";
+		sty.zIndex = 999;
+		sty.background = "#FEF5ED";
+		sty.borderBottom = "2px solid #FDEADA";
+		sty.lineHeight = sty.height;
+		headNode.innerHTML="<div style='padding-left:7px'>Component Properties</div>";
+		addBody(headNode,node);
+		
+		var innerNode = _d.createElement("div");
+		var sty=innerNode.style;
+		sty.position = "absolute";
+		sty.left = dlg.pad+"px";
+		sty.top = (dlg.pad+dlg.headheight)+"px";
+		sty.width = (dlg.w-2*dlg.pad)+"px";
+		sty.height = (dlg.h-2*dlg.pad-dlg.headheight)+"px";
+		sty.zIndex = 999;
+		sty.background = "#FEF5ED";
+		sty.border = "0px solid #FDEADA";
+		addBody(innerNode,node);
+			var inputNodeId = _d.createElement("input");
+			inputNodeId.type="hidden";
+			dlg.inputNodeId=inputNodeId;
+			addBody(inputNodeId,innerNode);
+			var tableNode = _d.createElement("table");
+			addBody(tableNode,innerNode);
+			var tbodyNode = _d.createElement("tbody");
+			addBody(tbodyNode,tableNode);
+			_each(dlg.schema,function(item){
+				var trNode = _d.createElement("tr");
+				addBody(trNode,tbodyNode);
+				var tdNode = _d.createElement("td");
+				tdNode.innerHTML=item.label;
+				addBody(tdNode,trNode);
+				var tdNode = _d.createElement("td");
+				if(item.type=="input"){
+					var inputNode = _d.createElement("input");
+					inputNode.style.width="120px";
+					addBody(inputNode,tdNode);
+					item.n=inputNode;
+				}
+				if(item.type=="select"){
+					var selectNode = _d.createElement("select");
+					selectNode.style.width="120px";
+					addBody(selectNode,tdNode);
+					item.n=selectNode;
+				}
+				addBody(tdNode,trNode);
+			});	
+			var bottonDiv = _d.createElement("div");
+			var sty=bottonDiv.style;
+			sty.position = "absolute";
+			sty.right = "0px";
+			sty.bottom = "0px";
+			addBody(bottonDiv,innerNode);
+				var btn = _d.createElement("input");
+				btn.value="save";
+				btn.type="button";
+				addBody(btn,bottonDiv);	
+				btn.onclick=function(){
+					save_dialog();
+				}		
+				var btn = _d.createElement("input");
+				btn.value="cancel";
+				btn.type="button";
+				btn.onclick=function(){
+					show_dialog(false);
+				}	
+				addBody(btn,bottonDiv);
+		show_dialog(false);
+		_drag(dlg);
+	}
+</script>
+</head>
+<body>
+<div style="position:absolute" id="my"></div>
+<svg width='640' height='480'>
+<defs>
+	<marker id="idArrow" viewBox="0 0 20 20" refX="0" refY="10" markerUnits="strokeWidth" markerWidth="3" markerHeight="10" orient="auto">
+         <path d="M 0 0 L 20 10 L 0 20 z" fill="#AAA" stroke="#ddd"/>
+    </marker>
+</defs>
+<g id='group'></g>
+</svg>
+</body>
+</html>
+<script>
+		main();
+</script>

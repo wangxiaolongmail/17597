@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+	var data=[
+		{
+			x:0,
+			y:0,
+			w:100,
+			h:100,
+			bg:"red",
+			zIndex:1,
+			lmode:1,
+			to:1
+			},
+		{
+			x:0,
+			y:0,
+			w:100,
+			h:100,
+			bg:"green",
+			zIndex:1
+			}
+	];
+	var g_node=null;
+	var _wc=8;
+	var _d=document;
+	function svg_init(evt)
+	{
+		var svgdoc=evt.target.ownerDocument;
+		g_node=svgdoc.createElementNS("http://www.w3.org/2000/svg","polyline");
+		var group=svgdoc.getElementById("group");
+		group.appendChild(g_node);
+	}
+	function svg_drawLine(points)
+	{
+		g_node.setAttribute("style","fill:white;stroke:red;stroke-width:2");
+		g_node.setAttribute("points",points);
+	}
+	function _each(a,f){
+		for(var i=0;i<a.length;i++){
+			f(a[i]);
+		}
+	}
+	function _drag(o){
+		var n=o.n;
+		n.onmousedown=function(a){
+			var x=a.layerX,y=a.layerY;
+			n.setCapture();
+			_d.onmousemove=function(e){
+				draw(o,e.pageX-x,e.pageY-y);
+			};
+			_d.onmouseup=function(){
+				n.releaseCapture();
+				_d.onmousemove=_d.onmouseup=null;
+			};
+		};
+	}
+	function _drawElement(o){
+		var sty=o.n.style;
+		sty.position = "absolute";
+		sty.width = o.w+"px";
+		sty.height = o.h+"px";
+		sty.left = o.x+"px";
+		sty.top = o.y+"px";
+		sty.zIndex = o.zIndex;
+		sty.background = o.bg;
+	}
+	function _getLMPoint(o){
+		var x=o.x-_wc;
+		var y=o.y+o.h/2-_wc;
+		return {x:x,y:y};
+	}
+	function _getRMPoint(o){
+		var x=o.x+o.w-_wc;
+		var y=o.y+o.h/2-_wc;
+		return {x:x,y:y};
+	}
+	function draw(o,x,y){
+		_each(data,function(obj){
+			if(o==obj){
+				obj.x=x; obj.y=y;
+				_drawElement(obj);
+			}
+		});
+		_each(data,function(obj){
+			if(obj.to){
+				var s="";
+				var o=_getRMPoint(obj);
+				s=s+o.x+","+o.y+" ";
+				//s=s+"0,0"+" ";
+				var o=_getLMPoint(data[obj.to]);
+				s=s+o.x+","+o.y+" ";
+				svg_drawLine(s);
+			}
+		});
+	}
+	_each(data,function(o){
+		o.n=_d.createElement("div");
+		_drawElement(o);
+		_d.body.appendChild(o.n);
+		_drag(o);
+	});
+    </script>
+<svg width="1640" height="1480" onload="svg_init(evt)">
+<g id="group"></g>
+</svg>
+</body>
+</html>

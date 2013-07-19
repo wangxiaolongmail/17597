@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<svg width="640" height="480" onload="init(evt)">
+<script>
+<![CDATA[
+
+function init(evt)
+
+{
+
+console.log("1");
+console.log(evt);
+console.log(evt.target);
+var svgDoc = evt.target.ownerDocument;
+
+console.log("2");
+console.log(svgDoc);
+var svgRoot = svgDoc.rootElement;
+console.log("3");
+
+console.log(svgRoot.nodeName);
+
+}
+
+]]></script>
+
+<rect x="100" y="100" width="100" height="50" fill="red" stroke-width= "2"/>
+
+</svg>
+
+</body>
+</html>

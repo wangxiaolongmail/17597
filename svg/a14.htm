@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+	var _d=document;
+	function _each(a,f){
+		for(var i=0;i<a.length;i++){
+			f(a[i]);
+		}
+	}
+	function vDrag(o,ho){
+		ho=ho||o;
+		ho.onmousedown=function(a){
+			o.style.zIndex = 1;
+			var d=_d;
+			var x=a.layerX,y=a.layerY;
+			ho.setCapture();
+			d.onmousemove=function(e){
+				var tx=e.pageX-x,ty=e.pageY-y;
+				o.style.left = tx+"px";
+				o.style.top = ty+"px";
+				draw();
+			};
+			d.onmouseup=function(){
+				ho.releaseCapture();
+				d.onmousemove=null;
+				d.onmouseup=null;
+			};
+		};
+	}
+	var data=[
+		{
+			x:0,
+			y:0,
+			w:100,
+			h:100,
+			bg:"red",
+			to:1
+			},
+		{
+			x:0,
+			y:0,
+			w:100,
+			h:100,
+			bg:"green"
+			}
+	];
+	_each(data,function(o){
+		var n=_d.createElement("div");
+		n.style.position = "absolute";
+		n.style.width = o.w+"px";
+		n.style.height = o.h+"px";
+		n.style.background = o.bg;
+		_d.body.appendChild(n);
+		vDrag(n);
+		o.n=n;
+	});
+	function draw(){
+		_each(data,function(obj){
+			if(obj.to){
+				var s="";
+				var o=obj.n;
+				var x=parseInt(o.style.left||0);
+				var y=parseInt(o.style.top||0);
+				s=s+x+","+y+" ";
+				var o=data[obj.to].n;
+				var x=parseInt(o.style.left||0);
+				var y=parseInt(o.style.top||0);
+				s=s+x+","+y+" ";
+				drawLine(s);
+			}
+		});
+	}
+    </script>
+<svg width="640" height="480" onload="init(evt)">
+
+<script><![CDATA[
+var g_node=null;
+function init(evt)
+{
+	var svgdoc=evt.target.ownerDocument;
+	g_node=svgdoc.createElementNS("http://www.w3.org/2000/svg","polyline");
+	var group=svgdoc.getElementById("group");
+	group.appendChild(g_node); 
+}
+function drawLine(points)
+{
+	g_node.setAttribute("style","fill:white;stroke:red;stroke-width:2");
+	g_node.setAttribute("points",points);
+}
+]]></script>
+
+<g id="group"></g>
+</svg>
+</body>
+</html>

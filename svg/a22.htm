@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+<script>
+	var _svg_d=null;
+	var _wc=8;
+	var _d=document;
+	var data={
+		lstyle:"fill:white;stroke:#ddd;stroke-width:2",
+		bg:"#eee",
+		border:"1px solid #ddd",
+		lmode:2,
+		zIndex:1,
+		w:100,
+		h:100,
+		list:[
+		{
+			title:"A",
+			x:20,
+			y:100,
+			to:1
+			},
+		{
+			title:"B",
+			x:200,
+			y:100,
+			to:2
+			},
+		{
+			title:"C",
+			x:400,
+			y:100
+			}
+	]};
+	function _each(a,f){
+		for(var i=0;i<a.length;i++){
+			f(a[i]);
+		}
+	}
+	function _drag(o){
+		var n=o.n;
+		n.onmousedown=function(a){
+			var x=a.layerX,y=a.layerY;
+			n.setCapture();
+			_d.onmousemove=function(e){
+				draw(o,e.pageX-x,e.pageY-y);
+			};
+			_d.onmouseup=function(){
+				n.releaseCapture();
+				_d.onmousemove=_d.onmouseup=null;
+			};
+		};
+	}
+	function _drawElement(o){
+		if(!o.n){
+			o.n=_d.createElement("div");
+			o.n.innerHTML=o.title;
+			_d.body.appendChild(o.n);
+		}
+		var sty=o.n.style;
+		sty.position = "absolute";
+		sty.width = o.w+"px";
+		sty.height = o.h+"px";
+		sty.left = o.x+"px";
+		sty.top = o.y+"px";
+		sty.zIndex = o.zIndex;
+		sty.background = o.bg;
+		sty.border = o.border;
+		if(o.to){
+			if(!o.nline){
+				if(_svg_d){
+					var group=_svg_d.getElementById("group");
+					o.nline=_svg_d.createElementNS("http://www.w3.org/2000/svg","path");
+					group.appendChild(o.nline);
+				}
+			}
+		}
+	}
+	function _getLMPoint(o){
+		var x=o.x+o.w-_wc;
+		var y=o.y+o.h/2-_wc;
+		return {x:x,y:y};
+	}
+	function _getRMPoint(o){
+		var x=o.x-_wc;
+		var y=o.y+o.h/2-_wc;
+		return {x:x,y:y};
+	}
+	function _getCPoint(o){
+		var x=o.x+o.w/2-_wc;
+		var y=o.y+o.h/2-_wc;
+		return {x:x,y:y};
+	}
+	function drawLine(){
+		_each(data.list,function(obj){
+			if(obj.to){
+				var s="";
+				var s2="";
+				if(obj.lmode===1){
+					var o1=_getCPoint(obj);
+					var o2=_getCPoint(data.list[obj.to]);
+					var o=o1;
+					s=s+o.x+","+o.y+" ";
+					var o=o2;
+					s=s+o.x+","+o.y+" ";
+				}else{
+					var o1=_getLMPoint(obj);
+					var o2=_getRMPoint(data.list[obj.to]);
+					s=s+"M "+o1.x+","+o1.y+" ";
+					var x=(o2.x-o1.x)/2+o1.x;
+					s=s+"L "+x+","+o1.y+" ";
+					s=s+"L "+x+","+o2.y+" ";
+					s=s+"L "+(o2.x-8)+","+o2.y+" ";
+				}
+				svg_drawLine(obj,s,s2);
+			}
+		});
+	}
+	function draw(o,x,y){
+		_each(data.list,function(obj){
+			if(o==obj){
+				obj.x=x; obj.y=y;
+				_drawElement(obj);
+			}
+		});
+		drawLine();
+	}
+	function main(){
+		_each(data.list,function(o){
+			if(typeof o.bg === "undefined"){
+				o.bg=data.bg;
+			}
+			if(typeof o.lmode === "undefined"){
+				o.lmode=data.lmode;
+			}
+			if(typeof o.zIndex === "undefined"){
+				o.zIndex=data.zIndex;
+			}
+			if(typeof o.w === "undefined"){
+				o.w=data.w;
+			}
+			if(typeof o.h === "undefined"){
+				o.h=data.h;
+			}
+			if(typeof o.border === "undefined"){
+				o.border=data.border;
+			}
+			if(o.to){
+				if(typeof o.lstyle === "undefined"){
+					o.lstyle=data.lstyle;
+				}
+			}
+			_drawElement(o);
+			_drag(o);
+		})
+		drawLine();
+	}
+	function svg_init(evt)
+	{
+		_svg_d=evt.target.ownerDocument;
+		main();
+	}
+	function svg_drawLine(o,s1,s2)
+	{
+		o.nline.setAttribute("stroke","purple");
+		o.nline.setAttribute("stroke-width","3");
+		o.nline.setAttribute("fill","none");
+		o.nline.setAttribute("marker-end","url(#idArrow)");
+		o.nline.setAttribute("d",s1);
+	}
+</script>
+</head>
+<body>
+<svg width='1640' height='1480' onload='svg_init(evt)'>
+
+<defs>
+
+	<marker id="idArrow"
+
+         viewBox="0 0 20 20" refX="0" refY="10" 
+
+         markerUnits="strokeWidth" markerWidth="3" markerHeight="10"
+
+         orient="auto">
+
+         <path d="M 0 0 L 20 10 L 0 20 z" fill="purple" stroke="black"/>
+
+      </marker>
+
+</defs>
+<g id='group'></g>
+</svg>
+</body>
+</html>
+<script>
+//_d.body.innerHTML="<svg width=\"1640\" height=\"1480\" onload=\"svg_init(evt)\"><g id=\"group\"></g></svg>";
+</script>

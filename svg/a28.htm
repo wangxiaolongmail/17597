@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+		.icon{
+			background-image:url(server.png);
+			width:45px;
+			height:45px;
+		}
+    </style>
+<script>
+	var _svg_d=null;
+	var _wc=8;
+	var _d=document;
+	var data={
+		lstyle:"fill:white;stroke:#ddd;stroke-width:3",
+		bg:"#eee",
+		border:"2px solid #ddd",
+		borderRadius: "5px",
+		lmode:2,
+		zIndex:1,
+		w:120,
+		h:60,
+		iconWidth:50,
+		buttonHight:30,
+		buttonWidth:100,
+		buttonPadding:2,
+		list:[
+		{
+			title:"A",
+			x:20,
+			y:100,
+			to:[
+				{id:1,title:"a1"}
+				]
+			},
+		{
+			title:"B",
+			x:200,
+			y:100,
+			to:[
+				{id:2,title:"b1"},
+				{id:3,title:"b2"}
+				]
+			},
+		{
+			title:"C",
+			x:580,
+			y:70
+			},
+		{
+			title:"D",
+			x:580,
+			y:180
+			},
+		{
+			title:"E",
+			x:580,
+			y:280
+			}]
+	};
+	function _each(a,f){
+		if(!a) return;
+		for(var i=0;i<a.length;i++) f(a[i],i);
+	}
+	function _drag(o){
+		o.n.onmousedown=function(e){
+			var x=e.layerX,y=e.layerY;
+			o.n.setCapture();
+			_d.onmousemove=function(e){
+				draw(o,e.pageX-x,e.pageY-y);
+			};
+			_d.onmouseup=function(){
+				o.n.releaseCapture();
+				_d.onmousemove=_d.onmouseup=null;
+			};
+		};
+	}
+	function _drawElement(o){
+		if(!o.n){
+			o.n=_d.createElement("div");
+			var wrap=_d.createElement("div");
+			o.n.appendChild(wrap);
+			o.wrap=wrap;
+			var wrapButton=_d.createElement("div");
+			o.n.appendChild(wrapButton);
+			o.wrapButton=wrapButton;
+			wrapButton.align="right";
+			var layout=_d.createElement("div");
+			layout.className="layout";
+			wrap.appendChild(layout);
+			var left=_d.createElement("div");
+			left.style="float:left;";
+			left.className="icon";
+			layout.appendChild(left);
+			var right=_d.createElement("div");
+			right.style="padding-left:"+data.iconWidth+"px";
+			layout.appendChild(right);
+			right.innerHTML=o.title;
+			var sty=o.wrap.style;
+			sty.width = o.w+"px";
+			sty.height = o.h+"px";
+			sty.background = o.bg;
+			sty.border = o.border;
+			sty.borderRadius = o.borderRadius;
+			_each(o.to,function(item){
+				var n=_d.createElement("div");
+				var sty=n.style;
+				sty.width = data.buttonWidth+"px";
+				sty.height = data.buttonHight+"px";
+				sty.background = o.bg;
+				sty.border = o.border;
+				sty.borderRadius = o.borderRadius;
+				sty.marginTop=data.buttonPadding+"px";
+				n.innerHTML=item.title;
+				o.wrapButton.appendChild(n);
+				item.n=n;
+			});
+			_d.body.appendChild(o.n);
+		}
+		var sty=o.n.style;
+		sty.position = "absolute";
+		sty.left = o.x+"px";
+		sty.top = o.y+"px";
+		sty.zIndex = o.zIndex;
+		_each(o.to,function(item){
+			if(!item.nline){
+				var group=_svg_d.getElementById("group");
+				var node=_svg_d.createElementNS("http://www.w3.org/2000/svg","path");
+				item.nline=node;
+				group.appendChild(node);
+			}
+		});
+	}
+	function _getLMPoint(o){
+		var x=o.x+o.w-_wc;
+		var y=o.y+o.h/2-_wc;
+		return {x:x,y:y};
+	}
+	function _getRMPoint(o){
+		var x=o.x-_wc;
+		var y=o.y+o.h/2-_wc;
+		return {x:x,y:y};
+	}
+	function _getCPoint(o){
+		var x=o.x+o.w/2-_wc;
+		var y=o.y+o.h/2-_wc;
+		return {x:x,y:y};
+	}
+	function drawLine(){
+		_each(data.list,function(obj){
+			_each(obj.to,function(item,i){
+				var s="";
+				var s2="";
+				var oo1=obj;oo2=data.list[item.id];
+				if(oo1.x>oo2.x){
+					var o1=_getRMPoint(oo1);
+					var o2=_getLMPoint(oo2);
+					var flag=1;
+				}else{
+					var o1=_getLMPoint(oo1);
+					var o2=_getRMPoint(oo2);
+					var flag=-1;
+				}
+				s=s+"M "+o1.x+","+o1.y+" ";
+				var x=(o2.x-o1.x)/2+o1.x;
+				s=s+"Q "+x+","+o1.y+" ";
+				s=s+" "+x+","+(o2.y)+" ";
+				s=s+"T "+(o2.x+flag*9)+","+o2.y+" ";
+				svg_drawLine(obj,s,s2,i);
+			});
+		});
+	}
+	function draw(o,x,y){
+		_each(data.list,function(obj){
+			if(o==obj){
+				obj.x=x; obj.y=y;
+				_drawElement(obj);
+			}
+		});
+		drawLine();
+	}
+	function main(){
+		_each(data.list,function(o){
+			if(!o.bg) o.bg=data.bg;
+			if(!o.lmode) o.lmode=data.lmode;
+			if(!o.zIndex) o.zIndex=data.zIndex;
+			if(!o.w) o.w=data.w;
+			if(!o.h) o.h=data.h;
+			if(!o.border) o.border=data.border;
+			if(!o.borderRadius) o.borderRadius=data.borderRadius;
+			if(o.to&&!o.lstyle) o.lstyle=data.lstyle;
+			_drawElement(o);
+			_drag(o);
+		})
+		drawLine();
+	}
+	function svg_init(evt)
+	{
+		_svg_d=evt.target.ownerDocument;
+		main();
+	}
+	function svg_drawLine(o,s1,s2,i)
+	{
+		var node = o.to[i].nline;
+		node.setAttribute("style",o.lstyle);
+		node.setAttribute("marker-end","url(#idArrow)");
+		node.setAttribute("d",s1);
+	}
+</script>
+</head>
+<body>
+<svg width='1640' height='1480' onload='svg_init(evt)'>
+<defs>
+	<marker id="idArrow" viewBox="0 0 20 20" refX="0" refY="10" markerUnits="strokeWidth" markerWidth="3" markerHeight="10" orient="auto">
+         <path d="M 0 0 L 20 10 L 0 20 z" fill="#AAA" stroke="#ddd"/>
+    </marker>
+</defs>
+<g id='group'></g>
+</svg>
+</body>
+</html>

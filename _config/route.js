@@ -20,7 +20,8 @@
 		dynamicServletMapping:[],
 		staticServletMapping:[],
 		noBufferList:[
-			"/wy/\.\+.\.\+"	
+			"/wy/\.\+.\.\+",
+			"/svg/\.\+.\.\+"
 		]
 	};
 	

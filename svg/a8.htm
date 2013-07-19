@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<svg width="640" height="480" onload="init(evt)">
+
+<script><![CDATA[
+
+function alertMsg(evt)
+
+{
+
+objet=evt.target;
+
+large=objet.getAttribute("width");
+
+alert("Width of the rectangle is:" + evt.target.getAttribute ("width"));
+
+}
+
+
+function init(evt)
+
+{
+console.log("1");
+svgdoc=evt.target.ownerDocument;
+
+console.log("2");
+node=svgdoc.createElementNS("http://www.w3.org/2000/svg","rect");
+
+console.log("3");
+node.setAttribute("x","50");
+
+node.setAttribute("y","50");
+
+node.setAttribute("width","100");
+
+node.setAttribute("height","50");
+
+node.setAttribute("style","fill:red");
+
+node.addEventListener("mousemove",alertMsg,false);
+
+group=svgdoc.getElementById("group");
+
+group.appendChild(node); 
+
+}
+
+]]></script>
+
+<g id="group">
+
+<text x="100" y="20"
+
+style="text-anchor:middle;font-size:15;fill:red">Click the rectangle </text>
+
+</g>
+</svg>
+
+
+
+</body>
+</html>
