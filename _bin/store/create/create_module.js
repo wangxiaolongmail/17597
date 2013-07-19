@@ -120,6 +120,17 @@ db.system.js.save({_id:"create_module",value:function () {
 		obj[C.IS_EDIT]=true;
 		obj[C.IS_DELETE]=true;
 		_insert(C.MODULE,obj);
+
+		var obj={};
+		obj[C.MODULE_NAME]=v;
+		obj[C.URL_NAME]=C.EASYSOFT+C.ADMIN+v+C.VIEW;
+		obj[C.URL]=path+v+"/"+C.VIEW;
+		obj[C.SERVLET_CLASS]=COM+v+"."+C.VIEW;
+		obj[C.METHOD]=C.GET;
+		obj[C.IS_NEW]=true;
+		obj[C.IS_EDIT]=true;
+		obj[C.IS_DELETE]=true;
+		_insert(C.MODULE,obj);
 			
 		var obj={};
 		obj[C.MODULE_NAME]=v;

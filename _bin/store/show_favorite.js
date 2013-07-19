@@ -1,21 +1,13 @@
 db.system.js.save({_id:"show_favorite",value:function(params){
 		var C=constant();
-		var a=[];
-		_each(db.favorite_type.find().toArray(),function(k,v,i){
-			var o=v;
-			o.list=[];
-			var op={};
-			op[C.CATEGORY]=o._id
-			_each(db.favorite.find( op ).toArray(),function(k,v,i){
-				o.list.push(v);
-			});
-			a.push(o);
-
-		});
+		var input={};
+		input[C.TABLE_NAME]="favorite";
+		input[C.TABLE+C.TYPE]="favorite_type";
+		var a=_get_view1(input);
 		var result={
-		  ok:true,
-		  list:a
+		  ok:true
 		};
+		result[C.VIEW]=a;
 		result[C.URL_NAME]=C.EASYSOFT+C.INDEX;
 		return result;
 	}

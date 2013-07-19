@@ -34,27 +34,29 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 		this.postDrawEx($,data);
 		return $.html();
 	},
-	postDrawEx:function($,data){
+	draw_view1:function($,data){
 		var a=[];
 		a.push("<table class='table table-bordered table-striped'>");
-		dojo.each(data.list,function(k,v,i){
+		dojo.each(data[C.VIEW],function(k,v,i){
 			var o=v;
 			a.push("<tr>");
 			a.push("<td>");
 			a.push(o[C.NAME]);
 			dojo.each(o.list,function(k,v,i){
-				if(!v[C.IS_HIDDEN]){
 					if(v[C.USER_NAME]!="tester"){
 						a.push("&nbsp;");
 						a.push("<a target='_blank' href='"+URL[C.EASYSOFT+C.GO]+"?"+C.TO+"="+v[C.URL]+"'>"+v[C.NAME]+"</a>");
 					}
-				}
 			});
 			a.push("</td>");
 			a.push("</tr>");
 		});
 		a.push("</table>");
-		$("#apBody").html(a.join("\n"));
+		return a.join("\n");
+	},
+	postDrawEx:function($,data){
+		var s=this.draw_view1($,data);
+		$("#apBody").html(s);
 	},
     drawMainMenu:function(data){
 		var a=[],o={};

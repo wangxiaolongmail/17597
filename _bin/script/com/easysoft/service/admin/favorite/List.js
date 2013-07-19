@@ -78,6 +78,9 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 				a.push(I18N[C.DELETE]);
 				a.push("</a>"); 
 			}
+				a.push("<a class='btn' href='"+C.VIEW+"?sid="+this.sid+"'>");
+				a.push(I18N[C.VIEW]);
+				a.push("</a>");
 			a.push("</div>"); 
 			return a.join("\n");
 	 },

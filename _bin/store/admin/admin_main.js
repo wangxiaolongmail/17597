@@ -23,7 +23,10 @@ db.system.js.save({_id:"admin_main",value:function (params) {
 				break;    
 		 case "admin_Record":   
 				result=admin_Record(params);   
-				break;  
+				break;    
+		 case "admin_View":   
+				result=admin_View(params);   
+				break; 
 		 default:  
 				params[C.STORED_METHOD]="admin_Empty";
 				result=admin_Empty(params);    

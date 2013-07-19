@@ -25,10 +25,11 @@ db.system.js.save({_id:"create_i18n",value:function () {
 	db.i18n.insert({_id:C.REPEAT,cn:"重复"});
 	db.i18n.insert({_id:C.SITE_NAME,cn:"一起玩网"});
 	db.i18n.insert({_id:C.SHOW,cn:"显示"});
+	db.i18n.insert({_id:C.START,cn:"开始"});
 	db.i18n.insert({_id:C.TITLE,cn:"标题"});
 	db.i18n.insert({_id:C.LOGIN,cn:"登录"});
 	db.i18n.insert({_id:C.INDEX,cn:"主页"});
-	db.i18n.insert({_id:C.START,cn:"开始"});
+	db.i18n.insert({_id:C.VIEW,cn:"视图"});
 	return db.i18n.find().toArray();
 }})
 

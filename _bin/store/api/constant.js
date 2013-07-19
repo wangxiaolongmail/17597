@@ -115,7 +115,9 @@ db.system.js.save({_id:"constant",value:function () {
 				URL_NAME:"URL_NAME",
 				USER_NAME:"USER_NAME",
 				USER:"user",
-				VALUE:"VALUE"
+				VALUE:"VALUE",
+				VIEW:"View"
+
         };
 }})
 
