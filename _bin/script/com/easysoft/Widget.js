@@ -158,6 +158,12 @@ dojo.declare( "com.easysoft.service.Tempalte" , "com.easysoft.Widget" , {
 						s="http://"+s;
 					}
 					obj[field]= s;
+				}else if(type==C.BOOLEAN){
+					if(val==="true"){
+						obj[field]=true;
+					}else{
+						obj[field]=false;
+					}
 				}else{
 					obj[field]= val;
 				}

@@ -43,8 +43,12 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 			a.push("<td>");
 			a.push(o[C.NAME]);
 			dojo.each(o.list,function(k,v,i){
-				a.push("&nbsp;");
-				a.push("<a target='_blank' href='"+URL[C.EASYSOFT+C.GO]+"?"+C.TO+"="+v[C.URL]+"'>"+v[C.NAME]+"</a>");
+				if(!v[C.IS_HIDDEN]){
+					if(v[C.USER_NAME]!="tester"){
+						a.push("&nbsp;");
+						a.push("<a target='_blank' href='"+URL[C.EASYSOFT+C.GO]+"?"+C.TO+"="+v[C.URL]+"'>"+v[C.NAME]+"</a>");
+					}
+				}
 			});
 			a.push("</td>");
 			a.push("</tr>");

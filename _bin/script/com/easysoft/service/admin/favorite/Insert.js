@@ -43,6 +43,21 @@ dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.servi
 				return a.join("\n");
 			}
 		}	
+		if(v[C.FIELD]===C.IS_HIDDEN){
+			v[C.FORMAT]=function(k,v,i,tn){
+				var a=[];
+				a.push("<label class=\"radio\">");
+				a.push("<input type=\"radio\" name=\""+v[C.FIELD]+"\" id=\"optionsRadios1\" value=\"true\" checked >");
+				a.push(I18N[C.SHOW]);
+				a.push("</label>");
+				a.push("<label class=\"radio\">");
+				a.push("<input type=\"radio\" name=\""+v[C.FIELD]+"\" id=\"optionsRadios2\" value=\"false\">");
+				a.push(I18N[C.HIDDEN]);
+				a.push("</label>");
+				
+				return a.join("\n");
+			}
+		}	
 		if(v[C.FIELD]===C.PRI){
 			v[C.FORMAT]=function(k,v,i,tn){
 				PRI[tn]=PRI[tn]+1;

@@ -11,6 +11,7 @@ db.system.js.save({_id:"create_i18n",value:function () {
 	db.i18n.insert({_id:C.EDIT,cn:"编辑"});
 	db.i18n.insert({_id:C.FAVORITE,cn:"收藏夹"});
 	db.i18n.insert({_id:C.FAVORITE_TYPE,cn:"收藏夹分类"});
+	db.i18n.insert({_id:C.HIDDEN,cn:"隐藏"});
 	db.i18n.insert({_id:C.LOGIN,cn:"登录"});
 	db.i18n.insert({_id:C.LOGOUT,cn:"退出"});
 	db.i18n.insert({_id:C.NAME,cn:"名称"});
@@ -23,6 +24,7 @@ db.system.js.save({_id:"create_i18n",value:function () {
 	db.i18n.insert({_id:C.REGISTER,cn:"注册"});
 	db.i18n.insert({_id:C.REPEAT,cn:"重复"});
 	db.i18n.insert({_id:C.SITE_NAME,cn:"一起玩网"});
+	db.i18n.insert({_id:C.SHOW,cn:"显示"});
 	db.i18n.insert({_id:C.TITLE,cn:"标题"});
 	db.i18n.insert({_id:C.LOGIN,cn:"登录"});
 	db.i18n.insert({_id:C.INDEX,cn:"主页"});
