@@ -47,11 +47,11 @@ dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.servi
 			v[C.FORMAT]=function(k,v,i,tn){
 				var a=[];
 				a.push("<label class=\"radio\">");
-				a.push("<input type=\"radio\" name=\""+v[C.FIELD]+"\" id=\"optionsRadios1\" value=\"true\" checked >");
+				a.push("<input type=\"radio\" name=\""+v[C.FIELD]+"\" id=\"optionsRadios1\" value=\"false\" checked >");
 				a.push(I18N[C.SHOW]);
 				a.push("</label>");
 				a.push("<label class=\"radio\">");
-				a.push("<input type=\"radio\" name=\""+v[C.FIELD]+"\" id=\"optionsRadios2\" value=\"false\">");
+				a.push("<input type=\"radio\" name=\""+v[C.FIELD]+"\" id=\"optionsRadios2\" value=\"true\">");
 				a.push(I18N[C.HIDDEN]);
 				a.push("</label>");
 				

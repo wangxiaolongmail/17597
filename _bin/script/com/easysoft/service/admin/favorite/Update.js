@@ -43,6 +43,30 @@ dojo.declare( "com.easysoft.service.admin.favorite.Update" , "com.easysoft.servi
 				return a.join("\n");
 			}
 		}	
+		if(v[C.FIELD]===C.IS_HIDDEN){
+			v[C.FORMAT]=function(k,v,i,tn,obj){
+				var a=[];
+				
+				a.push("<label class=\"radio\">");
+				a.push("<input type=\"radio\" name=\""+v[C.FIELD]+"\" id=\"optionsRadios1\" value=\"false\" ")
+				if(!obj[v[C.FIELD]]){
+					a.push(" checked ");
+				}
+				a.push(">");
+				a.push(I18N[C.SHOW]);
+				a.push("</label>");
+				a.push("<label class=\"radio\">");
+				a.push("<input type=\"radio\" name=\""+v[C.FIELD]+"\" id=\"optionsRadios2\" value=\"true\" ")
+				if(obj[v[C.FIELD]]){
+					a.push(" checked ");
+				}
+				a.push(" >");
+				a.push(I18N[C.HIDDEN]);
+				a.push("</label>");
+				
+				return a.join("\n");
+			}
+		}	
 		if(v[C.FIELD]===C.PRI){
 			v[C.FORMAT]=function(k,v,i,tn,obj){
 				PRI[tn]=PRI[tn]+1;
