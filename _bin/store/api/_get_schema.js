@@ -1,4 +1,4 @@
-db.system.js.save({_id:"_get_schema",value:function (name) {
+db.system.js.save({_id:"_get_schema",value:function (name,find_field) {
 		var C=constant();
 		var o={};
 		o[C.FAVORITE]={
@@ -59,7 +59,18 @@ db.system.js.save({_id:"_get_schema",value:function (name) {
 			]
 		};
 		if(name){
-			return o[name];
+			var obj=o[name];
+			if(find_field && find_field===C.CATEGORY){
+				var cat=null;
+				_each(obj[C.LIST],function(k,v){
+					if(v[C.FIELD]===C.CATEGORY){
+						cat=v[C.LINK]; 
+					}
+				});
+				return cat;
+			}else{
+				return obj;
+			}
 		}else{
 			return o;
 		}

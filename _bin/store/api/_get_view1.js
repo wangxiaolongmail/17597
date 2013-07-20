@@ -1,9 +1,8 @@
 db.system.js.save({_id:"_get_view1",value:function (params,sess) {
 		var pub=public();
 		var C=constant();
-		var 
-		tablename=params[C.TABLE_NAME],
-		tablename_type=params[C.TABLE+C.TYPE];
+		var tablename=params[C.TABLE_NAME];
+		var tablename_type=_get_schema(tablename,C.CATEGORY);
 
 		var a=[];
 		_each(db[tablename_type].find().toArray(),function(k,v,i){
