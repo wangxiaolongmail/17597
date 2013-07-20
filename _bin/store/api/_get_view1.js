@@ -27,6 +27,7 @@ db.system.js.save({_id:"_get_view1",value:function (params,sess) {
 			a.push(o);
 
 		});
-
-		return a;
+		var o={};
+		o[C.VIEW]=a;
+		return o;
 }})
