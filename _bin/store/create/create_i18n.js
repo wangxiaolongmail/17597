@@ -21,6 +21,8 @@ db.system.js.save({_id:"create_i18n",value:function () {
 	db.i18n.insert({_id:C.ORGANIZE,cn:"组织"});
 	db.i18n.insert({_id:C.ORGANIZE_TYPE,cn:"组织分类"});
 	db.i18n.insert({_id:C.PASSWORD,cn:"密码"});
+	db.i18n.insert({_id:C.PUBLIC,cn:"公开"});
+	db.i18n.insert({_id:C.PRIVATE,cn:"私有"});
 	db.i18n.insert({_id:C.REGISTER,cn:"注册"});
 	db.i18n.insert({_id:C.REPEAT,cn:"重复"});
 	db.i18n.insert({_id:C.MODIFY,cn:"修改"});

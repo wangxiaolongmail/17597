@@ -8,7 +8,7 @@ db.system.js.save({_id:"_get_schema",value:function (name,find_field) {
 					{field:C.NAME,TYPE:C.NAME,IS_REQUIRED:true},
 					{field:C.CATEGORY,TYPE:C.CATEGORY,Link:C.FAVORITE_TYPE},
 					{field:C.URL,TYPE:C.URL,IS_REQUIRED:true},
-					{field:C.IS_HIDDEN,TYPE:C.BOOLEAN},
+					{field:C.IS_PRIVATE,TYPE:C.BOOLEAN},
 					{field:C.PRI,TYPE:C.PRI}
 			]
 		};

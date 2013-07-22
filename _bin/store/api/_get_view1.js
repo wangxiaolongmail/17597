@@ -18,7 +18,7 @@ db.system.js.save({_id:"_get_view1",value:function (params,sess) {
 			}else{
 				op[C.CATEGORY]=o._id;
 				_each(db[tablename].find( op ).toArray(),function(k,v,i){
-					if(!v[C.IS_HIDDEN]){
+					if(!v[C.IS_PRIVATE]){
 						o.list.push(v);
 					}
 				});

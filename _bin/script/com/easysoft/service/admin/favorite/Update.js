@@ -43,7 +43,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Update" , "com.easysoft.servi
 				return a.join("\n");
 			}
 		}	
-		if(v[C.FIELD]===C.IS_HIDDEN){
+		if(v[C.FIELD]===C.IS_PRIVATE){
 			v[C.FORMAT]=function(k,v,i,tn,obj){
 				var a=[];
 				
