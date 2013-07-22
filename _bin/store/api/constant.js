@@ -81,6 +81,7 @@ db.system.js.save({_id:"constant",value:function () {
 				MODULE:"module",
 				MODULE_NAME:"MODULE_NAME",
 				METHOD:"method",
+				MODIFY:"Modify",
 				NAME:"Name",
 				REQUEST:"REQUEST",
 				REFER:"REFER",

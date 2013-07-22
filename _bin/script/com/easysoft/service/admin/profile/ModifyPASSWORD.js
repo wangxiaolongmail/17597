@@ -12,8 +12,8 @@
  * 
  * @author wxlwang
  */
-dojo.provide("com.easysoft.service.admin.profile.Introduce");
-dojo.declare( "com.easysoft.service.admin.profile.Introduce" , "com.easysoft.service.admin.Start" , {
+dojo.provide("com.easysoft.service.admin.profile.ModifyPASSWORD");
+dojo.declare( "com.easysoft.service.admin.profile.ModifyPASSWORD" , "com.easysoft.service.admin.Start" , {
 	table_name:C.USER,
 	postCreate:function(){
 		var op=this.getsbo();
@@ -22,20 +22,20 @@ dojo.declare( "com.easysoft.service.admin.profile.Introduce" , "com.easysoft.ser
 		this.exec(op);
 	},
 	_define_schema:function(k,v,i){
-		if( v[C.FIELD]===C.USER_NAME || v[C.FIELD]===C.NAME ){
+		if( v[C.FIELD]===C.PASSWORD ){
 			v[C.FORMAT]=function(k,v,i,tn,obj){
 				var a=[];
 				a.push("<div class=\"control-group\">");
 				a.push("<label>");
 				a.push(I18N[v[C.FIELD]]);
 				a.push("</label>");
-				a.push("<span class=\"input uneditable-input\">"+obj[v[C.FIELD]]+"</span>");
+				a.push("<input class=\"input\"/>");
 				a.push("</div>");
 				return a.join("\n");
 			}
 		}
 	},
-	drawButton:function(data){
+	 drawButton:function(data){
 			var a=[],o={};
             a.push("<div id=\"tool_button\" class=\"btn-group\" style=\"padding-bottom:10px\">");
 				a.push("<a class='btn' href='"+C.MODIFY+C.PASSWORD+"?sid="+this.sid+"'>");

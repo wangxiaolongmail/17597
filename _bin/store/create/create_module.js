@@ -106,6 +106,14 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.SERVLET_CLASS]=COM+C.PROFILE+"."+C.INTRODUCE;
 	obj[C.METHOD]=C.GET;
 	_insert(C.MODULE,obj);
+		
+	var obj={};
+	obj[C.MODULE_NAME]=C.PROFILE;
+	obj[C.URL_NAME]=C.PROFILE+C.MODIFY+C.PASSWORD;
+	obj[C.URL]=path+C.PROFILE+"/"+C.MODIFY+C.PASSWORD;
+	obj[C.SERVLET_CLASS]=COM+C.PROFILE+"."+C.MODIFY+C.PASSWORD;
+	obj[C.METHOD]=C.GET;
+	_insert(C.MODULE,obj);
 	
 	var a=[C.FAVORITE,C.FAVORITE_TYPE,C.DEPARTMENT,C.ORGANIZE,C.ORGANIZE_TYPE];
 	_each(a,function(k,v,i){

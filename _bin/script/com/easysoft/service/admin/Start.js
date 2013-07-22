@@ -55,7 +55,7 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Index" 
 		var o=mlist[C.RIGHT][0];
 		a.push("<ul class='nav pull-right'>");
     		a.push("<li>");
-				a.push("<a href='"+URL[C.PROFILE+C.INTRODUCE]+"?sid="+sid+"&rmid="+data[C.USER_NAME]+"'>"+data[C.USER_NAME]+"</a>");
+				a.push("<a href='"+URL[C.PROFILE+C.INTRODUCE]+"?sid="+sid+"'>"+data[C.USER_NAME]+"</a>");
 			a.push("</li>");
     		a.push("<li>");
 				a.push("<a href='"+URL[C.LOGOUT]+"?sid="+sid+"'>"+I18N[o[C.MODULE_NAME]]+"</a>");

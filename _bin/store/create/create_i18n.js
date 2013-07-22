@@ -23,6 +23,7 @@ db.system.js.save({_id:"create_i18n",value:function () {
 	db.i18n.insert({_id:C.PASSWORD,cn:"密码"});
 	db.i18n.insert({_id:C.REGISTER,cn:"注册"});
 	db.i18n.insert({_id:C.REPEAT,cn:"重复"});
+	db.i18n.insert({_id:C.MODIFY,cn:"修改"});
 	db.i18n.insert({_id:C.SITE_NAME,cn:"一起玩网"});
 	db.i18n.insert({_id:C.SHOW,cn:"显示"});
 	db.i18n.insert({_id:C.START,cn:"开始"});
