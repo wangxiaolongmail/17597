@@ -99,8 +99,12 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 				 }
 			 }
 			 if(v[C.FIELD]===C.NAME){
-				 v[C.FORMAT]=function(val){
-					 return val;
+				 v[C.FORMAT]=function(val,flag){
+					if(flag){
+						 return val+"<i class=\"icon-eye-close\"></i>";
+					}else{
+						 return val;
+					}
 				 }
 			 }
 		 },this);
@@ -133,7 +137,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 					dojo.each(metadata,function(k,v,i){
 						if(v[C.FORMAT]){
 							a.push("<td>");
-							a.push(v[C.FORMAT](o[v[C.FIELD]]));
+							a.push(v[C.FORMAT](o[v[C.FIELD]],o[C.IS_PRIVATE]));
 							a.push("</td>");
 						}
 					});

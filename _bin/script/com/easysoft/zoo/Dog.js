@@ -174,8 +174,9 @@ dojo.declare( "com.easysoft.zoo.Dog" , "com.easysoft.Widget" , {
 	},
 	hasDynamicService:function(pathname){ 
 		return dojo.each(dojo.route.dynamicServletMapping,function(k,item){ 
-			var method = item.method||$c.get; 
-			if( item.pathname === pathname && this.req.method.toLowerCase() === method ){ 
+			var s=this.req.method.toLowerCase();
+			var method = item.method||s; 
+			if( item.pathname === pathname && s === method ){ 
 				this.execRunServer( item , method ); 
 				return true;
 			}else{ 
