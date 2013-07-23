@@ -16,9 +16,11 @@ dojo.provide("com.easysoft.service.admin.favorite.Update");
 dojo.declare( "com.easysoft.service.admin.favorite.Update" , "com.easysoft.service.admin.Start" , {
 	table_name:C.FAVORITE,
 	postCreate:function(){
-		var a=[],o={},op={};
 		var op=this.getsbo();
 		op[C.TABLE_NAME] =this.table_name;
+		if(op.method=="post"){
+			op[C.UPDATE+C.SUBMIT] =this.get_form_obj();
+		}
 		op[C.STORED_METHOD] ='admin_Update';
 		this.exec(op); 
 	},
@@ -115,10 +117,10 @@ dojo.declare( "com.easysoft.service.admin.favorite.Update" , "com.easysoft.servi
 			});
 		});
 	},
-	postDrawEx:function($,data){
+	draw_get_ex:function($,data){
 		var a=[];
 		var metadata=this.define_schema();
-		a.push("<form class=\"well span3\" method=\"post\" action=\"UpdateSubmit?sid="+this.sid+"&rmid="+data[C.RMID]+"\">");
+		a.push("<form class=\"well span3\" method=\"post\" action=\"?sid="+this.sid+"&rmid="+data[C.RMID]+"\">");
 		dojo.each(metadata,function(k,v,i){
 			if(v[C.FORMAT]){
 				a.push("<div class=\"control-group\">");
@@ -129,5 +131,8 @@ dojo.declare( "com.easysoft.service.admin.favorite.Update" , "com.easysoft.servi
 		a.push("<button type=\'submit\' class=\'btn btn-primary\'>"+I18N[C.OK]+"</button>");
 		a.push("</form>");
 		$("#apBody").html(a.join("\n"));
+	},
+	draw_post:function(data){
+		this.redirect(C.LIST+"?"+C.SID+"="+data[C.SID]);
 	}
 });

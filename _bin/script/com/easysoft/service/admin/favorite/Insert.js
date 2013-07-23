@@ -16,10 +16,15 @@ dojo.provide("com.easysoft.service.admin.favorite.Insert");
 dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.service.admin.Start" , {
 	table_name:C.FAVORITE,
 	postCreate:function(){
-		var a=[],o={},op={};
 		var op=this.getsbo();
-		op[C.TABLE_NAME] =this.table_name;
-		op[C.STORED_METHOD] ='admin';
+		if(op.method=="get"){
+			op[C.TABLE_NAME] =this.table_name;
+			op[C.STORED_METHOD] ='admin';
+		}else{
+			op[C.INSERT+C.OBJECT] =this.get_form_obj();
+			op[C.TABLE_NAME] =this.table_name;
+			op[C.STORED_METHOD] ='admin_Insert';
+		}
 		this.exec(op);
 	},
 	_define_schema:function(k,v,i){
@@ -47,11 +52,11 @@ dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.servi
 			v[C.FORMAT]=function(k,v,i,tn){
 				var a=[];
 				a.push("<label class=\"radio\">");
-				a.push("<input type=\"radio\" name=\""+v[C.FIELD]+"\" id=\"optionsRadios1\" value=\"false\" checked >");
+				a.push("<input type=\"radio\" name=\""+v[C.FIELD]+"\" id=\"optionsRadios1\" value=\"false\" >");
 				a.push(I18N[C.PUBLIC]);
 				a.push("</label>");
 				a.push("<label class=\"radio\">");
-				a.push("<input type=\"radio\" name=\""+v[C.FIELD]+"\" id=\"optionsRadios2\" value=\"true\">");
+				a.push("<input type=\"radio\" name=\""+v[C.FIELD]+"\" id=\"optionsRadios2\" value=\"true\" checked >");
 				a.push(I18N[C.PRIVATE]);
 				a.push("</label>");
 				
@@ -106,10 +111,10 @@ dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.servi
 			});
 		});
 	},
-	postDrawEx:function($,data){
+	draw_get_ex:function($,data){
 		var a=[];
 		var metadata=this.define_schema();
-		a.push("<form class=\"well span3\" method=\"post\" action=\""+C.INSERT+C.SUBMIT+"?sid="+this.sid+"\">");
+		a.push("<form class=\"well span3\" method=\"post\" action=\"?sid="+this.sid+"\">");
 		dojo.each(metadata,function(k,v,i){
 			if(v[C.FORMAT]){
 				a.push("<div class=\"control-group\">");
@@ -120,5 +125,11 @@ dojo.declare( "com.easysoft.service.admin.favorite.Insert" , "com.easysoft.servi
 		a.push("<button type=\'submit\' class=\'btn btn-primary\'>"+I18N[C.OK]+"</button>");
 		a.push("</form>");
 		$("#apBody").html(a.join("\n"));
+	},
+	draw_post:function(data){
+		if(data[C.IS_DICT]){
+			dojo.mixin(DICT,dojo.clone(data[C.DICT]));
+		}
+		this.redirect(C.LIST+"?"+C.SID+"="+data[C.SID]);
 	}
 });

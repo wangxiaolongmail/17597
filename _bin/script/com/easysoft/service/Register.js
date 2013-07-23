@@ -17,8 +17,16 @@ dojo.provide("com.easysoft.service.Register");
 dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Index" , {
 	table_name:C.USER,
 	postCreate:function(){
-		var a=[],o={},op={};
 		var op=this.getbo();
+		if(op.method=="get"){
+		}else{
+			var o=this.get_form_obj();
+			o[C.PASSWORD] =dojo.md5(o[C.PASSWORD]);
+			o[C._ID] =o[C.USER_NAME];
+			op[C.INSERT+C.OBJECT] =o;
+			op[C.MID] =this.queryForm[C.MID];
+			op[C.ROLE_NAME] =this.role_name;
+		}
 		op[C.STORED_METHOD] =C.REGISTER;
 		this.exec(op);
 	},
@@ -125,10 +133,10 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Index" , {
 			});
 		});
 	},
-	postDrawEx:function($,data){
+	draw_get_ex:function($,data){
 		var a=[];	
 		var metadata=this.define_schema();
-		a.push("<form class=\"well span3\" method=\"post\" action=\""+C.REGISTER+C.SUBMIT+"\">");
+		a.push("<form class=\"well span3\" method=\"post\" action=\""+C.REGISTER+"\">");
 		dojo.each(metadata,function(k,v,i){
 			if(v[C.FORMAT]){
 				a.push(v[C.FORMAT].call(this,k,v,i,this.table_name,data[C.MID]));
@@ -137,5 +145,8 @@ dojo.declare( "com.easysoft.service.Register" , "com.easysoft.service.Index" , {
 		a.push("<button type=\'submit\' class=\'btn btn-primary\'>"+I18N[C.OK]+"</button>");
 		a.push("</form>");
 		$("#apBody").html(a.join("\n"));
+	},
+	draw_post_ex:function($,data){
+		$("#apBody").html("ok");
 	}
 });

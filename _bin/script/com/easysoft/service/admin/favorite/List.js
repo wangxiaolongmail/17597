@@ -188,7 +188,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 
 
 	 },
-	postDrawEx:function($,data){
+	draw_get_ex:function($,data){
 		var metadata=this.define_schema(data);
 		var s="";
 		s+="<h4>"+data.tablename+"</h4>";

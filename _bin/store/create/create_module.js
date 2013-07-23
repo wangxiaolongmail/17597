@@ -36,31 +36,15 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.URL_NAME]=C.EASYSOFT+C.LOGIN;
 	obj[C.URL]=path+"login";
 	obj[C.SERVLET_CLASS]=COM+"Login";
-	obj[C.METHOD]=C.GET;
+	obj[C.METHOD]="";
 	_insert(C.MODULE,obj);
-	
-	var obj={};
-	obj[C.MODULE_NAME]=C.INDEX;
-	obj[C.URL_NAME]=C.EASYSOFT+C.LOGINING;
-	obj[C.URL]=path+"logining";
-	obj[C.SERVLET_CLASS]=COM+"Logining";
-	obj[C.METHOD]=C.POST;
-	_insert(C.MODULE,obj);	
 	
 	var obj={};
 	obj[C.MODULE_NAME]=C.INDEX;
 	obj[C.URL_NAME]=C.EASYSOFT+C.LOGIN2;
 	obj[C.URL]=path+C.LOGIN2;
 	obj[C.SERVLET_CLASS]=COM+C.LOGIN2;
-	obj[C.METHOD]=C.GET;
-	_insert(C.MODULE,obj);	
-	
-	var obj={};
-	obj[C.MODULE_NAME]=C.INDEX;
-	obj[C.URL_NAME]=C.EASYSOFT+C.LOGINING2;
-	obj[C.URL]=path+C.LOGINING2;
-	obj[C.SERVLET_CLASS]=COM+C.LOGINING2;
-	obj[C.METHOD]=C.POST;
+	obj[C.METHOD]="";
 	_insert(C.MODULE,obj);	
 	
 	var obj={};
@@ -68,15 +52,7 @@ db.system.js.save({_id:"create_module",value:function () {
 	obj[C.URL_NAME]=C.EASYSOFT+C.REGISTER;
 	obj[C.URL]=path+C.REGISTER;
 	obj[C.SERVLET_CLASS]=COM+C.REGISTER;
-	obj[C.METHOD]=C.GET;
-	_insert(C.MODULE,obj);
-		
-	var obj={};
-	obj[C.MODULE_NAME]=C.INDEX;
-	obj[C.URL_NAME]=C.REGISTER+C.SUBMIT;
-	obj[C.URL]=path+C.REGISTER+C.SUBMIT;
-	obj[C.SERVLET_CLASS]=COM+C.REGISTER+C.SUBMIT;
-	obj[C.METHOD]=C.POST;
+	obj[C.METHOD]="";
 	_insert(C.MODULE,obj);
 	
 	var obj={};
@@ -145,7 +121,7 @@ db.system.js.save({_id:"create_module",value:function () {
 		obj[C.URL_NAME]=C.EASYSOFT+C.ADMIN+v+C.INSERT;
 		obj[C.URL]=path+v+"/"+C.INSERT;
 		obj[C.SERVLET_CLASS]=COM+v+"."+C.INSERT;
-		obj[C.METHOD]=C.GET;
+		obj[C.METHOD]="";
 		_insert(C.MODULE,obj);
 			
 		var obj={};
@@ -153,24 +129,8 @@ db.system.js.save({_id:"create_module",value:function () {
 		obj[C.URL_NAME]=C.EASYSOFT+C.ADMIN+v+C.UPDATE;
 		obj[C.URL]=path+v+"/"+C.UPDATE;
 		obj[C.SERVLET_CLASS]=COM+v+"."+C.UPDATE;
-		obj[C.METHOD]=C.GET;
+		obj[C.METHOD]="";
 		_insert(C.MODULE,obj);
-			
-		var obj={};
-		obj[C.MODULE_NAME]=v;
-		obj[C.URL_NAME]=C.EASYSOFT+C.ADMIN+v+C.UPDATE+C.SUBMIT;
-		obj[C.URL]=path+v+"/"+C.UPDATE+C.SUBMIT;
-		obj[C.SERVLET_CLASS]=COM+v+"."+C.UPDATE+C.SUBMIT;
-		obj[C.METHOD]=C.POST;
-		_insert(C.MODULE,obj);	
-			
-		var obj={};
-		obj[C.MODULE_NAME]=v;
-		obj[C.URL_NAME]=C.EASYSOFT+C.ADMIN+v+C.INSERT+C.SUBMIT;
-		obj[C.URL]=path+v+"/"+C.INSERT+C.SUBMIT;
-		obj[C.SERVLET_CLASS]=COM+v+"."+C.INSERT+C.SUBMIT;
-		obj[C.METHOD]=C.POST;
-		_insert(C.MODULE,obj);	
 			
 		var obj={};
 		obj[C.MODULE_NAME]=v;

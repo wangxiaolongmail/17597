@@ -22,7 +22,7 @@ dojo.declare( "com.easysoft.service.Go" , "com.easysoft.Widget" , {
 		op[C.STORED_METHOD] ='';
 		this.exec(op);
 	},
-	postDraw:function(data){
+	draw_get:function(data){
 		this.redirect(data[C.TO]);
 	}
 });

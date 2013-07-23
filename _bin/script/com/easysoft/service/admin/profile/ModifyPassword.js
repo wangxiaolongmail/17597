@@ -42,7 +42,7 @@ dojo.declare( "com.easysoft.service.admin.profile.ModifyPassword" , "com.easysof
 			a.push("</div>"); 
 			return a.join("\n");
 	 },
-	postDrawEx:function($,data){
+	draw_get_ex:function($,data){
 		var a=[];
 		var metadata=this.define_schema();
 

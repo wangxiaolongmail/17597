@@ -23,7 +23,7 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 		op[C.STORED_METHOD] =C.SHOW_FAVORITE;
 		 this.exec(op);
     },
-	postDraw:function(data){
+	draw_get:function(data){
 		var a=[],o={};
 		var sid=this.sid;
 		var $ = this.getDom();
@@ -31,32 +31,25 @@ dojo.declare( "com.easysoft.service.Index" , "com.easysoft.service.Tempalte" , {
 		$("title").html(tilte);
 		$(".brand").html(tilte);
       	$(".nav-collapse").html(this.drawMainMenu(data));
-		this.postDrawEx($,data);
+		this.draw_get_ex($,data);
 		return $.html();
 	},
-	draw_view1:function($,data){
-		var a=[];
-		a.push("<table class='table table-bordered table-striped'>");
-		dojo.each(data[C.VIEW],function(k,v,i){
-			var o=v;
-			a.push("<tr>");
-			a.push("<td>");
-			a.push(o[C.NAME]);
-			dojo.each(o.list,function(k,v,i){
-					if(v[C.USER_NAME]!="tester"){
-						a.push("&nbsp;");
-						a.push("<a target='_blank' href='"+URL[C.EASYSOFT+C.GO]+"?"+C.TO+"="+v[C.URL]+"'>"+v[C.NAME]+"</a>");
-					}
-			});
-			a.push("</td>");
-			a.push("</tr>");
-		});
-		a.push("</table>");
-		return a.join("\n");
+	draw_post:function(data){
+		var a=[],o={};
+		var sid=this.sid;
+		var $ = this.getDom();
+		var tilte=I18N[C.SITE_NAME];
+		$("title").html(tilte);
+		$(".brand").html(tilte);
+      	$(".nav-collapse").html(this.drawMainMenu(data));
+		this.draw_post_ex($,data);
+		return $.html();
 	},
-	postDrawEx:function($,data){
+	draw_get_ex:function($,data){
 		var s=this.draw_view1($,data);
 		$("#apBody").html(s);
+	},
+	draw_post_ex:function($,data){
 	},
     drawMainMenu:function(data){
 		var a=[],o={};

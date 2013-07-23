@@ -28,6 +28,9 @@ dojo.declare( "com.easysoft.service.admin.Start" , "com.easysoft.service.Index" 
 		op[C.STORED_METHOD] ='admin_Start';
 		this.exec(op);
     },
+	draw_get_ex:function($,data){
+		$("#apBody").html("");
+	},
 	drawMainMenu:function(data){
 		var sid=this.sid;
 		var a=[],o={};

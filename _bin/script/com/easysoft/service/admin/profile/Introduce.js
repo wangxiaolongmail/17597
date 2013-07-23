@@ -44,7 +44,7 @@ dojo.declare( "com.easysoft.service.admin.profile.Introduce" , "com.easysoft.ser
 			a.push("</div>"); 
 			return a.join("\n");
 	 },
-	postDrawEx:function($,data){
+	draw_get_ex:function($,data){
 		var a=[];
 		var metadata=this.define_schema();
 		dojo.each(metadata,function(k,v,i){

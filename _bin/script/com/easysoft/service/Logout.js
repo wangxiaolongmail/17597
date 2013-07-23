@@ -22,7 +22,7 @@ dojo.declare( "com.easysoft.service.Logout" , "com.easysoft.Widget" , {
 		op[C.STORED_METHOD] ='admin_Logout';
 		this.exec(op);
 	},
-	postDraw:function(data){
+	draw_get:function(data){
 		this.redirect(URL[C.EASYSOFT+C.LOGIN]);
 	}
 });

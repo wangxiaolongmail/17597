@@ -73,11 +73,23 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 	drawFormEvent:function(){
 		return "";
 	},
+	draw_get:function(data){
+		return "";
+	},
+	draw_post:function(data){
+		return "";
+	},
 	draw:function(err,data){
 		if(!err){
 			if(data!=null){
 				if(data.ok){
-					var s=this.postDraw(data);
+					var s="";
+					if(data.method=="get"){
+						s=s+this.draw_get(data);
+					}
+					if(data.method=="post"){
+						s=s+this.draw_post(data);
+					}
 					s=s+this.drawFormEvent();
 					s=s+this.drawDebug(data);
 					this.endPaint(s);
@@ -141,6 +153,26 @@ dojo.declare( "com.easysoft.service.Tempalte" , "com.easysoft.Widget" , {
 	},
 	get_schema_list:function(){
 		return dojo.clone(SCHEMA[this.table_name][C.LIST]);
+	},
+	draw_view1:function($,data){
+		var a=[];
+		a.push("<table class='table table-bordered table-striped'>");
+		dojo.each(data[C.VIEW],function(k,v,i){
+			var o=v;
+			a.push("<tr>");
+			a.push("<td>");
+			a.push(o[C.NAME]);
+			dojo.each(o.list,function(k,v,i){
+					if(v[C.USER_NAME]!="tester"){
+						a.push("&nbsp;");
+						a.push("<a target='_blank' href='"+URL[C.EASYSOFT+C.GO]+"?"+C.TO+"="+v[C.URL]+"'>"+v[C.NAME]+"</a>");
+					}
+			});
+			a.push("</td>");
+			a.push("</tr>");
+		});
+		a.push("</table>");
+		return a.join("\n");
 	},
 	get_form_obj:function(){
 		var obj={};

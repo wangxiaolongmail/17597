@@ -22,7 +22,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.Remove" , "com.easysoft.servi
 		op[C.STORED_METHOD] ='admin_Remove';
 		this.exec(op);
     },
-	postDraw:function(data){
+	draw_get:function(data){
 		this.redirect(C.LIST+"?"+C.SID+"="+data[C.SID]);
 	}
 });

@@ -23,7 +23,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.View" , "com.easysoft.service
 		op[C.STORED_METHOD] ='admin_View';
 		this.exec(op);
     },
-	postDrawEx:function($,data){
+	draw_get_ex:function($,data){
 		var s="";
 		s+="<h4>"+data.tablename+"</h4>";
 		s+="<div class=\"input-append\">";
