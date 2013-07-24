@@ -57,7 +57,7 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 		dojo.db.eval(cmd, dojo.hitch(this,this.draw));
 	},
 	drawDebug:function(data){
-		if(!ROLE[data[C.ROLE_NAME]][C.IS_DEBUG]){
+		if(ROLE[data[C.ROLE_NAME]][C.IS_DEBUG]){
 			var a=[];
 			a.push("<script type='text/javascript'>");
 			a.push("window.debug="+dojo.toString(data,true));
@@ -85,13 +85,15 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 				if(data.ok){
 					var s="";
 					if(data.method=="get"){
-						s=s+this.draw_get(data);
+						s=this.draw_get(data);
 					}
 					if(data.method=="post"){
-						s=s+this.draw_post(data);
+						s=this.draw_post(data);
 					}
-					s=s+this.drawFormEvent();
-					s=s+this.drawDebug(data);
+					this.paint(s);
+					s=this.drawFormEvent();
+					this.paint(s);
+					s=this.drawDebug(data);
 					this.endPaint(s);
 				}else{
 					this.endPaint(data.err);
@@ -113,12 +115,17 @@ dojo.declare( "com.easysoft.Widget" , "" , {
 		this.dog.res.writeHead( 200 , {"Content-Type":"text/html"} );
 		console.log(this.widgetName+"::beginPaint");
 	},
+	paint:function(s){
+		if(s){
+			this.dog.res.write( s , "utf-8" );
+		}
+	},
 	endPaint:function(s){
 		if(s){
 			this.dog.res.write( s , "utf-8" );
-			this.dog.res.end();
-			console.log(this.widgetName+"::endPaint");
 		}
+		this.dog.res.end();
+		console.log(this.widgetName+"::endPaint");
 	},
 	getMenuList:function(data){
 		return ROLE[data[C.ROLE_NAME]];

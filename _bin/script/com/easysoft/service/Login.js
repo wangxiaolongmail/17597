@@ -22,7 +22,7 @@ dojo.declare( "com.easysoft.service.Login" , "com.easysoft.service.Index" , {
 		}else{
 			op[C.USER_NAME] = this.queryForm[C.USER_NAME];
 			op[C.PASSWORD] =dojo.md5(this.queryForm[C.PASSWORD]);
-			op[C.STORED_METHOD] ='logining';
+			op[C.STORED_METHOD] ='Login';
 		}
 		this.exec(op);
     },

@@ -15,19 +15,13 @@ db.system.js.save({_id:"main",value:function (params) {
 					break;  
 			 case "Register":   
 					result=Register(params);   
-					break; 
-			 case "RegisterSubmit":   
-					result=RegisterSubmit(params);   
 					break;
-			 case "logining":   
-					result=logining(params);   
+			 case "Login":   
+					result=Login(params);   
 					break;
 			 case "Login2":   
 					result=Login2(params);   
 					break;
-			 case "Logining2":   
-					result=Logining2(params);   
-					break; 
 			 case "init":   
 					result=init(params);   
 					break; 

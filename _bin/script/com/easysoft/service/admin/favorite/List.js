@@ -90,20 +90,20 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 			 if(v[C.FIELD]===C.CATEGORY){
 				 this.m_select=v;
 				 v[C.FORMAT]=function(val){
-					 return DICT[C.FAVORITE_TYPE][val];
+					 return "<td style='width:67px;' >"+DICT[C.FAVORITE_TYPE][val]+"</td>";
 				 }
 			 }
 			 if(v[C.FIELD]===C._ID){
 				 v[C.FORMAT]=function(val){
-					 return "<input name='_id' type='radio' value='"+val+"'/>";
+					 return "<td style='width:37px;' >"+"\n<input name='_id' type='radio' value='"+val+"'/>\n"+"</td>";
 				 }
 			 }
 			 if(v[C.FIELD]===C.NAME){
 				 v[C.FORMAT]=function(val,flag){
 					if(flag){
-						 return val+"<i class=\"icon-eye-close\"></i>";
+						 return "<td>"+val+"<i class=\"icon-eye-close\"></i>"+"</td>";
 					}else{
-						 return val;
+						 return "<td>"+val+"</td>";
 					}
 				 }
 			 }
@@ -136,9 +136,7 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 				a.push("<tr>");
 					dojo.each(metadata,function(k,v,i){
 						if(v[C.FORMAT]){
-							a.push("<td>");
 							a.push(v[C.FORMAT](o[v[C.FIELD]],o[C.IS_PRIVATE]));
-							a.push("</td>");
 						}
 					});
 				a.push("</tr>");
