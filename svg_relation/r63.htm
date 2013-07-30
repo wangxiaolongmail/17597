@@ -43,12 +43,18 @@
 			user-select: none;
 		}
     </style>
+	<script src="../jquery/jquery-2.0.0.min.js"></script>
 <script>
 	var _svg_d=document;
 	var _wc=8;
 	var _d=document;
 	var data={
 		lstyle:"fill:white;stroke:#ddd;stroke-width:3",
+		shaSingle:true,
+		sha:{
+			w:13,
+			h:13
+		},
 		bg:"#eee",
 		border:"2px solid #ddd",
 		borderRadius: "5px",
@@ -71,9 +77,7 @@
 		containerPaddingGap:20,
 		containerList:[
 			{title:"Virtual Application Component:"},
-			{title:"Rules / Policies:"},
-			{title:"Actions:"},
-			{title:"Virtual System Patterns:"}
+			{title:"Rules / Policies:"}
 		],
 		isFix:true,
 		isDrag:true,
@@ -108,59 +112,68 @@
 		],
 		list:[
 		{
-			id:"s1",
-			typeid:0,
-			title:"Web Application",
-			x:20,
-			y:100,
-			to:[
-					{destid:"s9",title:"a1"}
-				],
+			id:"s3",
+			typeid:2,
+			title:"Deploy1",
+			x:500,
+			y:70,
 			houseid:0
 			},
 		{
-			id:"s9",
-			isDrag:false,
-			typeid:5,
-			title:"",
-			x:780,
-			y:380,
-			w:20,
-			h:20,
-			houseid:1,
-			from:[
-					{srcid:"s1"}
-				],
-			to:[
-					{destid:"s3",title:"Development"}
-				],
-			onclick:function(){
-					clickevent("s9");
-				}
-			},
-		{
-			id:"s3",
+			id:"s4",
 			typeid:2,
-			title:"Deploy",
+			title:"Deploy2",
 			x:500,
 			y:70,
-			houseid:2
+			houseid:0
+			},
+		{
+			id:"s41",
+			typeid:2,
+			title:"Deploy3",
+			x:500,
+			y:70,
+			houseid:0
+			},
+		{
+			id:"s42",
+			typeid:2,
+			title:"Deploy4",
+			x:500,
+			y:70,
+			houseid:0
 			},
 		{
 			id:"s6",
 			typeid:4,
-			title:"Joe's Dev Env",
+			title:"Joe's Dev Env1",
 			x:680,
 			y:70,
-			houseid:3
+			houseid:1
 			},
 		{
 			id:"s7",
 			typeid:4,
-			title:"Joe's Dev Env",
+			title:"Joe's Dev Env2",
 			x:680,
 			y:70,
-			houseid:3
+			houseid:1
+			},
+		{
+			id:"s71",
+			typeid:4,
+			title:"Joe's Dev Env3",
+			x:680,
+			y:70,
+			houseid:1
+			},
+		{
+			id:"s72",
+			typeid:4,
+			title:"Joe's Dev Env4",
+			x:680,
+			y:70,
+			houseid:1
 			}
 		],
 		listmap:{}
@@ -176,74 +189,6 @@
 			}
 		});
 		return obj;
-	}
-	function clickevent(id){
-		var old_obj=_remove_node(id);
-		var newid="newID1"
-		_each(old_obj.from,function(item){
-			var srcobj=data.listmap[item.srcid];
-			_each(srcobj.to,function(ite){
-				if(ite.destid==old_obj.id){
-					ite.destid=newid;
-				}
-			});
-		});
-		var houseid=1;
-		var o=
-		{
-			id:newid,
-			typeid:1,
-			title:"Environment Target",
-			houseid:houseid,
-			isBranch:true
-			}
-		var to=o.to=old_obj.to;
-		data.list.push(o);
-		
-		houseid++;
-		var newid="newID2"
-		var o={
-			id:newid,
-			typeid:2,
-			title:"Deploy",
-			houseid:houseid,
-			to:[{destid:"newID4"}]
-			}
-		data.list.push(o);
-		to.push({destid:newid,title:"aaa"});
-		
-		var newid="newID3"
-		var o={
-			id:newid,
-			typeid:2,
-			title:"Deploy",
-			houseid:houseid,
-			to:[{destid:"newID5"}]
-			}
-		data.list.push(o);
-		to.push({destid:newid,title:"bbb"});
-		
-		houseid++;
-		var newid="newID4"
-		var o={
-			id:newid,
-			typeid:4,
-			title:"Deploy",
-			houseid:houseid
-			}
-		data.list.push(o);
-		
-		var newid="newID5"
-		var o={
-			id:newid,
-			typeid:4,
-			title:"Deploy",
-			houseid:houseid
-			}
-		data.list.push(o);
-		
-		destroy();
-		init();
 	}
 	function _get_class(object) {
 		return Object.prototype.toString.call(object).match(/^\[object\s(.*)\]$/)[1];
@@ -280,16 +225,20 @@
 			oh.setCapture();
 			_d.onmousemove=function(e){
 				draw(o,e.pageX-x,e.pageY-y);
+				updataReordPosing(o)
 			};
 			_d.onmouseup=function(){
 				oh.releaseCapture();
 				_d.onmousemove=_d.onmouseup=null;
+				updataReordPos(o);
+				destroy();
+				init();
 			};
 		};
 	}
 	function _dragShadow(o){
 		if(!o.isDragShadow) return;
-		var oh=o.shadow.n||o.oh;
+		var oh=o.sha.n||o.oh;
 		oh.onmousedown=function(e){
 			var x=e.layerX,y=e.layerY;
 			oh.setCapture();
@@ -309,11 +258,54 @@
 		var pn=_d.getElementById("my");
 		pn.appendChild(node);
 	}
+	function createTuodFlag(o){
+		if(!data.nTuod){
+			data.nTuod=$('<div></div>')[0];
+			$(data.nTuod).css({position:"absolute",width:data.w+"px",height:data.containerPaddingGap+"px",backgroundColor:"black"});
+			$("#my").append(data.nTuod);
+		}
+		$(data.nTuod).css({left:o.x+"px",top:(o.y+o.h)+"px"});
+	}
+	function updataReordPos(oo){
+		var a=[];
+		var aa=[];
+		var o=null;
+		_each(data.list,function(item){
+			if(item != oo){
+				a.push(item);
+			}
+			aa.push(item);
+		});
+		var b=[];
+		var flag=true;
+		_each(a,function(item){
+			if( flag && oo.y > item.y && oo.y<(item.y+item.h) && oo.houseid==item.houseid){
+				b.push(item);
+				b.push(oo);
+				flag=false;
+			}else{
+				b.push(item);
+			}
+		});
+		if(flag){
+			data.list=aa;
+		}else{
+			data.list=b;
+		}
+	}
+	function updataReordPosing(oo){
+		_each(data.list,function(item){
+			if(item==oo) return;
+			if( oo.y > item.y && oo.y<(item.y+item.h) && oo.houseid==item.houseid){
+				createTuodFlag(item);
+			}
+		});
+	}
 	function _drawContainer(o){
 		if(!o.n){
 			o.n=_d.createElement("div");
 			addBody(o.n);
-		}
+		}    
 		var sty=o.n.style;
 		sty.position = "absolute";
 		sty.left = o.x+"px";
@@ -321,7 +313,7 @@
 		sty.width = o.w+"px";
 		sty.height = o.h+"px";
 		sty.zIndex = -1;
-		sty.background = "#FEF5ED";
+		//sty.background = "#FEF5ED";
 		sty.border = "2px solid #FDEADA";
 		o.x2=o.x+o.w;
 		o.y2=o.y+o.h;
@@ -331,7 +323,7 @@
 	function _drawElement(o){
 		if(!o.n){
 			var typeObj=data.typelist[o.typeid];
-			o.n=_d.createElement("div");
+			o.n=_d.createElement("div");    
 			if(typeObj.isOnlyIcon){
 				var left=_d.createElement("div");
 				left.className=typeObj.iconClass;
@@ -387,18 +379,21 @@
 		sty.zIndex = o.zIndex;
 		_each(o.to,function(item){
 			if(!item.nline){
-				var group=_svg_d.getElementById("group");
-				var node=_svg_d.createElementNS("http://www.w3.org/2000/svg","path");
-				item.nline=node;
-				group.appendChild(node);
+				item.nline=_createline();
 			}
 		});
 	}
+	function _createline(){
+			var group=_svg_d.getElementById("group");
+			var node=_svg_d.createElementNS("http://www.w3.org/2000/svg","path");
+			group.appendChild(node);
+			return node;
+	}
 	function _drawElementShadow(o){
-		if(!o.shadow.n){
+		if(!o.sha.n){
 			var typeObj=data.typelist[o.typeid];
 			var node=_d.createElement("div");
-			o.shadow.n=node;
+			o.sha.n=node;
 			if(typeObj.isOnlyIcon){
 				var left=_d.createElement("div");
 				left.className=typeObj.iconClass;
@@ -408,19 +403,20 @@
 				node.appendChild(wrap);
 				o.wrap=wrap;
 				var sty=o.wrap.style;
-				sty.width = o.w+"px";
-				sty.height = o.h+"px";
+				sty.width = o.sha.w+"px";
+				sty.height = o.sha.h+"px";
 				sty.border = o.border;
 				sty.borderStyle = "dashed";
+				sty.borderColor = "red";
 				sty.borderRadius = o.borderRadius;
 			}
-			addBody(o.shadow.n);
+			addBody(o.sha.n);
 		}
-		var sty=o.shadow.n.style;
+		var sty=o.sha.n.style;
 		sty.position = "absolute";
-		sty.left = o.shadow.x+"px";
-		sty.top = o.shadow.y+"px";
-		sty.zIndex = o.zIndex;
+		sty.left = o.sha.x+"px";
+		sty.top = o.sha.y+"px";
+		sty.zIndex = 99;
 	}
 	function _adjust(flag,isEnd){
 		return isEnd?flag*data.adjustWidth:0;
@@ -468,7 +464,6 @@
 	function drawLine(){
 		_each(data.list,function(obj){
 			_each(obj.to,function(item,i){
-				var s="";
 				var oo1=obj;oo2=data.listmap[item.destid];
 				if(!oo2) return;
 				if(!oo2||oo2.isHidden) return;
@@ -504,15 +499,20 @@
 						var o2=_getRMPoint(oo2,flag,true,i);
 					}
 				}
-				s=s+"M "+o1.x+","+o1.y+" ";
-				var x=(o2.x-o1.x)/2+o1.x;
-				s=s+"Q "+x+","+o1.y+" ";
-				var y=(o2.y-o1.y)/2+o1.y;
-				s=s+" "+x+","+y+" ";
-				s=s+"T "+(o2.x)+","+o2.y+" ";
-				svg_drawLine(obj,s,i);
+				var node = obj.to[i].nline;
+				_drawLine(node,o1,o2);
 			});
 		});
+	}
+	function _drawLine(node,o1,o2){
+			var s="";
+			s=s+"M "+o1.x+","+o1.y+" ";
+			var x=(o2.x-o1.x)/2+o1.x;
+			s=s+"Q "+x+","+o1.y+" ";
+			var y=(o2.y-o1.y)/2+o1.y;
+			s=s+" "+x+","+y+" ";
+			s=s+"T "+(o2.x)+","+o2.y+" ";
+			svg_drawLine(node,s);
 	}
 	function _adjustPos(o,x,y){
 		if(data.isFix&&_is_number(o.houseid)){
@@ -528,7 +528,7 @@
 		}
 	}
 	function _adjustPosShadow(o,x,y){
-		o.shadow.x=x; o.shadow.y=y;
+		o.sha.x=x; o.sha.y=y;
 	}
 	function _adjustAutoX(o){
 		if(data.isAjustAutoX&&_is_number(o.houseid)){
@@ -548,13 +548,17 @@
 		_each(data.list,function(obj){
 			if(o==obj){
 				_adjustPos(o,x,y);
-				_drawElement(obj);
+				_drawElement(o);
+				if(o.sha){
+					_update_sha_pos(o);
+					_drawElementShadow(o);
+				}
 			}
 		});
 		drawLine();
 	}
 	function findMix(o){
-		var obj=o.shadow;
+		var obj=o.sha;
 		var oo=null;
 		_each(data.list,function(item){
 			if(obj.x>item.x && obj.y>item.y && obj.x<(item.x+item.w) && obj.y<(item.y+item.h)){
@@ -567,19 +571,23 @@
 		var dest=findMix(o);
 		if(dest){
 			if(o.id!=dest.id){
-				if(_is_array(o.to)){
-					var a=o.to;
-					var flag=true;
-					_each(a,function(item){
-						if(item.destid==dest.id){
-							flag=false;
-						}
-					});
-					if(flag){
-						o.to.push({destid:dest.id});
-					}
-				}else{
+				if(data.shaSingle){
 					o.to=[{destid:dest.id}];
+				}else{
+					if(_is_array(o.to)){
+						var a=o.to;
+						var flag=true;
+						_each(a,function(item){
+							if(item.destid==dest.id){
+								flag=false;
+							}
+						});
+						if(flag){
+							o.to.push({destid:dest.id});
+						}
+					}else{
+						o.to=[{destid:dest.id}];
+					}
 				}
 			}
 		}
@@ -594,8 +602,13 @@
 		drawShadowLine(o);
 	}
 	function drawShadowLine(o){
-		console.log(o);
-		console.log("drawShadowLine");
+		if(!o.sha.nline){
+			data.zIndex=data.zIndex+1;
+			o.sha.nline=_createline();
+		}
+		var o1=_getLMPoint(o,1,false,1);
+		var o2=_getRMPoint(o.sha,1,false,1);
+		_drawLine(o.sha.nline,o1,o2);
 	}
 	function main(){
 		destroy();
@@ -625,6 +638,7 @@
 			o.n=null;
 		})
 		data.listmap={};
+		data.nTuod=null;
 	}
 	function init(){
 		var x=data.containerMargginX;
@@ -662,11 +676,12 @@
 			_adjustAutoY(o);
 			_drawElement(o);
 			_drag(o);
-			if(data.isDragShadow){
-				o.shadow={};
-				_adjustPosShadow(o,o.x,o.y);
-				_drawElementShadow(o);
-				_dragShadow(o);
+			if(o.houseid==0){
+				if(data.isDragShadow){
+					_make_sha_pos(o);
+					_drawElementShadow(o);
+					_dragShadow(o);
+				}
 			}
 		})
 		_each(data.list,function(o){
@@ -676,31 +691,30 @@
 		})
 		drawLine();
 	}
-	function svg_init(evt)
-	{
-		//_svg_d=evt.target.ownerDocument;
-		main();
+	function _make_sha_pos(o){
+		var sha={x:o.x+o.w,y:o.y,w:data.sha.w,h:data.sha.h};
+		sha.x=sha.x-sha.w/2;
+		sha.y=sha.y+o.h/2-sha.h/2;
+		o.sha=sha;
 	}
-	function svg_drawLine(o,s1,i)
+	function _update_sha_pos(o){
+		var sha=o.sha;
+		sha.x=o.x+o.w-sha.w/2;
+		sha.y=o.y+o.h/2-sha.h/2;
+	}
+	function svg_drawLine(node,s1,i)
 	{
-		var node = o.to[i].nline;
-		node.setAttribute("style",o.lstyle);
+		node.setAttribute("style",data.lstyle);
 		node.setAttribute("marker-end","url(#idArrow)");
 		node.setAttribute("d",s1);
 	}
 </script>
 </head>
 <body>
-<div style="position:absolute" ><input type="button" value="paint" id="btnPaint"/></div>
 <div id="my"></div>
 <div id="mysvg"></div>
 </body>
 </html>
 <script>
-		main();
-		document.getElementById("btnPaint").onclick=function(){
-			data.isDragShadow=false;
-			destroy();
-			init();
-		};
+	setTimeout("main()",0);
 </script>
