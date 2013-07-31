@@ -193,7 +193,7 @@ dojo.declare( "com.easysoft.service.Tempalte" , "com.easysoft.Widget" , {
 					obj[field]= parseInt(val);
 				}else if(type==C.URL){
 					var s= val ;
-					if(s.indexOf("http://")<0){
+					if(s.indexOf("http")<0 ){
 						s="http://"+s;
 					}
 					obj[field]= s;

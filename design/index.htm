@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-responsive.min.css">
+    <style>
+		.icon{
+			background-image:url(../svg/server.png);
+			width:45px;
+			height:45px;
+		}
+		.icon1{
+			background-image:url(../svg/et.png);
+			width:45px;
+			height:45px;
+		}
+		.icon2{
+			background-image:url(../svg/deploy.png);
+			width:45px;
+			height:45px;
+		}
+		.icon3{
+			background-image:url(../svg/connect.png);
+			width:45px;
+			height:45px;
+		}
+		.icon4{
+			background-image:url(../svg/vsp.png);
+			width:45px;
+			height:45px;
+		}
+		.icon5{
+			background-image:url(../svg/add.png);
+			width:20px;
+			height:20px;
+		}
+		.disable_text_highlighting {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none; /* Webkit */
+			-moz-user-select: none;    /* Firefox */
+			-ms-user-select: none;     /* IE 10  */
+			/* Currently not supported in Opera but will be soon */
+			-o-user-select: none;
+			user-select: none;
+		}
+    </style>
+	<script src="../jquery/jquery-2.0.0.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js"></script>
+	<script src="./design.js"></script>
+</head>
+<body>
+<div id="test" ></div>
+</body>
+</html>
+<script>
+function start(){
+	designer(document.getElementById("test"));
+}
+	setTimeout("start()",0);
+</script>
