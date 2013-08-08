@@ -2,7 +2,9 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" href="./PatternComponentDetail.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="./css.css">
 	<script src="../jquery/jquery-2.0.0.min.js"></script>
 	<script src="./design.js"></script>
 </head>
@@ -18,12 +20,6 @@ function start(){
 			{title:"property list 3:"}
 		];
 	var list=[
-		{
-			id:"s31111",
-			typeid:"record",
-			title:"Property1",
-			poolid:0
-		},
 		{
 			id:"s3",
 			typeid:"record",
@@ -41,7 +37,6 @@ function start(){
 			w:45,
 			className:"icon",
 			isClose:true,
-			isEdit:true,
 			links:[
 				{pos:"right",isDrag:true,to:[{id:"s103",i:0}]}
 				]
@@ -127,6 +122,7 @@ function start(){
 			title:"Property2",
 			poolid:2,
 			className:"icon5",
+			isClose:true,
 			links:[
 				{pos:"left"}
 				]
@@ -135,43 +131,7 @@ function start(){
 	function f(){
 		console.log("aa");
 	}
-	var shiptypes={
-		record:{
-			w:120,
-			h:30,
-			format:function(o){
-				$dr.create($dr.C.DIV,{style:{paddingLeft:3,paddingTop:3,width:70},innerHTML:o.title},o.nShip);
-			}
-		},
-		fatrecord:{
-			w:120,
-			h:60,
-			format:function(o){
-				var node=o.nShip;
-				o.oh=$dr.create($dr.C.DIV,{style:{display:$dr.C.NONE}},node);
-				if(o.className){
-					$dr.create($dr.C.DIV,{className:o.className,style:{float:$dr.C.LEFT}},node);
-					$dr.create($dr.C.DIV,{style:{paddingLeft:45,paddingTop:9,width:70},innerHTML:o.title},node);
-				}else if(o.imagePath){
-					var tmp=$dr.create($dr.C.DIV,{style:{float:$dr.C.LEFT}},node);
-					$dr.create("img",{src:o.imagePath},tmp);
-					$dr.create($dr.C.DIV,{style:{paddingLeft:45,paddingTop:9,width:70},innerHTML:o.title},node);
-				}else{
-					$dr.create($dr.C.DIV,{style:{paddingLeft:3,paddingTop:9,width:70},innerHTML:o.title},node);
-				}
-			}
-		},
-		onlyIcon:{
-			w:20,
-			h:20,
-			format:function(o){
-				$dr.style(o.nShip,{borderWidth:0});
-				$(o.nShip).addClass(o.className);
-				o.oh=$dr.create($dr.C.DIV,{style:{display:$dr.C.NONE}},o.nShip);
-			}
-		}
-	}
-	$dr.main(document.getElementById("test"),{list:list,containerList:containerList,paint:f},shiptypes);
+	$.designer.main(document.getElementById("test"),{list:list,containerList:containerList,paint:f});
 }
 	setTimeout("start()",0);
 </script>

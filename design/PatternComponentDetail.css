@@ -1,0 +1,54 @@
+		.icon{
+			background-image:url(server.png);
+			width:45px;
+			height:45px;
+		}
+		.icon1{
+			background-image:url(et.png);
+			width:45px;
+			height:45px;
+		}
+		.icon2{
+			background-image:url(deploy.png);
+			width:45px;
+			height:45px;
+		}
+		.icon3{
+			background-image:url(connect.png);
+			width:45px;
+			height:45px;
+		}
+		.icon4{
+			background-image:url(vsp.png);
+			width:45px;
+			height:45px;
+		}
+		.icon5{
+			background-image:url(add.png);
+			width:20px;
+			height:20px;
+		}
+		.disable_text_highlighting {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none; /* Webkit */
+			-moz-user-select: none;    /* Firefox */
+			-ms-user-select: none;     /* IE 10  */
+			/* Currently not supported in Opera but will be soon */
+			-o-user-select: none;
+			user-select: none;
+		}
+		.close_dark{
+			background-image:url(close_hover.gif);
+			width:16px;
+			height:16px;
+		}
+		.close{
+			background-image:url(close.gif);
+			width:16px;
+			height:16px;
+		}
+		.edit{
+			background-image:url(edit.gif);
+			width:16px;
+			height:16px;
+		}

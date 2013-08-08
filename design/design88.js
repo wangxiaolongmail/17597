@@ -1,12 +1,6 @@
-
 (function(){
 	var _d=document,
 	_w=window,
-	_isIE=false;
-	_isDojo=false,
-	_nBodyId=null,
-	_nBodysvgId=null,
-	_nBodysvgGroupId=null,
 	CUR={
 		CROSSHAIR:"crosshair",
 		MOVE:"move"
@@ -27,56 +21,50 @@
 		TOP:"top",
 		BOTTOM:"bottom",
 		WIDTH:"width",
-		HEIGHT:"height",
+		HEIGHT:"Height",
 		DIV:"div",
 		ABSOLUTE:"absolute",
 		PATH:"path",
 		BLOCK:"block",
 		NONE:"none",
-		borderWIDTH:"borderWidth",
-		borderRADIUS:"borderRadius",
-		paddingLEFT:"paddingLeft",
-		paddingTOP:"paddingTop",
-		paddingRIGHT:"paddingRight",
-		paddingBOTTOM:"paddingBottom",
-		HTTP_W3_SVG:"http://www.w3.org/2000/svg",
-		SOLID:"solid",
-		zIndex:"zIndex",
-		SRC:"src",
-		DELETE:"delete",
-		EDIT:"edit",
-		FLOAT:"float"
+		HTTP_W3_SVG:"http://www.w3.org/2000/svg"
 	},
 	COLOR={
-		GRAY:"#dddddd",
-		GRAY_BG:"#eeeeee",
-		GREEN:"#666699",
-		RED:"#ff9999",
-		TOUCH:"#666699",
-		POOL:"#B5BCC7",
-		BLUE:"#ABD6FF"
 	};
 	var data={
-		_wc:0,
-		id:"dr1",
+		_wc:8,
+		id:"my_",
+		prefix:"nBody",
+		nBodyId:"idbody",
+		nBodysvgId:"idsvg",
+		nBodysvgGroupId:"idsvgGroup",
+		nBodyArrowId:"idarrow",
+		colorTouch:"#666699",
+		color:"#ddd",
 		lstyle:"fill:white;stroke:#ddd;stroke-width:3",
-		lstyle2:"fill:white;stroke:#ABD6FF;stroke-width:3",
 		shaSingle:true,
 		orignPoint:{
 			w:12,
 			h:12
 		},
-		borderRadius: 5,
+		bg:"#eee",
+		border:"2px solid #ddd",
+		borderRadius: "5px",
 		borderWidth: 2,
-		poolBorderWidth: 1,
 		adjustWidth: 6,
+		lmode:2,
 		zIndex:1,
+		w:120,
+		h:30,
 		iconWidth:50,
+		svgWidth:340,
+		svgHeight:380,
+		linkPad:5,
 		buttonWidth:100,
 		buttonHight:30,
 		buttonPadding:2,
 		containerWidth:180,
-		containerHeight:370,
+		containerHeight:300,
 		containerMargginX:10,
 		containerMargginY:10,
 		containerMargginGap:10,
@@ -90,43 +78,7 @@
 		isAjustAutoY:true,
 		typelist:[],
 		list:[],
-		listmap:{},
-		paint:function(){}
-	};
-	var shiptypes={
-		fatrecord:{
-			w:120,
-			h:60,
-			format:function(o){
-				var node=o.nShip;
-				if(o.className){
-					_create(C.DIV,{className:o.className,style:{float:C.LEFT}},node);
-					_create(C.DIV,{style:{paddingLeft:45,paddingTop:9,width:70},innerHTML:o.title},node);
-				}else if(o.imagePath){
-					var tmp=_create(C.DIV,{style:{float:C.LEFT}},node);
-					_create("img",{src:o.imagePath},tmp);
-					_create(C.DIV,{style:{paddingLeft:45,paddingTop:9,width:70},innerHTML:o.title},node);
-				}else{
-					_create(C.DIV,{style:{paddingLeft:3,paddingTop:9,width:70},innerHTML:o.title},node);
-				}
-			}
-		},
-		onlyIcon:{
-			w:16,
-			h:16,
-			format:function(o){
-				_style(o.nShip,{borderWidth:0,backgroundColor:""});
-				_addClass(o.nShip,o.className);
-				o.oh=_create(C.DIV,{style:{display:C.NONE}},o.nShip);
-			}
-		},
-		record:{
-			w:120,
-			h:30,
-			format:function(o){
-				_create(C.DIV,{style:{paddingLeft:3,paddingTop:3,width:70},innerHTML:o.title},o.nShip);
-			}
-		}
+		listmap:{}
 	};
 	function _remove_node(id){
 		var obj=null;
@@ -172,7 +124,8 @@
 			for(var i=0;i<a.length;i++) {
 				f(a[i],i,a);
 			}
-		}else if(_is_object(a)){
+		}
+		if(_is_object(a)){
 			for (var i in a) { 
 				if (a.hasOwnProperty(i)) { 
 					f(a[i],i,a);
@@ -181,17 +134,10 @@
 		}
 	}
 	function _mixin(src,dest) {
-		if( _is_object(src) ){
-			if(_is_object(dest)){
-				_each(src,function(v,k){
-					dest[k]=v;
-				});
-			}else if(_in_array(_get_class(dest),[DT.HTMLDivElement,DT.SVGPathElement])){
-				_each(src,function(v,k){
-					if(k===C.FLOAT) k=_isIE?"styleFloat":"cssFloat";
-					dest.style[k]=v;
-				});
-			}
+		if( _is_object(src) && _is_object(dest) ){
+			_each(src,function(v,k){
+				dest[k]=v;
+			});
 		}
 	}
 	function _map(a,f){
@@ -248,53 +194,48 @@
 	function _style(node,params){
 		var params=params||{};
 		__each(params,function(v,k,a){
-			if(!_in_array(k,[C.zIndex])){
+			if(_in_array(k,[C.LEFT,C.TOP,C.WIDTH,C.HEIGHT])){
 				a[k]=v+"px";
 			}
 		},[DT.NUMBER]);
-		_mixin(params,node);
-	}
-	function _addClass(node,className){
-		if(_isDojo){
-			dojo.addClass(node,className);
+		if($){
+			$(node).css(params);
 		}else{
-			$(node).css(className);
+			dojo.style(params);
 		}
 	}
 	function _create(tag,params,pnode){
-		var pnode=pnode||_nBodyId;
-		if(_in_array(tag,[C.PATH,"svg","g"])){
-			var node=_d.createElementNS(C.HTTP_W3_SVG,tag);
-		}else{
-			var node=_d.createElement(tag);
-		}
-		if(_isDojo){
+		if(tag===C.PATH){
+			var node=_d.createElementNS(C.HTTP_W3_SVG,C.PATH);
+			$("#"+data.nBodysvgGroupId).append(node);
+			return node;
+		}else{			
+			var node=$('<'+tag+'></'+tag+'>')[0];
 			if(params){
 				_style(node,params.style);
-				if(params.innerHTML){
-					node.innerHTML=params.innerHTML;
-				}
-				dojo.addClass(node,params.className);
-				if(params.src){
-					dojo.attr(node,{"src":params.src});
-				}
-			}
-		}else{
-			if(params){
-				_style(node,params.style);
-				$(node).html(params.innerHTML);
-				$(node).addClass(params.className);
-				if(params.src){
-					$(node).attr("src",params.src);
+				if($){
+					$(node).html(params.innerHTML);
+					$(node).addClass(params.className);
+				}else{
+					$(node).html(params.innerHTML);
+					$(node).addClass(params.className);
 				}
 			}
+			if(pnode){
+				pnode.appendChild(node);
+			}else{
+				if($){
+					$("#"+data.nBodyId).append(node);
+				}else{
+					$("#"+data.nBodyId).append(node);
+				}
+			}
+			return node;
 		}
-		pnode.appendChild(node);
-		return node;
 	}
 	function _attr(node,params){
-		if(_isDojo){
-			dojo.attr(node,params);
+		if($){
+			$(node).attr(params);
 		}else{
 			$(node).attr(params);
 		}
@@ -304,12 +245,13 @@
 		if(!obj.n){
 			obj.n=_create(C.DIV,{
 				style:{
+					border:data.border,
 					position:C.ABSOLUTE,
-					backgroundColor:COLOR.TOUCH,
-					borderRadius:data.borderRadius,
-					borderColor:COLOR.TOUCH,
-					borderStyle:C.SOLID,
-					borderWidth:2
+					width:data.w+data.containerPaddingGap/4,
+					height:data.h+data.containerPaddingGap/4,
+					backgroundColor:data.colorTouch,
+					borderColor:data.colorTouch,
+					borderRadius:data.borderRadius
 				}
 			})
 		}
@@ -323,13 +265,8 @@
 				obj.dest_i=dest_i;
 				obj.src_i=src_i;
 			}
-			_style(node,{
-				display:C.BLOCK,
-				left:dest_obj.x-data.containerPaddingGap/8,
-				top:dest_obj.y-data.containerPaddingGap/8,
-				width:dest_obj.w+data.containerPaddingGap/4,
-				height:dest_obj.h+data.containerPaddingGap/4
-			});
+			_style(node,{display:C.BLOCK});
+			_style(node,{left:(dest_obj.x-data.containerPaddingGap/8),top:(dest_obj.y-data.containerPaddingGap/8)});
 		}else{
 			obj.isTouch=false;
 			_style(node,{display:C.NONE});
@@ -379,13 +316,13 @@
 		_each(data.list,function(dest_obj){
 			if( dest_obj==src_obj ) return;
 			_each(dest_obj.links,function(link,dest_i){
-				if( link.isShow && !link.isDrag && collide(src_touch_obj,link) ){
+				if( !link.isDrag && collide(src_touch_obj,link) ){
 					touchObj(true,dest_obj,src_obj,true,dest_i,src_i);
 				}
 			});
 		});
 	}
-	function _drawPool(o){
+	function _drawContainer(o){
 		o.n=_create(C.DIV,{
 			innerHTML:o.title,
 			style:{
@@ -394,62 +331,43 @@
 				top : o.y,
 				width : o.w,
 				height : o.h,
-				zIndex : data.zIndex,
-				borderStyle:C.SOLID,
-				borderWidth:data.poolBorderWidth,
-				borderColor:COLOR.POOL
+				zIndex : -1,
+				border : "2px solid #FDEADA"
 			}
 		});
 		o.x2=o.x+o.w;
 		o.y2=o.y+o.h;
 		o.autoy=data.containerPaddingY;
 	}
-	function _drawShip(o){
+	function _isLeftLink(o){
+		var flag=false;
+		_each(o.links,function(link){
+			if(link.pos==C.LEFT){
+				flag=true;
+			}
+		});
+		return flag;
+	}
+	function _drawElement(o){
 		if(!o.n){
+			var typeObj=data.typelist[o.typeid];
 			o.n=_create(C.DIV);
-			o.nShip=_create(C.DIV,{style:{
+			if(typeObj.isOnlyIcon){
+				_create(C.DIV,{className:typeObj.iconClass},o.n);
+			}else{
+				var node=_create(C.DIV,{style:{
 					position:C.ABSOLUTE,
 					left:0,
 					top:0,
 					width : o.w,
 					height : o.h,
-					backgroundColor : COLOR.GRAY_BG,
-					borderRadius : o.borderRadius,
-					borderStyle:C.SOLID,
-					borderWidth:2,
-					borderColor:o.isFocus?COLOR.BLUE:COLOR.GRAY
+					background : o.bg,
+					border : o.border,
+					borderRadius : o.borderRadius
 				}},o.n);
-			var right=3;
-			if(o.isDelete){
-				o.nShipDelete=_create(C.DIV,{
-					className:C.DELETE,
-					style:{
-						position:C.ABSOLUTE,
-						top:-7,
-						right:right,
-						width : 16,
-						height : 16,
-						borderRadius : o.borderRadius,
-						borderStyle:C.SOLID,
-						borderWidth:0
-				}},o.nShip);
-				right+=16+3;
+				var paddingLeft=_isLeftLink(o)?(2*data.linkPad+data.orignPoint.w):data.linkPad;
+				_create(C.DIV,{style:{paddingLeft:paddingLeft,paddingTop:3,width:70},innerHTML:o.title},node);
 			}
-			if(o.isEdit){
-				o.nShipEdit=_create(C.DIV,{
-					className:C.EDIT,
-					style:{
-						position:C.ABSOLUTE,
-						top:-7,
-						right:right,
-						width : 16,
-						height : 16,
-						borderRadius : o.borderRadius,
-						borderStyle:C.SOLID,
-						borderWidth:0
-				}},o.nShip);
-			}
-			o.format(o);
 		}
 		_style(o.n,{
 			position: C.ABSOLUTE,
@@ -459,49 +377,48 @@
 		});
 		_each(o.links,function(link){
 			if(!link.nline){
-				link.nline=_create(C.PATH,{},_nBodysvgGroupId);
+				link.nline=_create(C.PATH);
 			}
 		});
 	}
-	function _drawLink(o,i){
+	function _drawElementShadow(o,i){
 		var link=o.links[i];
 		if(!link.n){
 			link.n=_create(C.DIV);
-			link.nLink=_create(C.DIV,{
+			var node=_create(C.DIV,{
 				style:{
 					position:C.ABSOLUTE,
-					background : COLOR.GRAY_BG,
+					background : data.bg,
 					left:0,
 					top:0,
 					width:link.w,
 					height:link.h,
+					border:data.border,
+					borderStyle:"dashed",
 					borderRadius:(link.w/2+1),
-					zIndex : (data.zIndex+1),
-					borderStyle:C.SOLID,
-					borderWidth:2,
-					borderColor:o.isFocus?COLOR.BLUE:COLOR.GRAY
+					zIndex : (data.zIndex+1)
 				}
 			},link.n);
 			var node_inner=_create(C.DIV,{
 				style:{
-					backgroundColor:COLOR.TOUCH,
+					backgroundColor:data.colorTouch,
 					position:C.ABSOLUTE,
 					left:link.w/4,
 					top:link.h/4,
 					width:link.w/2,
 					height:link.h/2,
-					borderWidth:0,
+					borderWidth:"0px",
 					borderRadius:(link.w/4+1)
 				}
-			},link.nLink);
+			},node);
 			if(!link.isDrag){
-				_style(node_inner,{ backgroundColor : COLOR.RED });
+				_style(node_inner,{ backgroundColor : "#ff9999" });
 			}
-			if( !o.isFocus&&link.to ){
-				_style(link.nLink,{ borderColor : COLOR.TOUCH });
+			if( link.to ){
+				_style(node,{ borderColor : data.colorTouch });
 			}
-			if( !o.isFocus&&_isDestLink(o.id,i) ){
-				_style(link.nLink,{ borderColor : COLOR.RED});
+			if( _isDestLink(o.id,i) ){
+				_style(node,{ borderColor : "#ff9999"});
 			}
 		}
 		_style(link.n,{
@@ -563,7 +480,7 @@
 		return {x:x,y:y};
 	}
 	function _getRBPoint(o,flag,isEnd,i){
-		var x=o.x-data._wc+o.w-data.buttonWidth+_adjust(flag,isEnd);
+		var x=o.x-data._wc+data.w-data.buttonWidth+_adjust(flag,isEnd);
 		var y=o.y+o.h-data._wc+i*data.buttonHight+(i+1)*data.buttonPadding+(i+1)*2*data.borderWidth+data.buttonHight/2;
 		return {x:x,y:y};
 	}
@@ -572,13 +489,7 @@
 			return _getLMPoint(o,1,false,1);
 		}
 		if(pos==C.LEFT){
-			var xy=_getRMPoint(o,1,false,1);
-			if(!o.isShow){
-				xy.x=xy.x+o.w-7;
-			}else{
-				xy.x=xy.x-7;
-			}
-			return xy;
+			return _getRMPoint(o,1,false,1);
 		}
 	}
 	function drawLine(){
@@ -589,18 +500,21 @@
 					var dest=data.listmap[item.id];
 					var tmplink=dest.links[item.i];
 					var o2=getLinkPos(tmplink.pos,tmplink);
-					_drawLineEx(item,o1,o2,src);
+					_drawLineEx(item,o1,o2);
 				});
 			});
 		});
 	}
-	function _drawLineEx(obj,o1,o2,srcShip){
+	function _drawLineEx(obj,o1,o2){
 		if(!obj.nline){
-			obj.nline=_create(C.PATH,{},_nBodysvgGroupId);
+			obj.nline=_create(C.PATH);
 		}
-		_drawLine(obj.nline,o1,o2,srcShip);
+		//tmp
+		var paddingLeft=data.linkPad+data.orignPoint.w/2;
+		o2.x=o2.x-paddingLeft;
+		_drawLine(obj.nline,o1,o2);
 	}
-	function _drawLine(node,o1,o2,srcShip){
+	function _drawLine(node,o1,o2){
 		var a=[];
 		a.push("M "+o1.x+","+o1.y+" ");
 		var x=(o2.x-o1.x)/2+o1.x;
@@ -608,11 +522,7 @@
 		var y=(o2.y-o1.y)/2+o1.y;
 		a.push(" "+x+","+y+" ");
 		a.push("T "+(o2.x)+","+o2.y+" ");
-		if(srcShip.isFocus){
-			_attr(node,{"d":a.join(""),"marker-end":"url(#focusArraw)","style":data.lstyle2});
-		}else{
-			_attr(node,{"d":a.join(""),"marker-end":"url(#Arraw)","style":data.lstyle});
-		}
+		_attr(node,{"d":a.join(""),"marker-end":"url(#"+data.nBodyArrowId+")","style":data.lstyle});
 	}
 	function _adjustPos(o,x,y){
 		if(data.isFix&&_is_number(o.poolid)){
@@ -648,11 +558,10 @@
 		_each(data.list,function(obj){
 			if(o==obj){
 				_adjustPos(o,x,y);
-				_drawShip(o);
+				_drawElement(o);
 				_each(o.links,function(link,i){
 					_update_sha_pos(o,i);
-					if(!link.isShow) return;
-					_drawLink(o,i);
+					_drawElementShadow(o,i);
 				});
 			}
 		});
@@ -680,7 +589,7 @@
 			if(o==obj){
 				var link=o.links[i]
 				_adjustPosShadow(link,x,y);
-				_drawLink(o,i);
+				_drawElementShadow(o,i);
 			}
 		});
 		drawShadowLine(o,i);
@@ -689,50 +598,27 @@
 		var link=o.links[i];
 		var o1=getLinkPos(link.pos,o);
 		var o2=_getRMPoint(link,1,false,1);
-		_drawLineEx(link,o1,o2,o);
-	}
-	function _make_sha_pos(o,i){
-		var obj=o.links[i];
-		obj.w=data.orignPoint.w;
-		obj.h=data.orignPoint.h;
-		_update_sha_pos(o,i);
-	}
-	function _update_sha_pos(o,i){
-		var obj=o.links[i];
-		if(obj.pos==C.RIGHT){
-			obj.x=o.x+o.w;
-			obj.y=o.y+o.h/2-obj.h/2;
-		}
-		if(obj.pos==C.LEFT){
-			obj.x=o.x-obj.w;
-			obj.y=o.y+o.h/2-obj.h/2;
-		}
+		_drawLineEx(link,o1,o2);
 	}
 	function paint(){
 		destroy();
 		init();
-		data.paint();
 	}
 	function destroy(){
-		var w=data.containerList.length*data.containerWidth;
-		var h=data.containerHeight;
-		var o=_nBodyId;
+		var o=_d.getElementById(data.nBodyId);
 		o.innerHTML="";
 		var a=[];
-		a.push("<svg width='"+w+"' height='"+h+"'>");
+		a.push("<svg width='"+data.svgWidth+"' height='"+data.svgHeight+"'>");
 		a.push("<defs>");
-		a.push("<marker id='Arraw' viewBox='0 0 20 20' refX='0' refY='10' markerUnits='strokeWidth' markerWidth='3' markerHeight='10' orient='auto'>");
-		a.push("<path d='M 0 0 L 20 10 L 0 20 z' fill='"+_darkColor(COLOR.GRAY)+"' stroke='"+COLOR.GRAY+"'/>");
-		a.push("</marker>");
-		a.push("<marker id='focusArraw' viewBox='0 0 20 20' refX='0' refY='10' markerUnits='strokeWidth' markerWidth='3' markerHeight='10' orient='auto'>");
-		a.push("<path d='M 0 0 L 20 10 L 0 20 z' fill='"+_darkColor(COLOR.BLUE)+"' stroke='"+COLOR.BLUE+"'/>");
+		a.push("<marker id='"+data.nBodyArrowId+"' viewBox='0 0 20 20' refX='0' refY='10' markerUnits='strokeWidth' markerWidth='3' markerHeight='10' orient='auto'>");
+		a.push("<path d='M 0 0 L 20 10 L 0 20 z' fill='#AAA' stroke='#ddd'/>");
 		a.push("</marker>");
 		a.push("</defs>");
+		a.push("<g id='"+data.nBodysvgGroupId+"'></g>");
 		a.push("</svg>");
-		var o=_nBodysvgId;
+		var o=_d.getElementById(data.nBodysvgId);
 		o.innerHTML=a.join("");
-		_nBodysvgGroupId=_create("g",{},o.firstChild);
-		__each(data.list,function(v,k,a){
+		__each(data,function(v,k,a){
 			a[k]=null;
 		},[DT.HTMLDivElement,DT.SVGPathElement]);
 		data.listmap={};
@@ -748,37 +634,31 @@
 			o.y=y;
 			o.x=x;
 			x=x+o.w+pad;
-			_drawPool(o);
+			_drawContainer(o);
 		})
 		_each(data.list,function(o){
 			data.listmap[o.id]=o;
 		})
 		_each(data.list,function(o){
+			if(o.isHidden) return;
+			o.bg=o.bg||data.bg;
+			o.lmode=o.lmode||data.lmode;
 			o.zIndex=data.zIndex;
-			var shiptype=shiptypes[o.typeid]||{};
-			_mixin(shiptype,o);
+			o.w=o.w||data.w;
+			o.h=o.h||data.h;
+			o.border=o.border||data.border;
 			o.borderRadius=o.borderRadius||data.borderRadius;
 
 			if(o.to&&!o.lstyle) o.lstyle=data.lstyle;
 			_adjustPos(o,o.x,o.y);
 			_adjustAutoX(o);
 			_adjustAutoY(o);
-			_drawShip(o);
+			_drawElement(o);
 			__drag({
-				oh:o.oh||o.n,
+				oh:o.n,
 				o:o,
 				mousedown:function(params){
 					var o=params.o;
-					_each(data.list,function(ship){
-						ship.isFocus=false;
-					});
-					o.isFocus=true;
-					_style(o.nShip,{borderColor:COLOR.BLUE});
-					_each(o.links,function(link){
-						if(link.isShow){
-							_style(link.nLink,{borderColor:COLOR.BLUE});
-						}
-					});
 					o.zIndex=1000;
 					o.n.style.cursor=CUR.MOVE;
 					o.bx=o.x;
@@ -796,8 +676,7 @@
 			});
 			_each(o.links,function(link,i){
 					_make_sha_pos(o,i);
-					if(!link.isShow) return;
-					_drawLink(o,i);
+					_drawElementShadow(o,i);
 					if(!link.isDrag) return;
 					__drag({
 						oh:o.links[i].n,
@@ -828,94 +707,41 @@
 		})
 		drawLine();
 	}
-	function _darkColor(beginColor){
-		var endColor="#000000";
-		var begin = getRGB(beginColor);
-		var curColor = getRGB(beginColor);
-		var end = getRGB(endColor);
-		var bo = true;
-		var rate = getRate(begin, end);
-        curColor.r = getCur(begin.r, end.r, curColor.r, bo, rate.r);
-        curColor.g = getCur(begin.g, end.g, curColor.g, bo, rate.g);
-        curColor.b = getCur(begin.b, end.b, curColor.b, bo, rate.b);
-        return getColor(curColor);
+	function _make_sha_pos(o,i){
+		var obj=o.links[i];
+		obj.w=data.orignPoint.w;
+		obj.h=data.orignPoint.h;
+		_update_sha_pos(o,i);
 	}
-	function getCur(beginValue, endValue, curValue, bo, rateValue)
-	{
-	    if(beginValue == endValue)
-	    {
-	        return beginValue;
-	    }
-	    
-	    rateValue = beginValue < endValue ? rateValue : -rateValue;
-	    curValue += bo ? rateValue : -rateValue;
-	    if(curValue < Math.min(beginValue, endValue))
-	    {
-	        curValue = Math.min(beginValue, endValue);
-	    }
-	    if(curValue > Math.max(beginValue, endValue))
-	    {
-	        curValue = Math.max(beginValue, endValue);
-	    }
-	    
-	    return curValue;
+	function _update_sha_pos(o,i){
+		var obj=o.links[i];
+		if(obj.pos==C.RIGHT){
+			obj.x=o.x+o.w-obj.w-data.linkPad;
+			obj.y=o.y+o.h/2-obj.h/2;
+		}
+		if(obj.pos==C.LEFT){
+			obj.x=o.x+data.linkPad;
+			obj.y=o.y+o.h/2-obj.h/2;
+		}
 	}
-
-	function getRate(b, e)
-	{
-	    var obj = new Object();
-	    obj.r = Math.abs(b.r - e.r) / 5;
-	    obj.g = Math.abs(b.g - e.g) / 5;
-	    obj.b = Math.abs(b.b - e.b) / 5;
-	    
-	    return obj;
-	}
-
-	function getRGB(color)
-	{
-	    var obj = new Object();
-	    obj.r = parseInt(color.substr(1,2), 16);
-	    obj.g = parseInt(color.substr(3,2), 16);
-	    obj.b = parseInt(color.substr(5,2), 16);
-	    
-	    return obj;
-	}
-
-	function getColor(obj)
-	{
-	    obj.r = Math.round(obj.r);
-	    obj.g = Math.round(obj.g);
-	    obj.b = Math.round(obj.b);
-	    var color = '#';
-	    color += (obj.r < 16 ? '0':'') + obj.r.toString(16);
-	    color += (obj.g < 16 ? '0':'') + obj.g.toString(16);
-	    color += (obj.b < 16 ? '0':'') + obj.b.toString(16);
-	    
-	    return color;
-	}
-	function main(node,params,_shiptypes){
-		_mixin(_shiptypes,shiptypes);
+	function main(node,params){
+		_each(data,function(v,k,a){
+			if(k.indexOf(data.prefix)>=0){
+				a[k]=data.id+v;
+			}
+		});
+		var a=[];
+		a.push("<div id='"+data.nBodyId+"'></div>");
+		a.push("<div id='"+data.nBodysvgId+"'></div>");
+		node.innerHTML=a.join("");
 		_mixin(params,data);
-		if(data.totalWidth){
-			var i=data.containerList.length;
-			data.containerWidth=((data.totalWidth-(i-1)*data.containerMargginGap)/i)-4;
-		}
-		if(data.totalHeight){
-			data.containerHeight=data.totalHeight-2*data.containerMargginY-4;
-		}
-		node.innerHTML="";
-		var tmp=_create(C.DIV,{style:{position:C.ABSOLUTE}},node);
-		_nBodyId=_create(C.DIV,{},tmp);
-		_nBodysvgId=_create(C.DIV,{},tmp);
-		_style(node,{height:data.containerHeight+20});
 		paint();
 	}
 	var designer={};
-	designer.main=main;
-	designer.create=_create;
-	designer.style=_style;
-	designer.each=_each;
-	designer.C=C;
-	designer.COLOR=COLOR;
-	window.$dr=designer;
+	designer=main;
+	if($){
+		$.designer=designer;
+	}else{
+		dojo.designer=designer;
+	}
 })();

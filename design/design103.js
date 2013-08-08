@@ -1,8 +1,6 @@
-
 (function(){
 	var _d=document,
 	_w=window,
-	_isIE=false;
 	_isDojo=false,
 	_nBodyId=null,
 	_nBodysvgId=null,
@@ -44,8 +42,7 @@
 		zIndex:"zIndex",
 		SRC:"src",
 		DELETE:"delete",
-		EDIT:"edit",
-		FLOAT:"float"
+		EDIT:"edit"
 	},
 	COLOR={
 		GRAY:"#dddddd",
@@ -172,7 +169,8 @@
 			for(var i=0;i<a.length;i++) {
 				f(a[i],i,a);
 			}
-		}else if(_is_object(a)){
+		}
+		if(_is_object(a)){
 			for (var i in a) { 
 				if (a.hasOwnProperty(i)) { 
 					f(a[i],i,a);
@@ -181,17 +179,10 @@
 		}
 	}
 	function _mixin(src,dest) {
-		if( _is_object(src) ){
-			if(_is_object(dest)){
-				_each(src,function(v,k){
-					dest[k]=v;
-				});
-			}else if(_in_array(_get_class(dest),[DT.HTMLDivElement,DT.SVGPathElement])){
-				_each(src,function(v,k){
-					if(k===C.FLOAT) k=_isIE?"styleFloat":"cssFloat";
-					dest.style[k]=v;
-				});
-			}
+		if( _is_object(src) && _is_object(dest) ){
+			_each(src,function(v,k){
+				dest[k]=v;
+			});
 		}
 	}
 	function _map(a,f){
@@ -247,12 +238,16 @@
 	}
 	function _style(node,params){
 		var params=params||{};
-		__each(params,function(v,k,a){
-			if(!_in_array(k,[C.zIndex])){
-				a[k]=v+"px";
-			}
-		},[DT.NUMBER]);
-		_mixin(params,node);
+		if(_isDojo){
+			__each(params,function(v,k,a){
+				if(!_in_array(k,[C.zIndex])){
+					a[k]=v+"px";
+				}
+			},[DT.NUMBER]);
+			dojo.style(node,params||{});
+		}else{
+			$(node).css(params);
+		}
 	}
 	function _addClass(node,className){
 		if(_isDojo){
@@ -262,35 +257,46 @@
 		}
 	}
 	function _create(tag,params,pnode){
-		var pnode=pnode||_nBodyId;
 		if(_in_array(tag,[C.PATH,"svg","g"])){
 			var node=_d.createElementNS(C.HTTP_W3_SVG,tag);
+			pnode.appendChild(node);
+			return node;
 		}else{
-			var node=_d.createElement(tag);
-		}
-		if(_isDojo){
-			if(params){
-				_style(node,params.style);
-				if(params.innerHTML){
-					node.innerHTML=params.innerHTML;
+			if(_isDojo){
+				var node=dojo.create(tag);
+				if(params){
+					_style(node,params.style);
+					if(params.innerHTML){
+						node.innerHTML=params.innerHTML;
+					}
+					dojo.addClass(node,params.className);
+					if(params.src){
+						dojo.attr(node,{"src":params.src});
+					}
 				}
-				dojo.addClass(node,params.className);
-				if(params.src){
-					dojo.attr(node,{"src":params.src});
+				if(pnode){
+					pnode.appendChild(node);
+				}else{
+					_nBodyId.appendChild(node);
+				}
+			}else{
+				var node=$('<'+tag+'></'+tag+'>')[0];
+				if(params){
+					_style(node,params.style);
+					$(node).html(params.innerHTML);
+					$(node).addClass(params.className);
+					if(params.src){
+						$(node).attr("src",params.src);
+					}
+				}
+				if(pnode){
+					pnode.appendChild(node);
+				}else{
+					_nBodyId.appendChild(node);
 				}
 			}
-		}else{
-			if(params){
-				_style(node,params.style);
-				$(node).html(params.innerHTML);
-				$(node).addClass(params.className);
-				if(params.src){
-					$(node).attr("src",params.src);
-				}
-			}
+			return node;
 		}
-		pnode.appendChild(node);
-		return node;
 	}
 	function _attr(node,params){
 		if(_isDojo){
@@ -732,7 +738,7 @@
 		var o=_nBodysvgId;
 		o.innerHTML=a.join("");
 		_nBodysvgGroupId=_create("g",{},o.firstChild);
-		__each(data.list,function(v,k,a){
+		__each(data,function(v,k,a){
 			a[k]=null;
 		},[DT.HTMLDivElement,DT.SVGPathElement]);
 		data.listmap={};
