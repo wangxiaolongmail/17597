@@ -13,7 +13,7 @@
  * 
  */
 (function(){
-	var _d=document,_w=window,dr={},_isIE=false,data={};
+	var _d=document,_w=window,dr={};_isIE=false;
 
 	CUR={
 		CROSSHAIR:"crosshair",
@@ -76,8 +76,9 @@
 	};
 	_w.$dr=dr;
 
-	var _conf={
+	var data={
 		_wc:0,
+		id:"dr1",
 		shaSingle:true,
 		orignPoint:{
 			w:12,
@@ -99,12 +100,18 @@
 		containerMargginGap:10,
 		containerPaddingY:60,
 		containerPaddingGap:20,
+		containerList:[],
 		isFix:true,
 		isDrag:true,
 		isDragShadow:true,
 		isAjustAutoX:true,
-		isAjustAutoY:true
+		isAjustAutoY:true,
+		typelist:[],
+		list:[],
+		listmap:{},
+		customPaint:function(){}
 	};
+
 	var shiptypes={
 		fatrecord:{
 			w:120,
@@ -435,7 +442,6 @@
 
 	function _drawShip(o){
 		if(!o.n){
-			o.drid=data.id;
 			o.n=_create(C.DIV);
 			o.nShip=_create(C.DIV,{style:{
 					position:C.ABSOLUTE,
@@ -786,11 +792,10 @@
 		}else{
 			data.totalHeight=data.containerHeight;
 		}
-		var sizeObj={width:data.totalWidth,height:data.totalHeight};
-		var node=_create(C.DIV,{id:data.id,style:sizeObj},node);
+		node.innerHTML="";
 		var tmp=_create(C.DIV,{style:{position:C.ABSOLUTE}},node);
 		data._nBodyId=_create(C.DIV,null,tmp);
-		var _nBodysvg=_create("svg",sizeObj,tmp);
+		var _nBodysvg=_create("svg",{width:data.totalWidth,height:data.totalHeight},tmp);
 		var defs=_create("defs",null,_nBodysvg);
 
 			var marker=_create("marker",{
@@ -868,7 +873,6 @@
 			data.listmap[o.id]=o;
 		})
 		_each(data.list,function(o){
-			var _data=data;
 			o.zIndex=data.zIndex;
 			var shiptype=shiptypes[o.typeid]||{};
 			_mixin(shiptype,o);
@@ -878,11 +882,11 @@
 			_adjustAutoY(o);
 			_drawShip(o);
 			__drag({
-				data:_data,
+				data:data,
 				oh:o.oh||o.n,
 				o:o,
 				mousedown:function(params){
-					data=params.data;
+					var data=params.data;
 					var o=params.o;
 					_each(data.list,function(ship){
 						ship.isFocus=false;
@@ -920,7 +924,6 @@
 						o:o,
 						i:i,
 						mousedown:function(params){
-							data=params.data;
 							var o=params.o;
 							var i=params.i;
 							var link=o.links[i];
@@ -1016,15 +1019,6 @@
 
 	function main(node,params,_shiptypes){
 
-		var inst={
-			containerList:[],
-			typelist:[],
-			list:[],
-			listmap:{},
-			customPaint:function(){}
-		};
-		data=inst;
-		_mixin(_conf,data);
 		_mixin(_shiptypes,shiptypes);
 		_mixin(params,data);
 		_createFrame(node);

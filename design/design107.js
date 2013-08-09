@@ -1,19 +1,10 @@
-/*
- *+--------------------------------------------------------------------------+
- *| Licensed Materials - Property of EasySoft 								 |
- *| (c) Copyright EasySoft Corporation 2011. All Rights Reserved. 			 |
- *| 																		 |
- *|  |
- *|  |
- *+--------------------------------------------------------------------------+
- */
-/**
- * 
- * @author wangxiaolongmail@163.com
- * 
- */
+
 (function(){
-	var _d=document,_w=window,dr={},_isIE=false,data={};
+	var _d=document,
+	_w=window,
+	dr={};
+	_isIE=false;
+	_nBodysvgGroupId=null,
 
 	CUR={
 		CROSSHAIR:"crosshair",
@@ -76,8 +67,9 @@
 	};
 	_w.$dr=dr;
 
-	var _conf={
+	var data={
 		_wc:0,
+		id:"dr1",
 		shaSingle:true,
 		orignPoint:{
 			w:12,
@@ -99,12 +91,18 @@
 		containerMargginGap:10,
 		containerPaddingY:60,
 		containerPaddingGap:20,
+		containerList:[],
 		isFix:true,
 		isDrag:true,
 		isDragShadow:true,
 		isAjustAutoX:true,
-		isAjustAutoY:true
+		isAjustAutoY:true,
+		typelist:[],
+		list:[],
+		listmap:{},
+		paint:function(){}
 	};
+
 	var shiptypes={
 		fatrecord:{
 			w:120,
@@ -227,14 +225,6 @@
 				}
 			}
 		return arr;
-	}
-	
-	function _hitch( obj , fn ){ 
-
-		var _obj = obj; 
-		return function(){ 
-			fn.apply( _obj, arguments); 
-		}; 
 	}
 
 	function __drag(params){
@@ -435,7 +425,6 @@
 
 	function _drawShip(o){
 		if(!o.n){
-			o.drid=data.id;
 			o.n=_create(C.DIV);
 			o.nShip=_create(C.DIV,{style:{
 					position:C.ABSOLUTE,
@@ -489,7 +478,7 @@
 		});
 		_each(o.links,function(link){
 			if(!link.nline){
-				link.nline=_create(C.PATH,null,data._nBodysvgGroupId);
+				link.nline=_create(C.PATH,null,_nBodysvgGroupId);
 			}
 		});
 	}
@@ -639,7 +628,7 @@
 
 	function _drawLineEx(obj,o1,o2,srcShip){
 		if(!obj.nline){
-			obj.nline=_create(C.PATH,null,data._nBodysvgGroupId);
+			obj.nline=_create(C.PATH,null,_nBodysvgGroupId);
 		}
 		_drawLine(obj.nline,o1,o2,srcShip);
 	}
@@ -660,7 +649,7 @@
 			var marker_end="url(#Arraw)";
 		}
 		var style={fill:COLOR.WHITE,stroke:stroke,strokeWidth:data.borderWidth};
-		_attr(node,{d:a.join(""),"marker-start":"url(#markerStartArrow)","marker-end":marker_end,style:style});
+		_attr(node,{d:a.join(""),"marker-end":marker_end,style:style});
 	}
 
 	function _adjustPos(o,x,y){
@@ -770,81 +759,50 @@
 	function paint(){
 		destroy();
 		init();
-		data.customPaint();
-	}
-
-	function _createFrame(node){
-		
-		var len=data.containerList.length;
-		if(data.totalWidth){
-			data.containerWidth=((data.totalWidth-(len-1)*data.containerMargginGap)/len)-4;
-		}else{
-			data.totalWidth=len*data.containerWidth;
-		}
-		if(data.totalHeight){
-			data.containerHeight=data.totalHeight-2*data.containerMargginY-4;
-		}else{
-			data.totalHeight=data.containerHeight;
-		}
-		var sizeObj={width:data.totalWidth,height:data.totalHeight};
-		var node=_create(C.DIV,{id:data.id,style:sizeObj},node);
-		var tmp=_create(C.DIV,{style:{position:C.ABSOLUTE}},node);
-		data._nBodyId=_create(C.DIV,null,tmp);
-		var _nBodysvg=_create("svg",sizeObj,tmp);
-		var defs=_create("defs",null,_nBodysvg);
-
-			var marker=_create("marker",{
-					id:'Arraw',
-					viewBox:'0 0 20 20',
-					refX:'0',refY:'10',
-					markerUnits:'strokeWidth',
-					markerWidth:'3',
-					markerHeight:'10',
-					orient:'auto'
-				},defs);
-
-			_create("path",{ 
-				d:'M 0 0 L 20 10 L 0 20 z',
-				fill:_darkColor(COLOR.GRAY),
-				stroke:COLOR.GRAY
-			},marker);
-
-			var marker=_create("marker",{
-					id:'focusArraw',
-					viewBox:'0 0 20 20',
-					refX:'0',refY:'10',
-					markerUnits:'strokeWidth',
-					markerWidth:'3',
-					markerHeight:'10',
-					orient:'auto'
-				},defs);
-
-			_create("path",{ 
-				d:'M 0 0 L 20 10 L 0 20 z',
-				fill:_darkColor(COLOR.BLUE),
-				stroke:COLOR.BLUE
-			},marker);
-
-			var marker=_create("marker",{
-					id:'markerStartArrow',
-					viewBox:'0 0 30 30',
-					refX:'10',refY:'25',
-					markerUnits:'strokeWidth',
-					markerWidth:'9',
-					markerHeight:'20',
-					orient:'auto'
-				},defs);
-
-			_create("path",{ 
-				d:'M0,25,A12.5,12.5,0,1,1,0,25.01Z'
-			},marker);
-
-		data._nBodysvgGroupId=_create("g",null,_nBodysvg);
+		data.paint();
 	}
 
 	function destroy(){
+		var w=data.containerList.length*data.containerWidth;
+		var h=data.containerHeight;
 		data._nBodyId.innerHTML="";
-		data._nBodysvgGroupId.innerHTML="";
+		data._nBodysvgId.innerHTML="";
+		var _nBodysvg=_create("svg",{width:w,height:h},data._nBodysvgId);
+		var defs=_create("defs",{},_nBodysvg);
+
+		var marker=_create("marker",{
+				id:'Arraw',
+				viewBox:'0 0 20 20',
+				refX:'0',refY:'10',
+				markerUnits:'strokeWidth',
+				markerWidth:'3',
+				markerHeight:'10',
+				orient:'auto'
+			},defs);
+
+		_create("path",{ 
+			d:'M 0 0 L 20 10 L 0 20 z',
+			fill:_darkColor(COLOR.GRAY),
+			stroke:COLOR.GRAY
+		},marker);
+
+		var marker=_create("marker",{
+				id:'focusArraw',
+				viewBox:'0 0 20 20',
+				refX:'0',refY:'10',
+				markerUnits:'strokeWidth',
+				markerWidth:'3',
+				markerHeight:'10',
+				orient:'auto'
+			},defs);
+
+		_create("path",{ 
+			d:'M 0 0 L 20 10 L 0 20 z',
+			fill:_darkColor(COLOR.BLUE),
+			stroke:COLOR.BLUE
+		},marker);
+
+		_nBodysvgGroupId=_create("g",{},_nBodysvg);
 		__each(data.list,function(v,k,a){
 			a[k]=null;
 		},[DT.HTMLDivElement,DT.SVGPathElement]);
@@ -868,7 +826,6 @@
 			data.listmap[o.id]=o;
 		})
 		_each(data.list,function(o){
-			var _data=data;
 			o.zIndex=data.zIndex;
 			var shiptype=shiptypes[o.typeid]||{};
 			_mixin(shiptype,o);
@@ -878,11 +835,9 @@
 			_adjustAutoY(o);
 			_drawShip(o);
 			__drag({
-				data:_data,
 				oh:o.oh||o.n,
 				o:o,
 				mousedown:function(params){
-					data=params.data;
 					var o=params.o;
 					_each(data.list,function(ship){
 						ship.isFocus=false;
@@ -904,7 +859,7 @@
 					draw(o,o.bx+x,o.by+y);
 					detectionTouch(o);
 				},
-				mouseup:function(params){
+				mouseup:function(){
 					swapObj();
 					paint();
 				}
@@ -915,12 +870,10 @@
 					_drawLink(o,i);
 					if(!link.isDrag) return;
 					__drag({
-						data:data,
 						oh:o.links[i].n,
 						o:o,
 						i:i,
 						mousedown:function(params){
-							data=params.data;
 							var o=params.o;
 							var i=params.i;
 							var link=o.links[i];
@@ -1015,19 +968,19 @@
 	}
 
 	function main(node,params,_shiptypes){
-
-		var inst={
-			containerList:[],
-			typelist:[],
-			list:[],
-			listmap:{},
-			customPaint:function(){}
-		};
-		data=inst;
-		_mixin(_conf,data);
 		_mixin(_shiptypes,shiptypes);
 		_mixin(params,data);
-		_createFrame(node);
+		if(data.totalWidth){
+			var i=data.containerList.length;
+			data.containerWidth=((data.totalWidth-(i-1)*data.containerMargginGap)/i)-4;
+		}
+		if(data.totalHeight){
+			data.containerHeight=data.totalHeight-2*data.containerMargginY-4;
+		}
+		node.innerHTML="";
+		var tmp=_create(C.DIV,{style:{position:C.ABSOLUTE}},node);
+		data._nBodyId=_create(C.DIV,null,tmp);
+		data._nBodysvgId=_create(C.DIV,null,tmp);
 		_style(node,{height:data.containerHeight+20});
 		paint();
 	}

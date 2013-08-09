@@ -57,10 +57,119 @@ function start(){
 				]
 			},
 		{
-			id:"s4_2",
+			id:"s6",
+			typeid:"record",
+			title:"Property4",
+			poolid:0,
+			links:[
+				{pos:"right",isDrag:true}
+				]
+			},
+		{
+			id:"s101",
+			typeid:"record",
+			title:"Property1",
+			poolid:1,
+			links:[
+				{pos:"left"}
+				]
+			},
+		{
+			id:"s102",
+			typeid:"record",
+			title:"Property2",
+			poolid:1,
+			links:[
+				{pos:"left",isShow:true},
+				{pos:"right",isDrag:true}
+				]
+			},
+		{
+			id:"s103",
+			typeid:"record",
+			title:"Property3",
+			poolid:1,
+			links:[
+				{pos:"left"}
+				]
+			},
+		{
+			id:"s104",
+			typeid:"record",
+			title:"Property4",
+			poolid:1,
+			links:[
+				{pos:"left",isShow:true},
+				{pos:"right",to:[{id:"s106",i:0}]}
+				]
+			},
+		{
+			id:"s105",
+			typeid:"record",
+			title:"Property5",
+			poolid:2,
+			links:[
+				{pos:"left"}
+				]
+			},
+		{
+			id:"s106",
+			typeid:"onlyIcon",
+			title:"Property2",
+			poolid:2,
+			className:"icon5",
+			links:[
+				{pos:"left"}
+				]
+			}
+		];
+	function f(){
+	}
+	$dr.main(document.getElementById("test"),{id:"test1",list:list,containerList:containerList,customPaint:f});
+}
+	setTimeout("start()",0);
+
+function start2(){
+	var containerList=[
+			{title:"property list 1:"},
+			{title:"property list 2:"},
+			{title:"property list 3:"}
+		];
+	var list=[
+		{
+			id:"s31111",
+			typeid:"record",
+			title:"Property1",
+			poolid:0
+		},
+		{
+			id:"s3",
+			typeid:"record",
+			title:"Property1",
+			poolid:0,
+			links:[
+				{pos:"right",isShow:true,isDrag:true,to:[{id:"s102",i:0}]}
+				]
+			},
+		{
+			id:"s4",
 			typeid:"fatrecord",
 			title:"Property2",
 			poolid:0,
+			w:45,
+			className:"icon",
+			isClose:true,
+			isEdit:true,
+			links:[
+				{pos:"right",isDrag:true,to:[{id:"s103",i:0}]}
+				]
+			},
+		{
+			id:"s4_1",
+			typeid:"fatrecord",
+			title:"Property2",
+			poolid:0,
+			imagePath:"../svg/et.png",
 			links:[
 				{pos:"right",isDrag:true,to:[{id:"s103",i:0}]}
 				]
@@ -133,45 +242,10 @@ function start(){
 			}
 		];
 	function f(){
-		console.log("aa");
 	}
-	var shiptypes={
-		record:{
-			w:120,
-			h:30,
-			format:function(o){
-				$dr.create($dr.C.DIV,{style:{paddingLeft:3,paddingTop:3,width:70},innerHTML:o.title},o.nShip);
-			}
-		},
-		fatrecord:{
-			w:120,
-			h:60,
-			format:function(o){
-				var node=o.nShip;
-				o.oh=$dr.create($dr.C.DIV,{style:{display:$dr.C.NONE}},node);
-				if(o.className){
-					$dr.create($dr.C.DIV,{className:o.className,style:{float:$dr.C.LEFT}},node);
-					$dr.create($dr.C.DIV,{style:{paddingLeft:45,paddingTop:9,width:70},innerHTML:o.title},node);
-				}else if(o.imagePath){
-					var tmp=$dr.create($dr.C.DIV,{style:{float:$dr.C.LEFT}},node);
-					$dr.create("img",{src:o.imagePath},tmp);
-					$dr.create($dr.C.DIV,{style:{paddingLeft:45,paddingTop:9,width:70},innerHTML:o.title},node);
-				}else{
-					$dr.create($dr.C.DIV,{style:{paddingLeft:3,paddingTop:9,width:70},innerHTML:o.title},node);
-				}
-			}
-		},
-		onlyIcon:{
-			w:20,
-			h:20,
-			format:function(o){
-				$dr.style(o.nShip,{borderWidth:0});
-				$(o.nShip).addClass(o.className);
-				o.oh=$dr.create($dr.C.DIV,{style:{display:$dr.C.NONE}},o.nShip);
-			}
-		}
-	}
-	$dr.main(document.getElementById("test"),{list:list,containerList:containerList,paint:f},shiptypes);
+	$dr.main(document.getElementById("test"),{id:"test2",list:list,containerList:containerList,customPaint:f});
 }
-	setTimeout("start()",0);
+	setTimeout("start2()",0);
+
+
 </script>
