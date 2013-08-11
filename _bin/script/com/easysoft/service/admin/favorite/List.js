@@ -171,7 +171,8 @@ dojo.declare( "com.easysoft.service.admin.favorite.List" , "com.easysoft.service
 					a.push("</li>");
 				}else{
 					a.push("<li>");
-					a.push("<a href='?sid="+sid+"&category="+category+"&page="+i+"'>"+i+"</a>");
+					var cat=category||"";
+					a.push("<a href='?sid="+sid+"&category="+cat+"&page="+i+"'>"+i+"</a>");
 					a.push("</li>");
 				}
 			}

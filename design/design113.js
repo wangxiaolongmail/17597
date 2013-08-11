@@ -320,8 +320,7 @@
 		});
 	}
 
-	function touchObj(params){
-		_mixin(params,data.nTouch);
+	function touchObj(isTouch,dest_obj,src_obj,is_link,dest_i,src_i){
 		var obj=data.nTouch;
 		if(!obj.n){
 			obj.n=_create(C.DIV,{
@@ -335,40 +334,43 @@
 				}
 			})
 		}
-		_style(obj.n,{display:C.NONE});
-		if(obj.isTouch){
-			_style(obj.n,{
+		var node=obj.n;
+		if(isTouch){
+			obj.isTouch=true;
+			obj.src_obj=src_obj;
+			obj.dest_obj=dest_obj;
+			if(is_link){
+				obj.is_link=is_link;
+				obj.dest_i=dest_i;
+				obj.src_i=src_i;
+			}
+			_style(node,{
 				display:C.BLOCK,
-				left:obj.dest_obj.x-data.containerPaddingGap/8,
-				top:obj.dest_obj.y-data.containerPaddingGap/8,
-				width:obj.dest_obj.w+data.containerPaddingGap/4,
-				height:obj.dest_obj.h+data.containerPaddingGap/4
+				left:dest_obj.x-data.containerPaddingGap/8,
+				top:dest_obj.y-data.containerPaddingGap/8,
+				width:dest_obj.w+data.containerPaddingGap/4,
+				height:dest_obj.h+data.containerPaddingGap/4
 			});
+		}else{
+			obj.isTouch=false;
+			_style(node,{display:C.NONE});
 		}
 	}
 
 	function swapObj(){
 		var obj=data.nTouch;
 		if(obj.isTouch){
-			if(obj.dest_obj.isPool){
-				obj.src_obj.poolid=obj.dest_obj.poolid;
-			}else{
-				var a=[];
-				var dest_poolid=obj.dest_obj.poolid;
-				var src_poolid=obj.src_obj.poolid;
-				obj.src_obj.poolid=dest_poolid;
-				obj.dest_obj.poolid=src_poolid;
-				_each(data.list,function(item){
-					if(item==obj.src_obj){
-						a.push(obj.dest_obj);
-					}else if(item==obj.dest_obj){
-						a.push(obj.src_obj);
-					}else{
-						a.push(item);
-					}
-				});
-				data.list=a;
-			}
+			var a=[];
+			_each(data.list,function(item){
+				if(item==obj.src_obj){
+					a.push(obj.dest_obj);
+				}else if(item==obj.dest_obj){
+					a.push(obj.src_obj);
+				}else{
+					a.push(item);
+				}
+			});
+			data.list=a;
 		}
 	}
 
@@ -387,13 +389,13 @@
 
 	function detectionTouch(oo){
 		var to=oo;
-		touchObj({isTouch:false});
+		touchObj(false);
 		var isTouchedShip=false;
 		_each(data.list,function(item){
 			if( item==oo ) return;
 			if( collide(to,item) ){
 				isTouchedShip=true;
-				touchObj({isTouch:true,dest_obj:item,src_obj:oo});
+				touchObj(true,item,oo);
 			}
 		});
 		if(!isTouchedShip){
@@ -402,7 +404,8 @@
 				_each(data.containerList,function(item,i){
 					if( i==oo.poolid ) return;
 					if( collide(to,item) ){
-						touchObj({isTouch:true,dest_obj:item,src_obj:oo});
+						console.log("111");
+						//touchObj(true,item,oo);
 					}
 				});
 			}
@@ -411,12 +414,12 @@
 
 	function detectionTouchLink(src_obj,src_i){
 		var src_touch_obj=src_obj.links[src_i];
-		touchObj({isTouch:false});
+		touchObj(false);
 		_each(data.list,function(dest_obj){
 			if( dest_obj==src_obj ) return;
 			_each(dest_obj.links,function(link,dest_i){
 				if( link.isShow && !link.isDrag && collide(src_touch_obj,link) ){
-					touchObj({isTouch:true,dest_obj:dest_obj,src_obj:src_obj,is_link:true,dest_i:dest_i,src_i:src_i});
+					touchObj(true,dest_obj,src_obj,true,dest_i,src_i);
 				}
 			});
 		});
@@ -1040,10 +1043,6 @@
 		_mixin(_conf,data);
 		_mixin(_shiptypes,shiptypes);
 		_mixin(params,data);
-		_each(data.containerList,function(item,i){
-			item.isPool=true;
-			item.poolid=i;
-		});
 		_createFrame(node);
 		_style(node,{height:data.containerHeight+20});
 		paint();
