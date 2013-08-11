@@ -78,6 +78,8 @@
 
 	var _conf={
 		_wc:0,
+		totalWidth:500,
+		totalHeight:300,
 		shaSingle:true,
 		orignPoint:{
 			w:12,
@@ -92,8 +94,6 @@
 		buttonWidth:100,
 		buttonHight:30,
 		buttonPadding:2,
-		containerWidth:180,
-		containerHeight:370,
 		containerMargginX:10,
 		containerMargginY:10,
 		containerMargginGap:10,
@@ -327,22 +327,22 @@
 			obj.n=_create(C.DIV,{
 				style:{
 					position:C.ABSOLUTE,
-					backgroundColor:COLOR.TOUCH,
 					borderRadius:data.borderRadius,
 					borderColor:COLOR.TOUCH,
-					borderStyle:C.SOLID,
-					borderWidth:2
+					borderStyle:C.SOLID
 				}
 			})
 		}
 		_style(obj.n,{display:C.NONE});
 		if(obj.isTouch){
+			var width=obj.dest_obj.borderWidth;
 			_style(obj.n,{
 				display:C.BLOCK,
-				left:obj.dest_obj.x-data.containerPaddingGap/8,
-				top:obj.dest_obj.y-data.containerPaddingGap/8,
-				width:obj.dest_obj.w+data.containerPaddingGap/4,
-				height:obj.dest_obj.h+data.containerPaddingGap/4
+				left:obj.dest_obj.x-width,
+				top:obj.dest_obj.y-width,
+				width:obj.dest_obj.w+2*width,
+				height:obj.dest_obj.h+2*width,
+				borderWidth:width
 			});
 		}
 	}
@@ -437,6 +437,7 @@
 				borderColor:COLOR.POOL
 			}
 		});
+		o.borderWidth=data.poolBorderWidth;
 		o.x2=o.x+o.w;
 		o.y2=o.y+o.h;
 		o.autoy=data.containerPaddingY;
@@ -454,9 +455,10 @@
 					backgroundColor : COLOR.GRAY_BG,
 					borderRadius : o.borderRadius,
 					borderStyle:C.SOLID,
-					borderWidth:2,
+					borderWidth:data.borderWidth,
 					borderColor:o.isFocus?COLOR.BLUE:COLOR.GRAY
 				}},o.n);
+			o.borderWidth=data.borderWidth;
 			var right=3;
 			if(o.isDelete){
 				o.nShipDelete=_create(C.DIV,{
@@ -784,16 +786,8 @@
 	function _createFrame(node){
 		
 		var len=data.containerList.length;
-		if(data.totalWidth){
-			data.containerWidth=((data.totalWidth-(len-1)*data.containerMargginGap)/len)-4;
-		}else{
-			data.totalWidth=len*data.containerWidth;
-		}
-		if(data.totalHeight){
-			data.containerHeight=data.totalHeight-2*data.containerMargginY-4;
-		}else{
-			data.totalHeight=data.containerHeight;
-		}
+		data.containerWidth=((data.totalWidth-(len-1)*data.containerMargginGap)/len)-4;
+		data.containerHeight=data.totalHeight-2*data.containerMargginY-4;
 		var sizeObj={width:data.totalWidth,height:data.totalHeight};
 		var node=_create(C.DIV,{id:data.id,style:sizeObj},node);
 		var tmp=_create(C.DIV,{style:{position:C.ABSOLUTE}},node);
