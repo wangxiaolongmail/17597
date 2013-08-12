@@ -15,10 +15,17 @@ function start(){
 	var containerList=[
 			{
 				title:"property list 1:",
+				isEscape:true,
+				w:200,
+				h:300
+			},
+			{
+				title:"property list 2:",
 				isEscape:true
 			},
-			{title:"property list 2:"},
-			{title:"property list 3:"}
+			{
+				title:"property list 3:"
+			}
 		];
 	var list=[
 		{
@@ -132,123 +139,6 @@ function start(){
 }
 	setTimeout("start()",0);
 
-function start2(){
-	var containerList=[
-			{title:"property list 1:"},
-			{title:"property list 2:"},
-			{title:"property list 3:"}
-		];
-	var list=[
-		{
-			id:"s31111",
-			typeid:"record",
-			title:"Property1",
-			poolid:0
-		},
-		{
-			id:"s3",
-			typeid:"record",
-			title:"Property1",
-			poolid:0,
-			links:[
-				{pos:"right",isShow:true,isDrag:true,to:[{id:"s102",i:0}]}
-				]
-			},
-		{
-			id:"s4",
-			typeid:"fatrecord",
-			title:"Property2",
-			poolid:0,
-			w:45,
-			className:"icon",
-			isClose:true,
-			isEdit:true,
-			links:[
-				{pos:"right",isDrag:true,to:[{id:"s103",i:0}]}
-				]
-			},
-		{
-			id:"s4_1",
-			typeid:"fatrecord",
-			title:"Property2",
-			poolid:0,
-			imagePath:"../svg/et.png",
-			links:[
-				{pos:"right",isDrag:true,to:[{id:"s103",i:0}]}
-				]
-			},
-		{
-			id:"s6",
-			typeid:"record",
-			title:"Property4",
-			poolid:0,
-			links:[
-				{pos:"right",isDrag:true}
-				]
-			},
-		{
-			id:"s101",
-			typeid:"record",
-			title:"Property1",
-			poolid:1,
-			links:[
-				{pos:"left"}
-				]
-			},
-		{
-			id:"s102",
-			typeid:"record",
-			title:"Property2",
-			poolid:1,
-			links:[
-				{pos:"left",isShow:true},
-				{pos:"right",isDrag:true}
-				]
-			},
-		{
-			id:"s103",
-			typeid:"record",
-			title:"Property3",
-			poolid:1,
-			links:[
-				{pos:"left"}
-				]
-			},
-		{
-			id:"s104",
-			typeid:"record",
-			title:"Property4",
-			poolid:1,
-			links:[
-				{pos:"left",isShow:true},
-				{pos:"right",to:[{id:"s106",i:0}]}
-				]
-			},
-		{
-			id:"s105",
-			typeid:"record",
-			title:"Property5",
-			poolid:2,
-			links:[
-				{pos:"left"}
-				]
-			},
-		{
-			id:"s106",
-			typeid:"onlyIcon",
-			title:"Property2",
-			poolid:2,
-			className:"icon5",
-			links:[
-				{pos:"left"}
-				]
-			}
-		];
-	function f(){
-	}
-	$dr.main(document.getElementById("test"),{id:"test2",list:list,containerList:containerList,customPaint:f});
-}
-	setTimeout("start2()",0);
 
 
 </script>

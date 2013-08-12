@@ -78,8 +78,8 @@
 
 	var _conf={
 		_wc:0,
-		totalWidth:500,
-		totalHeight:300,
+		totalWidth:900,
+		totalHeight:500,
 		shaSingle:true,
 		orignPoint:{
 			w:12,
@@ -786,6 +786,15 @@
 	function _createFrame(node){
 		
 		var len=data.containerList.length;
+		var totalWidth=data.totalWidth;
+		var i=0;
+		_each(data.containerList,function(item){
+			if(_is_number(item.w)){
+				totalWidth=totalWidth-item.w;
+				i++;
+			}
+		});
+		len=len-i;
 		data.containerWidth=((data.totalWidth-(len-1)*data.containerMargginGap)/len)-4;
 		data.containerHeight=data.totalHeight-2*data.containerMargginY-4;
 		var sizeObj={width:data.totalWidth,height:data.totalHeight};
