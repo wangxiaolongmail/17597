@@ -17,14 +17,17 @@ function start(){
 				title:"property list 1:",
 				isEscape:true,
 				w:200,
-				h:300
+				h:300,
+				poolid:"0"
 			},
 			{
 				title:"property list 2:",
-				isEscape:true
+				isEscape:true,
+				poolid:"1"
 			},
 			{
-				title:"property list 3:"
+				title:"property list 3:",
+				poolid:"2"
 			}
 		];
 	var list=[
@@ -32,13 +35,13 @@ function start(){
 			id:"s31111",
 			typeid:"record",
 			title:"Property1",
-			poolid:0
+			poolid:"0"
 		},
 		{
 			id:"s3",
 			typeid:"record",
 			title:"Property1",
-			poolid:0,
+			poolid:"0",
 			links:[
 				{pos:"right",isShow:true,isDrag:true,to:[{id:"s102",i:0}]}
 				]
@@ -47,7 +50,7 @@ function start(){
 			id:"s4",
 			typeid:"fatrecord",
 			title:"Property2",
-			poolid:0,
+			poolid:"0",
 			w:45,
 			className:"icon",
 			isClose:true,
@@ -60,7 +63,7 @@ function start(){
 			id:"s4_1",
 			typeid:"fatrecord",
 			title:"Property2",
-			poolid:0,
+			poolid:"0",
 			imagePath:"../svg/et.png",
 			links:[
 				{pos:"right",isDrag:true,to:[{id:"s103",i:0}]}
@@ -70,7 +73,7 @@ function start(){
 			id:"s6",
 			typeid:"record",
 			title:"Property4",
-			poolid:0,
+			poolid:"0",
 			links:[
 				{pos:"right",isDrag:true}
 				]
@@ -79,7 +82,7 @@ function start(){
 			id:"s101",
 			typeid:"record",
 			title:"Property1",
-			poolid:1,
+			poolid:"1",
 			links:[
 				{pos:"left"}
 				]
@@ -88,7 +91,7 @@ function start(){
 			id:"s102",
 			typeid:"record",
 			title:"Property2",
-			poolid:1,
+			poolid:"1",
 			links:[
 				{pos:"left",isShow:true},
 				{pos:"right",isDrag:true}
@@ -98,7 +101,7 @@ function start(){
 			id:"s103",
 			typeid:"record",
 			title:"Property3",
-			poolid:1,
+			poolid:"1",
 			links:[
 				{pos:"left"}
 				]
@@ -107,7 +110,7 @@ function start(){
 			id:"s104",
 			typeid:"record",
 			title:"Property4",
-			poolid:1,
+			poolid:"1",
 			links:[
 				{pos:"left",isShow:true},
 				{pos:"right",to:[{id:"s106",i:0}]}
@@ -117,7 +120,7 @@ function start(){
 			id:"s105",
 			typeid:"record",
 			title:"Property5",
-			poolid:2,
+			poolid:"2",
 			links:[
 				{pos:"left"}
 				]
@@ -126,7 +129,7 @@ function start(){
 			id:"s106",
 			typeid:"onlyIcon",
 			title:"Property2",
-			poolid:2,
+			poolid:"2",
 			className:"icon5",
 			links:[
 				{pos:"left"}

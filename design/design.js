@@ -385,6 +385,15 @@
 		}
 	}
 
+	function getPool(o){
+		var pool=null;
+		_each(data.containerList,function(item){
+			if(item.poolid==o.poolid){
+				pool=item;
+			}
+		});
+		return pool;
+	}
 	function detectionTouch(oo){
 		var to=oo;
 		touchObj({isTouch:false});
@@ -397,7 +406,7 @@
 			}
 		});
 		if(!isTouchedShip){
-			var house=data.containerList[oo.poolid];
+			var house=getPool(oo);
 			if(house.isEscape){
 				_each(data.containerList,function(item,i){
 					if( i==oo.poolid ) return;
@@ -674,7 +683,7 @@
 	}
 
 	function _adjustPos(o,x,y){
-		var house=data.containerList[o.poolid];
+		var house=getPool(o);
 		if(house.isEscape){
 			o.x=x; o.y=y;
 		}else{
@@ -692,16 +701,16 @@
 	}
 
 	function _adjustAutoX(o){
-		if(data.isAjustAutoX&&_is_number(o.poolid)){
-			var house=data.containerList[o.poolid];
+		if(data.isAjustAutoX){
+			var house=getPool(o);
 			var x=(house.w)/2-(o.w)/2;
 			o.x=house.x+x;
 		}
 	}
 
 	function _adjustAutoY(o){
-		if(data.isAjustAutoY&&_is_number(o.poolid)){
-			var house=data.containerList[o.poolid];
+		if(data.isAjustAutoY){
+			var house=getPool(o);
 			o.y=house.autoy;
 			house.autoy=house.autoy+o.h+_getButtonHeight(o)+data.containerPaddingGap;
 		}
@@ -881,7 +890,6 @@
 			data.listmap[o.id]=o;
 		})
 		_each(data.list,function(o){
-			var _data=data;
 			o.zIndex=data.zIndex;
 			var shiptype=shiptypes[o.typeid]||{};
 			_mixin(shiptype,o);
@@ -891,7 +899,7 @@
 			_adjustAutoY(o);
 			_drawShip(o);
 			__drag({
-				data:_data,
+				data:data,
 				oh:o.oh||o.n,
 				o:o,
 				mousedown:function(params){
@@ -1029,6 +1037,12 @@
 	    
 	    return color;
 	}
+	
+	function self_checking(){
+		var flag=true;
+		var error="Error ";
+		return flag;
+	}
 
 	function main(node,params,_shiptypes){
 
@@ -1045,11 +1059,12 @@
 		_mixin(params,data);
 		_each(data.containerList,function(item,i){
 			item.isPool=true;
-			item.poolid=i;
 		});
 		_createFrame(node);
 		_style(node,{height:data.containerHeight+20});
-		paint();
+		if( self_checking() ){
+			paint();
+		}
 	}
 
 	dr.C=C;
