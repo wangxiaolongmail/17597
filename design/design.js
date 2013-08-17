@@ -903,6 +903,9 @@
 	}
 
 	function destroy(){
+		__each(data.containerList,function(v,k,a){
+			a[k]=null;
+		},[DT.HTMLDivElement,DT.SVGPathElement]);
 		__each(data.list,function(v,k,a){
 			a[k]=null;
 		},[DT.HTMLDivElement,DT.SVGPathElement]);
@@ -922,8 +925,9 @@
 			x=x+o.w+pad;
 			_drawPool(o);
 			if(data.containerList.length-1>i){
-				o.boundary={};
+				o.boundary=o.boundary||{};
 				_drawBoundary(o,o.x+o.w,o.y);
+				if( !o.boundary.isDrag ) return;
 				__drag({
 					data:data,
 					oh:o.oh||o.boundary.n,
