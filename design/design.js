@@ -119,8 +119,8 @@
 		buttonWidth:100,
 		buttonHight:30,
 		buttonPadding:2,
-		containerMargginX:10,
-		containerMargginY:10,
+		containerMargginX:0,
+		containerMargginY:0,
 		containerMargginGap:10,
 		containerPaddingY:60,
 		containerPaddingX:60,
@@ -869,7 +869,11 @@
 		destroy();
 		_createFrame();
 		init();
-		data.customPaint();
+		_each(data.containerList,function(v,k){
+			if(v.onFinish){
+				v.onFinish(v);
+			}
+		});
 	}
 
 	function _createFrame(){
@@ -1284,16 +1288,15 @@
 		return flag;
 	}
 
-	function main(node,params,_shiptypes){
-		
+	function main(obj,node,params,_shiptypes){
 		var inst={
 			containerList:[],
 			typelist:[],
 			list:[],
-			listmap:{},
-			customPaint:function(){}
+			listmap:{}
 		};
-		data=inst;
+		_mixin(inst,obj);
+		data=obj;
 		_mixin(_conf,data);
 		_mixin(_shiptypes,shiptypes);
 		_mixin(params,data);
@@ -1304,7 +1307,6 @@
 		if( self_checking() ){
 			paint();
 		}
-		return data;
 	}
 
 	dr.C=C;

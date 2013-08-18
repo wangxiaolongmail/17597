@@ -11,19 +11,42 @@
 </body>
 </html>
 <script>
+
+	
+	var nobj={};
 function start(){
 	var containerList=[
 			{
 				title:"property list 1:",
 				isEscape:true,
-				w:200,
-				h:300,
-				poolid:"0"
+				poolid:"0",
+				boundary:{
+					isDrag:true
+				}
 			},
 			{
 				title:"property list 2:",
 				isEscape:true,
-				poolid:"1"
+				poolid:"1",
+				boundary:{
+					isDrag:true
+				},
+				onFinish:function(item){
+					$dr.style(item.divNode,{border:"none"});
+					var co={
+						id:"test2",
+						isSP:true,
+						list:[],
+						containerList:[{
+							boundary:{
+								isDrag:true
+							}
+						},{}]
+					}
+					co.totalWidth=item.w;
+					co.totalHeight=item.h;
+					$dr.main({},item.divNode,co);
+				}
 			},
 			{
 				title:"property list 3:",
@@ -136,9 +159,7 @@ function start(){
 				]
 			}
 		];
-	function f(){
-	}
-	$dr.main(document.getElementById("test"),{id:"test1",list:list,containerList:containerList,customPaint:f});
+	$dr.main({},document.getElementById("test"),{id:"test1",list:list,containerList:containerList});
 }
 	setTimeout("start()",0);
 
