@@ -5,6 +5,12 @@
     <link rel="stylesheet" href="./PatternComponentDetail.css">
 	<script src="../jquery/jquery-2.0.0.min.js"></script>
 	<script src="./design.js"></script>
+	<style>
+	body{
+		margin:0px;
+		padding:0px;
+	}
+	</style>
 </head>
 <body>
 <div id="test" ></div>
@@ -14,6 +20,17 @@
 
 	
 	var nobj={};
+	
+	var co={
+		id:"test2",
+		isSP:true,
+		list:[],
+		containerList:[{
+			boundary:{
+				isDrag:true
+			}
+		},{}]
+	}
 function start(){
 	var containerList=[
 			{
@@ -31,21 +48,14 @@ function start(){
 				boundary:{
 					isDrag:true
 				},
+				isFull:true,
 				onFinish:function(item){
 					$dr.style(item.divNode,{border:"none"});
-					var co={
-						id:"test2",
-						isSP:true,
-						list:[],
-						containerList:[{
-							boundary:{
-								isDrag:true
-							}
-						},{}]
-					}
-					co.totalWidth=item.w;
-					co.totalHeight=item.h;
-					$dr.main({},item.divNode,co);
+					co.node=item.divNode;
+					co.totalWidth=item.w+4*$dr.conf.poolBorderWidth;
+					co.totalHeight=item.h+2*$dr.conf.poolBorderWidth;
+					$dr.updatePoolHeight(co,item.h);
+					$dr.main(co);
 				}
 			},
 			{
@@ -159,7 +169,7 @@ function start(){
 				]
 			}
 		];
-	$dr.main({},document.getElementById("test"),{id:"test1",list:list,containerList:containerList});
+	$dr.main({id:"test1",list:list,containerList:containerList,node:document.getElementById("test")});
 }
 	setTimeout("start()",0);
 

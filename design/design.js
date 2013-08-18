@@ -121,7 +121,7 @@
 		buttonPadding:2,
 		containerMargginX:0,
 		containerMargginY:0,
-		containerMargginGap:10,
+		containerMargginGap:6,
 		containerPaddingY:60,
 		containerPaddingX:60,
 		containerPaddingGap:20,
@@ -1003,6 +1003,11 @@
 		data.listmap={};
 		data.nTouch={};
 	}
+	function _updatePoolHeight(data,h){
+		_each(data.containerList,function(o){
+			o.h=h;
+		});
+	}
 
 	function init(){
 		var x=data.containerMargginX;
@@ -1129,6 +1134,7 @@
 		})
 		_each(data.list,function(o){
 			var house=getPool(o);
+			if( house.isFull ) return;
 			if(data.isSP){
 				if( house.w < o.w ) return;
 			}else{
@@ -1288,22 +1294,16 @@
 		return flag;
 	}
 
-	function main(obj,node,params,_shiptypes){
-		var inst={
-			containerList:[],
-			typelist:[],
-			list:[],
-			listmap:{}
-		};
-		_mixin(inst,obj);
+	function main(obj,node){
 		data=obj;
-		_mixin(_conf,data);
-		_mixin(_shiptypes,shiptypes);
-		_mixin(params,data);
+		_each(_conf,function(v,k){
+			if(_is_undefine(data[k])){
+				data[k]=v;
+			}
+		});
 		_each(data.containerList,function(item,i){
 			item.isPool=true;
 		});
-		data.node=node;
 		if( self_checking() ){
 			paint();
 		}
@@ -1315,5 +1315,7 @@
 	dr.create=_create;
 	dr.style=_style;
 	dr.each=_each;
+	dr.conf=_conf;
+	dr.updatePoolHeight=_updatePoolHeight;
 
 })(null,window,document,navigator);
