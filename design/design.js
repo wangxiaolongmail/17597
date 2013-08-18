@@ -12,9 +12,29 @@
  * @author wangxiaolongmail@163.com
  * 
  */
-(function(){
-	var _d=document,_w=window,dr={},_isIE=false,data={};
+(function(_w,_d,_nav){
 
+	if (!_w.console) {
+		_w.console = {};
+	}
+	if (!_w.console.log) {
+		_w.console.log = function () {};
+	}
+	var 
+	dr={},
+	data={},
+	_VERSION = '1.0.0 (2013-08-18)',
+	_ua = _nav.userAgent.toLowerCase(),
+	_IE = _ua.indexOf('msie') > -1 && _ua.indexOf('opera') == -1,
+	_GECKO = _ua.indexOf('gecko') > -1 && _ua.indexOf('khtml') == -1,
+	_WEBKIT = _ua.indexOf('applewebkit') > -1,
+	_OPERA = _ua.indexOf('opera') > -1,
+	_MOBILE = _ua.indexOf('mobile') > -1,
+	_IOS = /ipad|iphone|ipod/.test(_ua),
+	_QUIRKS = document.compatMode != 'CSS1Compat',
+	_matches = /(?:msie|firefox|webkit|opera)[\/:\s](\d+)/.exec(_ua),
+	_V = _matches ? _matches[1] : '0',
+	_TIME = new Date().getTime(),
 	CUR={
 		CROSSHAIR:"crosshair",
 		MOVE:"move",
@@ -111,7 +131,7 @@
 			w:120,
 			h:60,
 			format:function(o){
-				var node=o.nShip;
+				var node=o.divNodeShip;
 				if(o.className){
 					_create(C.DIV,{className:o.className,style:{float:C.LEFT}},node);
 					_create(C.DIV,{style:{paddingLeft:45,paddingTop:9,width:70},innerHTML:o.title},node);
@@ -128,15 +148,15 @@
 			w:16,
 			h:16,
 			format:function(o){
-				_attr(o.nShip,{className:o.className,style:{borderWidth:0,backgroundColor:""}});
-				o.oh=_create(C.DIV,{style:{display:C.NONE}},o.nShip);
+				_attr(o.divNodeShip,{className:o.className,style:{borderWidth:0,backgroundColor:""}});
+				o.oh=_create(C.DIV,{style:{display:C.NONE}},o.divNodeShip);
 			}
 		},
 		record:{
 			w:120,
 			h:30,
 			format:function(o){
-				_create(C.DIV,{style:{paddingLeft:3,paddingTop:3,width:70},innerHTML:o.title},o.nShip);
+				_create(C.DIV,{style:{paddingLeft:3,paddingTop:3,width:70},innerHTML:o.title},o.divNodeShip);
 			}
 		}
 	};
@@ -190,13 +210,23 @@
 		return _get_class(val) ===  DT.STRING;
 	}
 
+	function _in_array(s,a){
+		var flag=false;
+		_each(a,function(v,k){
+			if(v===s){
+				flag=true;
+			}
+		});
+		return flag;
+	}
+
 	function _each(a,f){
 		if(_is_array(a)){ 
 			for(var i=0;i<a.length;i++) {
 				f(a[i],i,a);
 			}
 		}else if(_is_object(a)){
-			for (var i in a) { 
+			for (var i in a) {
 				if (a.hasOwnProperty(i)) { 
 					f(a[i],i,a);
 				} 
@@ -212,7 +242,7 @@
 				});
 			}else if(_in_array(_get_class(dest),[DT.HTMLDivElement,DT.SVGPathElement])){
 				_each(src,function(v,k){
-					if(k===C.FLOAT) k=_isIE?"styleFloat":"cssFloat";
+					if(k===C.FLOAT) k=_IE?"styleFloat":"cssFloat";
 					dest.style[k]=v;
 				});
 			}
@@ -257,24 +287,10 @@
 		};
 	}
 
-	function _in_array(s,a){
-		var flag=false;
-		_each(a,function(v,k){
-			if(v===s){
-				flag=true;
-			}
-		});
-		return flag;
-	}
-
-	function __each(a,f,ta){
-		var ta=ta||DT;
+	function __each(a,f){
 		function __each_(a){
 			_each(a,function(v,k,obj){
-				var t=_get_class(v);
-				if(_in_array(t,ta)){
-					f(v,k,obj);
-				}else{
+				if(f(v,k,obj)){
 					__each_(v);
 				}
 			}); 
@@ -283,12 +299,12 @@
 	}
 
 	function _style(node,params){
-		__each(params,function(v,k,a){
-			if(!_in_array(k,[C.zIndex])){
-				a[k]=v+C.PX;
+		_each(params,function(v,k){
+			if(_is_number(v)&&!_in_array(k,[C.zIndex])){
+				v=v+C.PX;
 			}
-		},[DT.NUMBER]);
-		_mixin(params,node);
+			node.style[k]=v;
+		});
 	}
 
 	function _create(tag,params,pnode){
@@ -309,7 +325,7 @@
 				if(_is_object(v)){
 					_style(node,v);
 				}else if(_is_string(v)){
-					if(_isIE){
+					if(_IE){
 						node.style.cssText=v;
 					}else{
 						node.setAttribute(k,v);
@@ -326,8 +342,8 @@
 	function touchObj(params){
 		_mixin(params,data.nTouch);
 		var obj=data.nTouch;
-		if(!obj.n){
-			obj.n=_create(C.DIV,{
+		if(!obj.divNode){
+			obj.divNode=_create(C.DIV,{
 				style:{
 					position:C.ABSOLUTE,
 					borderRadius:data.borderRadius,
@@ -336,10 +352,10 @@
 				}
 			})
 		}
-		_style(obj.n,{display:C.NONE});
+		_style(obj.divNode,{display:C.NONE});
 		if(obj.isTouch){
 			var width=obj.dest_obj.borderWidth;
-			_style(obj.n,{
+			_style(obj.divNode,{
 				display:C.BLOCK,
 				left:obj.dest_obj.x-width,
 				top:obj.dest_obj.y-width,
@@ -435,7 +451,7 @@
 	}
 
 	function _drawPool(o){
-		o.n=_create(C.DIV,{
+		o.divNode=_create(C.DIV,{
 			style:{
 				position: C.ABSOLUTE,
 				left : o.x,
@@ -455,8 +471,8 @@
 	}
 
 	function _drawBoundary(o,x,y){
-		if(!o.boundary.n){
-			o.boundary.n=_create(C.DIV,{
+		if(!o.boundary.divNode){
+			o.boundary.divNode=_create(C.DIV,{
 				style:{
 					position: C.ABSOLUTE,
 					left : x,
@@ -472,7 +488,7 @@
 			o.boundary.x=x;
 			o.boundary.y=y;
 		}
-		_style(o.boundary.n,{
+		_style(o.boundary.divNode,{
 			zIndex : data.zIndex,
 			position: C.ABSOLUTE,
 			left : x,
@@ -481,9 +497,9 @@
 	}
 
 	function _drawShip(o){
-		if(!o.n){
-			o.n=_create(C.DIV);
-			o.nShip=_create(C.DIV,{style:{
+		if(!o.divNode){
+			o.divNode=_create(C.DIV);
+			o.divNodeShip=_create(C.DIV,{style:{
 					position:C.ABSOLUTE,
 					left:0,
 					top:0,
@@ -494,7 +510,7 @@
 					borderStyle:C.SOLID,
 					borderWidth:data.borderWidth,
 					borderColor:o.isFocus?COLOR.BLUE:COLOR.GRAY
-				}},o.n);
+				}},o.divNode);
 			o.borderWidth=data.borderWidth;
 			var right=3;
 			if(o.isDelete){
@@ -509,7 +525,7 @@
 						borderRadius : o.borderRadius,
 						borderStyle:C.SOLID,
 						borderWidth:0
-				}},o.nShip);
+				}},o.divNodeShip);
 				right+=16+3;
 			}
 			if(o.isEdit){
@@ -524,28 +540,29 @@
 						borderRadius : o.borderRadius,
 						borderStyle:C.SOLID,
 						borderWidth:0
-				}},o.nShip);
+				}},o.divNodeShip);
 			}
 			o.format(o);
 		}
-		_style(o.n,{
+		_style(o.divNode,{
 			position: C.ABSOLUTE,
 			left : o.x,
 			top : o.y,
 			zIndex : o.zIndex
 		});
+		return;
 		_each(o.links,function(link){
-			if(!link.nline){
-				link.nline=_create(C.PATH,null,data._nBodysvgGroupId);
+			if(!link.pathNode){
+				link.pathNode=_create(C.PATH,null,data._nBodysvgGroupId);
 			}
 		});
 	}
 
 	function _drawLink(o,i){
 		var link=o.links[i];
-		if(!link.n){
-			link.n=_create(C.DIV);
-			link.nLink=_create(C.DIV,{
+		if(!link.divNode){
+			link.divNode=_create(C.DIV);
+			link.divNodeLink=_create(C.DIV,{
 				style:{
 					position:C.ABSOLUTE,
 					background : COLOR.GRAY_BG,
@@ -559,7 +576,7 @@
 					borderWidth:2,
 					borderColor:o.isFocus?COLOR.BLUE:COLOR.GRAY
 				}
-			},link.n);
+			},link.divNode);
 			var node_inner=_create(C.DIV,{
 				style:{
 					backgroundColor:COLOR.TOUCH,
@@ -569,20 +586,21 @@
 					width:link.w/2,
 					height:link.h/2,
 					borderWidth:0,
-					borderRadius:(link.w/4+1)
+					borderRadius:(link.w/4+1),
+					fontSize:1
 				}
-			},link.nLink);
+			},link.divNodeLink);
 			if(!link.isDrag){
 				_style(node_inner,{ backgroundColor : COLOR.RED });
 			}
 			if( !o.isFocus&&link.to ){
-				_style(link.nLink,{ borderColor : COLOR.TOUCH });
+				_style(link.divNodeLink,{ borderColor : COLOR.TOUCH });
 			}
 			if( !o.isFocus&&_isDestLink(o.id,i) ){
-				_style(link.nLink,{ borderColor : COLOR.RED});
+				_style(link.divNodeLink,{ borderColor : COLOR.RED});
 			}
 		}
-		_style(link.n,{
+		_style(link.divNode,{
 			position : C.ABSOLUTE,
 			left : link.x,
 			top : link.y,
@@ -672,12 +690,12 @@
 
 	function drawLine(){
 		_each(data.list,function(src){
-			if(!src.nShip) return;
+			if(!src.divNodeShip) return;
 			_each(src.links,function(link){
 				_each(link.to,function(item){
 					var o1=getLinkPos(link.pos,src);
 					var dest=data.listmap[item.id];
-					if(!dest.nShip) return;
+					if(!dest.divNodeShip) return;
 					var tmplink=dest.links[item.i];
 					var o2=getLinkPos(tmplink.pos,tmplink);
 					_drawLineEx(item,o1,o2,src);
@@ -687,10 +705,13 @@
 	}
 
 	function _drawLineEx(obj,o1,o2,srcShip){
-		if(!obj.nline){
-			obj.nline=_create(C.PATH,null,data._nBodysvgGroupId);
+		if(_IE){
+		}else{			
+			if(!obj.pathNode){
+				obj.pathNode=_create(C.PATH,null,data._nBodysvgGroupId);
+			}
+			_drawLine(obj.pathNode,o1,o2,srcShip);
 		}
-		_drawLine(obj.nline,o1,o2,srcShip);
 	}
 
 	function _drawLine(node,o1,o2,srcShip){
@@ -850,6 +871,14 @@
 		var node=_create(C.DIV,{id:data.id,style:sizeObj},node);
 		var tmp=_create(C.DIV,{style:{position:C.ABSOLUTE}},node);
 		data._nBodyId=_create(C.DIV,null,tmp);
+		if(_IE){
+		}else{
+			_createSvg(sizeObj,tmp);
+		}
+		
+	}
+	function _createSvg(sizeObj,tmp){
+		
 		var _nBodysvg=_create("svg",sizeObj,tmp);
 		var defs=_create("defs",null,_nBodysvg);
 
@@ -901,14 +930,22 @@
 
 		data._nBodysvgGroupId=_create("g",null,_nBodysvg);
 	}
-
 	function destroy(){
-		__each(data.containerList,function(v,k,a){
-			a[k]=null;
-		},[DT.HTMLDivElement,DT.SVGPathElement]);
-		__each(data.list,function(v,k,a){
-			a[k]=null;
-		},[DT.HTMLDivElement,DT.SVGPathElement]);
+		__each(data,function(v,k,a){
+			var type=_get_class(v);
+			if(_is_string(k)&&k.indexOf("Node")>=0){
+				a[k]=null;
+			}
+			if(_in_array(type,[DT.OBJECT])){
+				if(v&&v.all){
+					return false;
+				}
+				return true;
+			}
+			if(_in_array(type,[DT.ARRAY])){
+				return true;
+			}
+		});
 		data.listmap={};
 		data.nTouch={};
 	}
@@ -930,15 +967,15 @@
 				if( !o.boundary.isDrag ) return;
 				__drag({
 					data:data,
-					oh:o.oh||o.boundary.n,
+					oh:o.oh||o.boundary.divNode,
 					o:o,
 					nexto:data.containerList[i+1],
 					mousedown:function(params){
 						data=params.data;
 						var o=params.o;
-						_style(o.boundary.n,{backgroundColor:COLOR.BLUE});
+						_style(o.boundary.divNode,{backgroundColor:COLOR.BLUE});
 						o.zIndex=1000;
-						o.boundary.n.style.cursor=CUR.W_RESIZE;
+						o.boundary.divNode.style.cursor=CUR.W_RESIZE;
 						o.bx=o.boundary.x;
 						o.by=o.boundary.y;
 						o.vx=0;
@@ -990,7 +1027,7 @@
 			_drawShip(o);
 			__drag({
 				data:data,
-				oh:o.oh||o.n,
+				oh:o.oh||o.divNode,
 				o:o,
 				mousedown:function(params){
 					data=params.data;
@@ -999,14 +1036,14 @@
 						ship.isFocus=false;
 					});
 					o.isFocus=true;
-					_style(o.nShip,{borderColor:COLOR.BLUE});
+					_style(o.divNodeShip,{borderColor:COLOR.BLUE});
 					_each(o.links,function(link){
 						if(link.isShow){
-							_style(link.nLink,{borderColor:COLOR.BLUE});
+							_style(link.divNodeLink,{borderColor:COLOR.BLUE});
 						}
 					});
 					o.zIndex=1000;
-					o.n.style.cursor=CUR.MOVE;
+					o.divNode.style.cursor=CUR.MOVE;
 					o.bx=o.x;
 					o.by=o.y;
 				},
@@ -1028,7 +1065,7 @@
 					if(!link.isDrag) return;
 					__drag({
 						data:data,
-						oh:o.links[i].n,
+						oh:o.links[i].divNode,
 						o:o,
 						i:i,
 						mousedown:function(params){
@@ -1036,8 +1073,8 @@
 							var o=params.o;
 							var i=params.i;
 							var link=o.links[i];
-							link.n.style.zIndex=1000;
-							link.n.style.cursor=CUR.CROSSHAIR;
+							link.divNode.style.zIndex=1000;
+							link.divNode.style.cursor=CUR.CROSSHAIR;
 							o.bx=link.x;
 							o.by=link.y;
 						},
@@ -1154,6 +1191,7 @@
 		if( self_checking() ){
 			paint();
 		}
+		return data;
 	}
 
 	dr.C=C;
@@ -1163,4 +1201,4 @@
 	dr.style=_style;
 	dr.each=_each;
 
-})();
+})(window,document,navigator);
