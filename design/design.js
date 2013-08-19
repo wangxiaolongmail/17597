@@ -125,6 +125,7 @@
 		containerPaddingY:60,
 		containerPaddingX:60,
 		containerPaddingGap:20,
+		poolLeftPadding:6,
 		isDragShadow:true,
 		isAjustAutoX:true,
 		isAjustAutoY:true
@@ -1008,7 +1009,15 @@
 			o.h=h;
 		});
 	}
-
+	function _adjustShipSize(o,house){
+		console.log("_adjustShipSize");
+		if(house.isAutoSize){
+			if(data.isSP){
+				o.w=house.w-2*data.poolLeftPadding;
+			}else{
+			}
+		}
+	}
 	function init(){
 		var x=data.containerMargginX;
 		var y=data.containerMargginY;
@@ -1136,7 +1145,9 @@
 			var house=getPool(o);
 			if( house.isFull ) return;
 			if(data.isSP){
-				if( house.w < o.w ) return;
+				if(!house.isAutoSize){
+					if( house.w < o.w ) return;
+				}
 			}else{
 				if( house.h < o.h ) return;
 			}
@@ -1144,6 +1155,7 @@
 			var shiptype=shiptypes[o.typeid]||{};
 			_mixin(shiptype,o);
 			o.borderRadius=o.borderRadius||data.borderRadius;
+			_adjustShipSize(o,house);
 			_adjustPos(o,o.x,o.y);
 			_adjustAutoX(o,house);
 			_adjustAutoY(o,house);
@@ -1297,7 +1309,7 @@
 	function main(obj,node){
 		data=obj;
 		_each(_conf,function(v,k){
-			if(_is_undefine(data[k])){
+			if( typeof data[k] == "undefined" ){
 				data[k]=v;
 			}
 		});

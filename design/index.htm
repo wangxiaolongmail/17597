@@ -3,7 +3,7 @@
 <head>
     <title></title>
     <link rel="stylesheet" href="./PatternComponentDetail.css">
-	<script src="../jquery/jquery-2.0.0.min.js"></script>
+	<script src="../jquery/jquery-1.9.1.js"></script>
 	<script src="./design.js"></script>
 	<style>
 	body{
@@ -17,19 +17,26 @@
 </body>
 </html>
 <script>
-
-	
-	var nobj={};
-	
 	var co={
 		id:"test2",
 		isSP:true,
-		list:[],
+		list:[
+			{
+				id:"s31111",
+				typeid:"record",
+				title:"Property1",
+				poolid:"0"
+			}
+		],
 		containerList:[{
+			poolid:"0",
+			isAutoSize:true,
 			boundary:{
 				isDrag:true
 			}
-		},{}]
+		},{
+			poolid:"1"
+		}]
 	}
 function start(){
 	var containerList=[
