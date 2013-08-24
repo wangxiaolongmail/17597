@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="./PatternComponentDetail.css">
+	<script src="../jquery/jquery-1.9.1.js"></script>
+	<script src="./design.js"></script>
+	<style>
+	body{
+		margin:0px;
+		padding:0px;
+	}
+	</style>
+</head>
+<body>
+<div id="test" ></div>
+</body>
+</html>
+<script>
+	
+
+(function(){
+	var co={
+		id:"test2",
+		isSP:true,
+		list:[
+			{
+				id:"s31111",
+				typeid:"record",
+				title:"Property1",
+				poolid:"0"
+			}
+		],
+		containerList:[{
+			poolid:"0",
+			isAutoSize:true,
+			boundary:{
+				isDrag:true
+			}
+		},{
+			poolid:"1"
+		}]
+	}
+	var containerList=[
+			{
+				isFull:true,
+				title:"property list 1:",
+				isEscape:true,
+				poolid:"0",
+				boundary:{
+					isDrag:true
+				}
+			},
+			{
+				title:"property list 2:",
+				isEscape:true,
+				poolid:"1",
+				boundary:{
+					isDrag:true
+				},
+				isFull:true,
+				onFinish:function(item){
+					$dr.style(item.divNode,{border:"none"});
+					co.node=item.divNode;
+					co.totalWidth=item.w+4*$dr.conf.poolBorderWidth;
+					co.totalHeight=item.h+2*$dr.conf.poolBorderWidth;
+					$dr.updatePoolHeight(co,item.h);
+					$dr.main(co);
+				}
+			},
+			{
+				isFull:true,
+				title:"property list 3:",
+				poolid:"2"
+			}
+		];
+	var list=[
+		{
+			id:"s31111",
+			typeid:"record",
+			title:"Property1",
+			poolid:"0"
+		},
+		{
+			id:"s3",
+			typeid:"record",
+			title:"Property1",
+			poolid:"0",
+			links:[
+				{pos:"right",isShow:true,isDrag:true,to:[{id:"s102",i:0}]}
+				]
+			},
+		{
+			id:"s4",
+			typeid:"fatrecord",
+			title:"Property2",
+			poolid:"0",
+			w:45,
+			className:"icon",
+			isClose:true,
+			isEdit:true,
+			links:[
+				{pos:"right",isDrag:true,to:[{id:"s103",i:0}]}
+				]
+			},
+		{
+			id:"s4_1",
+			typeid:"fatrecord",
+			title:"Property2",
+			poolid:"0",
+			imagePath:"../svg/et.png",
+			links:[
+				{pos:"right",isDrag:true,to:[{id:"s103",i:0}]}
+				]
+			},
+		{
+			id:"s6",
+			typeid:"record",
+			title:"Property4",
+			poolid:"0",
+			links:[
+				{pos:"right",isDrag:true}
+				]
+			},
+		{
+			id:"s101",
+			typeid:"record",
+			title:"Property1",
+			poolid:"1",
+			links:[
+				{pos:"left"}
+				]
+			},
+		{
+			id:"s102",
+			typeid:"record",
+			title:"Property2",
+			poolid:"1",
+			links:[
+				{pos:"left",isShow:true},
+				{pos:"right",isDrag:true}
+				]
+			},
+		{
+			id:"s103",
+			typeid:"record",
+			title:"Property3",
+			poolid:"1",
+			links:[
+				{pos:"left"}
+				]
+			},
+		{
+			id:"s104",
+			typeid:"record",
+			title:"Property4",
+			poolid:"1",
+			links:[
+				{pos:"left",isShow:true},
+				{pos:"right",to:[{id:"s106",i:0}]}
+				]
+			},
+		{
+			id:"s105",
+			typeid:"record",
+			title:"Property5",
+			poolid:"2",
+			links:[
+				{pos:"left"}
+				]
+			},
+		{
+			id:"s106",
+			typeid:"onlyIcon",
+			title:"Property2",
+			poolid:"2",
+			className:"icon5",
+			links:[
+				{pos:"left"}
+				]
+			}
+		];
+	$dr.main({id:"test1",list:list,containerList:containerList,node:document.getElementById("test")});
+
+})();
+
+</script>

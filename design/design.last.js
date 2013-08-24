@@ -129,9 +129,7 @@
 		poolLeftPadding:6,
 		isDragShadow:true,
 		isAjustAutoX:true,
-		isAjustAutoY:true,
-		listmap:{},
-		nTouch:{}
+		isAjustAutoY:true
 	};
 	var shiptypes={
 		fatrecord:{
@@ -346,19 +344,16 @@
 	}
 
 	function _style(node,params){
-		$(node).css(params);
-		/*
 		_each(params,function(v,k){
 			if(_is_number(v)&&!_in_array(k,[C.zIndex])){
 				v=v+C.PX;
 			}
 			node.style[k]=v;
 		});
-		*/
 	}
 
 	function _create(tag,params,pnode){
-		var pnode=pnode||data._divNodeBodyId;
+		var pnode=pnode||data._nBodyId;
 		if(_in_array(tag,[C.PATH,C.SVG,"g","defs","marker","path"])){
 			var node=_d.createElementNS(C.HTTP_W3_SVG,tag);
 		}else{
@@ -380,13 +375,11 @@
 					}else{
 						node.setAttribute(k,v);
 					}
-					$(node).attr(k,v);
 				}
 			}else if(_in_array(k,[C.innerHTML,C.className])){
 				node[k]=v;
 			}else{
-				//node.setAttribute(k,v);
-				$(node).attr(k,v);
+				node.setAttribute(k,v);
 			}
 		});
 	}
@@ -503,33 +496,19 @@
 	}
 
 	function _drawPool(o){
-		if(!o.divNode){
-			o.divNode=_create(C.DIV,{
-				style:{
-					position: C.ABSOLUTE,
-					left : o.x,
-					top : o.y,
-					width : o.w,
-					height : o.h,
-					zIndex : data.zIndex,
-					borderStyle:C.SOLID,
-					borderWidth:data.poolBorderWidth,
-					borderColor:COLOR.POOL
-				}
-			});
-		}else{
-			_style(o.divNode,{
-					position: C.ABSOLUTE,
-					left : o.x,
-					top : o.y,
-					width : o.w,
-					height : o.h,
-					zIndex : data.zIndex,
-					borderStyle:C.SOLID,
-					borderWidth:data.poolBorderWidth,
-					borderColor:COLOR.POOL
-				});
-		}
+		o.divNode=_create(C.DIV,{
+			style:{
+				position: C.ABSOLUTE,
+				left : o.x,
+				top : o.y,
+				width : o.w,
+				height : o.h,
+				zIndex : data.zIndex,
+				borderStyle:C.SOLID,
+				borderWidth:data.poolBorderWidth,
+				borderColor:COLOR.POOL
+			}
+		});
 		o.borderWidth=data.poolBorderWidth;
 		o.x2=o.x+o.w;
 		o.y2=o.y+o.h;
@@ -553,6 +532,8 @@
 						borderColor:COLOR.POOL
 					}
 				});
+				o.boundary.x=x;
+				o.boundary.y=y;
 			}else{
 				o.boundary.divNode=_create(C.DIV,{
 					style:{
@@ -567,29 +548,16 @@
 						borderColor:COLOR.POOL
 					}
 				});
+				o.boundary.x=x;
+				o.boundary.y=y;
 			}
 		}
-		o.boundary.x=x;
-		o.boundary.y=y;
-		if(data.isSP){
-			_style(o.boundary.divNode,{
-				zIndex : data.zIndex,
-				position: C.ABSOLUTE,
-				width : data.containerMargginGap,
-				height : o.h,
-				left : x,
-				top : y
-			});
-		}else{
-			_style(o.boundary.divNode,{
-				zIndex : data.zIndex,
-				position: C.ABSOLUTE,
-				width : o.w,
-				height : data.containerMargginGap,
-				left : x,
-				top : y
-			});
-		}
+		_style(o.boundary.divNode,{
+			zIndex : data.zIndex,
+			position: C.ABSOLUTE,
+			left : x,
+			top : y
+		});
 	}
 
 	function _drawShip(o){
@@ -603,22 +571,15 @@
 					height : o.h,
 					borderWidth:data.borderWidth
 				}},o.divNode);
+			_style(o.divNodeShip,o.shiptype.style);
+			if(o.isFocus){
+				_style(o.divNodeShip,o.shiptype.focusStyle);
+			}
 			o.borderWidth=data.borderWidth;
 			o.format(o);
-		}else{
-			_style(o.divNodeShip,{
-				position: C.ABSOLUTE,
-				left : o.x,
-				top : o.y,
-				width : o.w,
-				height : o.h
-			});
 		}
-		_style(o.divNodeShip,o.shiptype.style);
-		if(o.isFocus){
-			_style(o.divNodeShip,o.shiptype.focusStyle);
-		}
-		_style(o.divNodeShip,{
+		_style(o.divNode,{
+			position: C.ABSOLUTE,
 			left : o.x,
 			top : o.y,
 			zIndex : o.zIndex
@@ -917,7 +878,7 @@
 	}
 
 	function paint(){
-		//destroy();
+		destroy();
 		_createFrame();
 		init();
 		_each(data.containerList,function(v,k){
@@ -928,7 +889,9 @@
 	}
 
 	function _createFrame(){
-
+		
+		var node=data.node;
+		node.innerHTML="";
 		if(data.isSP){
 			if(!data.configContainerWidth){
 				var len=data.containerList.length;
@@ -951,32 +914,29 @@
 			}
 		}else{
 			if(!data.configContainerHeight){
-
-				data.configContainerHeight=true;
 				var len=data.containerList.length;
 				var totalHeight=data.totalHeight;
 				var i=0;
+				data.configContainerHeight=true;
 				_each(data.containerList,function(item){
-					if(_is_number(item.h)){
+					if(_is_number(item.w)){
 						totalHeight=totalHeight-item.h;
 						totalHeight=totalHeight-data.containerMargginGap;
 						totalHeight=totalHeight-2*data.poolBorderWidth;
 						i++;
 					}
 				});
-				totalHeight=totalHeight-2*data.containerMargginY;
+				totalHeight=totalHeight-2*data.containerMargginX;
 				len=len-i;
 				totalHeight=totalHeight-(len-1)*data.containerMargginGap;
 				data.containerHeight=parseInt((totalHeight/len)-2*data.poolBorderWidth);
-				data.containerWidth=data.totalWidth-2*data.containerMargginX-4;
+				data.containerWidth=data.totalWidth-2*data.containerMargginY-4;
 			}
 		}
-		if(!data._divNodeBodyId){
-			var sizeObj={width:data.totalWidth,height:data.totalHeight};
-			var node=_create(C.DIV,{id:data.id,style:sizeObj},data.node);
-			var tmp=_create(C.DIV,{style:{position:C.ABSOLUTE}},node);
-			data._divNodeBodyId=_create(C.DIV,null,tmp);
-		}
+		var sizeObj={width:data.totalWidth,height:data.totalHeight};
+		var node=_create(C.DIV,{id:data.id,style:sizeObj},node);
+		var tmp=_create(C.DIV,{style:{position:C.ABSOLUTE}},node);
+		data._nBodyId=_create(C.DIV,null,tmp);
 		if(_IE){
 		}else{
 			_createSvg(sizeObj,tmp);
@@ -1037,8 +997,6 @@
 		data._nBodysvgGroupId=_create("g",null,_nBodysvg);
 	}
 	function destroy(){
-
-		data.node.innerHTML="";
 		__each(data,function(v,k,a){
 			var type=_get_class(v);
 			if(_is_string(k)&&k.indexOf("Node")>=0){
@@ -1390,4 +1348,4 @@
 	dr.docWidth=_docWidth;
 	dr.docElement=_docElement;
 	dr.byId=byId;
-})($,window,document,navigator);
+})(null,window,document,navigator);
