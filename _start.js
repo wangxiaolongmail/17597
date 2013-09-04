@@ -77,8 +77,13 @@ dojo.iconv = require('iconv-lite');
 console.log("require mongodb");
 dojo.mongodb = require('mongodb');
 
-console.log("require canvas");
-dojo.canvas = require('canvas');
+try{
+	console.log("require canvas");
+	dojo.canvas = require('canvas');
+}catch(err) {
+	console.log(err.name);
+	console.log(err.message);
+}finally {}
 
 console.log("require less");
 dojo.less = require('less');

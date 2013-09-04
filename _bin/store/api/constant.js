@@ -75,6 +75,7 @@ db.system.js.save({_id:"constant",value:function () {
 				PAGE:"page",
 				PATH_NAME:"pathname",
 				PASSWORD:"Password",
+				PROCESS:"Process",
 				POST:"post",
 				PROFILE:"profile",
 				PUBLIC:"Public",
