@@ -1,4 +1,7 @@
 nohup.out
+*.bak
+*.gzjs
+*.gzcss
 _logaddr.txt
 _log/
 bootstrap/

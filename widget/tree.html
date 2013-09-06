@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>tree</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+<script type="text/javascript" src="../../../js/lib/jquery-all.js"></script>
+<style>
+.test{
+	border:1px solid red;
+}
+.test div{
+	width:100px;
+	height:28px;
+	background-color:gray;
+	margin-top:3px;
+}
+.move{
+	z-index:999;
+	position:absolute;
+	width:100px;
+	height:100px;
+	background-color:green;
+}
+.hide{
+	display:none;
+}
+</style>
+</head>
+<body>
+<div class="test">
+	<div id="1" class="child" >1</div>
+	<div id="2" class="child" >2</div>
+	<div id="3" class="child" >3</div>
+	<div id="4" class="child" >4</div>
+</div>
+<div class="move hide">
+</div>
+</body>
+</html>
+<script>
+$(function(){
+	var node=null;
+	var seleted_node=null;
+	var isDown=false;
+	$(".test").mousemove(function(e){
+		if(!isDown) return;
+		var _node=e.target;
+		if($(_node).hasClass("child")){
+			if(_node!=node){
+				seleted_node=_node;
+				node=_node;;
+			}
+			$(".move").removeClass("hide");
+			console.log(e);
+		}else{
+			seleted_node=null;
+			$(".move").addClass("hide");
+		}
+	});
+	$(".test").mousedown(function(e){
+		var _node=e.target;
+		if($(_node).hasClass("child")){
+			console.log("start");
+			isDown=true;
+			node=_node;
+		}
+	});
+	$(document).mouseup(function(e){
+		isDown=false;
+		if(seleted_node!=null){
+			console.log(seleted_node);
+			console.log("end");
+		}
+		seleted_node=null;
+	});
+});
+</script>
