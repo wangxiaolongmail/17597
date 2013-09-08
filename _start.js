@@ -38,6 +38,19 @@ for(var i=0;i<a.length;i++,i++){
 		}
 	}
 }
+
+function tryRequire(name){
+
+	try{
+		console.log("require "+name);
+		dojo[name] = require(name);
+	}catch(err) {
+		console.log(err.name);
+		console.log(err.message);
+	}finally {}
+
+}
+
 require("./_bin/script/dojo").dojo; 
 var dojo = global.dojo;
 var cst={};
@@ -52,60 +65,25 @@ dojo.crypto = require("crypto");
 dojo.os = require('os');
 var runPathDir=dojo.path.dirname(runPath);
 console.log(runPathDir);
-console.log("require underscore");
-dojo.underscore = require('underscore');
-console.log("require underscore:"+dojo.underscore.VERSION);
 
 dojo.JSON=JSON;
 
 dojo.querystring = require("querystring");
 dojo.process=process;
 
-console.log("require nodemailer");
-dojo.mail = require('nodemailer');
-
-console.log("require socket.io");
-dojo.socketio = require('socket.io');
-
-
-console.log("require cheerio");
-dojo.cheerio = require('cheerio');
-
-console.log("require iconv-lite");
-dojo.iconv = require('iconv-lite');
-
-console.log("require mongodb");
-dojo.mongodb = require('mongodb');
-
-try{
-	console.log("require canvas");
-	dojo.canvas = require('canvas');
-}catch(err) {
-	console.log(err.name);
-	console.log(err.message);
-}finally {}
-
-console.log("require less");
-dojo.less = require('less');
-
-
-
-
-console.log("require request");
-dojo.request = require('request');
-
-console.log("require connect");
-dojo.connect = require('connect');
-
-console.log("require formidable");
-dojo.formidable = require('formidable');
-
-
-console.log("require async");
-dojo.async = require('async');
-
-console.log("require express");
-dojo.express = require('express');
+tryRequire('underscore');
+tryRequire('nodemailer');
+tryRequire('socket.io');
+tryRequire('cheerio');
+tryRequire('iconv-lite');
+tryRequire('mongodb');
+tryRequire('canvas');
+tryRequire('less');
+tryRequire('request');
+tryRequire('connect');
+tryRequire('formidable');
+tryRequire('async');
+tryRequire('express');
 
 
 
@@ -125,7 +103,7 @@ console.log('Port: ' + dojo.conf.port);
 console.log('__filename: ' + dojo.__filename);
 
 function fn_conn_db(){
-	var server = new dojo.mongodb.Server('localhost',27017,{auto_reconnect:true,max_pool_size:1});
+	var server = new dojo.mongodb.Server('17597.net',27017,{auto_reconnect:true,max_pool_size:1});
 	var conn = dojo.mongodb.Db('test',server);
 	conn.open(function(err,db){
 		if(!err){
