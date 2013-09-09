@@ -10,7 +10,10 @@
 		NONE:"none",
 		DISPLAY:"display",
 		DIV:"div",
-		TR:"tr"
+		TR:"tr",
+		TREE_NODE_LEAF:0,
+		TREE_NODE_PLUS:1,
+		TREE_NODE_MINUS:2
 	},CUR={
 		DEFAULT:"default",
 		CROSSHAIR:"crosshair",
@@ -182,36 +185,7 @@
 		return $(node).attr("id");
 	}
 
-/*
-	$dn.create({
-		id:"#taskQmTable",
-		tr:"ui-row-ltr",
-		treeWrap:".tree-wrap",
-		treeIconPlus:"tree-plus",
-		treeIconMinus:"tree-minus",
-		getVCL:function(){
-			return [];
-		},
-		fn:function(params){
-			$.ajax({
-				url: "<c:url value='/js/extends/widget/dragResp.json'/>",
-				async:false,
-				type: "POST",
-				data:params,
-				cache:false,
-				dataType:"json",
-				success:function(data, textStatus, jqXHR){
-					if(data.status=="success"){
-						setTimeout(function(){$dn.finish(true);},500);
-					}else{
-						$dn.finish(false);
-					}
-				},
-				error:function(){$dn.finish(false);}
-			});
-		}
-	});
-*/
+
 (function($,_w,_d){
 	
 	var output={},data=null;
@@ -260,10 +234,40 @@
 			a.push('<div>');
 		a.push('<div>');
 		a.push('<div>');
-		$(".taskQmFooterWrap").append(a.join(""));
+		$(".taskQmFooterWrap").empty().append(a.join(""));
 	}
 })($,window,document);
 
+/*
+	$dn.create({
+		id:"#taskQmTable",
+		tr:"ui-row-ltr",
+		treeWrap:".tree-wrap",
+		treeIconPlus:"tree-plus",
+		treeIconMinus:"tree-minus",
+		getVCL:function(){
+			return [];
+		},
+		fn:function(params){
+			$.ajax({
+				url: "<c:url value='/js/extends/widget/dragResp.json'/>",
+				async:false,
+				type: "POST",
+				data:params,
+				cache:false,
+				dataType:"json",
+				success:function(data, textStatus, jqXHR){
+					if(data.status=="success"){
+						setTimeout(function(){$dn.finish(true);},500);
+					}else{
+						$dn.finish(false);
+					}
+				},
+				error:function(){$dn.finish(false);}
+			});
+		}
+	});
+*/
 (function($,_w,_d){
 	
 	var output={},data=null;
@@ -286,7 +290,11 @@
 		if($.browser.msie){
 			data.jBody[0].onselectstart=function(){return false;};
 		}else{
-			data.jBody.css({"-moz-user-select":"none"});
+			data.jBody.css({
+				"-moz-user-select":"none",
+				"-webkit-user-select":"none",
+				"user-select":"none"
+			});
 		}
 		data.jMove=$("#move");
 		data.nMoveTr=$('<tr class="moveTr"><td colspan="99"></td></tr>')[0];
@@ -296,10 +304,14 @@
 	}
 	function findNode(node){
 		var obj=getParentNodeByClass(node,data.tr);
-		if(!_in_array(C.A,obj.list)){
-			return obj.parentNode;
+		return obj.parentNode;
+	}
+	function hasAnchor(node){
+		var obj=getParentNodeByClass(node,data.tr);
+		if(_in_array(C.A,obj.list)){
+			return true;
 		}else{
-			return null;
+			return false;
 		}
 	}
 	function findTreeChildNodeList(node,vnlist){
@@ -333,11 +345,11 @@
 	function isTreeNodeState(node){
 		var tmp=$(C.DIV,getTreeWrapNode(node));
 		if(tmp.hasClass(data.treeIconPlus)){
-			return 1;
+			return C.TREE_NODE_PLUS;
 		}else if(tmp.hasClass(data.treeIconMinus)){
-			return 2;
+			return C.TREE_NODE_MINUS;
 		}else{
-			return 0;
+			return C.TREE_NODE_LEAF;
 		}
 	}
 	function getTreeWrapNode(node){
@@ -416,6 +428,14 @@
 			return true;
 		}
 	}
+	function getNextNodeId(node){
+		var nextElement=getNextElement(node);
+		if(nextElement){
+			var order=getNodeId(nextElement);
+		}else{
+			var order="";
+		}
+	}
 	function addEvent(){
 		data.jBody.mousemove(function(e){
 			if(!data.isDown) return;
@@ -423,11 +443,8 @@
 			if(n){
 				if(data.seleted_node!=n ){
 					data.seleted_node=n;
-					data.jMove.removeClass(C.HIDE);
-					data.jMove.empty();
 					var str=buildHtml($(data.node));
-					data.jMove.append(str);
-					data.jMove.css({left:e.pageX,top:e.pageY});
+					data.jMove.removeClass(C.HIDE).empty().append(str).css({left:e.pageX,top:e.pageY});
 					insertAfterNode(data.nMoveTr,data.seleted_node);
 				}
 			}
@@ -450,13 +467,14 @@
 		$(_d).mouseup(function(e){
 			data.jBody.css({cursor:CUR.DEFAULT});
 			data.isDown=false;
+			//console.log(hasAnchor(e.target));
 			if(data.seleted_node!=null&&data.seleted_node!=data.node){
 				data.isOpen=false;
 				$(C.TR,data.jMove).children().eq(1).removeClass(C.HIDE);
 				data.destId=getNodeId(data.seleted_node);
 				data.srcId=getNodeId(data.node);
 				if(isPrepareSubmit()){
-					data.fn({srcId:data.srcId,destId:data.destId});
+					data.fn({srcId:data.srcId,destId:data.destId,pos:"2"});
 				}else{
 					_cleanup();
 				}

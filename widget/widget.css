@@ -75,11 +75,10 @@
 .move{
 	z-index:999;
 	position:absolute;
-	width:200px;
 	height:28px;
 	line-height:28px;
 	overflow:hidden;
-	background-color:white;
+	background-color:#FFFFBB;
 	border:1px dashed black;
 }
 .moveTr{
