@@ -13,7 +13,9 @@
 		TR:"tr",
 		TREE_NODE_LEAF:0,
 		TREE_NODE_PLUS:1,
-		TREE_NODE_MINUS:2
+		TREE_NODE_MINUS:2,
+		TREE_NODE_INSERT_DOWN:"2",
+		TREE_NODE_INSERT_CHILD:"3"
 	},CUR={
 		DEFAULT:"default",
 		CROSSHAIR:"crosshair",
@@ -140,6 +142,10 @@
 		}
 		return {parentNode:parentNode,list:list};
 	}
+	function getNodeByClass(node,cls){
+		var obj=getParentNodeByClass(node,cls);
+		return obj.parentNode;
+	}
 	function findParentClass(_node,className){
 		var obj=getParentNodeByClass(_node,className);
 		if(obj.parentNode){
@@ -148,7 +154,10 @@
 			return false;
 		}
 	}
-	function getNextElement(node){    
+	function getNextElement(node){
+		if(!node.nextSibling){
+			return null;
+		}
 	    if(node.nextSibling.nodeType == 1){    //判断下一个节点类型为1则是“元素”节点   
 	        return node.nextSibling;    
 	    }    
@@ -159,7 +168,12 @@
 	}
 	function removeNode(n)
     {
-	    return n.parentNode.removeChild(n);
+		var p=n.parentNode;
+		if(p){
+		    return p.removeChild(n);
+		}else{
+		    return null;
+		}
     }
 	function insertAfterNode(newNode,reforeNode)
     {
@@ -238,35 +252,52 @@
 	}
 })($,window,document);
 
+
+(function($,_w,_d){
+	
+	var output={},data=null;
+	output.create=_create;
+	_w.$gd=output;
+	
+	function _create( param ){
+	}
+	
+})($,window,document);
+
 /*
-	$dn.create({
-		id:"#taskQmTable",
-		tr:"ui-row-ltr",
-		treeWrap:".tree-wrap",
-		treeIconPlus:"tree-plus",
-		treeIconMinus:"tree-minus",
-		getVCL:function(){
-			return [];
-		},
-		fn:function(params){
-			$.ajax({
-				url: "<c:url value='/js/extends/widget/dragResp.json'/>",
-				async:false,
-				type: "POST",
-				data:params,
-				cache:false,
-				dataType:"json",
-				success:function(data, textStatus, jqXHR){
-					if(data.status=="success"){
-						setTimeout(function(){$dn.finish(true);},500);
-					}else{
-						$dn.finish(false);
-					}
-				},
-				error:function(){$dn.finish(false);}
-			});
-		}
-	});
+		$dn.create({
+			id:"#taskQmTable",
+			tr:"ui-row-ltr",
+			treeWrap:".tree-wrap",
+			treeIconPlus:"tree-plus",
+			treeIconMinus:"tree-minus",
+			divTextClass:"taskName",
+			divTextHighColor:"k_highColor",
+			getVCL:function(pid){
+				var list=getAllChildern(pid);
+				var a=[];
+				_each(list,function(item){
+					a.push(item.taskID);
+				});
+				return a;
+			},
+			getOrder:function(nodeId){
+				return findTargetOrder(nodeId,1);
+			},
+			fn:function(params){
+				$.when(
+					$.ajax({
+						url: '<c:url value="/taskQm/updateTaskPosition"/>',
+			    		cache:false,
+			    		data:{"srcId":params.srcId,"destId":params.destId,"order":params.order,"pos":params.pos}
+			    	})
+				).done(function(){
+					taskQmGrid.trigger('reloadGrid');
+				}).fail(function(){
+					taskQmGrid.trigger('reloadGrid');
+				});
+			}
+		});
 */
 (function($,_w,_d){
 	
@@ -302,8 +333,17 @@
 	function initFrame(){
 		$("body").append("<div class='move hide' id='move'><table></table></div>"); 
 	}
+	function addEvent(){
+		data.jBody.mousemove(mmove);
+		data.jBody.mousedown(mdown);
+		$(_d).mouseup(mup);
+	}
 	function findNode(node){
 		var obj=getParentNodeByClass(node,data.tr);
+		return obj.parentNode;
+	}
+	function findDivTextNode(node){
+		var obj=getParentNodeByClass(node,data.divTextClass);
 		return obj.parentNode;
 	}
 	function hasAnchor(node){
@@ -318,6 +358,7 @@
 		var a=[];
 		for(var i=0;i<999;i++){
 			node=getNextElement(node);
+			if(!node) break;
 			if($(node).css(C.DISPLAY)==C.NONE){
 				a.push(node);
 			}else{
@@ -330,17 +371,11 @@
 		}
 		return a;
 	}
-	function getLastChild(node){
-
-	}
 	function setNodePad(node,width){
 		var tmp=getTreeWrapNode(node);
 		tmp.css({width:width});
 		var left=width==0?width:width-18;
 		$(C.DIV,tmp).css({left:left});
-	}
-	function isFamily(){
-		return false;
 	}
 	function isTreeNodeState(node){
 		var tmp=$(C.DIV,getTreeWrapNode(node));
@@ -359,7 +394,8 @@
 		var src_width=getTreeWrapNode(data.node).width();
 		var dest_width=getTreeWrapNode(data.seleted_node).width();
 		var diff=dest_width-src_width;
-		if( diff != 0 ){
+		data.diff=diff;
+		if( data.diff != 0 ){
 			var width=dest_width;
 			setNodePad(data.node,width);
 			_each(data.src_childNodeList,function(node){
@@ -368,7 +404,6 @@
 		}
 	}
 	function findNewPos(){
-		//debugger;
 		var i=isTreeNodeState(data.seleted_node);
 		if(i>0){
 			removeNode(data.nMoveTr);
@@ -384,10 +419,12 @@
 	}
 	function moveNewPos(){
 		var newNode=removeNode(data.node);
-		insertBeforeNode(newNode,data.nMoveTr);
-		_each(data.src_childNodeList,function(item){
-			insertBeforeNode(item,data.nMoveTr);
-		});
+		if(data.pos==C.TREE_NODE_INSERT_DOWN){
+			insertBeforeNode(newNode,data.nMoveTr);
+			_each(data.src_childNodeList,function(item){
+				insertBeforeNode(item,data.nMoveTr);
+			});	
+		}
 		removeNode(data.nMoveTr);
 	}
 	function changeNodeOrder(){
@@ -402,6 +439,7 @@
 		data.jMove.addClass(C.HIDE);
 		data.node=null;
 		data.seleted_node=null;
+		removeNode(data.nMoveTr);
 	}
 	function _finish(flag){
 		if(flag){
@@ -422,10 +460,22 @@
 	function isPrepareSubmit(){
 		data.src_visibleChildList  = data.getVCL(getNodeId(data.node));
 		data.dest_visibleChildList = data.getVCL(getNodeId(data.seleted_node));
-		if(_in_array(data.destId,data.src_visibleChildList)){
-			return false;
+		var type=isTreeNodeState(data.seleted_node);
+		if(type==C.TREE_NODE_PLUS||type==C.TREE_NODE_MINUS){
+			if(_in_array(data.destId,data.src_visibleChildList)){
+				return false;
+			}else{
+				if(data.divNode){
+					data.pos=C.TREE_NODE_INSERT_CHILD;
+				}
+				return true;
+			}
 		}else{
-			return true;
+			if(_in_array(data.destId,data.src_visibleChildList)){
+				return false;
+			}else{
+				return true;
+			}
 		}
 	}
 	function getNextNodeId(node){
@@ -436,50 +486,70 @@
 			var order="";
 		}
 	}
-	function addEvent(){
-		data.jBody.mousemove(function(e){
-			if(!data.isDown) return;
-			var n=findNode(e.target);
-			if(n){
-				if(data.seleted_node!=n ){
-					data.seleted_node=n;
-					var str=buildHtml($(data.node));
-					data.jMove.removeClass(C.HIDE).empty().append(str).css({left:e.pageX,top:e.pageY});
-					insertAfterNode(data.nMoveTr,data.seleted_node);
-				}
+	function mup(){
+		data.jBody.css({cursor:CUR.DEFAULT});
+		data.isDown=false;
+		if(data.seleted_node!=null&&data.seleted_node!=data.node){
+			data.isOpen=false;
+			$(C.TR,data.jMove).children().eq(1).removeClass(C.HIDE);
+			data.destId=getNodeId(data.seleted_node);
+			data.srcId=getNodeId(data.node);
+			if(isPrepareSubmit()){
+				var order=data.getOrder(data.destId);
+				data.fn({srcId:data.srcId,destId:data.destId,pos:data.pos,order:order,diff:data.diff});
+				_cleanup();
+			}else{
+				_cleanup();
 			}
-		});
-		data.jBody.mousedown(function(e){
-			if(data.isDown){
-				return;
-			};
-			data.jPos=$(data.posId).position();
-			data.node=null;
-			data.seleted_node=null;
-			var n=findNode(e.target);
-			if(n){
-				data.isDown=true;
-				data.node=n;
-				data.seleted_node=n;
-				data.jBody.css({cursor:CUR.MOVE});
-			}
-		});
-		$(_d).mouseup(function(e){
+		}else{
+			_cleanup();
+		}
+	}
+	function mdown(e){
+		if(data.isDown) return;
+		data.jPos=$(data.posId).position();
+		data.node=null;
+		data.seleted_node=null;
+		var n=findNode(e.target);
+		data.pos=C.TREE_NODE_INSERT_DOWN;
+		if(n){
+			data.isDown=true;
+			data.node=n;
+			data.seleted_node=n;
 			data.jBody.css({cursor:CUR.DEFAULT});
-			data.isDown=false;
-			//console.log(hasAnchor(e.target));
-			if(data.seleted_node!=null&&data.seleted_node!=data.node){
-				data.isOpen=false;
-				$(C.TR,data.jMove).children().eq(1).removeClass(C.HIDE);
-				data.destId=getNodeId(data.seleted_node);
-				data.srcId=getNodeId(data.node);
-				if(isPrepareSubmit()){
-					data.fn({srcId:data.srcId,destId:data.destId,pos:"2"});
+		}
+	}
+	function mmove(e){
+		if(!data.isDown) return;
+		var tgt=e.target;
+		var n=findNode(tgt);
+		if(n){
+			if(data.seleted_node!=n ){
+				data.seleted_node=n;
+				var str=buildHtml($(data.node));
+				data.jMove.removeClass(C.HIDE).empty().append(str).css({left:e.pageX,top:e.pageY});
+				insertAfterNode(data.nMoveTr,data.seleted_node);
+			}
+			if(data.seleted_node!=data.node){
+				var divNode=findDivTextNode(tgt);
+				if(divNode!=null){
+					if(data.divNode!=divNode){
+						data.oldDivNode=data.divNode;
+						data.divNode=divNode;
+						$(data.divNode).addClass(data.divTextHighColor);
+					}
+					if(data.oldDivNode){
+						$(data.oldDivNode).removeClass(data.divTextHighColor);
+						data.oldDivNode=null;
+					}
 				}else{
-					_cleanup();
+					if(data.divNode){
+						$(data.divNode).removeClass(data.divTextHighColor);
+						data.divNode=null;
+					}
 				}
 			}
-		});
+		}
 	}
 	
 })($,window,document);
