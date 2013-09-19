@@ -24,6 +24,14 @@ a:hover {
 	clear: both;
 }
 
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
 body, h1, h2, h3, form {
 	font: 10px tahoma, arial, sans-serif;
 	margin: 0;
