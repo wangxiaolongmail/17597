@@ -1,4 +1,4 @@
-html, body, ul, li {
+﻿html, body, ul, li {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -42,6 +42,9 @@ body, h1, h2, h3, form {
 body {
 	background: url(images/header_bg.jpg) repeat-x;
 	text-align: center;
+}
+p{
+	font-size:14px;
 }
 #wrapper {
 	text-align: left;
